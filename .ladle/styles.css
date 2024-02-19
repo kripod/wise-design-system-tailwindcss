@@ -4,6 +4,6 @@
 
 @layer base {
   body {
-    @apply text-sm;
+    @apply text-xs font-normal text-content-tertiary;
   }
 }
