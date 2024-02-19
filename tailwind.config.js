@@ -32,16 +32,17 @@ module.exports = {
   },
   darkMode: "class",
   theme: {
-    screens: {
-      // TODO: Review
-      /*
-      xs: "480px",
-      sm: "576px",
-      md: "768px",
-      lg: "992px",
-      xl: "1200px",
-      */
-      desktop: "1024px",
+    borderRadius: {
+      none: "0px",
+      DEFAULT: pxToRem(10),
+      md: pxToRem(16),
+      lg: pxToRem(24),
+      xl: pxToRem(32),
+      full: "9999px",
+    },
+    boxShadow: {
+      xl: "0 0 40px rgb(69 71 69 / 0.2)", // TODO: Change color
+      none: "none",
     },
     colors: ({ colors }) => ({
       inherit: colors.inherit,
@@ -110,41 +111,6 @@ module.exports = {
         contrast: "#ffffff",
       },
     }),
-    spacing: {
-      px: "1px",
-      0: "0px",
-      1: pxToRem(4),
-      2: pxToRem(8),
-      // 2.5: pxToRem(10),
-      3: pxToRem(12), // TODO: Remove if needed
-      4: pxToRem(16),
-      6: pxToRem(24),
-      8: pxToRem(32),
-      10: pxToRem(40),
-      12: pxToRem(48),
-      14: pxToRem(56),
-      // 16: pxToRem(64),
-      18: pxToRem(72),
-      // 20: pxToRem(80),
-      // 22: pxToRem(88),
-      // 24: pxToRem(96),
-      // 26: pxToRem(104),
-      // 28: pxToRem(112),
-      // 30: pxToRem(120),
-      // 32: pxToRem(128),
-    },
-    borderRadius: {
-      none: "0px",
-      DEFAULT: pxToRem(10),
-      md: pxToRem(16),
-      lg: pxToRem(24),
-      xl: pxToRem(32),
-      full: "9999px",
-    },
-    boxShadow: {
-      xl: "0 0 40px rgb(69 71 69 / 0.2)", // TODO: Change color
-      none: "none",
-    },
     fontFamily: {
       sans: ['"InterVariable"', '"Inter"', "ui-sans-serif", "system-ui"],
     },
@@ -271,6 +237,40 @@ module.exports = {
       1: "1px",
       DEFAULT: "2px",
       3: "3px",
+    },
+    screens: {
+      // TODO: Review
+      /*
+      xs: "480px",
+      sm: "576px",
+      md: "768px",
+      lg: "992px",
+      xl: "1200px",
+      */
+      desktop: "1024px",
+    },
+    spacing: {
+      px: "1px",
+      0: "0px",
+      1: pxToRem(4),
+      2: pxToRem(8),
+      // 2.5: pxToRem(10),
+      3: pxToRem(12), // TODO: Remove if needed
+      4: pxToRem(16),
+      6: pxToRem(24),
+      8: pxToRem(32),
+      10: pxToRem(40),
+      12: pxToRem(48),
+      14: pxToRem(56),
+      // 16: pxToRem(64),
+      18: pxToRem(72),
+      // 20: pxToRem(80),
+      // 22: pxToRem(88),
+      // 24: pxToRem(96),
+      // 26: pxToRem(104),
+      // 28: pxToRem(112),
+      // 30: pxToRem(120),
+      // 32: pxToRem(128),
     },
     textUnderlineOffset: {
       auto: "auto",
