@@ -7,7 +7,7 @@ import {
   useFloating,
 } from "@floating-ui/react";
 import { Listbox as ListboxBase } from "@headlessui/react";
-import { ChevronDown, Cross } from "@transferwise/icons";
+import { Check, ChevronDown, Cross } from "@transferwise/icons";
 import { clsx } from "clsx";
 import { getResetClassName } from "css-homogenizer/reset-scoped";
 
@@ -169,18 +169,24 @@ export function SelectInputOption<T = string>({
     <ListboxBase.Option
       value={value}
       disabled={disabled}
-      className={({ active, selected, disabled: uiDisabled }) =>
+      className={({ active, disabled: uiDisabled }) =>
         clsx(
-          "rounded px-4 py-3 text-base text-content-primary",
-          active && "-outline-offset outline",
-          selected
-            ? "bg-background-screen-active"
-            : active && "bg-background-screen-hover",
+          "flex items-start gap-x-2 rounded px-4 py-3 text-base text-content-primary",
+          active && "bg-background-screen-hover",
           uiDisabled && "opacity-45",
         )
       }
     >
-      {children}
+      {({ selected }) => (
+        <>
+          <span className="inline-flex items-center" aria-hidden>
+            {/* TODO: Use `h-1lh` on container and remove zero-width space */}
+            &#8203; {/* Mimics `height: 1lh` on container */}
+            <Check size={16} className={clsx(!selected && "invisible")} />
+          </span>
+          <span className="flex-1">{children}</span>
+        </>
+      )}
     </ListboxBase.Option>
   );
 }
