@@ -27,6 +27,7 @@ export function CheckboxChipGroup({
 
 export type CheckboxChipProps = {
   name?: string;
+  value?: string;
   defaultChecked?: boolean;
   checked?: boolean;
   disabled?: boolean;
@@ -36,6 +37,7 @@ export type CheckboxChipProps = {
 
 export function CheckboxChip({
   name,
+  value = "on",
   defaultChecked,
   checked: controlledChecked,
   disabled = false,
@@ -57,6 +59,7 @@ export function CheckboxChip({
         <input
           type="checkbox"
           name={name}
+          value={value}
           defaultChecked={defaultChecked} // For controlled/uncontrolled warning
           checked={controlledChecked}
           hidden
