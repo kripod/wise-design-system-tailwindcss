@@ -4,9 +4,8 @@
     "target": "ESNext",
     "strict": true,
     "verbatimModuleSyntax": true,
-    "noEmit": false,
-    "emitDeclarationOnly": true,
     "declaration": true,
+    "declarationMap": true,
     "declarationDir": "dist/types"
   },
   "include": ["**/*.js", "**/*.jsx", "**/*.mjs", "**/*.ts", "**/*.tsx"],
