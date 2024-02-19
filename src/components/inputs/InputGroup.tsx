@@ -32,7 +32,7 @@ export function useInputPaddings() {
 interface InputGroupAddon {
   content: React.ReactNode;
   initialContentWidth?: number | string;
-  padding?: InputAddonProps["padding"];
+  padding?: "none" | "sm" | "md";
 }
 
 export interface InputGroupProps {
@@ -90,15 +90,11 @@ export function InputGroup({
           )}
         >
           {addonStart != null ? (
-            <InputAddon placement="start" padding={addonStart.padding}>
-              {addonStart.content}
-            </InputAddon>
+            <InputAddon placement="start" {...addonStart} />
           ) : null}
           {children}
           {addonEnd != null ? (
-            <InputAddon placement="end" padding={addonEnd.padding}>
-              {addonEnd.content}
-            </InputAddon>
+            <InputAddon placement="end" {...addonEnd} />
           ) : null}
         </fieldset>
       </InputPaddingEndContext.Provider>
@@ -106,10 +102,8 @@ export function InputGroup({
   );
 }
 
-interface InputAddonProps {
+interface InputAddonProps extends Omit<InputGroupAddon, "initialContentWidth"> {
   placement: "start" | "end";
-  padding?: "none" | "sm" | "md";
-  children?: React.ReactNode;
 }
 
 const inputAddonContentWidthAddendByPadding = {
@@ -124,8 +118,8 @@ const inputAddonDefaultPadding = "md" satisfies InputAddonProps["padding"];
 
 function InputAddon({
   placement,
+  content,
   padding = inputAddonDefaultPadding,
-  children,
 }: InputAddonProps) {
   const [, setInputPadding] = React.useContext(
     placement === "start" ? InputPaddingStartContext : InputPaddingEndContext,
@@ -165,7 +159,7 @@ function InputAddon({
         },
       )}
     >
-      {children}
+      {content}
     </span>
   );
 }
