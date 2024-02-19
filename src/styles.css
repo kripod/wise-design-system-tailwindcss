@@ -10,7 +10,6 @@
 @layer base {
   html {
     @apply break-words bg-background-screen font-sans text-content-primary;
-    scrollbar-gutter: stable;
     -webkit-tap-highlight-color: transparent;
   }
 }
