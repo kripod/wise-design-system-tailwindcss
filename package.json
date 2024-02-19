@@ -51,7 +51,7 @@
     "@floating-ui/react": "^0.24.2",
     "@headlessui/react": "^1.7.15",
     "clsx": "^1.2.1",
-    "css-homogenizer": "^3.1.0",
+    "css-homogenizer": "^3.2.0",
     "ts-essentials": "^9.3.2"
   },
   "devDependencies": {
