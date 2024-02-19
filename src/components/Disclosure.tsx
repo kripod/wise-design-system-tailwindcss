@@ -21,11 +21,11 @@ export function Disclosure({
     <DisclosureBase
       as="div"
       defaultOpen={defaultOpen}
-      className="flex flex-col gap-y-4 p-4"
+      className="flex flex-col gap-y-4 py-4"
     >
       <DisclosureBase.Button
         as={Button}
-        className="relative flex gap-x-4 text-start text-lg font-semibold text-content-primary after:absolute after:inset-0 after:-m-4"
+        className="relative flex gap-x-4 rounded-xs text-start text-lg text-content-primary after:absolute after:inset-0 after:-my-4"
       >
         {({ open }) => (
           <>
