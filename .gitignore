@@ -1,6 +1,7 @@
 node_modules/
 build/
 dist/
+.rollup.cache/
 *.tsbuildinfo
 *.log*
 .env.local

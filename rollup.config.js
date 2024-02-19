@@ -1,21 +1,25 @@
-const ts = require("rollup-plugin-ts");
+const { babel } = require("@rollup/plugin-babel");
+const { nodeResolve } = require("@rollup/plugin-node-resolve");
+const typescript = require("@rollup/plugin-typescript");
+const { defineConfig } = require("rollup");
 
 const pkg = require("./package.json");
 
-/** @type {import("rollup").RollupOptions} */
-module.exports = {
+const extensions = [".js", ".jsx", ".mjs", ".ts", ".tsx"];
+
+module.exports = defineConfig({
   input: {
     index: "src/index.ts",
   },
   output: [
     {
       format: "es",
-      dir: "dist/es",
+      dir: "dist",
       entryFileNames: "[name].mjs",
     },
     {
       format: "cjs",
-      dir: "dist/cjs",
+      dir: "dist",
       interop: "esModule",
     },
   ],
@@ -24,11 +28,18 @@ module.exports = {
     ...Object.keys(pkg.peerDependencies),
   ].map((packageName) => new RegExp(`^${packageName}($|/)`, "u")),
   plugins: [
-    ts({
-      transpiler: {
-        typescriptSyntax: "typescript",
-        otherSyntax: "babel",
-      },
+    nodeResolve({
+      extensions,
+    }),
+    babel({
+      extensions,
+      babelHelpers: "runtime",
+    }),
+    typescript({
+      exclude: ["**/*.stories.*"],
+      filterRoot: "src",
+      outputToFilesystem: true, // Let `tsconfig.tsbuildinfo` be in the root
+      noForceEmit: true,
     }),
   ],
-};
+});
