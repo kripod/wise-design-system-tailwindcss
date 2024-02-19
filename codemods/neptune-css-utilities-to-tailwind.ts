@@ -1,4 +1,4 @@
-import type { Transform } from "jscodeshift";
+import type { API, Collection, Transform } from "jscodeshift";
 
 const tailwindUtilityByNeptuneUtility = new Map([
   ["affix", "fixed"],
@@ -300,6 +300,9 @@ const neptuneUtilityMatcher = new RegExp(
   "gmu",
 );
 
+const classAttributes = ["class", "className"];
+const classConcatFunctions = ["clsx", "classNames", "classnames", "cva", "cx"];
+
 function replaceUtilities(value: string) {
   let didTransform = false;
 
@@ -319,9 +322,8 @@ function replaceUtilities(value: string) {
   return didTransform ? replaced : null;
 }
 
-const transform: Transform = (fileInfo, api) => {
+function replaceNodes(root: Collection, api: API) {
   const j = api.jscodeshift;
-  const root = j(fileInfo.source);
 
   let didTransform = false;
 
@@ -350,6 +352,70 @@ const transform: Transform = (fileInfo, api) => {
       }
     }
   });
+
+  root.find(j.ObjectProperty).forEach((path) => {
+    if (path.node.key.type === "Identifier") {
+      const replaced = replaceUtilities(path.node.key.name);
+      if (replaced != null) {
+        didTransform = true;
+        j(path).replaceWith(
+          j.objectProperty(j.stringLiteral(replaced), path.node.value),
+        );
+      }
+    } else if (replaceNodes(j(path.node.key), api)) {
+      didTransform = true;
+    }
+  });
+
+  return didTransform;
+}
+
+const transform: Transform = (fileInfo, api) => {
+  const j = api.jscodeshift;
+  const root = j(fileInfo.source);
+
+  let didTransform = false;
+
+  root
+    .find(j.JSXAttribute, (node) => {
+      if (typeof node.name.name === "string") {
+        return classAttributes.includes(node.name.name);
+      }
+      return false;
+    })
+    .forEach((path) => {
+      if (replaceNodes(j(path), api)) {
+        didTransform = true;
+      }
+    });
+
+  root
+    .find(j.CallExpression, (node) => {
+      if (node.callee.type === "Identifier") {
+        const calleeName = node.callee.name;
+        return classConcatFunctions.includes(calleeName);
+      }
+      return false;
+    })
+    .forEach((path) => {
+      if (replaceNodes(j(path), api)) {
+        didTransform = true;
+      }
+    });
+
+  root
+    .find(j.TaggedTemplateExpression, (node) => {
+      if (node.tag.type === "Identifier") {
+        const tagName = node.tag.name;
+        return classConcatFunctions.includes(tagName);
+      }
+      return false;
+    })
+    .forEach((path) => {
+      if (replaceNodes(j(path), api)) {
+        didTransform = true;
+      }
+    });
 
   return didTransform ? root.toSource() : null;
 };
