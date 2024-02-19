@@ -280,6 +280,9 @@ module.exports = {
       borderColor: ({ theme }) => ({
         DEFAULT: theme("colors.border.neutral"),
       }),
+      minHeight: ({ theme }) => ({
+        18: theme("spacing.18"),
+      }),
       outlineColor: ({ theme }) => ({
         DEFAULT: theme("colors.interactive.primary.DEFAULT"),
       }),
