@@ -33,6 +33,8 @@ export function useControllableState<T>(
             typeof action === "function"
               ? (action as (prevState: T) => T)(prevState)
               : action;
+          // Avoid nested `setState()` calls from handler by delaying execution:
+          // https://reactjs.org/link/setstate-in-render
           queueMicrotask(() => {
             onChange?.(nextState);
           });
