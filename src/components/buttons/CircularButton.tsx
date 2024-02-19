@@ -1,3 +1,4 @@
+import { useId } from "@radix-ui/react-id";
 import { clsx } from "clsx";
 import * as React from "react";
 
@@ -12,7 +13,7 @@ export const CircularButton = React.forwardRef(function CircularButton(
   { icon, className, children, ...restProps }: CircularButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement>,
 ) {
-  const labelId = React.useId();
+  const labelId = useId();
   return (
     <span
       className={clsx(

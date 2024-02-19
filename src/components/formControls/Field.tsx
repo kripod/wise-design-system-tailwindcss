@@ -1,6 +1,6 @@
+import { useId } from "@radix-ui/react-id";
 import { AlertCircle } from "@transferwise/icons";
 import { clsx } from "clsx";
-import * as React from "react";
 
 import {
   FormControlDescribedByProvider,
@@ -49,7 +49,7 @@ export type FieldProps = {
 export function Field({ label, hint, error, className, children }: FieldProps) {
   // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
   const description = error || hint;
-  const descriptionId = React.useId();
+  const descriptionId = useId();
 
   return (
     <FormControlDescribedByProvider
