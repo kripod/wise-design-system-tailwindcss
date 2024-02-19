@@ -80,7 +80,7 @@ export type InputProps = Pick<
   | "onSelect"
 > & {
   type?: "email" | "password" | "tel" | "text" | "url";
-  size?: "sm" | "md" | "lg" | "xl";
+  size?: "sm" | "md" | "xl";
   shape?: "rectangle" | "pill";
   "aria-invalid"?: boolean;
 };

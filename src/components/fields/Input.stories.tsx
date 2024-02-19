@@ -7,7 +7,7 @@ import { Field, FieldDescription, Label } from "./Field";
 import { Input, InputAddon, InputGroup } from "./Input";
 
 export const Basic: Story<{
-  size: "sm" | "md" | "lg" | "xl";
+  size: "sm" | "md" | "xl";
   shape: "rectangle" | "pill";
   required: boolean;
   readOnly: boolean;
@@ -46,7 +46,7 @@ Basic.args = {
 
 Basic.argTypes = {
   size: {
-    options: ["sm", "md", "lg", "xl"],
+    options: ["sm", "md", "xl"],
     defaultValue: "md",
     control: { type: "radio" },
   },

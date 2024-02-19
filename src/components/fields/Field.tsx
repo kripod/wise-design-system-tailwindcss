@@ -27,7 +27,7 @@ export function Field({ children }: FieldProps) {
 }
 
 export type FieldControlPropsBase = {
-  size?: "auto" | "sm" | "md" | "lg" | "xl";
+  size?: "auto" | "sm" | "md" | "xl";
 };
 
 export function fieldControlClassNameBase({
@@ -39,7 +39,6 @@ export function fieldControlClassNameBase({
       "py-3 text-base": size === "auto",
       "h-8 text-sm": size === "sm",
       "h-12 text-base": size === "md",
-      "h-14 text-base": size === "lg",
       "h-18 text-xl": size === "xl",
     },
   );
