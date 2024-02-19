@@ -645,7 +645,7 @@ function SelectInputGroupItemView<T = string>({
         <header
           id={headerId}
           role="none"
-          className="sticky top-0 z-10 bg-background-elevated px-4 pb-1 pt-2 text-sm font-medium leading-5 text-content-secondary"
+          className="sticky top-0 z-10 bg-background-elevated px-4 pb-1 pt-2 text-title-group text-content-secondary"
         >
           {item.label}
         </header>
@@ -681,7 +681,7 @@ function SelectInputOption<T = string>({
       disabled={disabled}
       className={({ active, disabled: uiDisabled }) =>
         clsx(
-          "flex cursor-default select-none items-center gap-x-2 rounded px-4 py-3 text-base text-interactive-primary",
+          "flex cursor-default select-none items-center gap-x-2 rounded px-4 py-3 text-body-lg text-interactive-primary",
           active && "ring-1 ring-inset ring-interactive-secondary",
           uiDisabled && "opacity-45",
         )
@@ -724,7 +724,7 @@ export function SelectInputOptionContent({
     <div
       className={clsx(
         "flex items-center gap-x-2 text-content-primary",
-        (note || description) && "text-base font-normal",
+        (note || description) && "text-body-lg",
       )}
     >
       {icon ? (
@@ -737,14 +737,14 @@ export function SelectInputOptionContent({
         <div className={clsx("space-x-2", withinTrigger && "truncate")}>
           <h4 className="inline">{title}</h4>
           {note ? (
-            <span className="text-sm text-content-secondary">{note}</span>
+            <span className="text-body text-content-secondary">{note}</span>
           ) : null}
         </div>
 
         {description ? (
           <div
             className={clsx(
-              "text-sm text-content-secondary",
+              "text-body text-content-secondary",
               withinTrigger && "truncate",
             )}
           >

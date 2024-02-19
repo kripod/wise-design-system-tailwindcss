@@ -16,7 +16,7 @@
 }
 
 html {
-  @apply bg-background-screen font-sans text-base text-content-secondary selection:bg-background-neutral-active;
+  @apply bg-background-screen font-sans text-body-lg text-content-secondary selection:bg-background-neutral-active;
   -webkit-tap-highlight-color: transparent;
 }
 

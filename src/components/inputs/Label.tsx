@@ -12,7 +12,7 @@ export function Label({ htmlFor, className, children }: LabelProps) {
       htmlFor={htmlFor}
       className={clsx(
         className,
-        "inline-flex flex-col gap-y-1 text-sm text-content-secondary",
+        "inline-flex flex-col gap-y-1 text-body text-content-secondary",
       )}
     >
       {children}

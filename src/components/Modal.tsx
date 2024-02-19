@@ -51,7 +51,7 @@ export function Modal({
               <DialogBase.Title
                 className={clsx(
                   getResetClassName("h2"),
-                  "flex-1 text-lg font-semibold",
+                  "flex-1 text-title-body",
                 )}
               >
                 {title}

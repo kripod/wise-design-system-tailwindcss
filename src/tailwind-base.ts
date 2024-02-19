@@ -124,77 +124,7 @@ export default {
       sans: ['"Inter Variable"', '"Inter"', ...defaultTheme.fontFamily.sans],
     },
     fontSize: {
-      xs: [
-        pxToRem(12),
-        {
-          lineHeight: pxToRem(18),
-          letterSpacing: "0em",
-          fontWeight: "500",
-        },
-      ],
-      sm: [
-        pxToRem(14),
-        {
-          lineHeight: pxToRem(22),
-          letterSpacing: "-0.006em",
-        },
-      ],
-      base: [
-        pxToRem(16),
-        {
-          lineHeight: pxToRem(24),
-          letterSpacing: "-0.011em",
-        },
-      ],
-      lg: [
-        pxToRem(18),
-        {
-          lineHeight: pxToRem(24),
-          letterSpacing: "-0.014em",
-          fontWeight: "600",
-        },
-      ],
-      xl: [
-        pxToRem(22),
-        {
-          lineHeight: pxToRem(28),
-          letterSpacing: "-0.018em",
-          fontWeight: "600",
-        },
-      ],
-      "2xl": [
-        pxToRem(26),
-        {
-          lineHeight: pxToRem(32),
-          letterSpacing: "-0.02em",
-          fontWeight: "600",
-        },
-      ],
-      "3xl": [
-        pxToRem(30),
-        {
-          lineHeight: pxToRem(34),
-          letterSpacing: "-0.021em",
-          fontWeight: "600",
-        },
-      ],
-      "5xl": [
-        pxToRem(40),
-        {
-          lineHeight: "0.85",
-          letterSpacing: "0em",
-          fontWeight: "700",
-        },
-      ],
-      "6xl": [
-        pxToRem(52),
-        {
-          lineHeight: "0.85",
-          letterSpacing: "0em",
-          fontWeight: "700",
-        },
-      ],
-      "7xl": [
+      "display-lg": [
         pxToRem(64),
         {
           lineHeight: "0.85",
@@ -202,28 +132,122 @@ export default {
           fontWeight: "700",
         },
       ],
+      "display-md": [
+        pxToRem(52),
+        {
+          lineHeight: "0.85",
+          letterSpacing: "0em",
+          fontWeight: "700",
+        },
+      ],
+      "display-sm": [
+        pxToRem(40),
+        {
+          lineHeight: "0.85",
+          letterSpacing: "0em",
+          fontWeight: "700",
+        },
+      ],
+      "display-number": [
+        pxToRem(40),
+        {
+          lineHeight: pxToRem(44),
+          letterSpacing: "-0.022em",
+          fontWeight: "600",
+        },
+      ],
+      "title-screen": [
+        pxToRem(30),
+        {
+          lineHeight: pxToRem(34),
+          letterSpacing: "-0.021em",
+          fontWeight: "600",
+        },
+      ],
+      "title-section": [
+        pxToRem(26),
+        {
+          lineHeight: pxToRem(32),
+          letterSpacing: "-0.02em",
+          fontWeight: "600",
+        },
+      ],
+      "title-subsection": [
+        pxToRem(22),
+        {
+          lineHeight: pxToRem(28),
+          letterSpacing: "-0.018em",
+          fontWeight: "600",
+        },
+      ],
+      "title-body": [
+        pxToRem(18),
+        {
+          lineHeight: pxToRem(24),
+          letterSpacing: "-0.014em",
+          fontWeight: "600",
+        },
+      ],
+      "title-group": [
+        pxToRem(14),
+        {
+          lineHeight: pxToRem(20),
+          letterSpacing: "-0.006em",
+          fontWeight: "500",
+        },
+      ],
+      "body-lg": [
+        pxToRem(16),
+        {
+          lineHeight: pxToRem(24),
+          letterSpacing: "-0.011em",
+          fontWeight: "400",
+        },
+      ],
+      "body-lg-bold": [
+        pxToRem(16),
+        {
+          lineHeight: pxToRem(24),
+          letterSpacing: "-0.011em",
+          fontWeight: "600",
+        },
+      ],
+      body: [
+        pxToRem(14),
+        {
+          lineHeight: pxToRem(22),
+          letterSpacing: "-0.006em",
+          fontWeight: "400",
+        },
+      ],
+      "body-bold": [
+        pxToRem(14),
+        {
+          lineHeight: pxToRem(22),
+          letterSpacing: "-0.006em",
+          fontWeight: "600",
+        },
+      ],
+      "link-lg": [
+        pxToRem(16),
+        {
+          lineHeight: pxToRem(24),
+          letterSpacing: "-0.011em",
+          fontWeight: "600",
+        },
+      ],
+      link: [
+        pxToRem(14),
+        {
+          lineHeight: pxToRem(22),
+          letterSpacing: "-0.006em",
+          fontWeight: "600",
+        },
+      ],
     },
     fontWeight: {
       normal: "400",
-      medium: "500",
       semibold: "600",
-      bold: "700",
-    },
-    letterSpacing: {
-      normal: "0em",
-      tight: "-0.022em",
-    },
-    lineHeight: {
-      tight: "0.85",
-      none: "1",
-      4.5: pxToRem(18),
-      5: pxToRem(20),
-      5.5: pxToRem(22),
-      6: pxToRem(24),
-      7: pxToRem(28),
-      8: pxToRem(32),
-      8.5: pxToRem(34),
-      11: pxToRem(44),
     },
     opacity: {
       0: "0",

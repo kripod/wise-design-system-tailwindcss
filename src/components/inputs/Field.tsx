@@ -34,7 +34,7 @@ function FieldDescription({ children }: FieldDescriptionProps) {
     <span
       id={descriptionId}
       className={clsx(
-        "inline-flex items-start gap-x-1 text-sm transition-colors",
+        "inline-flex items-start gap-x-1 text-body transition-colors",
         invalid ? "text-sentiment-negative" : "text-content-secondary",
       )}
     >

@@ -125,9 +125,13 @@ export function Popover({
                 )}
               >
                 {title ? (
-                  <h2 className="text-lg text-content-primary">{title}</h2>
+                  <h2 className="text-title-body text-content-primary">
+                    {title}
+                  </h2>
                 ) : null}
-                <div className="text-sm text-content-secondary">{children}</div>
+                <div className="text-body text-content-secondary">
+                  {children}
+                </div>
               </div>
             </div>
           </FloatingFocusManager>

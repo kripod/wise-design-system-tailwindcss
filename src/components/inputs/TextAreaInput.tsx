@@ -35,7 +35,7 @@ export const TextAreaInput = React.forwardRef(function TextAreaInput(
       className={clsx(
         className,
         inputClassNameBase(),
-        "min-h-18 scroll-py-2 overscroll-none rounded py-3 text-base placeholder:text-content-tertiary",
+        "min-h-18 scroll-py-2 overscroll-none rounded py-3 text-body-lg placeholder:text-content-tertiary",
       )}
       {...inputAttributes}
       {...restProps}

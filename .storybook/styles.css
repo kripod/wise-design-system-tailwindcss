@@ -3,6 +3,6 @@
 
 @layer base {
   body {
-    @apply text-xs font-normal leading-none text-content-tertiary;
+    @apply text-body text-content-tertiary;
   }
 }

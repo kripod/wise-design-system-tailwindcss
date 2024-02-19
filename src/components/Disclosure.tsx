@@ -25,7 +25,7 @@ export function Disclosure({
     >
       <DisclosureBase.Button
         as={Button}
-        className="relative flex gap-x-4 rounded-xs text-start text-lg text-content-primary after:absolute after:inset-0 after:-my-4"
+        className="relative flex gap-x-4 rounded-xs text-start text-title-body text-content-primary after:absolute after:inset-0 after:-my-4"
       >
         {({ open }) => (
           <>
@@ -41,7 +41,7 @@ export function Disclosure({
           </>
         )}
       </DisclosureBase.Button>
-      <DisclosureBase.Panel className="flex gap-x-4 text-base text-content-secondary">
+      <DisclosureBase.Panel className="flex gap-x-4 text-body-lg text-content-secondary">
         {icon ? <span className="invisible">{icon}</span> : null}
         <div className="flex-1">{children}</div>
       </DisclosureBase.Panel>

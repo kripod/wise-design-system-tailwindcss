@@ -54,8 +54,8 @@ export const Button = React.forwardRef(function Button(
           size !== "auto" &&
             "inline-flex items-center justify-center text-center",
           {
-            "h-8 text-sm font-semibold": size === "sm",
-            "h-12 text-base font-semibold": size === "md",
+            "h-8 text-body-bold": size === "sm",
+            "h-12 text-body-lg-bold": size === "md",
           },
         ),
         children:

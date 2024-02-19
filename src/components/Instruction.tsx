@@ -27,7 +27,7 @@ const IconBySentiment = {
 export function Instruction({ sentiment, children }: InstructionProps) {
   const Icon = IconBySentiment[sentiment];
   return (
-    <li className="flex gap-x-2 text-base text-content-primary">
+    <li className="flex gap-x-2 text-body-lg text-content-primary">
       <Icon />
       <div className="flex-1">{children}</div>
     </li>

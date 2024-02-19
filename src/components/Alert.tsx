@@ -16,7 +16,7 @@ export function Alert({
 }: AlertProps) {
   return (
     <div className="@container">
-      <div className="grid grid-cols-[auto_1fr_auto] items-center gap-x-4 gap-y-2 rounded-md bg-background-neutral p-6 text-sm text-content-secondary @lg:p-4">
+      <div className="grid grid-cols-[auto_1fr_auto] items-center gap-x-4 gap-y-2 rounded-md bg-background-neutral p-6 text-body text-content-secondary @lg:p-4">
         <StatusIcon size={40} sentiment={sentiment} />
         {onClose != null ? (
           <CloseButton
