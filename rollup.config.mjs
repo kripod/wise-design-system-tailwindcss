@@ -22,7 +22,9 @@ export default {
   external: [
     ...Object.keys(pkg.dependencies),
     ...Object.keys(pkg.peerDependencies),
-  ].map((packageName) => new RegExp(`^${packageName}($|/)`)),
+  ]
+    .filter((packageName) => packageName !== "css-homogenizer")
+    .map((packageName) => new RegExp(`^${packageName}($|/)`)),
   plugins: [
     ts({
       transpiler: {
