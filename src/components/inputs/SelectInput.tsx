@@ -37,7 +37,17 @@ function inferSearchableStrings(value: unknown) {
   return [];
 }
 
-const SelectInputHasValueContext = React.createContext(false);
+const SelectInputItemCheckPaddingContext = React.createContext(false);
+
+function useSelectInputItemCheckPadding() {
+  const checkPadding = React.useContext(SelectInputItemCheckPaddingContext);
+
+  // Avoid layout shifts during transitions via caching
+  const [initialCheckPadding] = React.useState(checkPadding);
+
+  return initialCheckPadding;
+}
+
 const SelectInputTriggerButtonPropsContext = React.createContext<{
   ref?: React.ForwardedRef<HTMLButtonElement>;
   onClick?: () => void;
@@ -246,7 +256,9 @@ export function SelectInput<T = string>({
       }}
     >
       {({ disabled: uiDisabled, value }) => (
-        <SelectInputHasValueContext.Provider value={value != null}>
+        <SelectInputItemCheckPaddingContext.Provider
+          value={Boolean(filterable) || value != null}
+        >
           <OptionsOverlay
             open={open}
             renderTrigger={({ ref, getInteractionProps }) => (
@@ -304,7 +316,7 @@ export function SelectInput<T = string>({
               listboxRef={listboxRef}
             />
           </OptionsOverlay>
-        </SelectInputHasValueContext.Provider>
+        </SelectInputItemCheckPaddingContext.Provider>
       )}
     </ListboxBase>
   );
@@ -388,7 +400,7 @@ interface SelectInputOptionsProps<T = string>
 function SelectInputOptions<T = string>({
   items,
   renderValue = wrapInFragment,
-  filterable,
+  filterable = false,
   filterPlaceholder,
   searchInputRef,
   listboxRef,
@@ -544,6 +556,7 @@ function SelectInputGroupItemView<T = string>({
   needle,
 }: SelectInputGroupItemViewProps<T>) {
   const headerId = useId();
+  const checkPadding = useSelectInputItemCheckPadding();
 
   return (
     // An empty container may be rendered when no options match `needle`
@@ -559,6 +572,10 @@ function SelectInputGroupItemView<T = string>({
           role="presentation"
           className="sticky top-0 z-10 bg-background-elevated px-4 pb-1 pt-2 text-sm font-medium leading-5 text-content-secondary"
         >
+          {checkPadding ? (
+            /* Icon placeholder */
+            <span className="ms-4 inline-block w-[16px]" />
+          ) : null}
           {item.label}
         </header>
       ) : null}
@@ -586,10 +603,7 @@ function SelectInputOption<T = string>({
   disabled,
   children,
 }: SelectInputOptionProps<T>) {
-  const parentHasValue = React.useContext(SelectInputHasValueContext);
-
-  // Avoid flash during exit transition
-  const { current: cachedParentHasValue } = React.useRef(parentHasValue);
+  const checkPadding = useSelectInputItemCheckPadding();
 
   return (
     <ListboxBase.Option
@@ -606,8 +620,11 @@ function SelectInputOption<T = string>({
     >
       {({ selected }) => (
         <>
-          {cachedParentHasValue ? (
-            <Check size={16} className={clsx(!selected && "invisible")} />
+          {checkPadding ? (
+            <Check
+              size={16}
+              className={clsx("px-1", !selected && "invisible")}
+            />
           ) : null}
           <div className="flex-1">{children}</div>
         </>
