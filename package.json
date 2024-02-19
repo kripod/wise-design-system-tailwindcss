@@ -16,6 +16,7 @@
     "start": "ladle preview"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.3",
     "@headlessui/tailwindcss": "^0.1.1",
     "@radix-ui/react-id": "^1.0.0",
     "clsx": "^1.2.1",
@@ -23,7 +24,6 @@
     "use-sync-external-store": "^1.2.0"
   },
   "devDependencies": {
-    "@headlessui/react": "1.7.3",
     "@ladle/react": "2.4.3",
     "@transferwise/icons": "3.1.2",
     "@tsconfig/next": "1.0.3",
@@ -59,7 +59,6 @@
     "typescript": "4.8.4"
   },
   "peerDependencies": {
-    "@headlessui/react": "^1.6",
     "@transferwise/icons": "^3.1",
     "react": "16.14 - 18"
   },

@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@headlessui/react': 1.7.3
+  '@headlessui/react': ^1.7.3
   '@headlessui/tailwindcss': ^0.1.1
   '@ladle/react': 2.4.3
   '@radix-ui/react-id': ^1.0.0
@@ -42,6 +42,7 @@ specifiers:
   use-sync-external-store: ^1.2.0
 
 dependencies:
+  '@headlessui/react': 1.7.3_biqbaboplfbrettd7655fr4n2y
   '@headlessui/tailwindcss': 0.1.1_tailwindcss@3.1.8
   '@radix-ui/react-id': 1.0.0_react@18.2.0
   clsx: 1.2.1
@@ -49,7 +50,6 @@ dependencies:
   use-sync-external-store: 1.2.0_react@18.2.0
 
 devDependencies:
-  '@headlessui/react': 1.7.3_biqbaboplfbrettd7655fr4n2y
   '@ladle/react': 2.4.3_biqbaboplfbrettd7655fr4n2y
   '@transferwise/icons': 3.1.2_react@18.2.0
   '@tsconfig/next': 1.0.3
@@ -1572,7 +1572,7 @@ packages:
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-    dev: true
+    dev: false
 
   /@headlessui/tailwindcss/0.1.1_tailwindcss@3.1.8:
     resolution: {integrity: sha512-MJbc/MG1iVDow0IQYdsZNVY2xiTa2fDpXLF01xIAyNH6M+Ks0c6X0k3x6PqAvwvKWKEFhS0MlMzrDUVTU6cXDA==}
@@ -4831,7 +4831,6 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
-    dev: true
 
   /react-frame-component/5.2.3_v2m5e27vhdewzwhryxwfaorcca:
     resolution: {integrity: sha512-r+h0o3r/uqOLNT724z4CRVkxQouKJvoi3OPfjqWACD30Y87rtEmeJrNZf1WYPGknn1Y8200HAjx7hY/dPUGgmA==}
@@ -5041,7 +5040,6 @@ packages:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
     dependencies:
       loose-envify: 1.4.0
-    dev: true
 
   /semver/5.7.1:
     resolution: {integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==}
