@@ -215,6 +215,8 @@ export default {
       normal: "400",
       semibold: "600",
     },
+    letterSpacing: {},
+    lineHeight: {},
     opacity: {
       0: "0",
       40: "0.4",
