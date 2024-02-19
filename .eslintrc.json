@@ -4,7 +4,8 @@
     "@wise/eslint-config/base",
     "@wise/eslint-config/typescript",
     "@wise/eslint-config/react",
-    "@wise/eslint-config/storybook"
+    "@wise/eslint-config/storybook",
+    "plugin:tailwindcss/recommended"
   ],
   "settings": {
     "jsx-a11y": {
