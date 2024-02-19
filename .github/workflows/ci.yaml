@@ -1,22 +1,45 @@
 name: CI
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches-ignore:
+      - "changeset-release/**"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
-  build:
+  build-lint-test:
+    name: Build, lint, test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
-      - uses: actions/setup-node@v3
+      - uses: transferwise/actions-bootstrap-node@v1
         with:
-          node-version-file: .nvmrc
-          cache: pnpm
-      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN_READONLY }}" >> ~/.npmrc
-      - run: pnpm install
+          package-manager: pnpm
+          npm-token: ${{ secrets.NPM_TOKEN_READONLY }}
       - run: pnpm run build
       - run: pnpm run lint
       - run: pnpm run --if-present test
+
+  release-experimental:
+    name: Release experimental version
+    needs: [build-lint-test]
+    # TODO: `if: github.event_name == 'pull_request'`
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: transferwise/actions-bootstrap-node@v1
+        with:
+          package-manager: pnpm
+          npm-token: ${{ secrets.NPM_TOKEN_AUTOMATION }}
+      - name: Publish on npm
+        run: |
+          commit_hash=${{ github.event.pull_request.head.sha }}
+          pnpm exec changeset version --snapshot experimental --snapshot-prerelease-template {tag}-${commit_hash:0:7}
+          pnpm exec changeset publish --tag experimental --no-git-tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
