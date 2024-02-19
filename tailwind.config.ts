@@ -35,8 +35,8 @@ export default {
       full: "9999px",
     },
     boxShadow: {
-      DEFAULT: "0 2px 4px rgb(69 71 69 / 0.35)", // TODO: Change color
-      xl: "0 0 40px rgb(69 71 69 / 0.2)", // TODO: Change color
+      DEFAULT: "0 2px 4px rgb(69 71 69 / 0.35)", // TODO: Use `lightTheme["--color-content-secondary"]`
+      xl: "0 0 40px rgb(69 71 69 / 0.2)", // TODO: Use `lightTheme["--color-content-secondary"]`
       none: "none",
     },
     colors: ({ colors }) => ({
