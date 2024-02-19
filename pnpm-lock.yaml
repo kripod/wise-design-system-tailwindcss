@@ -73,9 +73,6 @@ devDependencies:
   '@transferwise/icons':
     specifier: 3.6.0
     version: 3.6.0(react@16.14.0)
-  '@tsconfig/esm':
-    specifier: 1.0.3
-    version: 1.0.3
   '@tsconfig/recommended':
     specifier: 1.0.2
     version: 1.0.2
@@ -2823,10 +2820,6 @@ packages:
         optional: true
     dependencies:
       react: 16.14.0
-    dev: true
-
-  /@tsconfig/esm@1.0.3:
-    resolution: {integrity: sha512-Gp56rIc3R8ab032nXMUitmc7YIb4nAi8DQ6Qt47tuL0Ssn9LIOm+o2FQmqPu3jX4z0TsqgzWwkmVygxcq+yHYg==}
     dev: true
 
   /@tsconfig/recommended@1.0.2:
