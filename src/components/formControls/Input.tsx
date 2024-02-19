@@ -2,7 +2,10 @@ import { clsx } from "clsx";
 import * as React from "react";
 
 import { useResizeObserver } from "../../hooks/useResizeObserver";
-import { formControlClassNameBase, useFieldDescribedBy } from "./Field";
+import {
+  formControlClassNameBase,
+  useFormControlAriaAttributes,
+} from "./_FormControl";
 
 type InputPaddingStartContextType = [
   React.CSSProperties["paddingInlineStart"],
@@ -66,13 +69,14 @@ export type InputProps = Pick<
   | "ref"
   | "inputMode"
   | "name"
+  | "autoComplete"
   | "defaultValue"
   | "value"
   | "required"
   | "minLength"
   | "maxLength"
   | "pattern"
-  | "autoComplete"
+  | "aria-invalid"
   | "readOnly"
   | "disabled"
   | "onChange"
@@ -82,14 +86,13 @@ export type InputProps = Pick<
   type?: "email" | "password" | "tel" | "text" | "url";
   size?: "sm" | "md" | "xl";
   shape?: "rectangle" | "pill";
-  "aria-invalid"?: boolean;
 };
 
 export const Input = React.forwardRef(function Input(
   { size = "md", shape = "rectangle", ...restProps }: InputProps,
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {
-  const fieldDescribedBy = useFieldDescribedBy();
+  const formControlAriaAttributes = useFormControlAriaAttributes();
 
   const [inputPaddingStart] = React.useContext(InputPaddingStartContext);
   const [inputPaddingEnd] = React.useContext(InputPaddingEndContext);
@@ -97,7 +100,7 @@ export const Input = React.forwardRef(function Input(
   return (
     <input
       ref={ref}
-      aria-describedby={fieldDescribedBy}
+      {...formControlAriaAttributes}
       className={clsx(
         formControlClassNameBase({ size }),
         "placeholder:text-content-tertiary enabled:group-hover/input:[&:not(:focus)]:ring-2 enabled:group-hover/input:[&:not(:focus)]:ring-interactive-secondary-hover",

@@ -3,8 +3,9 @@ import { Search } from "@transferwise/icons";
 import * as React from "react";
 
 import { ActionButton } from "../buttons/ActionButton";
-import { Field, FieldDescription, Label } from "./Field";
+import { Field } from "./Field";
 import { Input, InputAddon, InputGroup } from "./Input";
+import { Label } from "./Label";
 
 export const Basic: Story<{
   size: "sm" | "md" | "xl";
@@ -17,23 +18,20 @@ export const Basic: Story<{
   const [value, setValue] = React.useState("Text value");
 
   return (
-    <Field>
-      <Label>
-        Label
-        <Input
-          size={size}
-          shape={shape}
-          value={value}
-          required={required}
-          aria-invalid={value.length === 0}
-          readOnly={readOnly}
-          disabled={disabled}
-          onChange={(event) => setValue(event.currentTarget.value)}
-        />
-      </Label>
-      <FieldDescription>
-        {value.length > 0 ? <>Information message.</> : <>Error message.</>}
-      </FieldDescription>
+    <Field
+      label={<>Label</>}
+      hint={<>Information message.</>}
+      error={value.length === 0 ? <>Error message.</> : undefined}
+    >
+      <Input
+        size={size}
+        shape={shape}
+        value={value}
+        required={required}
+        readOnly={readOnly}
+        disabled={disabled}
+        onChange={(event) => setValue(event.currentTarget.value)}
+      />
     </Field>
   );
 };

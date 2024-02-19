@@ -9,9 +9,9 @@ import {
 import { Listbox as ListboxBase } from "@headlessui/react";
 import { ChevronDown } from "@transferwise/icons";
 import { clsx } from "clsx";
-import { useState } from "react";
+import * as React from "react";
 
-import { formControlClassNameBase } from "./Field";
+import { formControlClassNameBase } from "./_FormControl";
 
 const people = [
   { id: 1, name: "Durward Reynolds", unavailable: false },
@@ -26,10 +26,10 @@ const people = [
 ];
 
 export function Listbox() {
-  const [selectedPerson, setSelectedPerson] = useState(people[0]);
+  const [selectedPerson, setSelectedPerson] = React.useState(people[0]);
 
-  const [maxHeight, setMaxHeight] = useState<number>();
-  const [width, setWidth] = useState<number>();
+  const [maxHeight, setMaxHeight] = React.useState<number>();
+  const [width, setWidth] = React.useState<number>();
   const { refs, floatingStyles } = useFloating<HTMLButtonElement>({
     placement: "bottom-start",
     middleware: [
