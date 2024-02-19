@@ -25,7 +25,7 @@ const people = [
   { id: 5, name: "Katelyn Rohan", unavailable: false },
 ];
 
-export function Listbox() {
+export function SelectInput() {
   const [selectedPerson, setSelectedPerson] = React.useState(people[0]);
 
   const [maxHeight, setMaxHeight] = React.useState<number>();

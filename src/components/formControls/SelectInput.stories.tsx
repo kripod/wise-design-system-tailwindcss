@@ -1,7 +1,7 @@
 import type { Story } from "@ladle/react";
 import * as React from "react";
 
-import { Listbox } from "./Listbox";
+import { SelectInput } from "./SelectInput";
 
 export const Basic: Story<{
   required: boolean;
@@ -12,7 +12,7 @@ export const Basic: Story<{
 
   return (
     <div className="flex flex-col">
-      <Listbox />
+      <SelectInput />
     </div>
   );
 };
