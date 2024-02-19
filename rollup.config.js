@@ -1,8 +1,11 @@
-const { getBabelOutputPlugin } = require("@rollup/plugin-babel");
+const { babel } = require("@rollup/plugin-babel");
+const { nodeResolve } = require("@rollup/plugin-node-resolve");
 const typescript = require("@rollup/plugin-typescript");
 const { defineConfig } = require("rollup");
 
 const pkg = require("./package.json");
+
+const extensions = [".js", ".jsx", ".mjs", ".ts", ".tsx"];
 
 module.exports = defineConfig({
   input: {
@@ -25,22 +28,18 @@ module.exports = defineConfig({
     ...Object.keys(pkg.peerDependencies),
   ].map((packageName) => new RegExp(`^${packageName}($|/)`, "u")),
   plugins: [
+    nodeResolve({
+      extensions,
+    }),
+    babel({
+      extensions,
+      babelHelpers: "runtime",
+    }),
     typescript({
       exclude: ["**/*.stories.*"],
       filterRoot: "src",
-    }),
-    getBabelOutputPlugin({
-      presets: [
-        ["@babel/preset-env", { bugfixes: true }],
-        "@babel/preset-react", // Marks React methods as pure for tree shaking
-      ],
-      plugins: [
-        ["babel-plugin-optimize-clsx", { functionNames: ["clsx"] }],
-        [
-          "@babel/plugin-transform-runtime",
-          { version: pkg.dependencies["@babel/runtime"] },
-        ],
-      ],
+      outputToFilesystem: true, // Let `tsconfig.tsbuildinfo` be in the root
+      noForceEmit: true,
     }),
   ],
 });

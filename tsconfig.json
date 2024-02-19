@@ -5,11 +5,9 @@
     "strict": true,
     "verbatimModuleSyntax": true,
     "noEmit": false,
-    "outDir": "dist",
-    "jsx": "react-jsx",
-    "jsxImportSource": "css-homogenizer/reset-scoped/react",
+    "emitDeclarationOnly": true,
     "declaration": true,
-    "declarationMap": true
+    "declarationDir": "dist/types"
   },
   "include": ["**/*.js", "**/*.jsx", "**/*.mjs", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules/", "build/", "dist/"]
