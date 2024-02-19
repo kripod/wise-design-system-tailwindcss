@@ -1,4 +1,3 @@
-import { nodeResolve } from "@rollup/plugin-node-resolve";
 import ts from "rollup-plugin-ts";
 
 import pkg from "./package.json" assert { type: "json" };
@@ -17,9 +16,11 @@ export default {
       interop: "esModule",
     },
   ],
-  external: /node_modules/,
+  external: [
+    ...Object.keys(pkg.dependencies),
+    ...Object.keys(pkg.peerDependencies),
+  ].map((packageName) => new RegExp(`^${packageName}($|/)`)),
   plugins: [
-    nodeResolve(),
     ts({
       transpiler: {
         typescriptSyntax: "typescript",
