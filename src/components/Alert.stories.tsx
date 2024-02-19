@@ -11,6 +11,13 @@ export const Basic: Story<{
   return (
     <Alert sentiment={sentiment} onClose={!unclosable ? onClose : undefined}>
       {contents}
+      {/* TODO: Consider creating an `Alert.Link` component */}
+      <a
+        href="#_"
+        className="font-semibold tracking-2.5 underline underline-offset-3"
+      >
+        Learn more
+      </a>
     </Alert>
   );
 };

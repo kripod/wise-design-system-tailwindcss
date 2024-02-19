@@ -48,7 +48,7 @@ export function Alert({
       ) : null}
       <div
         role="alert"
-        className="col-span-full space-y-2 text-sm desktop:col-span-1 desktop:col-start-2 desktop:row-start-1"
+        className="col-span-full flex flex-col items-start gap-y-2 text-sm desktop:col-span-1 desktop:col-start-2 desktop:row-start-1"
       >
         {children}
       </div>
