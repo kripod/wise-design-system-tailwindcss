@@ -64,30 +64,33 @@ export function BottomSheet({
       })}
 
       <FloatingPortal>
-        <FloatingFocusManager context={context} initialFocus={initialFocusRef}>
-          <Transition
-            show={open}
-            className="relative z-50"
-            beforeEnter={() => {
-              setFloatingKey((prev) => prev + 1);
-            }}
+        <Transition
+          show={open}
+          className="relative z-50"
+          beforeEnter={() => {
+            setFloatingKey((prev) => prev + 1);
+          }}
+        >
+          <Transition.Child
+            enter="transition-opacity"
+            enterFrom="opacity-0"
+            leave="transition-opacity"
+            leaveTo="opacity-0"
           >
-            <Transition.Child
-              enter="transition-opacity"
-              enterFrom="opacity-0"
-              leave="transition-opacity"
-              leaveTo="opacity-0"
-            >
-              <div className="fixed inset-0 bg-content-primary opacity-40" />
-            </Transition.Child>
+            <div className="fixed inset-0 bg-content-primary opacity-40" />
+          </Transition.Child>
 
-            <div className="fixed inset-0 flex flex-col justify-end px-2 pt-16">
-              <Transition.Child
-                className="max-h-full"
-                enter="motion-safe:transition-transform motion-safe:duration-300 motion-reduce:transition-opacity motion-reduce:duration-300"
-                enterFrom="motion-safe:translate-y-full motion-reduce:opacity-0"
-                leave="motion-safe:transition-transform motion-safe:duration-300 motion-reduce:transition-opacity motion-reduce:duration-300"
-                leaveTo="motion-safe:translate-y-full motion-reduce:opacity-0"
+          <div className="fixed inset-0 flex flex-col justify-end px-2 pt-16">
+            <Transition.Child
+              className="max-h-full"
+              enter="motion-safe:transition-transform motion-safe:duration-300 motion-reduce:transition-opacity motion-reduce:duration-300"
+              enterFrom="motion-safe:translate-y-full motion-reduce:opacity-0"
+              leave="motion-safe:transition-transform motion-safe:duration-300 motion-reduce:transition-opacity motion-reduce:duration-300"
+              leaveTo="motion-safe:translate-y-full motion-reduce:opacity-0"
+            >
+              <FloatingFocusManager
+                context={context}
+                initialFocus={initialFocusRef}
               >
                 <div
                   key={floatingKey} // Force inner state invalidation on open
@@ -120,10 +123,10 @@ export function BottomSheet({
                     </div>
                   </div>
                 </div>
-              </Transition.Child>
-            </div>
-          </Transition>
-        </FloatingFocusManager>
+              </FloatingFocusManager>
+            </Transition.Child>
+          </div>
+        </Transition>
       </FloatingPortal>
     </>
   );
