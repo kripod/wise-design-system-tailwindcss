@@ -274,11 +274,15 @@ export function SelectInput<T>({
   );
 }
 
-export type SelectInputTriggerButtonProps<T extends React.ElementType> = {
+export type SelectInputTriggerButtonProps<
+  T extends React.ElementType = typeof ButtonInput,
+> = {
   as?: T;
 } & React.ComponentPropsWithoutRef<T>;
 
-export function SelectInputTriggerButton<T extends React.ElementType>({
+export function SelectInputTriggerButton<
+  T extends React.ElementType = typeof ButtonInput,
+>({
   as = ButtonInput as unknown as T,
   ...restProps
 }: SelectInputTriggerButtonProps<T>) {
