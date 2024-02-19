@@ -34,7 +34,7 @@ export function Dialog({
         <div className="flex min-h-full items-center justify-center p-4">
           <DialogBase.Panel
             className={clsx(
-              "w-full divide-y rounded-xl bg-background-screen shadow-xl",
+              "w-full divide-y rounded-lg bg-background-screen shadow-xl",
               {
                 /* TODO: Assess sizing */
                 "max-w-xl": size === "sm",

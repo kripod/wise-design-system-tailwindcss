@@ -136,8 +136,8 @@ module.exports = {
     borderRadius: {
       none: "0px",
       DEFAULT: pxToRem(10),
-      lg: pxToRem(16),
-      xl: pxToRem(24),
+      md: pxToRem(16),
+      lg: pxToRem(24),
       full: "9999px",
     },
     boxShadow: {
