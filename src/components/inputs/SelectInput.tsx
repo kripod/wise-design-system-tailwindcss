@@ -155,12 +155,12 @@ export function SelectInput<T>({
         onChange?.(value);
       }}
     >
-      {({ value }) => (
+      {({ disabled: uiDisabled, value }) => (
         <SelectInputHasValueContext.Provider value={value != null}>
           <InputGroup
             addonEnd={{
               content: (
-                <span className="!pointer-events-none inline-flex items-center">
+                <span className="pointer-events-none inline-flex items-center">
                   {onClear != null && value != null ? (
                     <>
                       <button
@@ -184,9 +184,9 @@ export function SelectInput<T>({
                   </span>
                 </span>
               ),
-              interactive: true,
               padding: "sm",
             }}
+            disabled={uiDisabled}
             className={className}
           >
             <OptionsOverlay
