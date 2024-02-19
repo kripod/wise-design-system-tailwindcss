@@ -24,14 +24,12 @@ export type ButtonProps = Merge<
   React.ComponentPropsWithRef<"button">,
   ButtonPropsBase & {
     size?: "auto" | "sm" | "md" | "lg";
-    equilateral?: boolean;
   }
 >;
 
 export const Button = React.forwardRef(function Button(
   {
     size = "auto",
-    equilateral,
     disabled,
     className,
     children,
@@ -50,12 +48,9 @@ export const Button = React.forwardRef(function Button(
           size !== "auto" &&
             "inline-flex items-center justify-center text-center",
           {
-            [clsx("h-8 text-sm font-semibold", equilateral && "w-8")]:
-              size === "sm",
-            [clsx("h-12 text-base font-semibold", equilateral && "w-12")]:
-              size === "md",
-            [clsx("h-14 text-base font-semibold", equilateral && "w-14")]:
-              size === "lg",
+            "h-8 text-sm font-semibold": size === "sm",
+            "h-12 text-base font-semibold": size === "md",
+            "h-14 text-base font-semibold": size === "lg",
           },
         ),
         children:

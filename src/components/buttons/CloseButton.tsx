@@ -27,7 +27,6 @@ export function CloseButton({
   return (
     <Button
       aria-label={CloseButtonLabel}
-      equilateral
       className={clsx(
         className,
         "inline-flex items-center justify-center rounded-full bg-background-neutral text-interactive-primary hover:bg-background-neutral-hover active:bg-background-neutral-active",
