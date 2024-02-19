@@ -1,13 +1,13 @@
 import type { StorybookConfig } from "@storybook/react-vite";
 
 export default {
+  stories: ["../src/"],
   framework: {
     name: "@storybook/react-vite",
     options: {
       strictMode: true,
     },
   },
-  stories: ["../src/"],
   addons: [
     "@storybook/addon-a11y",
     "@storybook/addon-essentials",
@@ -15,4 +15,7 @@ export default {
     "@storybook/addon-links",
     "@storybook/addon-themes",
   ],
+  core: {
+    disableTelemetry: true,
+  },
 } satisfies StorybookConfig;
