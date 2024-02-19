@@ -1,5 +1,6 @@
 import type { Story } from "@ladle/react";
-import { Calendar } from "@transferwise/icons";
+import { Calendar, ChevronDown } from "@transferwise/icons";
+import { clsx } from "clsx";
 import * as React from "react";
 
 import { getMonthNames } from "../../date";
@@ -8,6 +9,7 @@ import {
   SelectInput,
   type SelectInputItem,
   SelectInputOptionContent,
+  SelectInputTriggerButton,
 } from "./SelectInput";
 
 interface TestMonth {
@@ -269,4 +271,28 @@ Currencies.argTypes = {
   onChange: {
     action: "changed",
   },
+};
+
+export const CustomTrigger: Story = function () {
+  return (
+    <SelectInput
+      placeholder="Month"
+      items={months.map((month) => ({
+        type: "option",
+        value: month,
+      }))}
+      renderValue={(month) => <SelectInputOptionContent title={month.name} />}
+      renderTrigger={({ content, className }) => (
+        <SelectInputTriggerButton
+          className={clsx(
+            className,
+            "inline-flex items-center gap-x-1 text-base font-semibold text-content-link underline hover:text-content-link-hover active:text-content-link-active",
+          )}
+        >
+          {content}
+          <ChevronDown size={16} />
+        </SelectInputTriggerButton>
+      )}
+    />
+  );
 };
