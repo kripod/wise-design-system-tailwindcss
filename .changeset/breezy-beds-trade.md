@@ -1,5 +1,5 @@
 ---
-"@wise/design-system": patch
+"@wise/design-system-tailwindcss": minor
 ---
 
-test
+chore: initial release

@@ -27,6 +27,7 @@ export const Basic: Story<{
 };
 
 Basic.args = {
+  sentiment: "neutral",
   description:
     "Payments sent to your bank details today might not arrive in time for the holidays.",
   action: "Learn more",
@@ -35,9 +36,8 @@ Basic.args = {
 
 Basic.argTypes = {
   sentiment: {
-    options: ["neutral", "negative", "positive", "warning"],
-    defaultValue: "neutral",
     control: { type: "radio" },
+    options: ["neutral", "negative", "positive", "warning"],
   },
   onClose: {
     action: "closed",

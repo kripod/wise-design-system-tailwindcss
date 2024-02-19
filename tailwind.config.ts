@@ -3,12 +3,13 @@ import type { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
 import plugin from "tailwindcss/plugin";
 
+import { minWidthByScreenSize } from "./src/config/screens";
 import {
   darkGreenTheme,
   darkTheme,
   lightGreenTheme,
   lightTheme,
-} from "./themes";
+} from "./src/config/themes";
 
 function roundTo(value: number, fractionDigits: number) {
   return Number(
@@ -117,7 +118,7 @@ export default {
       },
     }),
     fontFamily: {
-      sans: ['"Inter Variable"', '"Inter"', "ui-sans-serif", "system-ui"],
+      sans: ['"Inter Variable"', '"Inter"', ...defaultTheme.fontFamily.sans],
     },
     fontSize: {
       xs: [
@@ -213,6 +214,7 @@ export default {
       tight: "0.85",
       none: "1",
       4.5: pxToRem(18),
+      5: pxToRem(20),
       5.5: pxToRem(22),
       6: pxToRem(24),
       7: pxToRem(28),
@@ -239,31 +241,20 @@ export default {
       2: "2px",
       3: "3px",
     },
-    screens: {
-      // TODO: Review
-      /*
-      xs: "480px",
-      sm: "576px",
-      md: "768px",
-      lg: "992px",
-      xl: "1200px",
-      */
-      desktop: "1024px",
-    },
+    screens: minWidthByScreenSize,
     spacing: {
       px: "1px",
       0: "0px",
       1: pxToRem(4),
       2: pxToRem(8),
-      // 2.5: pxToRem(10),
-      3: pxToRem(12), // TODO: Remove if needed
+      3: pxToRem(12),
       4: pxToRem(16),
       6: pxToRem(24),
       8: pxToRem(32),
       10: pxToRem(40),
       12: pxToRem(48),
       14: pxToRem(56),
-      // 16: pxToRem(64),
+      16: pxToRem(64),
       18: pxToRem(72),
       // 20: pxToRem(80),
       // 22: pxToRem(88),

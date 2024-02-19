@@ -1,4 +1,4 @@
-# @wise/design-system
+# @wise/design-system-tailwindcss
 
 Web implementation of Wise Design System.
 
@@ -9,13 +9,13 @@ Web implementation of Wise Design System.
 1. Install the package:
 
    ```sh
-   pnpm add @wise/design-system
+   pnpm add @wise/design-system-tailwindcss
    ```
 
 2. Import styles from your app’s root:
 
    ```ts
-   import "@wise/design-system/styles-legacy.css";
+   import "@wise/design-system-tailwindcss/styles-legacy.css";
    ```
 
 ### Without `@transferwise/components`
@@ -23,14 +23,14 @@ Web implementation of Wise Design System.
 1. Install the package, optionally with its referenced fonts:
 
    ```sh
-   pnpm add @wise/design-system @fontsource-variable/inter
+   pnpm add @wise/design-system-tailwindcss @fontsource-variable/inter
    ```
 
 2. Import styles from your app’s root:
 
    ```ts
    import "@fontsource-variable/inter";
-   import "@wise/design-system/styles.css";
+   import "@wise/design-system-tailwindcss/styles.css";
    ```
 
 ## Contributing

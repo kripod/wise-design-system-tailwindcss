@@ -9,8 +9,9 @@ export interface TextInputProps
   extends Pick<
     React.ComponentPropsWithRef<"input">,
     | "ref"
-    | "inputMode"
+    | "role"
     | "name"
+    | "inputMode"
     | "autoComplete"
     | "defaultValue"
     | "value"
@@ -18,11 +19,11 @@ export interface TextInputProps
     | "minLength"
     | "maxLength"
     | "pattern"
-    | "aria-invalid"
     | "readOnly"
     | "disabled"
     | "className"
     | "onChange"
+    | "onBlur"
   > {
   type?: "email" | "password" | "tel" | "text" | "url";
   size?: "sm" | "md" | "xl";

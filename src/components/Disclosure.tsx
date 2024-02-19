@@ -42,7 +42,7 @@ export function Disclosure({
         )}
       </DisclosureBase.Button>
       <DisclosureBase.Panel className="flex gap-x-4 text-base text-content-secondary">
-        {icon != null ? <span className="invisible">{icon}</span> : null}
+        {icon ? <span className="invisible">{icon}</span> : null}
         <div className="flex-1">{children}</div>
       </DisclosureBase.Panel>
     </DisclosureBase>

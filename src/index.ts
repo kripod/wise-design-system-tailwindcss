@@ -33,11 +33,23 @@ export {
   type RadioChipGroupProps,
   type RadioChipProps,
 } from "./components/chips/RadioChip";
+export { getMonthNames } from "./date";
 // TODO: export * from "./components/CriticalBanner";
 // TODO: export * from "./components/Disclosure";
 export { Field, type FieldProps } from "./components/inputs/Field";
 // TODO: export * from "./components/inputs/InputGroup";
-// TODO: export * from "./components/inputs/SelectInput";
+export { Flag, type FlagProps } from "./components/Flag";
+export {
+  SearchInput,
+  type SearchInputProps,
+} from "./components/inputs/SearchInput";
+export {
+  SelectInput,
+  type SelectInputItem,
+  SelectInputOptionContent,
+  type SelectInputOptionContentProps,
+  type SelectInputProps,
+} from "./components/inputs/SelectInput";
 export {
   TextAreaInput,
   type TextAreaInputProps,
@@ -50,4 +62,6 @@ export {
   type InstructionProps,
 } from "./components/Instruction";
 // TODO: export * from "./components/Modal";
+// TODO: export * from "./components/Popover";
+// TODO: export * from "./components/Snackbar";
 // TODO: export * from "./components/Tabs";

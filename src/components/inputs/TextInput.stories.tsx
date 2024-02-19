@@ -41,6 +41,8 @@ export const Basic: Story<{
 };
 
 Basic.args = {
+  size: "md",
+  shape: "rectangle",
   required: true,
   readOnly: false,
   disabled: false,
@@ -48,14 +50,12 @@ Basic.args = {
 
 Basic.argTypes = {
   size: {
-    options: ["sm", "md", "xl"],
-    defaultValue: "md",
     control: { type: "radio" },
+    options: ["sm", "md", "xl"],
   },
   shape: {
-    options: ["rectangle", "pill"],
-    defaultValue: "rectangle",
     control: { type: "radio" },
+    options: ["rectangle", "pill"],
   },
   onChange: {
     action: "changed",

@@ -1,4 +1,13 @@
 {
   "plugins": ["prettier-plugin-tailwindcss"],
+  "tailwindAttributes": [
+    "enter",
+    "enterFrom",
+    "enterTo",
+    "entered",
+    "leave",
+    "leaveFrom",
+    "leaveTo"
+  ],
   "tailwindFunctions": ["clsx"]
 }

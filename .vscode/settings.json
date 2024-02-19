@@ -4,5 +4,16 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "enter",
+    "enterFrom",
+    "enterTo",
+    "entered",
+    "leave",
+    "leaveFrom",
+    "leaveTo"
+  ],
   "tailwindCSS.experimental.classRegex": [["clsx\\(([^)]*)\\)", "\"([^\"]*)\""]]
 }

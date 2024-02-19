@@ -61,7 +61,7 @@ export function Modal({
 
             <div className="p-6">{children}</div>
 
-            {footer != null ? <div className="p-6">{footer}</div> : null}
+            {footer ? <div className="p-6">{footer}</div> : null}
           </DialogBase.Panel>
         </div>
       </div>

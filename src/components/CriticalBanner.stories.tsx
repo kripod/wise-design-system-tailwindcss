@@ -6,14 +6,14 @@ import { CriticalBanner } from "./CriticalBanner";
 export const Basic: Story<{
   title: string;
   description: string;
-  buttonText: string;
-}> = function ({ title, description, buttonText }) {
+  action: string;
+}> = function ({ title, description, action }) {
   return (
     <CriticalBanner
       title={title}
       description={description}
       action={
-        <CriticalBannerPrimaryButton>{buttonText}</CriticalBannerPrimaryButton>
+        <CriticalBannerPrimaryButton>{action}</CriticalBannerPrimaryButton>
       }
     />
   );
@@ -22,5 +22,5 @@ export const Basic: Story<{
 Basic.args = {
   title: "Title.",
   description: "Description text if necessary. Avoid if possible.",
-  buttonText: "Click me",
+  action: "Click me",
 };

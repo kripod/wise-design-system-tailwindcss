@@ -1,76 +1,147 @@
-import {
-  autoUpdate,
-  flip,
-  FloatingPortal,
-  offset,
-  size,
-  useFloating,
-} from "@floating-ui/react";
 import { Listbox as ListboxBase } from "@headlessui/react";
+import { useId } from "@radix-ui/react-id";
 import { Check, ChevronDown, Cross } from "@transferwise/icons";
 import { clsx } from "clsx";
-import { getResetClassName } from "css-homogenizer/reset-scoped";
+import * as React from "react";
+import { mergeRefs } from "react-merge-refs";
 
-import { identity } from "../../identity";
-import { PreventScroll } from "../PreventScroll";
-import { inputClassNameBase } from "./_Input";
-import { useInputAriaAttributes } from "./Field";
+import { useScreenSize } from "../../hooks/useScreenSize";
+import { useWrappedCallback } from "../../hooks/useWrappedCallback";
+import { ClearButtonLabel } from "../../i18nTexts";
+import { wrapInFragment } from "../../wrapInFragment";
+import { BottomSheet } from "../BottomSheet";
+import { Popover } from "../Popover";
+import { ButtonInput, type ButtonInputProps } from "./_ButtonInput";
 import { InputGroup } from "./InputGroup";
+import { SearchInput } from "./SearchInput";
+
+function searchableString(value: string) {
+  return value.trim().replace(/\s+/gu, " ").toLowerCase();
+}
+
+function inferSearchableStrings(value: unknown) {
+  if (typeof value === "string") {
+    return [searchableString(value)];
+  }
+
+  if (typeof value === "object" && value != null) {
+    return Object.values(value)
+      .filter(
+        (innerValue): innerValue is string => typeof innerValue === "string",
+      )
+      .map((innerValue) => searchableString(innerValue));
+  }
+
+  return [];
+}
+
+const SelectInputHasValueContext = React.createContext(false);
+
+const SelectInputOptionContentCompactContext = React.createContext(false);
+
+interface SelectInputOptionItem<T = string> {
+  type: "option";
+  value: T;
+  filterMatchers?: readonly string[];
+  disabled?: boolean;
+}
+
+interface SelectInputGroupItem<T = string> {
+  type: "group";
+  label: string;
+  options: readonly SelectInputOptionItem<T>[];
+}
+
+interface SelectInputSeparatorItem {
+  type: "separator";
+}
+
+export type SelectInputItem<T = string> =
+  | SelectInputOptionItem<T>
+  | SelectInputGroupItem<T>
+  | SelectInputSeparatorItem;
+
+function dedupeSelectInputOptionItem<T>(
+  item: SelectInputOptionItem<T>,
+  existingValues: Set<T>,
+): SelectInputOptionItem<T | undefined> {
+  if (existingValues.has(item.value)) {
+    return {
+      ...item,
+      value: undefined,
+    };
+  }
+  existingValues.add(item.value);
+  return item;
+}
+
+function dedupeSelectInputItems<T>(
+  items: readonly SelectInputItem<T>[],
+): SelectInputItem<T | undefined>[] {
+  const existingValues = new Set<T>();
+  return items.map((item) => {
+    switch (item.type) {
+      case "option": {
+        return dedupeSelectInputOptionItem(item, existingValues);
+      }
+      case "group": {
+        return {
+          ...item,
+          options: item.options.map((option) =>
+            dedupeSelectInputOptionItem(option, existingValues),
+          ),
+        };
+      }
+      default:
+    }
+    return item;
+  });
+}
 
 export interface SelectInputProps<T = string> {
   name?: string;
   placeholder?: string;
   // TODO: multiple?: boolean;
+  items: readonly SelectInputItem<NonNullable<T>>[];
   defaultValue?: T;
   value?: T;
-  renderValue?: (value: NonNullable<T>) => React.ReactNode;
+  renderValue?: (value: NonNullable<T>, compact: boolean) => React.ReactNode;
   compareValues?:
     | (keyof NonNullable<T> & string)
     | ((a: T | undefined, b: T | undefined) => boolean);
-  "aria-invalid"?: React.AriaAttributes["aria-invalid"];
+  filterable?: boolean;
+  filterPlaceholder?: string;
   disabled?: boolean;
   className?: string;
-  children?: React.ReactNode;
   onChange?: (value: T) => void;
   onClear?: () => void;
 }
 
-export function SelectInput<T = string>({
+export function SelectInput<T>({
   name,
   placeholder,
+  items,
   defaultValue,
   value: controlledValue,
-  renderValue = identity,
+  renderValue = wrapInFragment,
   compareValues,
+  filterable,
+  filterPlaceholder,
   disabled,
   className,
-  children,
   onChange,
   onClear,
-  ...restProps
 }: SelectInputProps<T>) {
-  const inputAriaAttributes = useInputAriaAttributes();
+  const [open, setOpen] = React.useState(false);
 
-  const { refs, floatingStyles } = useFloating<HTMLButtonElement>({
-    middleware: [
-      offset(8),
-      flip({ padding: 16, crossAxis: false }),
-      size({
-        padding: 16,
-        apply: ({ elements, rects, availableHeight }) => {
-          elements.floating.style.setProperty(
-            "max-height",
-            `${availableHeight}px`,
-          );
-          elements.floating.style.setProperty(
-            "width",
-            `${rects.reference.width}px`,
-          );
-        },
-      }),
-    ],
-    whileElementsMounted: autoUpdate,
-  });
+  const triggerRef = React.useRef<HTMLButtonElement>(null);
+
+  const screenSm = useScreenSize("sm");
+  const OptionsOverlay = screenSm ? Popover : BottomSheet;
+
+  const searchInputRef = React.useRef<HTMLInputElement>(null);
+  const listboxRef = React.useRef<HTMLDivElement>(null);
+  const controllerRef = filterable ? searchInputRef : listboxRef;
 
   return (
     <ListboxBase
@@ -79,10 +150,13 @@ export function SelectInput<T = string>({
       value={controlledValue}
       by={compareValues}
       disabled={disabled}
-      onChange={onChange}
+      onChange={(value) => {
+        setOpen(false);
+        onChange?.(value);
+      }}
     >
-      {({ value, open }) => (
-        <>
+      {({ value }) => (
+        <SelectInputHasValueContext.Provider value={value != null}>
           <InputGroup
             addonEnd={{
               content: (
@@ -91,10 +165,12 @@ export function SelectInput<T = string>({
                     <>
                       <button
                         type="button"
+                        aria-label={ClearButtonLabel}
                         className="pointer-events-auto inline-flex h-8 w-8 items-center justify-center rounded-xs text-interactive-secondary hover:text-interactive-secondary-hover focus-visible:outline"
                         onClick={(event) => {
                           event.preventDefault();
                           onClear();
+                          triggerRef.current?.focus({ preventScroll: true });
                         }}
                       >
                         <Cross size={16} />
@@ -113,65 +189,312 @@ export function SelectInput<T = string>({
             }}
             className={className}
           >
-            <ListboxBase.Button
-              ref={refs.setReference}
-              className={clsx(
-                getResetClassName("button"),
-                inputClassNameBase({ size: "md" }),
-                "rounded text-start",
+            <OptionsOverlay
+              open={open}
+              renderTrigger={({ ref, getInteractionProps }) => (
+                <ListboxBase.Button
+                  ref={mergeRefs([ref, triggerRef])}
+                  as={SelectInputButton}
+                  overrides={getInteractionProps()}
+                  onClick={() => {
+                    setOpen((prev) => !prev);
+                  }}
+                >
+                  {value != null ? (
+                    <SelectInputOptionContentCompactContext.Provider value>
+                      {renderValue(value, true)}
+                    </SelectInputOptionContentCompactContext.Provider>
+                  ) : (
+                    <span className="truncate text-content-tertiary">
+                      {placeholder}
+                    </span>
+                  )}
+                </ListboxBase.Button>
               )}
-              {...inputAriaAttributes}
-              {...restProps}
+              initialFocusRef={controllerRef}
+              padding="none"
+              onClose={() => {
+                setOpen(false);
+              }}
             >
-              <span className="flex-1 truncate">
-                {value != null ? (
-                  renderValue(value)
-                ) : (
-                  <span className="text-content-tertiary">{placeholder}</span>
-                )}
-              </span>
-            </ListboxBase.Button>
+              <SelectInputOptions
+                items={items}
+                renderValue={renderValue}
+                filterable={filterable}
+                filterPlaceholder={filterPlaceholder}
+                searchInputRef={searchInputRef}
+                listboxRef={listboxRef}
+              />
+            </OptionsOverlay>
           </InputGroup>
-
-          {open ? (
-            <FloatingPortal>
-              <PreventScroll />
-              <ListboxBase.Options
-                ref={refs.setFloating}
-                className={clsx(
-                  getResetClassName("ul"),
-                  "z-10 scroll-py-2 overflow-auto rounded bg-background-elevated p-2 shadow-xl focus:outline-none",
-                )}
-                style={floatingStyles}
-              >
-                {children}
-              </ListboxBase.Options>
-            </FloatingPortal>
-          ) : null}
-        </>
+        </SelectInputHasValueContext.Provider>
       )}
     </ListboxBase>
   );
 }
 
-export interface SelectInputOptionProps<T = string> {
+interface SelectInputButtonProps extends ButtonInputProps {
+  overrides?: { [key: string]: unknown };
+}
+
+const SelectInputButton = React.forwardRef(function SelectInputButton(
+  { overrides, ...restProps }: SelectInputButtonProps,
+  ref: React.ForwardedRef<HTMLButtonElement>,
+) {
+  return <ButtonInput ref={ref} {...restProps} {...overrides} />;
+});
+
+interface SelectInputOptionsWrapperProps
+  extends React.ComponentPropsWithRef<"div"> {
+  onAriaActiveDescendantChange: (
+    value: React.AriaAttributes["aria-activedescendant"],
+  ) => void;
+}
+
+const SelectInputOptionsWrapper = React.forwardRef(
+  function SelectInputOptionsWrapper(
+    {
+      "aria-orientation": ariaOrientation,
+      "aria-activedescendant": ariaActiveDescendant,
+      role,
+      tabIndex,
+      onAriaActiveDescendantChange,
+      ...restProps
+    }: SelectInputOptionsWrapperProps,
+    ref: React.ForwardedRef<HTMLDivElement>,
+  ) {
+    const handleAriaActiveDescendantChange = useWrappedCallback(
+      onAriaActiveDescendantChange,
+    );
+    React.useEffect(() => {
+      handleAriaActiveDescendantChange(ariaActiveDescendant);
+    }, [ariaActiveDescendant, handleAriaActiveDescendantChange]);
+
+    return <div ref={ref} {...restProps} />;
+  },
+);
+
+interface SelectInputOptionsProps<T = string>
+  extends Pick<
+    SelectInputProps<T>,
+    "items" | "renderValue" | "filterable" | "filterPlaceholder"
+  > {
+  searchInputRef: React.RefObject<HTMLInputElement>;
+  listboxRef: React.RefObject<HTMLDivElement>;
+}
+
+function SelectInputOptions<T>({
+  items,
+  renderValue = wrapInFragment,
+  filterable,
+  filterPlaceholder,
+  searchInputRef,
+  listboxRef,
+}: SelectInputOptionsProps<T>) {
+  const [query, setQuery] = React.useState("");
+  const needle = React.useMemo(
+    () => (query ? searchableString(query) : null),
+    [query],
+  );
+
+  const listboxContainerRef = React.useRef<HTMLDivElement>(null);
+  React.useEffect(() => {
+    if (listboxContainerRef.current != null) {
+      listboxContainerRef.current.style.setProperty(
+        "--initial-height",
+        `${listboxContainerRef.current.offsetHeight}px`,
+      );
+    }
+  }, []);
+
+  const listboxId = useId();
+
+  const controllerRef = filterable ? searchInputRef : listboxRef;
+
+  return (
+    <ListboxBase.Options
+      as={SelectInputOptionsWrapper}
+      static
+      className="flex h-full flex-col focus:outline-none sm:max-h-[28rem]"
+      onAriaActiveDescendantChange={(
+        value: React.AriaAttributes["aria-activedescendant"],
+      ) => {
+        if (controllerRef.current != null) {
+          if (value != null) {
+            controllerRef.current.setAttribute("aria-activedescendant", value);
+          } else {
+            controllerRef.current.removeAttribute("aria-activedescendant");
+          }
+        }
+      }}
+    >
+      {filterable ? (
+        <div className="flex flex-col p-2 pt-0 sm:pt-2">
+          <SearchInput
+            ref={searchInputRef}
+            shape="rectangle"
+            placeholder={filterPlaceholder}
+            value={query}
+            aria-controls={listboxId}
+            onKeyDown={(event) => {
+              // Prevent interfering with the matcher of Headless UI
+              // https://mathiasbynens.be/notes/javascript-unicode#regex
+              if (/^.$/u.test(event.key)) {
+                event.stopPropagation();
+              }
+            }}
+            onChange={(event) => {
+              setQuery(event.currentTarget.value);
+            }}
+          />
+        </div>
+      ) : null}
+
+      <div
+        ref={listboxContainerRef}
+        className={clsx(
+          "relative h-[--initial-height] scroll-py-2 overflow-y-auto sm:h-auto",
+          items.some((item) => item.type === "group") && "scroll-pt-8",
+        )}
+      >
+        <div
+          ref={listboxRef}
+          id={listboxId}
+          role="listbox"
+          aria-orientation="vertical"
+          tabIndex={0}
+          className="p-2 focus:outline-none"
+        >
+          {(needle == null ? items : dedupeSelectInputItems(items)).map(
+            (item, index) => (
+              <SelectInputItemView
+                // eslint-disable-next-line react/no-array-index-key
+                key={index}
+                item={item}
+                renderValue={renderValue}
+                needle={needle}
+              />
+            ),
+          )}
+        </div>
+      </div>
+    </ListboxBase.Options>
+  );
+}
+
+interface SelectInputItemViewProps<
+  T = string,
+  I extends SelectInputItem<T | undefined> = SelectInputItem<T | undefined>,
+> extends Required<Pick<SelectInputProps<T>, "renderValue">> {
+  item: I;
+  needle: string | null;
+}
+
+function SelectInputItemView<T>({
+  item,
+  renderValue,
+  needle,
+}: SelectInputItemViewProps<T>) {
+  switch (item.type) {
+    case "option": {
+      if (
+        item.value != null &&
+        (!needle ||
+          inferSearchableStrings(item.filterMatchers ?? item.value).some(
+            (haystack) => haystack.includes(needle),
+          ))
+      ) {
+        return (
+          <SelectInputOption value={item.value} disabled={item.disabled}>
+            {renderValue(item.value, false)}
+          </SelectInputOption>
+        );
+      }
+      break;
+    }
+    case "group": {
+      return (
+        <SelectInputGroupItemView
+          item={item}
+          renderValue={renderValue}
+          needle={needle}
+        />
+      );
+    }
+    case "separator": {
+      if (needle == null) {
+        return <hr className="m-2 border-t" aria-hidden />;
+      }
+      break;
+    }
+  }
+  return null;
+}
+
+interface SelectInputGroupItemViewProps<T = string>
+  extends SelectInputItemViewProps<T, SelectInputGroupItem<T | undefined>> {}
+
+function SelectInputGroupItemView<T>({
+  item,
+  renderValue,
+  needle,
+}: SelectInputGroupItemViewProps<T>) {
+  const headerId = useId();
+
+  return (
+    // An empty container may be rendered when no options match `needle`
+    // However, pre-filtering would result in worse performance overall
+    <section
+      role="group"
+      aria-labelledby={headerId}
+      className={clsx(needle == null && "first:-mt-2")}
+    >
+      {needle == null ? (
+        <header
+          id={headerId}
+          role="presentation"
+          className="sticky top-0 z-10 bg-background-elevated px-4 pb-1 pt-2 text-sm font-medium leading-5 text-content-secondary"
+        >
+          {item.label}
+        </header>
+      ) : null}
+      {item.options.map((option, index) => (
+        <SelectInputItemView
+          // eslint-disable-next-line react/no-array-index-key
+          key={index}
+          item={option}
+          renderValue={renderValue}
+          needle={needle}
+        />
+      ))}
+    </section>
+  );
+}
+
+interface SelectInputOptionProps<T = string> {
   value: T;
   disabled?: boolean;
   children?: React.ReactNode;
 }
 
-export function SelectInputOption<T = string>({
+function SelectInputOption<T>({
   value,
   disabled,
   children,
 }: SelectInputOptionProps<T>) {
+  const parentHasValue = React.useContext(SelectInputHasValueContext);
+
+  // Avoid flash during exit transition
+  const { current: cachedParentHasValue } = React.useRef(parentHasValue);
+
   return (
     <ListboxBase.Option
+      as="div"
       value={value}
       disabled={disabled}
       className={({ active, disabled: uiDisabled }) =>
         clsx(
-          "flex items-start gap-x-2 rounded px-4 py-3 text-base text-content-primary",
+          "flex items-center gap-x-2 rounded px-4 py-3 text-base text-content-primary",
           active && "bg-background-screen-hover",
           uiDisabled && "opacity-45",
         )
@@ -179,14 +502,56 @@ export function SelectInputOption<T = string>({
     >
       {({ selected }) => (
         <>
-          <span className="inline-flex items-center" aria-hidden>
-            {/* TODO: Use `h-1lh` on container and remove zero-width space */}
-            &#8203; {/* Mimics `height: 1lh` on container */}
+          {cachedParentHasValue ? (
             <Check size={16} className={clsx(!selected && "invisible")} />
-          </span>
-          <span className="flex-1">{children}</span>
+          ) : null}
+          <div className="flex-1">{children}</div>
         </>
       )}
     </ListboxBase.Option>
+  );
+}
+
+export interface SelectInputOptionContentProps {
+  title: string;
+  note?: string;
+  description?: string;
+  icon?: React.ReactNode;
+}
+
+export function SelectInputOptionContent({
+  title,
+  note,
+  description,
+  icon,
+}: SelectInputOptionContentProps) {
+  const compact = React.useContext(SelectInputOptionContentCompactContext);
+
+  return (
+    <div className="flex items-center gap-x-2 text-base text-content-primary">
+      {icon ? (
+        <div className={clsx("flex", !compact && "self-start")}>{icon}</div>
+      ) : null}
+
+      <div className="flex flex-1 flex-col overflow-hidden">
+        <div className={clsx("space-x-2", compact && "truncate")}>
+          <h4 className="inline">{title}</h4>
+          {note ? (
+            <span className="text-sm text-content-secondary">{note}</span>
+          ) : null}
+        </div>
+
+        {description ? (
+          <div
+            className={clsx(
+              "text-sm text-content-secondary",
+              compact && "truncate",
+            )}
+          >
+            {description}
+          </div>
+        ) : null}
+      </div>
+    </div>
   );
 }

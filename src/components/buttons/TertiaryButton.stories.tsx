@@ -18,18 +18,19 @@ export const Basic: Story<{
 
 Basic.args = {
   text: "Click me",
+  size: "md",
+  disabled: false,
 };
 
 Basic.argTypes = {
   size: {
-    options: ["sm", "md"],
-    defaultValue: "md",
     control: { type: "radio" },
+    options: ["sm", "md"],
   },
   disabled: {
-    options: [false, true, "loading"],
-    defaultValue: false,
     control: { type: "radio" },
+    options: [false, true, "loading"],
+    defaultValue: false, // TODO: Remove once Ladle gets fixed
   },
   onClick: {
     action: "clicked",
@@ -58,13 +59,13 @@ export const Link: Story<{
 
 Link.args = {
   text: "Click me",
+  size: "md",
   disabled: false,
 };
 
 Link.argTypes = {
   size: {
-    options: ["sm", "md"],
-    defaultValue: "md",
     control: { type: "radio" },
+    options: ["sm", "md"],
   },
 };

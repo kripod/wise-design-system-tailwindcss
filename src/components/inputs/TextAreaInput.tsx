@@ -15,12 +15,12 @@ export interface TextAreaInputProps
     | "required"
     | "minLength"
     | "maxLength"
-    | "aria-invalid"
     | "readOnly"
     | "disabled"
     | "rows"
     | "className"
     | "onChange"
+    | "onBlur"
   > {}
 
 export const TextAreaInput = React.forwardRef(function TextAreaInput(

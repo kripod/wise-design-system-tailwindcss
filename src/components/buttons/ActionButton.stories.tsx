@@ -23,14 +23,14 @@ export const Basic: Story<{
 
 Basic.args = {
   text: "Click me",
+  iconPlacement: "start",
   disabled: false,
 };
 
 Basic.argTypes = {
   iconPlacement: {
-    options: ["start", "end"],
-    defaultValue: "start",
     control: { type: "radio" },
+    options: ["start", "end"],
   },
   onClick: {
     action: "clicked",

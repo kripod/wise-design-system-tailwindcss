@@ -88,6 +88,7 @@ export function InputGroup({
           className={clsx(
             className,
             "group/input inline-grid auto-cols-fr [&>*]:col-start-1 [&>*]:row-start-1",
+            "rounded-full", // Prevent unwanted `group-hover/input` triggers
           )}
         >
           {addonStart != null ? (
@@ -147,7 +148,7 @@ function InputAddon({
     <span
       ref={ref}
       className={clsx(
-        "pointer-events-none z-10 inline-flex items-center text-interactive-secondary transition group-[:has(>:is(input,button,select):focus)]/input:!text-interactive-primary group-[:has(>:is(input,button,select):hover)]/input:text-interactive-secondary-hover",
+        "pointer-events-none z-10 inline-flex items-center text-interactive-secondary transition group-[:has(>:is(input,button,select):focus-visible)]/input:!text-interactive-primary group-[:has(>:is(input,button,select):hover)]/input:text-interactive-secondary-hover",
         {
           "justify-self-start": placement === "start",
           "justify-self-end": placement === "end",

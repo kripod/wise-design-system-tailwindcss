@@ -10,7 +10,7 @@ export function Snackbar({ role = "status", text, action }: SnackbarProps) {
       <div role={role} className="flex-1">
         {text}
       </div>
-      {action != null ? <div className="-my-2">{action}</div> : null}
+      {action ? <div className="-my-2">{action}</div> : null}
     </div>
   );
 }

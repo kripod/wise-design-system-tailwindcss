@@ -23,23 +23,24 @@ export const Basic: Story<{
 
 Basic.args = {
   text: "Click me",
+  size: "md",
+  sentiment: "neutral",
+  disabled: false,
 };
 
 Basic.argTypes = {
   size: {
-    options: ["sm", "md"],
-    defaultValue: "md",
     control: { type: "radio" },
+    options: ["sm", "md"],
   },
   sentiment: {
-    options: ["neutral", "negative"],
-    defaultValue: "neutral",
     control: { type: "radio" },
+    options: ["neutral", "negative"],
   },
   disabled: {
-    options: [false, true, "loading"],
-    defaultValue: false,
     control: { type: "radio" },
+    options: [false, true, "loading"],
+    defaultValue: false, // TODO: Remove once Ladle gets fixed
   },
   onClick: {
     action: "clicked",

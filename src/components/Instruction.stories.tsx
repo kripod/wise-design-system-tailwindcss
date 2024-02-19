@@ -37,12 +37,12 @@ export const Single: Story<{
 
 Single.args = {
   text: "Do an initial money transfer",
+  sentiment: "positive",
 };
 
 Single.argTypes = {
   sentiment: {
-    options: ["negative", "positive"],
-    defaultValue: "positive",
     control: { type: "radio" },
+    options: ["negative", "positive"],
   },
 };

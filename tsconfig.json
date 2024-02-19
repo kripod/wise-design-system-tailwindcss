@@ -5,7 +5,7 @@
     "isolatedModules": true,
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "Bundler",
     "verbatimModuleSyntax": true,
     "jsx": "preserve",
     "declaration": true,

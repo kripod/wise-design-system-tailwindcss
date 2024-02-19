@@ -50,7 +50,7 @@ export const Button = React.forwardRef(function Button(
         disabled: Boolean(disabled),
         className: clsx(
           className,
-          "transition focus-visible:outline-offset focus-visible:outline disabled:pointer-events-none disabled:opacity-45 disabled:mix-blend-luminosity aria-disabled:pointer-events-none aria-disabled:opacity-45 aria-disabled:mix-blend-luminosity",
+          "transition focus-visible:outline focus-visible:outline-offset disabled:pointer-events-none disabled:opacity-45 disabled:mix-blend-luminosity aria-disabled:pointer-events-none aria-disabled:opacity-45 aria-disabled:mix-blend-luminosity",
           size !== "auto" &&
             "inline-flex items-center justify-center text-center",
           {

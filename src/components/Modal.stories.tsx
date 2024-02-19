@@ -33,13 +33,13 @@ export const Basic: Story<{
 Basic.args = {
   title: "Change this user’s role?",
   text: "Content goes here",
+  size: "md",
 };
 
 Basic.argTypes = {
   size: {
-    options: ["sm", "md", "lg"],
-    defaultValue: "md",
     control: { type: "radio" },
+    options: ["sm", "md", "lg"],
   },
   onClose: {
     action: "closed",
