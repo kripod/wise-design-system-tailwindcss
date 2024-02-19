@@ -131,7 +131,6 @@ function InputAddon({
   const ref = React.useRef<HTMLSpanElement>(null);
   useResizeObserver(ref, (entry) => {
     // TODO: Remove fallback once most browsers support `borderBoxSize`
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (entry.borderBoxSize != null) {
       setInputPadding(entry.borderBoxSize[0].inlineSize);
     } else {
