@@ -38,7 +38,7 @@ export const CircularButton = React.forwardRef(function CircularButton(
       </Button>
       <span
         id={labelId}
-        className="text-sm font-semibold tracking-2.5 text-interactive-primary transition peer-enabled:peer-hover:text-interactive-primary-hover peer-enabled:peer-active:text-interactive-primary-active peer-disabled:cursor-not-allowed peer-disabled:opacity-45 peer-disabled:mix-blend-luminosity"
+        className="text-sm font-semibold text-interactive-primary transition peer-enabled:peer-hover:text-interactive-primary-hover peer-enabled:peer-active:text-interactive-primary-active peer-disabled:cursor-not-allowed peer-disabled:opacity-45 peer-disabled:mix-blend-luminosity"
       >
         {children}
       </span>

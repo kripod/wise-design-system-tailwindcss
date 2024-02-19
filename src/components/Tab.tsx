@@ -71,13 +71,13 @@ const TabButton = React.forwardRef(function TabButton(
       aria-selected={ariaSelected}
       className={clsx(
         "inline-grid text-base",
-        selected && "font-semibold tracking-1",
+        selected && "font-semibold",
         className,
       )}
       {...restProps}
     >
       <span className="col-start-1 row-start-1">{children}</span>
-      <span className="invisible col-start-1 row-start-1 font-semibold tracking-1">
+      <span className="invisible col-start-1 row-start-1 font-semibold">
         {children}
       </span>
     </Button>

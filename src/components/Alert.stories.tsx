@@ -12,10 +12,7 @@ export const Basic: Story<{
     <Alert sentiment={sentiment} onClose={!unclosable ? onClose : undefined}>
       {text}
       {/* TODO: Consider creating an `Alert.Link` component */}
-      <a
-        href="#_"
-        className="font-semibold tracking-2.5 underline underline-offset-3"
-      >
+      <a href="#_" className="font-semibold underline underline-offset-3">
         Learn more
       </a>
     </Alert>

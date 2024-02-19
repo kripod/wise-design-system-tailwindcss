@@ -52,15 +52,12 @@ export const Button = React.forwardRef(function Button(
       {(render ?? ((props) => <button ref={ref} type="button" {...props} />))({
         disabled: disabled || loading,
         className: clsx(
-          "gap-x-2 transition focus-visible:outline-offset focus-visible:outline disabled:opacity-45 disabled:mix-blend-luminosity",
-          size !== "auto" && "inline-flex items-center justify-center",
+          "transition focus-visible:outline-offset focus-visible:outline disabled:opacity-45 disabled:mix-blend-luminosity",
+          size !== "auto" && "inline-flex items-center justify-center gap-x-2",
           {
-            [clsx("h-8 text-sm tracking-2.5", equilateral && "w-8")]:
-              size === "sm",
-            [clsx("h-12 text-base tracking-1", equilateral && "w-12")]:
-              size === "md",
-            [clsx("h-14 text-base tracking-1", equilateral && "w-14")]:
-              size === "lg",
+            [clsx("h-8 text-sm", equilateral && "w-8")]: size === "sm",
+            [clsx("h-12 text-base", equilateral && "w-12")]: size === "md",
+            [clsx("h-14 text-base", equilateral && "w-14")]: size === "lg",
           },
           loading ? "cursor-wait" : "disabled:cursor-not-allowed",
           className,

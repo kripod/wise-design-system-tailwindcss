@@ -117,7 +117,7 @@ export default {
         pxToRem(12),
         {
           lineHeight: pxToRem(18),
-          letterSpacing: "0.02em",
+          letterSpacing: "0em",
           fontWeight: "500",
         },
       ],
@@ -125,21 +125,21 @@ export default {
         pxToRem(14),
         {
           lineHeight: pxToRem(22),
-          letterSpacing: "0.01em",
+          letterSpacing: "-0.006em",
         },
       ],
       base: [
         pxToRem(16),
         {
           lineHeight: pxToRem(24),
-          letterSpacing: "-0.005em",
+          letterSpacing: "-0.011em",
         },
       ],
       lg: [
         pxToRem(18),
         {
           lineHeight: pxToRem(24),
-          letterSpacing: "-0.01em",
+          letterSpacing: "-0.014em",
           fontWeight: "600",
         },
       ],
@@ -147,7 +147,7 @@ export default {
         pxToRem(22),
         {
           lineHeight: pxToRem(28),
-          letterSpacing: "-0.015em",
+          letterSpacing: "-0.018em",
           fontWeight: "600",
         },
       ],
@@ -155,7 +155,7 @@ export default {
         pxToRem(26),
         {
           lineHeight: pxToRem(32),
-          letterSpacing: "-0.015em",
+          letterSpacing: "-0.02em",
           fontWeight: "600",
         },
       ],
@@ -163,7 +163,7 @@ export default {
         pxToRem(30),
         {
           lineHeight: pxToRem(34),
-          letterSpacing: "-0.025em",
+          letterSpacing: "-0.021em",
           fontWeight: "600",
         },
       ],
@@ -171,21 +171,24 @@ export default {
         pxToRem(40),
         {
           lineHeight: "0.85",
-          fontWeight: "900",
+          letterSpacing: "0em",
+          fontWeight: "700",
         },
       ],
       "6xl": [
+        pxToRem(52),
+        {
+          lineHeight: "0.85",
+          letterSpacing: "0em",
+          fontWeight: "700",
+        },
+      ],
+      "7xl": [
         pxToRem(64),
         {
           lineHeight: "0.85",
-          fontWeight: "900",
-        },
-      ],
-      "8xl": [
-        pxToRem(96),
-        {
-          lineHeight: "0.85",
-          fontWeight: "900",
+          letterSpacing: "0em",
+          fontWeight: "700",
         },
       ],
     },
@@ -194,17 +197,10 @@ export default {
       medium: "500",
       semibold: "600",
       bold: "700",
-      black: "900",
     },
     letterSpacing: {
-      0: "0em",
-      1: "0.005em",
-      2: "0.01em",
-      2.5: "0.0125em",
-      3: "0.015em",
-      4: "0.02em",
-      5: "0.025em",
-      6: "0.03em",
+      normal: "0em",
+      tight: "-0.022em",
     },
     lineHeight: {
       tight: "0.85",
