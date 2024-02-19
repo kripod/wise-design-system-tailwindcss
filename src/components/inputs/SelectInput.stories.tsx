@@ -219,6 +219,9 @@ export const Currencies: Story<Currency> = {
       await expect(
         within(screen.getByRole("listbox")).queryAllByRole("option"),
       ).toHaveLength(2);
+
+      await userEvent.type(input, "{Backspace}eu");
+      await expect(input).toHaveAttribute("aria-activedescendant");
     });
   },
 };
