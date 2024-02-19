@@ -2,8 +2,11 @@
   "name": "neptune-web-tailwind-poc",
   "private": true,
   "exports": {
-    "import": "./dist/es/index.js",
-    "require": "./dist/cjs/index.js"
+    ".": {
+      "import": "./dist/es/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./styles.css": "./dist/styles.css"
   },
   "main": "./dist/cjs/index.js",
   "module": "./dist/es/index.js",
@@ -16,8 +19,12 @@
     "prepare": "husky install",
     "dev": "ladle dev",
     "build": "npm-run-all --parallel build:*",
-    "build:lib": "rollup --config --sourcemap",
-    "build:lib:watch": "pnpm run build:lib --watch",
+    "build:lib": "npm-run-all --parallel build:lib:css build:lib:js",
+    "build:lib:watch": "npm-run-all --parallel build:lib:*:watch",
+    "build:lib:css": "postcss src/styles.css --output dist/styles.css",
+    "build:lib:css:watch": "pnpm run build:lib:css --watch",
+    "build:lib:js": "rollup --config --sourcemap",
+    "build:lib:js:watch": "pnpm run build:lib:js --watch",
     "build:stories": "ladle build",
     "start": "ladle preview",
     "clean": "git clean --interactive -dx --exclude .env.local --exclude .env.*.local --exclude node_modules/ --exclude .husky/",
@@ -70,6 +77,7 @@
     "nano-staged": "0.8.0",
     "npm-run-all": "4.1.5",
     "postcss": "8.4.18",
+    "postcss-cli": "10.0.0",
     "postcss-import": "15.0.0",
     "postcss-preset-env": "7.8.2",
     "prettier": "2.7.1",
