@@ -3,7 +3,11 @@ import { useAtomValue } from "jotai";
 import * as React from "react";
 import type { Merge } from "ts-essentials";
 
-import { fieldDescribedByAtom, fieldInvalidAtom } from "./Field";
+import {
+  fieldControlClassNameBase,
+  fieldDescribedByAtom,
+  fieldInvalidAtom,
+} from "./Field";
 
 type InputGroupContextType = {
   prefixWidth?: React.CSSProperties["paddingInlineStart"];
@@ -68,13 +72,7 @@ export const Input = React.forwardRef(function Input(
       aria-describedby={fieldDescribedBy}
       aria-invalid={fieldInvalid}
       className={clsx(
-        "px-4 text-content-primary ring-1 ring-inset ring-interactive-secondary transition-shadow invalid:ring invalid:!ring-sentiment-negative enabled:hover:ring enabled:hover:ring-interactive-secondary-hover enabled:focus:outline-none enabled:focus:ring-3 enabled:focus:ring-interactive-primary disabled:opacity-45 disabled:mix-blend-luminosity",
-        {
-          "h-8 text-sm": size === "sm",
-          "h-12 text-base": size === "md",
-          "h-14 text-base": size === "lg",
-          "h-18 text-xl": size === "xl",
-        },
+        fieldControlClassNameBase({ size }),
         {
           rounded: shape === "rectangle",
           "rounded-full": shape === "pill",

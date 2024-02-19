@@ -14,6 +14,25 @@ export function Field({ children }: FieldProps) {
   );
 }
 
+export type FieldControlPropsBase = {
+  size?: "auto" | "sm" | "md" | "lg" | "xl";
+};
+
+export function fieldControlClassNameBase({
+  size = "auto",
+}: FieldControlPropsBase = {}) {
+  return clsx(
+    "px-4 text-content-primary ring-1 ring-inset ring-interactive-secondary transition-shadow invalid:ring invalid:!ring-sentiment-negative enabled:hover:ring enabled:hover:ring-interactive-secondary-hover enabled:focus:outline-none enabled:focus:ring-3 enabled:focus:ring-interactive-primary disabled:opacity-45 disabled:mix-blend-luminosity",
+    {
+      "py-3 text-base": size === "auto",
+      "h-8 text-sm": size === "sm",
+      "h-12 text-base": size === "md",
+      "h-14 text-base": size === "lg",
+      "h-18 text-xl": size === "xl",
+    },
+  );
+}
+
 export type LabelProps = {
   children?: React.ReactNode;
 };
