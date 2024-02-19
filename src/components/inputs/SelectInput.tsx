@@ -10,7 +10,6 @@ import { Listbox as ListboxBase } from "@headlessui/react";
 import { ChevronDown, Cross } from "@transferwise/icons";
 import { clsx } from "clsx";
 import { getResetClassName } from "css-homogenizer/reset-scoped";
-import * as React from "react";
 
 import { identity } from "../../identity";
 import { PreventScroll } from "../PreventScroll";
@@ -58,17 +57,21 @@ export function SelectInput<T = string>({
 }: SelectInputProps<T>) {
   const inputAriaAttributes = useInputAriaAttributes();
 
-  const [maxHeight, setMaxHeight] = React.useState<number>();
-  const [width, setWidth] = React.useState<number>();
   const { refs, floatingStyles } = useFloating<HTMLButtonElement>({
     middleware: [
       offset(8),
       flip({ padding: 16, crossAxis: false }),
       size({
         padding: 16,
-        apply: ({ rects, availableHeight }) => {
-          setMaxHeight(availableHeight);
-          setWidth(rects.reference.width);
+        apply: ({ elements, rects, availableHeight }) => {
+          elements.floating.style.setProperty(
+            "max-height",
+            `${availableHeight}px`,
+          );
+          elements.floating.style.setProperty(
+            "width",
+            `${rects.reference.width}px`,
+          );
         },
       }),
     ],
@@ -124,11 +127,7 @@ export function SelectInput<T = string>({
                   getResetClassName("ul"),
                   "z-10 overflow-auto rounded bg-background-elevated p-2 shadow-xl focus:outline-none",
                 )}
-                style={{
-                  ...floatingStyles,
-                  maxHeight,
-                  width,
-                }}
+                style={floatingStyles}
               >
                 {children}
               </ListboxBase.Options>
