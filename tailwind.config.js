@@ -113,8 +113,8 @@ module.exports = {
     spacing: {
       px: "1px",
       0: "0px",
-      // 1: pxToRem(4),
-      2: pxToRem(8), // TODO: Remove if needed
+      1: pxToRem(4),
+      2: pxToRem(8),
       // 2.5: pxToRem(10),
       3: pxToRem(12), // TODO: Remove if needed
       4: pxToRem(16),

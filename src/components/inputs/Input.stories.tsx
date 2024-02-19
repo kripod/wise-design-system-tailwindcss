@@ -1,6 +1,7 @@
 import type { Story } from "@ladle/react";
 import * as React from "react";
 
+import { Field, FieldDescription, Label } from "./Field";
 import { Input } from "./Input";
 
 export const Basic: Story<{
@@ -11,13 +12,23 @@ export const Basic: Story<{
 }> = function ({ required, readOnly, disabled }) {
   const [value, setValue] = React.useState("Text value");
   return (
-    <Input
-      value={value}
-      required={required}
-      readOnly={readOnly}
-      disabled={disabled}
-      onChange={(event) => setValue(event.currentTarget.value)}
-    />
+    <Field>
+      <Label>
+        Label
+        <Input
+          value={value}
+          required={required}
+          readOnly={readOnly}
+          disabled={disabled}
+          onChange={(event) => setValue(event.currentTarget.value)}
+        />
+      </Label>
+      {value.length > 0 ? (
+        <FieldDescription>Information message.</FieldDescription>
+      ) : (
+        <FieldDescription sentiment="negative">Error message.</FieldDescription>
+      )}
+    </Field>
   );
 };
 
