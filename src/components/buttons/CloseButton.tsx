@@ -1,6 +1,5 @@
 import { Cross, CrossIconProps } from "@transferwise/icons";
 import { clsx } from "clsx";
-import type React from "react";
 
 import { CloseButtonLabel } from "../../i18nTexts";
 import { Button, ButtonOwnProps } from "./_Button";
