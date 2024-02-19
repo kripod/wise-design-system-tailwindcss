@@ -2,12 +2,12 @@ import * as React from "react";
 
 export interface FlagProps {
   code: string;
-  size: number;
+  size?: number;
 }
 
 const defaultFlagName = "wise";
 
-export function Flag({ code, size }: FlagProps) {
+export function Flag({ code, size = 64 }: FlagProps) {
   const [fallback, setFallback] = React.useState(false);
   React.useEffect(() => {
     setFallback(false);
