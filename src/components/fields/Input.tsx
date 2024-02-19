@@ -19,22 +19,34 @@ export type InputGroupProps = (
   | {
       prefix: React.ReactNode;
       prefixWidth: React.CSSProperties["paddingInlineStart"];
+      prefixInteractive?: boolean;
     }
   | {
       prefix?: never;
       prefixWidth?: never;
+      prefixInteractive?: never;
     }
 ) & {
   children?: React.ReactNode;
 };
 
-export function InputGroup({ prefix, prefixWidth, children }: InputGroupProps) {
+export function InputGroup({
+  prefix,
+  prefixWidth,
+  prefixInteractive = false,
+  children,
+}: InputGroupProps) {
   return (
     <InputGroupContext.Provider
       value={React.useMemo(() => ({ prefixWidth }), [prefixWidth])}
     >
-      <span className="inline-grid [&>*]:col-start-1 [&>*]:row-start-1">
-        <span className="pointer-events-none z-10 inline-flex items-center justify-self-start">
+      <span className="group/input inline-grid [&>*]:col-start-1 [&>*]:row-start-1">
+        <span
+          className={clsx(
+            "z-10 inline-flex items-center justify-self-start text-interactive-secondary transition group-[:has(>input:enabled:hover)]/input:text-interactive-secondary-hover group-[:has(>input:enabled:focus)]/input:text-interactive-primary group-[:has(>input:disabled)]/input:opacity-45 group-[:has(>input:disabled)]/input:mix-blend-luminosity",
+            !prefixInteractive && "pointer-events-none",
+          )}
+        >
           {prefix}
         </span>
         {children}
