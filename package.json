@@ -69,7 +69,7 @@
       "optional": true
     }
   },
-  "packageManager": "pnpm@7.13.4",
+  "packageManager": "pnpm@7.13.5",
   "nano-staged": {
     "*": "prettier --write --ignore-unknown",
     "*.{ts,tsx,js,jsx}": "eslint --fix"
