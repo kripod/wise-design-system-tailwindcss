@@ -52,6 +52,8 @@ export {
   type SelectInputOptionItem,
   type SelectInputProps,
   type SelectInputSeparatorItem,
+  SelectInputTriggerButton,
+  type SelectInputTriggerButtonProps,
 } from "./components/inputs/SelectInput";
 export {
   TextAreaInput,
