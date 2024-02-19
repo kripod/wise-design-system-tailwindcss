@@ -40,10 +40,7 @@ Basic.argTypes = {
     defaultValue: "neutral",
     control: { type: "radio" },
   },
-  // TODO: Enable when actions are handled without re-rendering
-  /*
   onClick: {
     action: "clicked",
   },
-  */
 };

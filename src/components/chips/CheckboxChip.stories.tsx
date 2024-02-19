@@ -24,10 +24,7 @@ export const Basic: Story<{
 };
 
 Basic.argTypes = {
-  // TODO: Enable when actions are handled without re-rendering
-  /*
   onChange: {
     action: "changed",
   },
-  */
 };
