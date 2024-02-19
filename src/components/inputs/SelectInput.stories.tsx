@@ -180,7 +180,6 @@ const popularCurrencies: Currency[] = [
   },
   {
     code: "EUR",
-
     name: "Euro",
     countries: ["Spain", "Germany", "France", "Austria", "Estonia"],
   },
