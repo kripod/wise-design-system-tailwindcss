@@ -54,7 +54,6 @@ export const Button = React.forwardRef(function Button(
         ),
         children:
           disabled !== "loading" ? (
-            // eslint-disable-next-line react/jsx-no-useless-fragment
             <>{children}</>
           ) : (
             <span className="inline-flex items-center justify-center gap-x-2">

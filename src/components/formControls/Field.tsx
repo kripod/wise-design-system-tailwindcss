@@ -47,8 +47,7 @@ export type FieldProps = {
 };
 
 export function Field({ label, hint, error, className, children }: FieldProps) {
-  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-  const description = error || hint;
+  const description = error ?? hint;
   const descriptionId = useId();
 
   return (

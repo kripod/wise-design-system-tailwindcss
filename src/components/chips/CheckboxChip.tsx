@@ -1,6 +1,5 @@
 import { CrossCircleFill } from "@transferwise/icons";
 import { clsx } from "clsx";
-import * as React from "react";
 
 import { __DEV__ } from "../../env";
 import { useControllableState } from "../../hooks/useControllableState";

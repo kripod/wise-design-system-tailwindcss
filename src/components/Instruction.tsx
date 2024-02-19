@@ -1,5 +1,4 @@
 import { CheckCircleFill, CrossCircleFill } from "@transferwise/icons";
-import * as React from "react";
 
 export type InstructionListProps = {
   children?: React.ReactNode;

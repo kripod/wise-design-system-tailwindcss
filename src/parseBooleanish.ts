@@ -1,3 +1,3 @@
 export function parseBooleanish(value: boolean | "true" | "false") {
-  return value && value !== "false";
+  return Boolean(value) && value !== "false";
 }
