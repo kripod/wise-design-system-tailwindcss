@@ -21,18 +21,18 @@ Basic.argTypes = {
 
 export function List() {
   return (
-    <InstructionList
-      dos={[
-        "Do an initial money transfer",
-        "Invite at least 3 friends",
-        "Convince them to use this amazing product",
-      ]}
-      donts={[
-        <>
-          Paying extra <a href="#_">hidden fees</a> for transfers
-        </>,
-        "Use bad exchange rate",
-      ]}
-    />
+    <InstructionList>
+      <Instruction sentiment="positive">
+        Do an initial money transfer
+      </Instruction>
+      <Instruction sentiment="positive">Invite at least 3 friends</Instruction>
+      <Instruction sentiment="positive">
+        Convince them to use this amazing product
+      </Instruction>
+      <Instruction sentiment="negative">
+        Paying extra <a href="#_">hidden fees</a> for transfers
+      </Instruction>
+      <Instruction sentiment="negative">Use bad exchange rate</Instruction>
+    </InstructionList>
   );
 }

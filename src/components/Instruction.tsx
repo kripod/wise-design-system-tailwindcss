@@ -30,22 +30,14 @@ export function Instruction({ sentiment, children }: InstructionProps) {
 }
 
 export type InstructionListProps = {
-  dos?: React.ReactNode[];
-  donts?: React.ReactNode[];
+  children: React.ReactNode;
 };
 
-export function InstructionList({ dos, donts }: InstructionListProps) {
+export function InstructionList({ children }: InstructionListProps) {
   return (
     <ul className="space-y-4">
-      {dos?.map((children, index) => (
-        <li key={typeof children !== "object" ? String(children) : index}>
-          <Instruction sentiment="positive">{children}</Instruction>
-        </li>
-      ))}
-      {donts?.map((children, index) => (
-        <li key={typeof children !== "object" ? String(children) : index}>
-          <Instruction sentiment="negative">{children}</Instruction>
-        </li>
+      {React.Children.map(children, (child) => (
+        <li>{child}</li>
       ))}
     </ul>
   );
