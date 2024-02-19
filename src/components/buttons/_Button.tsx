@@ -14,16 +14,16 @@ export type ButtonPropsBase = Pick<
   | "style"
   | "onClick"
 > & {
-  as?: React.ElementType<
-    React.ComponentPropsWithoutRef<"button"> &
+  loading?: boolean;
+  render?: (
+    props: React.ComponentPropsWithoutRef<"button"> &
       Required<
         Pick<
           React.ComponentPropsWithoutRef<"button">,
-          "type" | "disabled" | "className" | "children"
+          "disabled" | "className" | "children"
         >
-      >
-  >;
-  loading?: boolean;
+      >,
+  ) => React.ReactNode;
   children: React.ReactNode;
 };
 
@@ -37,41 +37,43 @@ export type ButtonProps = Merge<
 
 export const Button = React.forwardRef(function Button(
   {
-    as: Element = "button",
-    type = "button",
     size = "auto",
     equilateral = false,
     loading = false,
     disabled = false,
     className,
+    render,
     children,
     ...restProps
   }: ButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement>,
 ) {
   return (
-    <Element
-      ref={Element === "button" ? ref : undefined}
-      type={type}
-      disabled={disabled || loading}
-      className={clsx(
-        "transition focus:outline-none focus-visible:ring",
-        size !== "auto" && "inline-flex items-center justify-center",
-        {
-          [clsx("h-8 text-sm tracking-2.5", equilateral && "w-8")]:
-            size === "sm",
-          [clsx("h-12 text-base tracking-1", equilateral && "w-12")]:
-            size === "md",
-          [clsx("h-14 text-base tracking-1", equilateral && "w-14")]:
-            size === "lg",
-        },
-        loading ? "cursor-wait gap-x-2" : disabled && "cursor-not-allowed",
-        (disabled || loading) && "opacity-45 mix-blend-luminosity",
-        className,
-      )}
-      {...restProps}
-    >
-      {children} {loading ? <Spinner /> : null}
-    </Element>
+    <>
+      {(render ?? ((props) => <button ref={ref} type="button" {...props} />))({
+        disabled: disabled || loading,
+        className: clsx(
+          "transition focus:outline-none focus-visible:ring",
+          size !== "auto" && "inline-flex items-center justify-center",
+          {
+            [clsx("h-8 text-sm tracking-2.5", equilateral && "w-8")]:
+              size === "sm",
+            [clsx("h-12 text-base tracking-1", equilateral && "w-12")]:
+              size === "md",
+            [clsx("h-14 text-base tracking-1", equilateral && "w-14")]:
+              size === "lg",
+          },
+          loading ? "cursor-wait gap-x-2" : disabled && "cursor-not-allowed",
+          (disabled || loading) && "opacity-45 mix-blend-luminosity",
+          className,
+        ),
+        children: (
+          <>
+            {children} {loading ? <Spinner /> : null}
+          </>
+        ),
+        ...restProps,
+      })}
+    </>
   );
 });
