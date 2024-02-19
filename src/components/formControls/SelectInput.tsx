@@ -14,20 +14,29 @@ import * as React from "react";
 
 import { formControlClassNameBase } from "./_FormControl";
 
-const people = [
-  { id: 1, name: "Durward Reynolds", unavailable: false },
-  {
-    id: 2,
-    name: "Kenton Towne fef efef efwefefweff weffwefwef",
-    unavailable: false,
-  },
-  { id: 3, name: "Therese Wunsch", unavailable: false },
-  { id: 4, name: "Benedict Kessler", unavailable: true },
-  { id: 5, name: "Katelyn Rohan", unavailable: false },
-];
+const monthsInYear = 12;
+
+function getMonthNames(
+  locales: string | string[],
+  format: Intl.DateTimeFormatOptions["month"] = "long",
+) {
+  const dateTimeFormat = Intl.DateTimeFormat(locales, {
+    timeZone: "UTC",
+    month: format,
+  });
+  return Array.from({ length: monthsInYear }).map((_, index) =>
+    dateTimeFormat.format(new Date(0).setUTCMonth(index)),
+  );
+}
+
+const months = getMonthNames("en-US").map((name, index) => ({
+  id: index + 1,
+  name,
+  unavailable: index % 6 === 2,
+}));
 
 export function SelectInput() {
-  const [selectedPerson, setSelectedPerson] = React.useState(people[0]);
+  const [selectedMonth, setSelectedMonth] = React.useState(months[0]);
 
   const [maxHeight, setMaxHeight] = React.useState<number>();
   const [width, setWidth] = React.useState<number>();
@@ -49,7 +58,7 @@ export function SelectInput() {
   });
 
   return (
-    <ListboxBase value={selectedPerson} onChange={setSelectedPerson}>
+    <ListboxBase value={selectedMonth} onChange={setSelectedMonth}>
       <ListboxBase.Button
         ref={refs.setReference}
         className={clsx(
@@ -58,7 +67,7 @@ export function SelectInput() {
           "inline-flex items-center gap-x-2 rounded text-start",
         )}
       >
-        <span className="flex-1 truncate">{selectedPerson.name}</span>
+        <span className="flex-1 truncate">{selectedMonth.name}</span>
         <ChevronDown size={16} />
       </ListboxBase.Button>
 
@@ -75,11 +84,11 @@ export function SelectInput() {
             width,
           }}
         >
-          {people.map((person) => (
+          {months.map((month) => (
             <ListboxBase.Option
-              key={person.id}
-              value={person}
-              disabled={person.unavailable}
+              key={month.id}
+              value={month}
+              disabled={month.unavailable}
               className={({ active, selected, disabled }) =>
                 clsx(
                   "rounded px-4 py-3 text-base text-content-primary",
@@ -91,7 +100,7 @@ export function SelectInput() {
                 )
               }
             >
-              {person.name}
+              {month.name}
             </ListboxBase.Option>
           ))}
         </ListboxBase.Options>
