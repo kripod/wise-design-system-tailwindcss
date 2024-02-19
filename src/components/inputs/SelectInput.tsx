@@ -494,7 +494,7 @@ function SelectInputItemView<T = string>({
     }
     case "separator": {
       if (needle == null) {
-        return <hr className="m-2 border-t" aria-hidden />;
+        return <hr className="m-2 border-t" />;
       }
       break;
     }
