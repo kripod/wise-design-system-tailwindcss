@@ -45,20 +45,20 @@ const SelectInputTriggerButtonPropsContext = React.createContext<{
 }>({});
 const SelectInputOptionContentWithinTriggerContext = React.createContext(false);
 
-interface SelectInputOptionItem<T = string> {
+export interface SelectInputOptionItem<T = string> {
   type: "option";
   value: T;
   filterMatchers?: readonly string[];
   disabled?: boolean;
 }
 
-interface SelectInputGroupItem<T = string> {
+export interface SelectInputGroupItem<T = string> {
   type: "group";
   label: string;
   options: readonly SelectInputOptionItem<T>[];
 }
 
-interface SelectInputSeparatorItem {
+export interface SelectInputSeparatorItem {
   type: "separator";
 }
 

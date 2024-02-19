@@ -45,10 +45,13 @@ export {
 } from "./components/inputs/SearchInput";
 export {
   SelectInput,
+  type SelectInputGroupItem,
   type SelectInputItem,
   SelectInputOptionContent,
   type SelectInputOptionContentProps,
+  type SelectInputOptionItem,
   type SelectInputProps,
+  type SelectInputSeparatorItem,
 } from "./components/inputs/SelectInput";
 export {
   TextAreaInput,
