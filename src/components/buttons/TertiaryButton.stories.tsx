@@ -1,6 +1,7 @@
 import type { Story } from "@ladle/react";
+import * as React from "react";
 
-import { TertiaryButton } from "./TertiaryButton";
+import { TertiaryButton, TertiaryButtonProps } from "./TertiaryButton";
 
 export const Basic: Story<{
   contents: string;
@@ -38,19 +39,23 @@ Basic.argTypes = {
   },
 };
 
+function ButtonLink({
+  className,
+  children,
+}: React.ComponentPropsWithoutRef<NonNullable<TertiaryButtonProps["as"]>>) {
+  return (
+    <a href="#_" className={className}>
+      {children}
+    </a>
+  );
+}
+
 export const Link: Story<{
   contents: string;
   size: "sm" | "md";
 }> = function ({ contents, size }) {
   return (
-    <TertiaryButton
-      size={size}
-      render={({ className, children }) => (
-        <a href="#_" className={className}>
-          {children}
-        </a>
-      )}
-    >
+    <TertiaryButton as={ButtonLink} size={size}>
       {contents}
     </TertiaryButton>
   );
