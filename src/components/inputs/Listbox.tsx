@@ -30,14 +30,17 @@ function roundByDPR(value: number) {
 export function Listbox() {
   const [selectedPerson, setSelectedPerson] = useState(people[0]);
 
+  const [maxHeight, setMaxHeight] = useState<number>();
   const [width, setWidth] = useState<number>();
   const { x, y, strategy, refs } = useFloating<HTMLButtonElement>({
     placement: "bottom-start",
     middleware: [
       offset(8),
-      flip(),
+      flip({ padding: 16 }),
       size({
-        apply: ({ rects }) => {
+        padding: 16,
+        apply: ({ rects, availableHeight }) => {
+          setMaxHeight(availableHeight);
           setWidth(rects.reference.width);
         },
       }),
@@ -63,9 +66,10 @@ export function Listbox() {
 
       <ListboxBase.Options
         ref={refs.setFloating}
-        className="top-0 left-0 z-10 rounded bg-background-elevated p-2 shadow-xl focus:outline-none"
+        className="top-0 left-0 z-10 overflow-auto rounded bg-background-elevated p-2 shadow-xl focus:outline-none"
         style={{
           position: strategy,
+          maxHeight,
           width,
           transform: `translate(${roundByDPR(x ?? 0)}px, ${roundByDPR(
             y ?? 0,
