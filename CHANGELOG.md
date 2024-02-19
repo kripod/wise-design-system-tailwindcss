@@ -1,5 +1,31 @@
 # @wise/design-system-tailwindcss
 
+## 0.3.0
+
+### Minor Changes
+
+- [`4b9fe76`](https://github.com/transferwise/design-system-web-tailwindcss/commit/4b9fe766ab8546b7d9cd6516af6045c396f0675a) Thanks [@kripod-wise](https://github.com/kripod-wise)! - feat(SelectInput): empty state
+
+- [`4b9fe76`](https://github.com/transferwise/design-system-web-tailwindcss/commit/4b9fe766ab8546b7d9cd6516af6045c396f0675a) Thanks [@kripod-wise](https://github.com/kripod-wise)! - feat(SelectInput): trigger customization
+
+- [`4b9fe76`](https://github.com/transferwise/design-system-web-tailwindcss/commit/4b9fe766ab8546b7d9cd6516af6045c396f0675a) Thanks [@kripod-wise](https://github.com/kripod-wise)! - feat(SelectInput): expose ‘size’ prop
+
+- [`4b9fe76`](https://github.com/transferwise/design-system-web-tailwindcss/commit/4b9fe766ab8546b7d9cd6516af6045c396f0675a) Thanks [@kripod-wise](https://github.com/kripod-wise)! - feat(SelectInput): footer with query-based param
+
+### Patch Changes
+
+- [`5b4c10c`](https://github.com/transferwise/design-system-web-tailwindcss/commit/5b4c10c17fdca990a45363c7698e964f277db8de) Thanks [@kripod-wise](https://github.com/kripod-wise)! - fix(SearchInput): icon opacity in disabled state
+
+- [`a074bb5`](https://github.com/transferwise/design-system-web-tailwindcss/commit/a074bb55f2f201720e68eed2a7640865aeff4eec) Thanks [@kripod-wise](https://github.com/kripod-wise)! - chore: fix sideEffects in package.json
+
+- [`bd2dd4d`](https://github.com/transferwise/design-system-web-tailwindcss/commit/bd2dd4de36295e506e770746a8923ae0aa5f0d2d) Thanks [@kripod-wise](https://github.com/kripod-wise)! - fix(SelectInput): addon opacity in disabled state
+
+- [`4b9fe76`](https://github.com/transferwise/design-system-web-tailwindcss/commit/4b9fe766ab8546b7d9cd6516af6045c396f0675a) Thanks [@kripod-wise](https://github.com/kripod-wise)! - fix(SelectInput): various fixes, mainly for a11y
+
+- [`b95f8db`](https://github.com/transferwise/design-system-web-tailwindcss/commit/b95f8db56f1c9dd689e4ccede357659181528ba6) Thanks [@kripod-wise](https://github.com/kripod-wise)! - fix(InputGroup): disabling non-interactive addons
+
+- [`4b9fe76`](https://github.com/transferwise/design-system-web-tailwindcss/commit/4b9fe766ab8546b7d9cd6516af6045c396f0675a) Thanks [@kripod-wise](https://github.com/kripod-wise)! - feat(theme): states for interactive contrast color
+
 ## 0.2.1
 
 ### Patch Changes
