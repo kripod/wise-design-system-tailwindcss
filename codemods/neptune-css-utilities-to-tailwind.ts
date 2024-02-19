@@ -266,6 +266,8 @@ const tailwindUtilityByNeptuneUtility = new Map([
   ["rotate270", "-rotate-90"],
   ["rotate-90", "-rotate-90"],
   ["rounded-sm", "rounded-xs"],
+  ["rounded", "rounded"],
+  ["rounded-full", "rounded-full"],
   ["show", "block"],
   ["sr-only-focusable", "focus:not-sr-only"],
   ["text-accent", "text-interactive-primary"],
