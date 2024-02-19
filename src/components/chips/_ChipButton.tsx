@@ -26,23 +26,23 @@ export const ChipButton = React.forwardRef(function ChipButton(
       aria-disabled={!disabled ? ariaDisabled : undefined}
       disabled={disabled}
       className={clsx(
-        "rounded-full border px-4 font-semibold",
+        "rounded-full px-4 font-semibold inner-border",
         checked
           ? [
-              "border-transparent bg-interactive-accent text-interactive-control",
+              "bg-interactive-accent text-interactive-control inner-border-transparent",
               !disabled &&
                 "hover:bg-interactive-accent-hover active:bg-interactive-accent-active",
             ]
           : [
-              "border-interactive-secondary text-interactive-primary",
+              "text-interactive-primary inner-border-interactive-secondary",
               !disabled &&
-                "hover:border-interactive-secondary-hover hover:bg-background-screen-hover hover:text-interactive-primary-hover active:border-interactive-secondary-active active:bg-background-screen-active active:text-interactive-primary-active",
+                "hover:bg-background-screen-hover hover:text-interactive-primary-hover hover:inner-border-interactive-secondary-hover active:bg-background-screen-active active:text-interactive-primary-active active:inner-border-interactive-secondary-active",
             ],
         className,
       )}
       {...restProps}
     >
-      <span className="-mx-px">{children}</span>
+      {children}
     </Button>
   );
 });

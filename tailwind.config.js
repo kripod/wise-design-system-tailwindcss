@@ -1,5 +1,6 @@
 const { transparentize } = require("color2k");
 const defaultTheme = require("tailwindcss/defaultTheme");
+const innerBorderPlugin = require("tailwindcss-inner-border");
 
 /**
  * @param {number} value
@@ -28,26 +29,6 @@ module.exports = {
   },
   darkMode: "class",
   theme: {
-    extend: {
-      borderColor: ({ theme }) => ({
-        DEFAULT: theme("colors.border.neutral"),
-      }),
-      ringColor: ({ theme }) => ({
-        DEFAULT: theme("colors.interactive.accent.active"),
-      }),
-      ringOffsetColor: ({ theme }) => ({
-        DEFAULT: theme("colors.background.screen.DEFAULT"),
-      }),
-      ringOffsetWidth: {
-        DEFAULT: defaultTheme.ringOffsetWidth[2],
-      },
-      ringOpacity: {
-        DEFAULT: "1",
-      },
-      transitionTimingFunction: {
-        DEFAULT: defaultTheme.transitionTimingFunction.out,
-      },
-    },
     screens: {
       // TODO: Review
       /*
@@ -278,5 +259,26 @@ module.exports = {
       auto: "auto",
       3: "3px",
     },
+    extend: {
+      borderColor: ({ theme }) => ({
+        DEFAULT: theme("colors.border.neutral"),
+      }),
+      ringColor: ({ theme }) => ({
+        DEFAULT: theme("colors.interactive.accent.active"),
+      }),
+      ringOffsetColor: ({ theme }) => ({
+        DEFAULT: theme("colors.background.screen.DEFAULT"),
+      }),
+      ringOffsetWidth: {
+        DEFAULT: defaultTheme.ringOffsetWidth[2],
+      },
+      ringOpacity: {
+        DEFAULT: "1",
+      },
+      transitionTimingFunction: {
+        DEFAULT: defaultTheme.transitionTimingFunction.out,
+      },
+    },
   },
+  plugins: [innerBorderPlugin],
 };

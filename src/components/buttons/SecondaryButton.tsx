@@ -27,7 +27,7 @@ export const SecondaryButton = React.forwardRef(function SecondaryButton(
       loading={loading}
       disabled={disabled}
       className={clsx(
-        "rounded-full border border-current px-4 font-semibold",
+        "rounded-full px-4 font-semibold inner-border inner-border-current",
         {
           "text-interactive-primary": sentiment === "neutral",
           "text-sentiment-negative ring-sentiment-negative-active":
@@ -35,7 +35,7 @@ export const SecondaryButton = React.forwardRef(function SecondaryButton(
         },
         !disabled &&
           !loading && [
-            "hover:border-transparent active:border-transparent",
+            "hover:inner-border-transparent active:inner-border-transparent",
             {
               "hover:bg-interactive-accent-hover hover:text-interactive-control active:bg-interactive-accent-active active:text-interactive-control":
                 sentiment === "neutral",
@@ -47,7 +47,7 @@ export const SecondaryButton = React.forwardRef(function SecondaryButton(
       )}
       {...restProps}
     >
-      <span className="-mx-px">{children}</span>
+      {children}
     </Button>
   );
 });
