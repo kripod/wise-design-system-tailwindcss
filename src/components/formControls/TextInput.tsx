@@ -85,8 +85,6 @@ export interface TextInputProps
     | "disabled"
     | "className"
     | "onChange"
-    | "onInvalid"
-    | "onSelect"
   > {
   type?: "email" | "password" | "tel" | "text" | "url";
   size?: "sm" | "md" | "xl";

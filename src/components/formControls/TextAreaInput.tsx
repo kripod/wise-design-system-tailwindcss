@@ -23,8 +23,6 @@ export interface TextAreaInputProps
     | "rows"
     | "className"
     | "onChange"
-    | "onInvalid"
-    | "onSelect"
   > {}
 
 export const TextAreaInput = React.forwardRef(function TextAreaInput(
