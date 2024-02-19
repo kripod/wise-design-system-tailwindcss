@@ -93,15 +93,15 @@ export function Popover({
       })}
 
       <FloatingPortal>
-        <FloatingFocusManager context={context}>
-          <Transition
-            show={open}
-            leave="transition-opacity"
-            leaveTo="opacity-0"
-            beforeEnter={() => {
-              setFloatingKey((prev) => prev + 1);
-            }}
-          >
+        <Transition
+          show={open}
+          leave="transition-opacity"
+          leaveTo="opacity-0"
+          beforeEnter={() => {
+            setFloatingKey((prev) => prev + 1);
+          }}
+        >
+          <FloatingFocusManager context={context}>
             <div
               key={floatingKey} // Force inner state invalidation on open
               ref={refs.setFloating}
@@ -124,8 +124,8 @@ export function Popover({
                 <div className="text-sm text-content-secondary">{children}</div>
               </div>
             </div>
-          </Transition>
-        </FloatingFocusManager>
+          </FloatingFocusManager>
+        </Transition>
       </FloatingPortal>
     </>
   );
