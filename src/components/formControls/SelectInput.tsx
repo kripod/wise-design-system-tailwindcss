@@ -53,7 +53,6 @@ export function SelectInput<T = string>({
   const [maxHeight, setMaxHeight] = React.useState<number>();
   const [width, setWidth] = React.useState<number>();
   const { refs, floatingStyles } = useFloating<HTMLButtonElement>({
-    placement: "bottom-start",
     middleware: [
       offset(8),
       flip({ padding: 16 }),
@@ -64,7 +63,6 @@ export function SelectInput<T = string>({
           setWidth(rects.reference.width);
         },
       }),
-      // shift({ limiter: limitShift(), padding: 16 }),
     ],
     whileElementsMounted: autoUpdate,
   });
