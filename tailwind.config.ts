@@ -277,14 +277,14 @@ export default {
         invalid: 'invalid="true"',
       },
       borderColor: ({ theme }) => ({
-        DEFAULT: theme("colors.border.neutral"),
+        DEFAULT: theme("colors.border.neutral") as string,
       }),
       minHeight: ({ theme }) => ({
-        12: theme("spacing.12"),
-        18: theme("spacing.18"),
+        12: theme("spacing.12") as string,
+        18: theme("spacing.18") as string,
       }),
       outlineColor: ({ theme }) => ({
-        DEFAULT: theme("colors.interactive.primary.DEFAULT"),
+        DEFAULT: theme("colors.interactive.primary.DEFAULT") as string,
       }),
       transitionTimingFunction: {
         DEFAULT: defaultTheme.transitionTimingFunction.out,

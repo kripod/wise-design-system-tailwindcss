@@ -16,7 +16,7 @@ export const Basic: Story<{
       <CheckboxChip name="reporting" onChange={onChange}>
         Reporting
       </CheckboxChip>
-      <CheckboxChip name="payments" onChange={onChange} disabled>
+      <CheckboxChip name="payments" disabled onChange={onChange}>
         Payments
       </CheckboxChip>
     </CheckboxChipGroup>

@@ -5,5 +5,5 @@ export function useConstant<T>(factory: () => T): T {
   if (ref.current === undefined) {
     ref.current = factory();
   }
-  return ref.current as T;
+  return ref.current;
 }

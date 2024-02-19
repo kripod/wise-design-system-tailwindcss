@@ -103,8 +103,8 @@ export const WithSuffix: Story<{
         />
         <TextInputAddon placement="end" interactive padding="sm">
           <ActionButton
-            onClick={() => {
-              navigator.clipboard.writeText(value);
+            onClick={async () => {
+              await navigator.clipboard.writeText(value);
               if (ref.current != null) {
                 ref.current.focus({ preventScroll: true });
                 ref.current.select();
