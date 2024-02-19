@@ -73,9 +73,7 @@ export function Popover({
     },
   });
 
-  const dismiss = useDismiss(context, {
-    outsidePressEvent: "mousedown",
-  });
+  const dismiss = useDismiss(context);
   const role = useRole(context);
   const { getReferenceProps, getFloatingProps } = useInteractions([
     role,
