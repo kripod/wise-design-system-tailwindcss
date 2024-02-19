@@ -1,5 +1,11 @@
 # @wise/design-system-tailwindcss
 
+## 0.1.5
+
+### Patch Changes
+
+- [#83](https://github.com/transferwise/design-system-web-tailwindcss/pull/83) [`05d973d`](https://github.com/transferwise/design-system-web-tailwindcss/commit/05d973d7607e3b951a421eda24d7309a81dde844) Thanks [@kripod-wise](https://github.com/kripod-wise)! - ci: fix tokens
+
 ## 0.1.4
 
 ### Patch Changes
