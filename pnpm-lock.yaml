@@ -95,8 +95,8 @@ devDependencies:
     specifier: 4.0.1
     version: 4.0.1(vite@4.3.9)
   '@wise/eslint-config':
-    specifier: 0.0.0-experimental-7cc894f
-    version: 0.0.0-experimental-7cc894f(eslint@8.43.0)(typescript@5.1.3)
+    specifier: 0.0.0-experimental-3c29daa
+    version: 0.0.0-experimental-3c29daa(eslint@8.43.0)(typescript@5.1.3)
   babel-plugin-optimize-clsx:
     specifier: 2.6.2
     version: 2.6.2
@@ -3153,8 +3153,8 @@ packages:
       - supports-color
     dev: true
 
-  /@wise/eslint-config@0.0.0-experimental-7cc894f(eslint@8.43.0)(typescript@5.1.3):
-    resolution: {integrity: sha512-o9zDXjH2CTRc1unHRjiX3R16lL7a64gDbJUJR8PShLySkH+EFR/Bk0HoMrZxC12r+8vZtYRVmkXtUmNYBUG1LA==}
+  /@wise/eslint-config@0.0.0-experimental-3c29daa(eslint@8.43.0)(typescript@5.1.3):
+    resolution: {integrity: sha512-W3N7vsK85SEe6Nd5J5QBrCNskfOUdR2g1TqQe3q9YYSteq4g1CT8ir0/anQp3T3al04mROq0jcNZOZ2pTcRdAg==}
     peerDependencies:
       eslint: '>=8.38'
       next: '>=13'

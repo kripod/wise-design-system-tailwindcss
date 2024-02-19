@@ -79,7 +79,7 @@
     "@types/react-dom": "16.9.19",
     "@types/use-sync-external-store": "^0.0.3",
     "@vitejs/plugin-react": "4.0.1",
-    "@wise/eslint-config": "0.0.0-experimental-7cc894f",
+    "@wise/eslint-config": "0.0.0-experimental-3c29daa",
     "babel-plugin-optimize-clsx": "2.6.2",
     "eslint": "8.43.0",
     "eslint-plugin-tailwindcss": "3.12.1",
