@@ -96,8 +96,8 @@
   "peerDependencies": {
     "@transferwise/icons": "^3.1",
     "focus-visible": ">=5",
-    "react": "16.14 - 18",
-    "react-dom": "16.14 - 18"
+    "react": "17 - 18",
+    "react-dom": "17 - 18"
   },
   "peerDependenciesMeta": {
     "focus-visible": {
