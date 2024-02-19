@@ -1,5 +1,4 @@
 import type { Story } from "@ladle/react";
-import * as React from "react";
 
 import { TertiaryButton, TertiaryButtonProps } from "./TertiaryButton";
 
