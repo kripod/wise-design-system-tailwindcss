@@ -277,6 +277,9 @@ module.exports = {
       3: "3px",
     },
     extend: {
+      aria: {
+        invalid: 'invalid="true"',
+      },
       borderColor: ({ theme }) => ({
         DEFAULT: theme("colors.border.neutral"),
       }),

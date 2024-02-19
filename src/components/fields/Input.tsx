@@ -5,11 +5,7 @@ import type { Merge } from "ts-essentials";
 
 import { useResizeObserver } from "../../hooks/useResizeObserver";
 import { HydrateAtoms } from "../../jotai-utils";
-import {
-  fieldControlClassNameBase,
-  fieldDescribedByAtom,
-  fieldInvalidAtom,
-} from "./Field";
+import { fieldControlClassNameBase, useFieldDescribedBy } from "./Field";
 
 const inputPaddingStartAtom =
   atom<React.CSSProperties["paddingInlineStart"]>(undefined);
@@ -40,6 +36,7 @@ export type InputProps = Merge<
     type?: "email" | "password" | "tel" | "text" | "url";
     size?: "sm" | "md" | "lg" | "xl";
     shape?: "rectangle" | "pill";
+    "aria-invalid"?: boolean;
   }
 >;
 
@@ -47,8 +44,7 @@ export const Input = React.forwardRef(function Input(
   { size = "md", shape = "rectangle", className, ...restProps }: InputProps,
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {
-  const fieldDescribedBy = useAtomValue(fieldDescribedByAtom);
-  const fieldInvalid = useAtomValue(fieldInvalidAtom);
+  const fieldDescribedBy = useFieldDescribedBy();
 
   const inputPaddingStart = useAtomValue(inputPaddingStartAtom);
   const inputPaddingEnd = useAtomValue(inputPaddingEndAtom);
@@ -57,7 +53,6 @@ export const Input = React.forwardRef(function Input(
     <input
       ref={ref}
       aria-describedby={fieldDescribedBy}
-      aria-invalid={fieldInvalid}
       className={clsx(
         fieldControlClassNameBase({ size }),
         "enabled:group-hover/input:[&:not(:focus)]:ring-2 enabled:group-hover/input:[&:not(:focus)]:ring-interactive-secondary-hover",

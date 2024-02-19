@@ -3,7 +3,7 @@ import { Search } from "@transferwise/icons";
 import * as React from "react";
 
 import { ActionButton } from "../buttons/ActionButton";
-import { Field, FieldDescription, Label } from "./Field";
+import { Field, Label } from "./Field";
 import { Input, InputAddon, InputGroup } from "./Input";
 
 export const Basic: Story<{
@@ -17,7 +17,11 @@ export const Basic: Story<{
   const [value, setValue] = React.useState("Text value");
 
   return (
-    <Field>
+    <Field
+      description={
+        value.length > 0 ? <>Information message.</> : <>Error message.</>
+      }
+    >
       <Label>
         Label
         <Input
@@ -25,16 +29,12 @@ export const Basic: Story<{
           shape={shape}
           value={value}
           required={required}
+          aria-invalid={value.length === 0}
           readOnly={readOnly}
           disabled={disabled}
           onChange={(event) => setValue(event.currentTarget.value)}
         />
       </Label>
-      {value.length > 0 ? (
-        <FieldDescription>Information message.</FieldDescription>
-      ) : (
-        <FieldDescription sentiment="negative">Error message.</FieldDescription>
-      )}
     </Field>
   );
 };
