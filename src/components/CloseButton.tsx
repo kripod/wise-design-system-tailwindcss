@@ -1,6 +1,8 @@
 import { Cross, CrossIconProps } from "@transferwise/icons";
 import { clsx } from "clsx";
 
+import { CloseButtonLabel } from "@/i18nTexts";
+
 export type CloseButtonProps = {
   size?: "md" | "lg";
   onClick?: () => void;
@@ -17,6 +19,7 @@ export function CloseButton({ size = "md", onClick }: CloseButtonProps) {
   return (
     <button
       type="button"
+      aria-label={CloseButtonLabel}
       className={clsx(
         "rounded-full transition hover:bg-background-neutral focus:outline-none focus-visible:ring",
         {
@@ -28,7 +31,7 @@ export function CloseButton({ size = "md", onClick }: CloseButtonProps) {
         onClick?.();
       }}
     >
-      <Cross title="Close" size={iconSizeByComponentSize[size]} />
+      <Cross size={iconSizeByComponentSize[size]} />
     </button>
   );
 }
