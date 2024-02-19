@@ -1,4 +1,4 @@
-import "../src/styles.css";
+import "./styles.css";
 
 import { GlobalProvider, ThemeState } from "@ladle/react";
 import * as React from "react";
