@@ -292,22 +292,12 @@ export default {
   plugins: [
     containerQueriesPlugin,
     plugin(({ addComponents }) => {
-      addComponents([
-        {
-          ".theme-light,\n.theme-dark .theme-invert": lightTheme,
-          ".theme-dark,\n.theme-light .theme-invert,\n.theme-invert": darkTheme,
-          ".theme-light-green,\n.theme-dark-green .theme-invert":
-            lightGreenTheme,
-          ".theme-dark-green,\n.theme-light-green .theme-invert":
-            darkGreenTheme,
-        },
-        {
-          /* Legacy support */
-          ".np-theme-personal--dark": darkTheme,
-          ".np-theme-personal--bright-green": lightGreenTheme,
-          ".np-theme-personal--forest-green": darkGreenTheme,
-        },
-      ]);
+      addComponents({
+        ".theme-light,\n.theme-dark .theme-invert": lightTheme,
+        ".theme-dark,\n.theme-light .theme-invert,\n.theme-invert": darkTheme,
+        ".theme-light-green,\n.theme-dark-green .theme-invert": lightGreenTheme,
+        ".theme-dark-green,\n.theme-light-green .theme-invert": darkGreenTheme,
+      });
     }),
   ],
 } satisfies Partial<Config>;

@@ -19,3 +19,14 @@ html {
   @apply bg-background-screen font-sans text-base text-content-secondary;
   -webkit-tap-highlight-color: transparent;
 }
+
+/* Legacy support */
+.np-theme-personal--dark {
+  @apply theme-dark;
+}
+.np-theme-personal--bright-green {
+  @apply theme-light-green;
+}
+.np-theme-personal--forest-green {
+  @apply theme-dark-green;
+}
