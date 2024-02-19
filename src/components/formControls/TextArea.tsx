@@ -35,7 +35,7 @@ export const TextArea = React.forwardRef(function TextArea(
       aria-describedby={fieldDescribedBy}
       className={clsx(
         formControlClassNameBase(),
-        "min-h-18 scroll-py-2 overscroll-none rounded placeholder:text-content-tertiary",
+        "min-h-18 scroll-py-2 overscroll-none rounded py-3 text-base placeholder:text-content-tertiary",
       )}
       {...restProps}
     />

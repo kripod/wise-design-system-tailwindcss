@@ -52,7 +52,7 @@ export function Listbox() {
       <ListboxBase.Button
         ref={refs.setReference}
         className={clsx(
-          formControlClassNameBase(),
+          formControlClassNameBase({ size: "md" }),
           "inline-flex items-center justify-between gap-x-2 rounded text-start",
         )}
       >
