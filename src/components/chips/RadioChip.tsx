@@ -6,7 +6,7 @@ import { Chip } from "./_Chip";
 export interface RadioChipGroupProps<T = string> {
   name?: string;
   defaultValue?: T;
-  selectedValue?: T;
+  value?: T;
   compareValues?: (keyof T & string) | ((a: T, b: T) => boolean);
   disabled?: boolean;
   className?: string;
@@ -17,7 +17,7 @@ export interface RadioChipGroupProps<T = string> {
 export function RadioChipGroup<T = string>({
   name,
   defaultValue,
-  selectedValue,
+  value,
   disabled,
   compareValues,
   className,
@@ -28,7 +28,7 @@ export function RadioChipGroup<T = string>({
     <RadioGroupBase
       name={name}
       defaultValue={defaultValue}
-      value={selectedValue}
+      value={value}
       by={compareValues}
       disabled={disabled}
       className={clsx(className, "flex flex-wrap gap-2")}
