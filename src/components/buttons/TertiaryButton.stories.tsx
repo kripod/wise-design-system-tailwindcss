@@ -5,11 +5,17 @@ import { TertiaryButton } from "./TertiaryButton";
 export const Basic: Story<{
   text: string;
   size: "sm" | "md";
+  loading: boolean;
   disabled: boolean;
   onClick: () => void;
-}> = function ({ text, size, disabled, onClick }) {
+}> = function ({ text, size, loading, disabled, onClick }) {
   return (
-    <TertiaryButton size={size} disabled={disabled} onClick={onClick}>
+    <TertiaryButton
+      size={size}
+      loading={loading}
+      disabled={disabled}
+      onClick={onClick}
+    >
       {text}
     </TertiaryButton>
   );
@@ -17,6 +23,7 @@ export const Basic: Story<{
 
 Basic.args = {
   text: "Click me",
+  loading: false,
   disabled: false,
 };
 

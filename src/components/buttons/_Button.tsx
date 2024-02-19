@@ -2,6 +2,8 @@ import { clsx } from "clsx";
 import * as React from "react";
 import type { Merge } from "ts-essentials";
 
+import { Spinner } from "../Spinner";
+
 export type ButtonPropsBase = Pick<
   React.ComponentPropsWithRef<"button">,
   | "ref"
@@ -12,7 +14,16 @@ export type ButtonPropsBase = Pick<
   | "children"
   | "onClick"
 > & {
-  render?: (props: React.ComponentPropsWithoutRef<"button">) => React.ReactNode;
+  loading?: boolean;
+  render?: (
+    props: React.ComponentPropsWithoutRef<"button"> &
+      Required<
+        Pick<
+          React.ComponentPropsWithoutRef<"button">,
+          "disabled" | "className" | "children"
+        >
+      >,
+  ) => React.ReactNode;
 };
 
 export type ButtonProps = Merge<
@@ -27,8 +38,10 @@ export const Button = React.forwardRef(function Button(
   {
     size = "auto",
     equilateral = false,
+    loading = false,
     disabled = false,
     className,
+    children,
     render,
     ...restProps
   }: ButtonProps,
@@ -37,7 +50,7 @@ export const Button = React.forwardRef(function Button(
   return (
     <>
       {(render ?? ((props) => <button ref={ref} type="button" {...props} />))({
-        disabled,
+        disabled: disabled || loading,
         className: clsx(
           "transition focus-visible:outline-offset focus-visible:outline disabled:pointer-events-none disabled:opacity-45 disabled:mix-blend-luminosity",
           {
@@ -49,7 +62,13 @@ export const Button = React.forwardRef(function Button(
               size === "lg",
           },
           equilateral && "inline-flex items-center justify-center",
+          loading && "cursor-wait",
           className,
+        ),
+        children: (
+          <>
+            {children} {loading ? <Spinner /> : null}
+          </>
         ),
         ...restProps,
       })}

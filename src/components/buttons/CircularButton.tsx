@@ -3,7 +3,7 @@ import * as React from "react";
 
 import { Button, type ButtonPropsBase } from "./_Button";
 
-export type CircularButtonProps = ButtonPropsBase & {
+export type CircularButtonProps = Omit<ButtonPropsBase, "loading"> & {
   icon: React.ReactNode;
 };
 
