@@ -10,7 +10,7 @@
     "jsx": "preserve",
     "declaration": true,
     "declarationMap": true,
-    "incremental": true
+    "incremental": true,
   },
   "include": [
     "**/*.js",
@@ -18,7 +18,7 @@
     "**/*.mjs",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.mts"
+    "**/*.mts",
   ],
-  "exclude": ["node_modules/", "dist/", "storybook-static/"]
+  "exclude": ["node_modules/", "dist/", "storybook-static/"],
 }
