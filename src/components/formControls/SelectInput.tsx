@@ -13,6 +13,7 @@ import { getResetClassName } from "css-homogenizer/reset-scoped";
 import * as React from "react";
 
 import { identity } from "../../identity";
+import { PreventScroll } from "../PreventScroll";
 import {
   formControlClassNameBase,
   useFormControlAriaAttributes,
@@ -111,7 +112,7 @@ export function SelectInput<T = string>({
 
           {open ? (
             <FloatingPortal>
-              {/* TODO: Scroll lock for document */}
+              <PreventScroll />
               <ListboxBase.Options
                 ref={refs.setFloating}
                 className={clsx(
