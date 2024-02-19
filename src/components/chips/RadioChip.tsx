@@ -3,9 +3,9 @@ import { RadioGroup as RadioGroupBase } from "@headlessui/react";
 import { ChipButton } from "./_ChipButton";
 
 export type RadioChipGroupProps<T = string> = {
+  name?: string;
   defaultValue?: T;
   selectedValue?: T;
-  name?: string;
   disabled?: boolean;
   compareValues?: (keyof T & string) | ((a: T, b: T) => boolean);
   onChange?: (value: T) => void;
@@ -13,9 +13,9 @@ export type RadioChipGroupProps<T = string> = {
 };
 
 export function RadioChipGroup<T = string>({
+  name,
   defaultValue,
   selectedValue,
-  name,
   disabled = false,
   compareValues,
   onChange,
@@ -23,10 +23,10 @@ export function RadioChipGroup<T = string>({
 }: RadioChipGroupProps<T>) {
   return (
     <RadioGroupBase
+      name={name}
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       defaultValue={defaultValue as any /* TODO: Remove assertion */}
       value={selectedValue}
-      name={name}
       disabled={disabled}
       by={compareValues}
       className="inline-flex flex-wrap gap-2"
