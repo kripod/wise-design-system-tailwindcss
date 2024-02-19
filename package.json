@@ -25,6 +25,7 @@
   },
   "types": "./dist/mod.d.ts",
   "files": [
+    "codemods/",
     "dist/",
     "src/",
     "!**/*.tsbuildinfo"
