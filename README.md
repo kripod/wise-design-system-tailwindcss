@@ -17,50 +17,72 @@ Fonts shall be loaded separately through `@transferwise/neptune-css`, by importi
 
 ### With Tailwind CSS
 
-1. Add Tailwind-related optional peer dependencies:
+1. Add build-time dependencies:
 
-```sh
-pnpm add -D tailwindcss @tailwindcss/container-queries
-```
+   ```sh
+   pnpm add -D tailwindcss @tailwindcss/container-queries postcss postcss-import postcss-preset-env
+   ```
 
-2. Add `tailwind.config.ts` to your project root, following [this Next.js framework guide](https://tailwindcss.com/docs/guides/nextjs):
+2. Add `postcss.config.js` to your project root:
 
-```ts
-import * as path from "node:path";
+   ```js
+   module.exports = {
+     plugins: {
+       "postcss-import": {},
+       "tailwindcss/nesting": "postcss-nesting",
+       tailwindcss: {},
+       "postcss-preset-env": {
+         features: { "nesting-rules": false },
+       },
+     },
+   };
+   ```
 
-import type { Config } from "tailwindcss";
+   This config:
 
-import tailwindBase from "@wise/design-system-tailwindcss/tailwind-base";
+   - Inlines `@import` statements
+   - Uses [official CSS Nesting syntax](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting) over the [Sass-like one](https://github.com/postcss/postcss-nested)
+   - Provides extensive browser support via [Browserslist](https://github.com/browserslist/browserslist)
 
-export default {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx,mdx}",
-    path.join(
-      path.dirname(require.resolve("@wise/design-system-tailwindcss")),
-      "**/*.js",
-    ),
-  ],
-  presets: [tailwindBase],
-} satisfies Config;
-```
+3. Add `tailwind.config.ts` to your project root, following [this Next.js framework guide](https://tailwindcss.com/docs/guides/nextjs):
 
-The [Preflight](https://tailwindcss.com/docs/preflight) core plugin is disabled, as base styles are provided by [modern-normalize](https://github.com/sindresorhus/modern-normalize) and [css-homogenizer](https://github.com/kripod/css-homogenizer) below.
+   ```ts
+   import * as path from "node:path";
 
-3. Add `src/globals.css`:
+   import type { Config } from "tailwindcss";
 
-```css
-@import "@wise/design-system-tailwindcss/preflight.css";
-/* TODO: Use global reset to simplify styling once the app is ready for it */
-/* @import "css-homogenizer/reset.css"; */
+   import tailwindBase from "@wise/design-system-tailwindcss/tailwind-base";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
+   export default {
+     content: [
+       "./src/**/*.{js,jsx,ts,tsx,mdx}",
+       path.join(
+         path.dirname(require.resolve("@wise/design-system-tailwindcss")),
+         "**/*.js",
+       ),
+     ],
+     presets: [tailwindBase],
+   } satisfies Config;
+   ```
 
-### Without Tailwind CSS
+   The [Preflight](https://tailwindcss.com/docs/preflight) core plugin is disabled, as base styles are provided by [modern-normalize](https://github.com/sindresorhus/modern-normalize) and [css-homogenizer](https://github.com/kripod/css-homogenizer).
 
-Import legacy styles from your app’s root:
+4. Add `src/globals.css` and import it from your app’s root:
+
+   ```css
+   @import "@wise/design-system-tailwindcss/preflight.css";
+   @import "tailwindcss/base";
+
+   /* TODO: Use global reset to simplify styling once the app is ready for it */
+   /* @import "css-homogenizer/reset.css"; */
+   @import "tailwindcss/components";
+
+   @import "tailwindcss/utilities";
+   ```
+
+### Without Tailwind CSS (not recommended)
+
+Import these styles from your app’s root:
 
 ```ts
 import "@wise/design-system-tailwindcss/preflight.css";
