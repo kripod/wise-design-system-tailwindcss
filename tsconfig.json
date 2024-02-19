@@ -12,6 +12,13 @@
     "declarationMap": true,
     "incremental": true
   },
-  "include": ["**/*.js", "**/*.jsx", "**/*.mjs", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.mjs",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.mts"
+  ],
   "exclude": ["node_modules/", "build/", "dist/"]
 }

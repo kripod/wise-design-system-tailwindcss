@@ -22,7 +22,7 @@ function pxToRem(value: number) {
 }
 
 export default {
-  content: ["./src/**/*.{js,jsx,mjs,ts,tsx}"],
+  content: ["./src/**/*.{js,jsx,mjs,ts,tsx,mts}"],
   safelist: [{ pattern: /^theme-/u }],
   future: {
     hoverOnlyWhenSupported: true,
