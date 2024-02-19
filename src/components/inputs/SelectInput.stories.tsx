@@ -11,7 +11,7 @@ import { Calendar, ChevronDown } from "@transferwise/icons";
 import { clsx } from "clsx";
 import * as React from "react";
 
-import { getMonthNames } from "../../date";
+import { getMonthNames } from "../../utils/date";
 import { Flag } from "../Flag";
 import { InlineLink } from "../InlineLink";
 import {

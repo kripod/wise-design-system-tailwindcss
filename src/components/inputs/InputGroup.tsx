@@ -1,8 +1,8 @@
 import { clsx } from "clsx";
 import * as React from "react";
 
-import { cssValueWithUnit } from "../../cssValueWithUnit";
 import { useResizeObserver } from "../../hooks/useResizeObserver";
+import { cssValueWithUnit } from "../../utils/cssValueWithUnit";
 
 type InputPaddingContextType = [
   number | string | undefined,

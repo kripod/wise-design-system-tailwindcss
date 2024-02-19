@@ -1,8 +1,8 @@
 import { CrossCircleFill } from "@transferwise/icons";
 import { clsx } from "clsx";
 
-import { __DEV__ } from "../../env";
 import { useControllableState } from "../../hooks/useControllableState";
+import { __DEV__ } from "../../utils/env";
 import { Offscreen } from "../Offscreen";
 import { Chip } from "./_Chip";
 

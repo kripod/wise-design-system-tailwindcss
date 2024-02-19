@@ -33,7 +33,6 @@ export {
   type RadioChipGroupProps,
   type RadioChipProps,
 } from "./components/chips/RadioChip";
-export { getMonthNames } from "./date";
 // TODO: export * from "./components/CriticalBanner";
 // TODO: export * from "./components/Disclosure";
 export { Field, type FieldProps } from "./components/inputs/Field";
@@ -70,3 +69,5 @@ export {
 // TODO: export * from "./components/Popover";
 // TODO: export * from "./components/Snackbar";
 // TODO: export * from "./components/Tabs";
+
+export { getMonthNames } from "./utils/date";

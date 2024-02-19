@@ -10,7 +10,7 @@ import type { Merge } from "ts-essentials";
 import { useEffectEvent } from "../../hooks/useEffectEvent";
 import { useScreenSize } from "../../hooks/useScreenSize";
 import { ClearButtonLabel, NoResultsFound } from "../../i18nTexts";
-import { wrapInFragment } from "../../wrapInFragment";
+import { wrapInFragment } from "../../utils/wrapInFragment";
 import { BottomSheet } from "../BottomSheet";
 import { PolymorphicWithOverrides } from "../PolymorphicWithOverrides";
 import { Popover } from "../Popover";

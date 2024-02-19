@@ -1,7 +1,7 @@
 import { clsx } from "clsx";
 import * as React from "react";
 
-import { parseBooleanish } from "../../parseBooleanish";
+import { parseBooleanish } from "../../utils/parseBooleanish";
 import { Button } from "../buttons/_Button";
 
 /* TODO: Consider having a single unified `ChipGroup` with a "listbox" role */

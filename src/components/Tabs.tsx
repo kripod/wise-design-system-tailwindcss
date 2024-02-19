@@ -2,7 +2,7 @@ import { Tab as TabBase } from "@headlessui/react";
 import { clsx } from "clsx";
 import * as React from "react";
 
-import { parseBooleanish } from "../parseBooleanish";
+import { parseBooleanish } from "../utils/parseBooleanish";
 import { AnimatedLayout, AnimatedLayoutGroup } from "./AnimatedLayout";
 import { Button } from "./buttons/_Button";
 
