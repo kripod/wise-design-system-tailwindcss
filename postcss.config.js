@@ -1,11 +1,11 @@
-const pkg = require("./package.json");
+import pkg from "./package.json" assert { type: "json" };
 
 const external = [
   ...Object.keys(pkg.dependencies),
   ...Object.keys(pkg.peerDependencies),
 ].map((packageName) => new RegExp(`^${packageName}($|/)`));
 
-module.exports = {
+export default {
   plugins: {
     "postcss-import": {
       filter: (url) => !external.some((name) => name.test(url)),
