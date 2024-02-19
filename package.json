@@ -9,20 +9,21 @@
   "module": "./dist/es/index.js",
   "types": "./dist/es/index.d.ts",
   "scripts": {
-    "build": "run-p build:*",
-    "build:ladle": "ladle build",
-    "build:rollup": "rollup --config --sourcemap",
-    "clean": "git clean --interactive -dx --exclude .env.local --exclude .env.*.local --exclude node_modules/ --exclude .husky/",
-    "dev": "ladle serve",
-    "fix": "run-s fix:*",
-    "fix:eslint": "pnpm run lint:eslint --fix",
-    "fix:prettier": "pnpm run lint:prettier --write",
-    "lint": "run-p lint:*",
-    "lint:eslint": "eslint --ext .ts,.tsx,.mts,.js,.jsx,.mjs --ignore-path .gitignore .",
-    "lint:prettier": "prettier --check .",
-    "lint:typescript": "tsc --noEmit",
     "prepare": "husky install",
-    "start": "ladle preview"
+    "dev": "ladle dev",
+    "build": "npm-run-all --parallel build:*",
+    "build:lib": "rollup --config --sourcemap",
+    "build:lib:watch": "pnpm run build:lib --watch",
+    "build:stories": "ladle build",
+    "start": "ladle preview",
+    "clean": "git clean --interactive -dx --exclude .env.local --exclude .env.*.local --exclude node_modules/ --exclude .husky/",
+    "lint": "npm-run-all --parallel lint:js+ts lint:format lint:types",
+    "lint:js+ts": "eslint --ext .js,.jsx,.mjs,.ts,.tsx,.mts --ignore-path .gitignore .",
+    "lint:format": "prettier --check .",
+    "lint:types": "tsc --noEmit",
+    "lint:fix": "npm-run-all --serial lint:fix:*",
+    "lint:fix:js+ts": "pnpm run lint:js+ts --fix",
+    "lint:fix:format": "prettier --write ."
   },
   "dependencies": {
     "@babel/runtime": "^7.19.4",
@@ -88,9 +89,5 @@
       "optional": true
     }
   },
-  "packageManager": "pnpm@7.13.5",
-  "nano-staged": {
-    "*": "prettier --write --ignore-unknown",
-    "*.{ts,tsx,mts,js,jsx,mjs}": "eslint --fix"
-  }
+  "packageManager": "pnpm@7.13.5"
 }
