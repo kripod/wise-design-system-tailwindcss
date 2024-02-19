@@ -1,7 +1,6 @@
 import { RadioGroup as RadioGroupBase } from "@headlessui/react";
-import { clsx } from "clsx";
 
-import { Button } from "../buttons/_Button";
+import { ChipButton } from "./_ChipButton";
 
 export type RadioChipGroupProps<T = string> = {
   defaultValue?: T;
@@ -48,15 +47,10 @@ export function RadioChip<T = string>({
 }: RadioChipProps<T>) {
   return (
     <RadioGroupBase.Option
-      as={Button}
+      as={ChipButton}
       size="sm"
       value={value}
       disabled={disabled}
-      className={clsx(
-        "rounded-full border border-interactive-secondary px-4 font-semibold text-interactive-primary",
-        !disabled &&
-          "hover:border-interactive-secondary-hover hover:bg-background-screen-hover hover:text-interactive-primary-hover active:border-interactive-secondary-active active:bg-background-screen-active active:text-interactive-primary-active ui-checked:border-transparent ui-checked:bg-interactive-accent ui-checked:text-interactive-control ui-checked:hover:bg-interactive-accent-hover ui-checked:active:bg-interactive-accent-active",
-      )}
     >
       <span className="-mx-px">{children}</span>
     </RadioGroupBase.Option>

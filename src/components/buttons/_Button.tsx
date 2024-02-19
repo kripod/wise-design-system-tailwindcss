@@ -2,7 +2,6 @@ import { clsx } from "clsx";
 import * as React from "react";
 import type { Merge } from "ts-essentials";
 
-import { parseBooleanish } from "../../parseBooleanish";
 import { Spinner } from "../Spinner";
 
 export type ButtonPropsBase = Merge<
@@ -29,10 +28,7 @@ export const Button = React.forwardRef(function Button(
     size = "auto",
     equilateral = false,
     loading = false,
-    "aria-disabled": ariaDisabledRaw,
-    disabled = ariaDisabledRaw != null
-      ? parseBooleanish(ariaDisabledRaw)
-      : false,
+    disabled = false,
     className,
     children,
     ...restProps
