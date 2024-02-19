@@ -6,12 +6,17 @@ import { Spinner } from "../Spinner";
 
 export type ButtonPropsBase = Pick<
   React.ComponentPropsWithRef<"button">,
-  "ref" | "type" | "disabled" | "className" | "style" | "onClick"
-> &
-  Pick<React.AriaAttributes, "aria-describedby"> & {
-    loading?: boolean;
-    children: React.ReactNode;
-  };
+  | "ref"
+  | "type"
+  | "aria-describedby"
+  | "disabled"
+  | "className"
+  | "style"
+  | "onClick"
+> & {
+  loading?: boolean;
+  children: React.ReactNode;
+};
 
 export type ButtonProps = Merge<
   React.ComponentPropsWithRef<"button">,
