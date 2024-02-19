@@ -4,8 +4,7 @@
     "strict": true,
     "verbatimModuleSyntax": true,
     "declaration": true,
-    "declarationMap": true,
-    "downlevelIteration": true
+    "declarationMap": true
   },
   "include": [
     "**/*.js",
