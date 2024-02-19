@@ -195,6 +195,11 @@ module.exports = {
       8: pxToRem(32),
       8.5: pxToRem(34),
     },
+    opacity: {
+      0: "0",
+      45: "0.45",
+      100: "1",
+    },
   },
   corePlugins: {
     animation: false,

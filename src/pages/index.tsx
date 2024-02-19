@@ -4,13 +4,14 @@ import { ActionButton } from "@/components/ActionButton";
 import { Alert } from "@/components/Alert";
 import { Dialog } from "@/components/Dialog";
 import { Input } from "@/components/Input";
+import { PrimaryButton } from "@/components/PrimaryButton";
 
 export default function Page() {
   const [hideAlert, setHideAlert] = React.useState(false);
   const [showDialog, setShowDialog] = React.useState(false);
 
   return (
-    <div className="space-y-6 p-6">
+    <div className="flex flex-col items-start space-y-6 p-6">
       <ActionButton
         onClick={() => {
           setShowDialog(true);
@@ -18,6 +19,18 @@ export default function Page() {
       >
         Open dialog
       </ActionButton>
+
+      <div className="flex gap-4">
+        <PrimaryButton size="sm">Button label</PrimaryButton>
+        <PrimaryButton size="sm" disabled>
+          Button label
+        </PrimaryButton>
+      </div>
+
+      <div className="flex gap-4">
+        <PrimaryButton>Button label</PrimaryButton>
+        <PrimaryButton disabled>Button label</PrimaryButton>
+      </div>
 
       {!hideAlert ? (
         <Alert
