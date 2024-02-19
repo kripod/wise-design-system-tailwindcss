@@ -43,8 +43,8 @@ export function Dialog({
               },
             )}
           >
-            <div className="flex items-start justify-between gap-6 p-6">
-              <DialogBase.Title className="text-lg font-semibold">
+            <div className="flex items-start justify-between gap-x-6 p-6">
+              <DialogBase.Title className="flex-1 text-lg font-semibold">
                 {title}
               </DialogBase.Title>
               <CloseButton onClick={onClose} />

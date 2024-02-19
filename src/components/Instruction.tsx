@@ -24,7 +24,7 @@ export function Instruction({ sentiment, children }: InstructionProps) {
   return (
     <div className="flex items-center gap-x-2">
       <Icon />
-      <span className="text-base text-content-secondary">{children}</span>
+      <div className="flex-1 text-base text-content-secondary">{children}</div>
     </div>
   );
 }

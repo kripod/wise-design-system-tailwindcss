@@ -29,7 +29,8 @@ export function Disclosure({
               textAlign: "start", // TODO: Replace with `text-start`
             }}
           >
-            {icon} <span className="flex-1">{summary}</span>{" "}
+            {icon}
+            <span className="flex-1">{summary}</span>
             <ChevronDown
               size={24}
               className={clsx(
