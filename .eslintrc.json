@@ -1,7 +1,6 @@
 {
   "root": true,
   "extends": [
-    "next",
     "airbnb",
     "airbnb-typescript",
     "plugin:@typescript-eslint/recommended",
@@ -47,21 +46,22 @@
       "error",
       { "assert": "either" } // Allow nesting
     ],
-    "react/prop-types": "off", // TypeScript makes this safe
     "react/require-default-props": "off" // React `defaultProps` are deprecated
   },
 
   "overrides": [
     {
-      "files": ["*.d.ts"],
+      "files": ["*.tsx"],
       "rules": {
-        "@typescript-eslint/consistent-type-definitions": "off" // Augmentation
+        /* TypeScript makes these safe */
+        "react/jsx-props-no-spreading": "off",
+        "react/prop-types": "off"
       }
     },
     {
-      "files": ["*.tsx"],
+      "files": ["*.d.ts"],
       "rules": {
-        "react/jsx-props-no-spreading": "off" // TypeScript makes this safe
+        "@typescript-eslint/consistent-type-definitions": "off" // Augmentation
       }
     },
     {
@@ -71,16 +71,19 @@
       }
     },
     {
-      "files": ["./src/pages/**"],
+      "files": ["*.stories.*"],
       "rules": {
-        "import/no-default-export": "off",
-        "import/prefer-default-export": "warn"
-      }
-    },
-    {
-      "files": ["./src/pages/api/**"],
-      "rules": {
-        "import/prefer-default-export": "off"
+        "import/no-extraneous-dependencies": [
+          "error",
+          { "optionalDependencies": false }
+        ],
+        "react/function-component-definition": [
+          "error",
+          {
+            "namedComponents": "arrow-function",
+            "unnamedComponents": "arrow-function"
+          }
+        ]
       }
     }
   ]
