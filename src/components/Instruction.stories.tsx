@@ -1,6 +1,6 @@
 import type { Story } from "@ladle/react";
 
-import { Instruction, InstructionList } from "./InstructionList";
+import { Instruction, InstructionList } from "./Instruction";
 
 export const Basic = function () {
   return (
