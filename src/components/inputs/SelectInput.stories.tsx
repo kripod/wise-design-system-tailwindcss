@@ -75,12 +75,12 @@ export const Months: Story<Month | null> = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await step("Render placeholder", async () => {
+    await step("renders placeholder", async () => {
       const triggerButton = canvas.getByRole("button");
       await expect(triggerButton).toHaveTextContent("Month");
     });
 
-    await step("Select item via mouse", async () => {
+    await step("selects item via mouse", async () => {
       const triggerButton = canvas.getByRole("button");
 
       await userEvent.click(triggerButton);
@@ -196,7 +196,7 @@ export const Currencies: Story<Currency> = {
     onChange: fn() satisfies Mock,
   },
   play: async ({ step }) => {
-    await step("Filter items via keyboard", async () => {
+    await step("filters items via keyboard", async () => {
       await userEvent.tab();
       await userEvent.keyboard(" ");
 
