@@ -10,6 +10,7 @@ specifiers:
   '@headlessui/react': ^1.7.3
   '@ladle/react': 2.4.5
   '@radix-ui/react-id': ^1.0.0
+  '@tailwindcss/container-queries': 0.1.0
   '@transferwise/icons': 3.1.2
   '@tsconfig/next': 1.0.3
   '@types/node': 16.11.68
@@ -67,6 +68,7 @@ devDependencies:
   '@babel/preset-react': 7.18.6_@babel+core@7.19.6
   '@babel/preset-typescript': 7.18.6_@babel+core@7.19.6
   '@ladle/react': 2.4.5_biqbaboplfbrettd7655fr4n2y
+  '@tailwindcss/container-queries': 0.1.0_tailwindcss@3.2.0
   '@transferwise/icons': 3.1.2_react@18.2.0
   '@tsconfig/next': 1.0.3
   '@types/node': 16.11.68
@@ -1819,6 +1821,14 @@ packages:
     dependencies:
       estree-walker: 2.0.2
       picomatch: 2.3.1
+    dev: true
+
+  /@tailwindcss/container-queries/0.1.0_tailwindcss@3.2.0:
+    resolution: {integrity: sha512-t1GeJ9P8ual160BvKy6Y1sG7bjChArMaK6iRXm3ZYjZGN2FTzmqb5ztsTDb9AsTSJD4NMHtsnaI2ielrXEk+hw==}
+    peerDependencies:
+      tailwindcss: '>=3.2.0'
+    dependencies:
+      tailwindcss: 3.2.0_postcss@8.4.18
     dev: true
 
   /@transferwise/icons/3.1.2_react@18.2.0:

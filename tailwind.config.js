@@ -1,3 +1,4 @@
+const containerQueriesPlugin = require("@tailwindcss/container-queries");
 const { transparentize } = require("color2k");
 const defaultTheme = require("tailwindcss/defaultTheme");
 const innerBorderPlugin = require("tailwindcss-inner-border");
@@ -283,5 +284,5 @@ module.exports = {
       },
     },
   },
-  plugins: [innerBorderPlugin],
+  plugins: [containerQueriesPlugin, innerBorderPlugin],
 };

@@ -37,7 +37,7 @@ export function Alert({
 }: AlertProps) {
   const Icon = IconBySentiment[sentiment];
   return (
-    <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 rounded-lg bg-background-neutral p-6 text-sm text-content-secondary">
+    <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 rounded-lg bg-background-neutral p-6 text-sm text-content-secondary @container">
       <Icon />
       {onClose != null ? (
         <CloseButton
@@ -48,7 +48,7 @@ export function Alert({
       ) : null}
       <div
         role="alert"
-        className="col-span-full flex flex-col items-start gap-y-2 desktop:col-span-1 desktop:col-start-2 desktop:row-start-1"
+        className="col-span-full flex flex-col items-start gap-y-2 @xl:col-span-1 @xl:col-start-2 @xl:row-start-1"
       >
         {children}
       </div>

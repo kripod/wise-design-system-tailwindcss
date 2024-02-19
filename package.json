@@ -51,6 +51,7 @@
     "@babel/preset-react": "7.18.6",
     "@babel/preset-typescript": "7.18.6",
     "@ladle/react": "2.4.5",
+    "@tailwindcss/container-queries": "0.1.0",
     "@transferwise/icons": "3.1.2",
     "@tsconfig/next": "1.0.3",
     "@types/node": "16.11.68",
