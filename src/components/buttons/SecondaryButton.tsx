@@ -27,16 +27,11 @@ export const SecondaryButton = React.forwardRef(function SecondaryButton(
       loading={loading}
       disabled={disabled}
       className={clsx(
-        "rounded-full px-4 font-semibold ring-1 ring-inset ring-current",
+        "rounded-full px-4 ring-1 ring-inset ring-current",
         {
-          "text-interactive-primary": sentiment === "neutral",
-          "text-sentiment-negative focus-visible:outline-sentiment-negative":
-            sentiment === "negative",
-        },
-        {
-          "enabled:hover:bg-interactive-accent-hover enabled:hover:text-interactive-control enabled:hover:ring-interactive-accent-hover enabled:active:bg-interactive-accent-active enabled:active:text-interactive-control enabled:active:ring-interactive-accent-active":
+          "text-interactive-primary hover:bg-interactive-accent-hover hover:text-interactive-control hover:ring-interactive-accent-hover active:bg-interactive-accent-active active:text-interactive-control active:ring-interactive-accent-active":
             sentiment === "neutral",
-          "enabled:hover:bg-sentiment-negative-hover enabled:hover:text-contrast-overlay enabled:hover:ring-sentiment-negative-hover enabled:active:bg-sentiment-negative-active enabled:active:text-contrast-overlay enabled:active:ring-sentiment-negative-active":
+          "text-sentiment-negative hover:bg-sentiment-negative-hover hover:text-contrast-overlay hover:ring-sentiment-negative-hover focus-visible:outline-sentiment-negative active:bg-sentiment-negative-active active:text-contrast-overlay active:ring-sentiment-negative-active":
             sentiment === "negative",
         },
         className,

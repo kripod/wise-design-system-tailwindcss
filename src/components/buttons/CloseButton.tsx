@@ -8,14 +8,15 @@ export type CloseButtonProps = Pick<
   ButtonPropsBase,
   "className" | "onClick"
 > & {
-  size?: "sm" | "md";
+  size?: "sm" | "md" | "lg";
 };
 
-const iconSizeByComponentSize: {
-  [key in NonNullable<CloseButtonProps["size"]>]: CrossIconProps["size"];
-} = {
+const iconSizeByComponentSize = {
   sm: 16,
-  md: 24,
+  md: 16,
+  lg: 24,
+} satisfies {
+  [key in NonNullable<CloseButtonProps["size"]>]: CrossIconProps["size"];
 };
 
 export function CloseButton({
@@ -26,13 +27,12 @@ export function CloseButton({
   return (
     <Button
       aria-label={CloseButtonLabel}
-      size={size}
       equilateral
       className={clsx(
-        "rounded-full text-interactive-primary hover:bg-background-screen-hover",
+        "rounded-full bg-background-neutral text-interactive-primary hover:bg-background-neutral-hover active:bg-background-neutral-active",
         {
-          "-m-2": size === "sm",
-          "-m-3": size === "md",
+          "p-1": size === "sm",
+          "p-2": size === "md" || size === "lg",
         },
         className,
       )}

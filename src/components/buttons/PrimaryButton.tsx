@@ -27,17 +27,11 @@ export const PrimaryButton = React.forwardRef(function PrimaryButton(
       loading={loading}
       disabled={disabled}
       className={clsx(
-        "rounded-full px-4 font-semibold",
+        "rounded-full px-4",
         {
-          "bg-interactive-accent text-interactive-control":
+          "bg-interactive-accent text-interactive-control hover:bg-interactive-accent-hover active:bg-interactive-accent-active":
             sentiment === "neutral",
-          "bg-sentiment-negative text-contrast-overlay focus-visible:outline-sentiment-negative":
-            sentiment === "negative",
-        },
-        {
-          "enabled:hover:bg-interactive-accent-hover enabled:active:bg-interactive-accent-active":
-            sentiment === "neutral",
-          "enabled:hover:bg-sentiment-negative-hover enabled:active:bg-sentiment-negative-active":
+          "bg-sentiment-negative text-contrast-overlay hover:bg-sentiment-negative-hover focus-visible:outline-sentiment-negative active:bg-sentiment-negative-active":
             sentiment === "negative",
         },
         className,

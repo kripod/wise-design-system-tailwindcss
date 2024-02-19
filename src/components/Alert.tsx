@@ -40,7 +40,11 @@ export function Alert({
     <div className="grid grid-cols-[auto_1fr_auto] gap-4 rounded-md bg-background-neutral p-6 text-sm text-content-secondary @container">
       <Icon />
       {onClose != null ? (
-        <CloseButton size="sm" className="col-start-3" onClick={onClose} />
+        <CloseButton
+          size="sm"
+          className="col-start-3 self-start"
+          onClick={onClose}
+        />
       ) : null}
       <div
         role="alert"
