@@ -6,7 +6,7 @@ import { Button, ButtonPropsBase } from "./_Button";
 
 export type CloseButtonProps = Omit<
   ButtonPropsBase,
-  "loading" | "disabled" | "children"
+  "ref" | "type" | "loading" | "disabled" | "render" | "children"
 > & {
   size?: "sm" | "md";
 };
