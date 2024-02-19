@@ -1,8 +1,8 @@
-import { Cross, CrossIconProps } from "@transferwise/icons";
+import { Cross, type CrossIconProps } from "@transferwise/icons";
 import { clsx } from "clsx";
 
 import { CloseButtonLabel } from "../../i18nTexts";
-import { Button, ButtonPropsBase } from "./_Button";
+import { Button, type ButtonPropsBase } from "./_Button";
 
 export type CloseButtonProps = Omit<
   ButtonPropsBase,

@@ -1,4 +1,4 @@
-import { Refresh, RefreshIconProps } from "@transferwise/icons";
+import { Refresh, type RefreshIconProps } from "@transferwise/icons";
 
 export type SpinnerProps = {
   size?: "md" | "lg";

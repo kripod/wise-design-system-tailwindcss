@@ -1,7 +1,7 @@
 import { clsx } from "clsx";
 import * as React from "react";
 
-import { Button, ButtonPropsBase } from "./_Button";
+import { Button, type ButtonPropsBase } from "./_Button";
 
 export type TertiaryButtonProps = ButtonPropsBase & {
   size?: "sm" | "md";
