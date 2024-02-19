@@ -210,6 +210,18 @@ const allCurrencies: Currency[] = [
   ...otherCurrencies,
 ].sort((a, b) => a.code.localeCompare(b.code));
 
+function currencyOption(currency: Currency) {
+  return {
+    type: "option",
+    value: currency,
+    filterMatchers: [
+      currency.code,
+      currency.name,
+      ...(currency.countries ?? []),
+    ],
+  } satisfies SelectInputItem<Currency>;
+}
+
 export const Currencies: Story<{
   onChange: (value: Currency) => void;
 }> = function ({ onChange }) {
@@ -224,23 +236,12 @@ export const Currencies: Story<{
           {
             type: "group",
             label: "Popular currencies",
-            options: popularCurrencies.map((currency) => ({
-              type: "option",
-              value: currency,
-              filterMatchers: [
-                currency.code,
-                currency.name,
-                ...(currency.countries ?? []),
-              ],
-            })),
+            options: allCurrencies.map((currency) => currencyOption(currency)),
           },
           {
             type: "group",
             label: "All currencies",
-            options: allCurrencies.map((currency) => ({
-              type: "option",
-              value: currency,
-            })),
+            options: allCurrencies.map((currency) => currencyOption(currency)),
           },
         ]}
         value={selectedCurrency}
