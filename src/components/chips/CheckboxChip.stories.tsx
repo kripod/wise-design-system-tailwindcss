@@ -3,11 +3,10 @@ import type { Story } from "@ladle/react";
 import { CheckboxChip, CheckboxChipGroup } from "./CheckboxChip";
 
 export const Basic: Story<{
-  disabled: boolean;
   onChange: () => void;
-}> = function ({ disabled, onChange }) {
+}> = function ({ onChange }) {
   return (
-    <CheckboxChipGroup disabled={disabled}>
+    <CheckboxChipGroup>
       <CheckboxChip name="accounting" defaultChecked onChange={onChange}>
         Accounting
       </CheckboxChip>
@@ -22,10 +21,6 @@ export const Basic: Story<{
       </CheckboxChip>
     </CheckboxChipGroup>
   );
-};
-
-Basic.args = {
-  disabled: false,
 };
 
 Basic.argTypes = {

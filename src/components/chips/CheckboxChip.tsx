@@ -6,24 +6,12 @@ import { __DEV__ } from "../../env";
 import { useControllableState } from "../../hooks/useControllableState";
 import { Chip } from "./_Chip";
 
-const CheckboxChipGroupContext = React.createContext({ disabled: false });
-
 export type CheckboxChipGroupProps = {
-  disabled?: boolean;
   children?: React.ReactNode;
 };
 
-export function CheckboxChipGroup({
-  disabled = false,
-  children,
-}: CheckboxChipGroupProps) {
-  return (
-    <CheckboxChipGroupContext.Provider
-      value={React.useMemo(() => ({ disabled }), [disabled])}
-    >
-      <div className="inline-flex flex-wrap gap-2">{children}</div>
-    </CheckboxChipGroupContext.Provider>
-  );
+export function CheckboxChipGroup({ children }: CheckboxChipGroupProps) {
+  return <div className="inline-flex flex-wrap gap-2">{children}</div>;
 }
 
 export type CheckboxChipProps = {
@@ -45,9 +33,6 @@ export function CheckboxChip({
   onChange,
   children,
 }: CheckboxChipProps) {
-  const { disabled: groupDisabled } = React.useContext(
-    CheckboxChipGroupContext,
-  );
   const [checked, setChecked] = useControllableState(
     controlledChecked,
     defaultChecked ?? false,
@@ -80,7 +65,7 @@ export function CheckboxChip({
       <Chip
         role="checkbox"
         aria-checked={checked}
-        disabled={disabled || groupDisabled}
+        disabled={disabled}
         className="group/button gap-x-4"
         onClick={() => {
           setChecked((prev) => !prev);
@@ -93,7 +78,6 @@ export function CheckboxChip({
             className={clsx(
               "-mx-2",
               !disabled &&
-                !groupDisabled &&
                 "group-hover/button:text-interactive-control-hover group-active/button:text-interactive-control-active",
             )}
           />
