@@ -11,6 +11,7 @@ export const Basic: Story<{
   onClose: () => void;
 }> = function ({ title, contents, size, onClose }) {
   const [open, setOpen] = React.useState(false);
+
   return (
     <>
       <PrimaryButton onClick={() => setOpen(true)}>Open dialog</PrimaryButton>

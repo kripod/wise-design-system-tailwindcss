@@ -11,6 +11,7 @@ export const Basic: Story<{
   onClick: () => void;
 }> = function ({ required, readOnly, disabled }) {
   const [value, setValue] = React.useState("Text value");
+
   return (
     <Field>
       <Label>

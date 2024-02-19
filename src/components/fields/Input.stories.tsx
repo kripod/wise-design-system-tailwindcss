@@ -15,6 +15,7 @@ export const Basic: Story<{
   onClick: () => void;
 }> = function ({ size, shape, required, readOnly, disabled }) {
   const [value, setValue] = React.useState("Text value");
+
   return (
     <Field>
       <Label>
@@ -62,6 +63,7 @@ export const WithPrefix: Story<{
   onClick: () => void;
 }> = function ({ disabled }) {
   const [value, setValue] = React.useState("Text value");
+
   return (
     <Label>
       Label
@@ -87,6 +89,7 @@ export const WithSuffix: Story<{
   onClick: () => void;
 }> = function ({ disabled }) {
   const [value, setValue] = React.useState("Text value");
+
   return (
     <Label>
       Label
