@@ -43,7 +43,7 @@ export function InputGroup({
       <span className="group/input inline-grid [&>*]:col-start-1 [&>*]:row-start-1">
         <span
           className={clsx(
-            "z-10 inline-flex items-center justify-self-start text-interactive-secondary transition group-[:has(>input:enabled:hover)]/input:text-interactive-secondary-hover group-[:has(>input:enabled:focus)]/input:text-interactive-primary group-[:has(>input:disabled)]/input:opacity-45 group-[:has(>input:disabled)]/input:mix-blend-luminosity",
+            "z-10 inline-flex items-center justify-self-start text-interactive-secondary transition group-[:has(>input:focus:enabled:enabled)]/input:text-interactive-primary group-[:has(>input:hover:enabled)]/input:text-interactive-secondary-hover group-[:has(>input:disabled)]/input:opacity-45 group-[:has(>input:disabled)]/input:mix-blend-luminosity",
             !prefixInteractive && "pointer-events-none",
           )}
         >
