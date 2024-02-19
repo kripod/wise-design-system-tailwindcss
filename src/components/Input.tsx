@@ -6,7 +6,7 @@ export type InputProps = React.ComponentPropsWithRef<"input"> & {
 };
 
 export const Input = React.forwardRef(function Input(
-  { label, required = false, className, ...restProps }: InputProps,
+  { label, required, className, ...restProps }: InputProps,
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {
   return (
