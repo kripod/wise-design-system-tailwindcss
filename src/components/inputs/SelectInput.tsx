@@ -143,7 +143,7 @@ const defaultRenderTrigger = (({
   <InputGroup
     addonEnd={{
       content: (
-        <span className="pointer-events-none inline-flex items-center">
+        <span className="pointer-events-none -ms-1 inline-flex items-center space-x-1">
           {clear != null && !placeholderShown ? (
             <>
               <SelectInputClearButton
@@ -157,7 +157,7 @@ const defaultRenderTrigger = (({
             </>
           ) : null}
 
-          <span className="inline-flex h-8 w-8 items-center justify-center">
+          <span className="inline-flex h-6 w-6 items-center justify-center">
             <ChevronDown size={16} />
           </span>
         </span>
@@ -193,7 +193,7 @@ function SelectInputClearButton({
       aria-label={ClearButtonLabel}
       className={clsx(
         className,
-        "inline-flex h-8 w-8 items-center justify-center rounded-xs text-interactive-secondary hover:text-interactive-secondary-hover focus-visible:outline",
+        "inline-flex h-6 w-6 items-center justify-center rounded-xs text-interactive-secondary hover:text-interactive-secondary-hover focus-visible:outline",
       )}
       onClick={onClick}
     >
@@ -280,7 +280,7 @@ export function SelectInput<T = string>({
                         }
                       : undefined,
                   disabled: uiDisabled,
-                  className: clsx(className, "text-base"),
+                  className,
                 })}
               </SelectInputTriggerButtonPropsContext.Provider>
             )}
@@ -627,7 +627,12 @@ export function SelectInputOptionContent({
   );
 
   return (
-    <div className="flex items-center gap-x-2 text-base text-content-primary">
+    <div
+      className={clsx(
+        "flex items-center gap-x-2 text-content-primary",
+        (note || description) && "text-base font-normal",
+      )}
+    >
       {icon ? (
         <div className={clsx("flex", !withinTrigger && "self-start")}>
           {icon}

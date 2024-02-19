@@ -232,38 +232,36 @@ export const Currencies: Story<{
   );
 
   return (
-    <div className="flex flex-col">
-      <SelectInput
-        items={[
-          {
-            type: "group",
-            label: "Popular currencies",
-            options: popularCurrencies.map((currency) =>
-              currencyOption(currency),
-            ),
-          },
-          {
-            type: "group",
-            label: "All currencies",
-            options: allCurrencies.map((currency) => currencyOption(currency)),
-          },
-        ]}
-        value={selectedCurrency}
-        renderValue={(currency) => (
-          <SelectInputOptionContent
-            title={currency.code}
-            note={currency.name}
-            icon={<Flag code={currency.code} intrinsicSize={24} />}
-          />
-        )}
-        filterable
-        filterPlaceholder="Type a currency / country"
-        onChange={(currency) => {
-          setSelectedCurrency(currency);
-          onChange(currency);
-        }}
-      />
-    </div>
+    <SelectInput
+      items={[
+        {
+          type: "group",
+          label: "Popular currencies",
+          options: popularCurrencies.map((currency) =>
+            currencyOption(currency),
+          ),
+        },
+        {
+          type: "group",
+          label: "All currencies",
+          options: allCurrencies.map((currency) => currencyOption(currency)),
+        },
+      ]}
+      value={selectedCurrency}
+      renderValue={(currency, withinTrigger) => (
+        <SelectInputOptionContent
+          title={currency.code}
+          note={withinTrigger ? undefined : currency.name}
+          icon={<Flag code={currency.code} intrinsicSize={24} />}
+        />
+      )}
+      filterable
+      filterPlaceholder="Type a currency / country"
+      onChange={(currency) => {
+        setSelectedCurrency(currency);
+        onChange(currency);
+      }}
+    />
   );
 };
 
@@ -292,7 +290,7 @@ export const CustomTrigger: Story = function () {
         <SelectInputTriggerButton
           className={clsx(
             className,
-            "inline-flex items-center gap-x-1 font-semibold text-content-link underline hover:text-content-link-hover active:text-content-link-active",
+            "inline-flex items-center gap-x-1 text-base font-semibold text-content-link underline hover:text-content-link-hover active:text-content-link-active",
           )}
         >
           {content}
