@@ -7,10 +7,17 @@ export default {
   input: {
     index: "src/index.ts",
   },
-  output: {
-    format: "es",
-    dir: "dist",
-  },
+  output: [
+    {
+      format: "es",
+      dir: "dist/es",
+    },
+    {
+      format: "cjs",
+      dir: "dist/cjs",
+      interop: "esModule",
+    },
+  ],
   external: [
     ...Object.keys(pkg.dependencies),
     ...Object.keys(pkg.peerDependencies),
