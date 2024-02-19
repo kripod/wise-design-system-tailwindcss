@@ -8,6 +8,9 @@ export interface PolymorphicWithOverridesProps {
   [key: string]: unknown;
 }
 
+/**
+ * For overcoming the limitations of third-party components with an `as` prop.
+ */
 export const PolymorphicWithOverrides = React.forwardRef(
   function PolymorphicWithOverrides(
     {
