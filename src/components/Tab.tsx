@@ -57,21 +57,21 @@ type TabButtonProps = ButtonProps;
 
 export const TabButton = React.forwardRef(function TabButton(
   {
-    "aria-selected": ariaSelectedRaw = false,
+    "aria-selected": ariaSelected = false,
     className,
     children,
     ...restProps
   }: TabButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement>,
 ) {
-  const ariaSelected = parseBooleanish(ariaSelectedRaw);
+  const selected = parseBooleanish(ariaSelected);
   return (
     <Button
       ref={ref}
-      aria-selected={ariaSelectedRaw}
+      aria-selected={ariaSelected}
       className={clsx(
         "inline-grid text-base",
-        ariaSelected && "font-semibold tracking-1",
+        selected && "font-semibold tracking-1",
         className,
       )}
       {...restProps}

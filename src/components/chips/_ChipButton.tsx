@@ -8,28 +8,26 @@ export type ChipButtonProps = ButtonProps;
 
 export const ChipButton = React.forwardRef(function ChipButton(
   {
-    "aria-checked": ariaCheckedRaw = false,
-    "aria-disabled": ariaDisabledRaw,
-    disabled = ariaDisabledRaw != null
-      ? parseBooleanish(ariaDisabledRaw)
-      : false,
+    "aria-checked": ariaChecked = false,
+    "aria-disabled": ariaDisabled,
+    disabled = ariaDisabled != null ? parseBooleanish(ariaDisabled) : false,
     className,
     children,
     ...restProps
   }: ChipButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement>,
 ) {
-  const ariaChecked =
-    ariaCheckedRaw === "mixed" ? false : parseBooleanish(ariaCheckedRaw);
+  const checked =
+    ariaChecked !== "mixed" ? parseBooleanish(ariaChecked) : false;
   return (
     <Button
       ref={ref}
-      aria-checked={ariaCheckedRaw}
+      aria-checked={ariaChecked}
+      aria-disabled={!disabled ? ariaDisabled : undefined}
       disabled={disabled}
-      aria-disabled={!disabled ? ariaDisabledRaw : undefined}
       className={clsx(
         "rounded-full border px-4 font-semibold",
-        ariaChecked
+        checked
           ? [
               "border-transparent bg-interactive-accent text-interactive-control",
               !disabled &&
