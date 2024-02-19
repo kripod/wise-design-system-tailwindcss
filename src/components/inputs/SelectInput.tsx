@@ -154,13 +154,13 @@ export interface SelectInputProps<T = string> {
     placeholderShown: boolean;
     clear: (() => void) | undefined;
     disabled: boolean;
-    size: "md" | "xl";
+    size: "sm" | "md" | "xl";
     className: string | undefined;
   }) => React.ReactNode;
   filterable?: boolean;
   filterPlaceholder?: string;
   disabled?: boolean;
-  size?: "md" | "xl";
+  size?: "sm" | "md" | "xl";
   className?: string;
   onChange?: (value: T) => void;
   onClear?: () => void;
