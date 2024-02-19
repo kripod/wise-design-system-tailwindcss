@@ -1,5 +1,15 @@
 # @wise/design-system-tailwindcss
 
+## 0.5.0
+
+### Minor Changes
+
+- [`46630a5`](https://github.com/transferwise/design-system-web-tailwindcss/commit/46630a5713380d662045a1e18801e96f6339047c) Thanks [@kripod-wise](https://github.com/kripod-wise)! - fix!: css entry points compat with postcss-import
+
+### Patch Changes
+
+- [`df819dc`](https://github.com/transferwise/design-system-web-tailwindcss/commit/df819dcf44dc2874dd3eb0a20cf3e17b514c9317) Thanks [@kripod-wise](https://github.com/kripod-wise)! - docs: improve setup guide
+
 ## 0.4.0
 
 ### Minor Changes
