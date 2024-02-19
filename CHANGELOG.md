@@ -1,5 +1,11 @@
 # @wise/design-system-tailwindcss
 
+## 0.5.3
+
+### Patch Changes
+
+- [`6ea3ae1`](https://github.com/transferwise/design-system-web-tailwindcss/commit/6ea3ae11c14d581f18d31699802886e6749d4f9e) Thanks [@kripod-wise](https://github.com/kripod-wise)! - fix(codemod): target class names exclusively
+
 ## 0.5.2
 
 ### Patch Changes
