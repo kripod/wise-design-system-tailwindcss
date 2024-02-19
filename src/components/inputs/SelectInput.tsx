@@ -244,15 +244,15 @@ const SelectInputButton = React.forwardRef(function SelectInputButton(
   return <ButtonInput ref={ref} {...restProps} {...overrides} />;
 });
 
-interface SelectInputOptionsWrapperProps
+interface SelectInputOptionsContainerProps
   extends React.ComponentPropsWithRef<"div"> {
   onAriaActiveDescendantChange: (
     value: React.AriaAttributes["aria-activedescendant"],
   ) => void;
 }
 
-const SelectInputOptionsWrapper = React.forwardRef(
-  function SelectInputOptionsWrapper(
+const SelectInputOptionsContainer = React.forwardRef(
+  function SelectInputOptionsContainer(
     {
       "aria-orientation": ariaOrientation,
       "aria-activedescendant": ariaActiveDescendant,
@@ -260,7 +260,7 @@ const SelectInputOptionsWrapper = React.forwardRef(
       tabIndex,
       onAriaActiveDescendantChange,
       ...restProps
-    }: SelectInputOptionsWrapperProps,
+    }: SelectInputOptionsContainerProps,
     ref: React.ForwardedRef<HTMLDivElement>,
   ) {
     const handleAriaActiveDescendantChange = useEffectEvent(
@@ -313,7 +313,7 @@ function SelectInputOptions<T>({
 
   return (
     <ListboxBase.Options
-      as={SelectInputOptionsWrapper}
+      as={SelectInputOptionsContainer}
       static
       className="flex h-full flex-col focus:outline-none sm:max-h-[28rem]"
       onAriaActiveDescendantChange={(
