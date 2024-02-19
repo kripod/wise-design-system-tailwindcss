@@ -25,16 +25,14 @@ export interface SelectInputProps<T = string> {
   // TODO: multiple?: boolean;
   defaultValue?: T;
   value?: T;
-  renderValue?: (value: T) => React.ReactNode;
-  compareValues?: (keyof T & string) | ((a: T, b: T) => boolean);
+  renderValue?: (value: NonNullable<T>) => React.ReactNode;
+  compareValues?: (keyof NonNullable<T> & string) | ((a: T, b: T) => boolean);
   "aria-invalid"?: React.AriaAttributes["aria-invalid"];
   disabled?: boolean;
   className?: string;
   children?: React.ReactNode;
   onChange?: (value: T) => void;
 }
-
-const placeholderValue = ""; // See: https://html.spec.whatwg.org/multipage/form-elements.html#placeholder-label-option
 
 export function SelectInput<T = string>({
   name,
@@ -71,11 +69,7 @@ export function SelectInput<T = string>({
   return (
     <ListboxBase
       name={name}
-      defaultValue={
-        controlledValue === undefined && defaultValue === undefined
-          ? placeholderValue
-          : defaultValue
-      }
+      defaultValue={defaultValue}
       value={controlledValue}
       by={compareValues}
       disabled={disabled}
@@ -94,16 +88,14 @@ export function SelectInput<T = string>({
             {...formControlAriaAttributes}
             {...restProps}
           >
-            {({ value }: { value: T | typeof placeholderValue }) => (
+            {({ value }: { value: T | undefined }) => (
               <>
                 <span className="flex-1 truncate">
-                  {value === placeholderValue
-                    ? placeholder && (
-                        <span className="text-content-tertiary">
-                          {placeholder}
-                        </span>
-                      )
-                    : renderValue(value)}
+                  {value != null ? (
+                    renderValue(value)
+                  ) : (
+                    <span className="text-content-tertiary">{placeholder}</span>
+                  )}
                 </span>
                 <ChevronDown size={16} />
               </>
