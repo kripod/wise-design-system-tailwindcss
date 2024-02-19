@@ -138,6 +138,7 @@ module.exports = {
       DEFAULT: pxToRem(10),
       md: pxToRem(16),
       lg: pxToRem(24),
+      xl: pxToRem(32),
       full: "9999px",
     },
     boxShadow: {
