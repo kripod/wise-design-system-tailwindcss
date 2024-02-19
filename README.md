@@ -69,7 +69,7 @@ Fonts shall be loaded separately through `@transferwise/neptune-css`, by importi
 
    The [Preflight](https://tailwindcss.com/docs/preflight) core plugin is disabled, as base styles are provided by [modern-normalize](https://github.com/sindresorhus/modern-normalize) and [css-homogenizer](https://github.com/kripod/css-homogenizer).
 
-5. Add `src/globals.css` and import it from your app’s root:
+5. Add `src/styles.css` and import it from your app’s root:
 
    ```css
    @import "@wise/design-system-tailwindcss/preflight.css";
