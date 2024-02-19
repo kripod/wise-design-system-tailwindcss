@@ -36,7 +36,7 @@ export function Field({ description, children }: FieldProps) {
             >
               {/* TODO: Use `h-1lh` on container and remove zero-width space */}
               &#8203; {/* Mimics `height: 1lh` on container */}
-              <AlertCircle />
+              <AlertCircle size={16} />
             </span>
             <span>{description}</span>
           </span>

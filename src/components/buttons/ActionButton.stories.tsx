@@ -10,7 +10,7 @@ export const Basic: Story<{
 }> = function ({ contents, disabled, onClick }) {
   return (
     <ActionButton disabled={disabled} onClick={onClick}>
-      <Profile /> {contents}
+      <Profile size={16} /> {contents}
     </ActionButton>
   );
 };

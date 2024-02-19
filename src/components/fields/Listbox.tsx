@@ -62,7 +62,7 @@ export function Listbox() {
         )}
       >
         <span className="truncate">{selectedPerson.name}</span>
-        <ChevronDown />
+        <ChevronDown size={16} />
       </ListboxBase.Button>
 
       <FloatingPortal>
