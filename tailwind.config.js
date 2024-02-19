@@ -274,5 +274,9 @@ module.exports = {
       45: "0.45", // TODO: Remove if needed
       100: "1",
     },
+    textUnderlineOffset: {
+      auto: "auto",
+      3: "3px",
+    },
   },
 };
