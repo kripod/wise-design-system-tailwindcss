@@ -3,7 +3,7 @@ import { clsx } from "clsx";
 
 import { CloseButton } from "../buttons/CloseButton";
 
-export type DialogProps = {
+export type ModalProps = {
   title: string;
   open: boolean;
   footer?: React.ReactNode;
@@ -12,14 +12,14 @@ export type DialogProps = {
   onClose: () => void;
 };
 
-export function Dialog({
+export function Modal({
   title,
   open,
   footer,
   size = "md",
   children,
   onClose,
-}: DialogProps) {
+}: ModalProps) {
   return (
     <DialogBase
       open={open}
