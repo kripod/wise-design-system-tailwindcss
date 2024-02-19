@@ -279,6 +279,7 @@ export default {
         DEFAULT: theme("colors.border.neutral"),
       }),
       minHeight: ({ theme }) => ({
+        12: theme("spacing.12"),
         18: theme("spacing.18"),
       }),
       outlineColor: ({ theme }) => ({

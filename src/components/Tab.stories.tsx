@@ -10,7 +10,7 @@ export const Basic = function ({
   return (
     <TabGroup defaultIndex={defaultIndex}>
       <TabList stretch={stretch}>
-        <Tab>Tab 1</Tab>
+        <Tab>Tab with long title</Tab>
         <Tab>Tab 2</Tab>
         <Tab>Tab 3</Tab>
         <Tab disabled>Tab 4</Tab>

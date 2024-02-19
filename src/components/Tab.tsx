@@ -44,8 +44,8 @@ export function TabList({ stretch, children }: TabListProps) {
   return (
     <TabBase.List
       className={clsx(
-        "grid h-12 grid-flow-col overflow-x-auto whitespace-nowrap border-b",
-        !stretch && "justify-start",
+        "grid min-h-12 grid-flow-col overflow-x-auto border-b",
+        stretch ? "auto-cols-fr" : "auto-cols-max",
       )}
     >
       {children}
