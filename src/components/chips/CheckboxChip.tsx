@@ -56,7 +56,6 @@ export function CheckboxChip({
             defaultChecked={defaultChecked}
             checked={controlledChecked}
             readOnly
-            hidden
           />
         </Offscreen>
       ) : null}
