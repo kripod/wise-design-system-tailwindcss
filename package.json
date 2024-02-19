@@ -26,7 +26,7 @@
     "@ladle/react": "2.4.4",
     "@transferwise/icons": "3.1.2",
     "@tsconfig/next": "1.0.3",
-    "@types/node": "16.11.65",
+    "@types/node": "16.11.66",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
     "@types/use-sync-external-store": "0.0.3",

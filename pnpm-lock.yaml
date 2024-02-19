@@ -6,7 +6,7 @@ specifiers:
   '@radix-ui/react-id': ^1.0.0
   '@transferwise/icons': 3.1.2
   '@tsconfig/next': 1.0.3
-  '@types/node': 16.11.65
+  '@types/node': 16.11.66
   '@types/react': 18.0.21
   '@types/react-dom': 18.0.6
   '@types/use-sync-external-store': 0.0.3
@@ -53,7 +53,7 @@ devDependencies:
   '@ladle/react': 2.4.4_biqbaboplfbrettd7655fr4n2y
   '@transferwise/icons': 3.1.2_react@18.2.0
   '@tsconfig/next': 1.0.3
-  '@types/node': 16.11.65
+  '@types/node': 16.11.66
   '@types/react': 18.0.21
   '@types/react-dom': 18.0.6
   '@types/use-sync-external-store': 0.0.3
@@ -1761,8 +1761,8 @@ packages:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
 
-  /@types/node/16.11.65:
-    resolution: {integrity: sha512-Vfz7wGMOr4jbQGiQHVJm8VjeQwM9Ya7mHe9LtQ264/Epf5n1KiZShOFqk++nBzw6a/ubgYdB9Od7P+MH/LjoWw==}
+  /@types/node/16.11.66:
+    resolution: {integrity: sha512-+xvMrGl3eAygKcf5jm+4zA4tbfEgmKM9o6/glTmN0RFVdu2VuFXMYYtRmuv3zTGCgAYMnEZLde3B7BTp+Yxcig==}
     dev: true
 
   /@types/prop-types/15.7.5:
