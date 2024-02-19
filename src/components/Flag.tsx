@@ -4,7 +4,8 @@ export interface FlagProps {
   /**
    * Two-letter country code (ISO 3166-1 alpha-2) or three-letter currency code (ISO 4217).
    */
-  code: string;
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  code: "unknown" | (string & {});
 
   /**
    * Width and height to reserve for the underlying image, in pixels. A detailed variant is shown from 150px and above.
@@ -12,10 +13,10 @@ export interface FlagProps {
   intrinsicSize?: number;
 }
 
-const defaultFlagName = "wise";
+const unknownFlagName = "wise";
 
 export function Flag({ code, intrinsicSize = 64 }: FlagProps) {
-  const [fallback, setFallback] = React.useState<"simple" | "default" | null>(
+  const [fallback, setFallback] = React.useState<"simple" | "unknown" | null>(
     null,
   );
   React.useEffect(() => {
@@ -24,11 +25,11 @@ export function Flag({ code, intrinsicSize = 64 }: FlagProps) {
 
   const detailed = intrinsicSize >= 150;
   const name =
-    fallback !== "default"
+    fallback !== "unknown"
       ? `${code.toLowerCase()}${
           fallback == null && detailed ? "-detailed" : ""
         }`
-      : defaultFlagName;
+      : unknownFlagName;
 
   return (
     <img
@@ -38,7 +39,7 @@ export function Flag({ code, intrinsicSize = 64 }: FlagProps) {
       height={intrinsicSize}
       onError={() => {
         setFallback((prev) =>
-          prev == null && detailed ? "simple" : "default",
+          prev == null && detailed ? "simple" : "unknown",
         );
       }}
     />
