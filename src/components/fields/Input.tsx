@@ -5,23 +5,25 @@ import type { Merge } from "ts-essentials";
 import { useResizeObserver } from "../../hooks/useResizeObserver";
 import { fieldControlClassNameBase, useFieldDescribedBy } from "./Field";
 
-const InputPaddingStartContext = React.createContext<
-  [
-    React.CSSProperties["paddingInlineStart"],
-    React.Dispatch<
-      React.SetStateAction<React.CSSProperties["paddingInlineStart"]>
-    >,
-  ]
->([undefined, () => {}]);
+type InputPaddingStartContextType = [
+  React.CSSProperties["paddingInlineStart"],
+  React.Dispatch<
+    React.SetStateAction<React.CSSProperties["paddingInlineStart"]>
+  >,
+];
 
-const InputPaddingEndContext = React.createContext<
-  [
-    React.CSSProperties["paddingInlineEnd"],
-    React.Dispatch<
-      React.SetStateAction<React.CSSProperties["paddingInlineEnd"]>
-    >,
-  ]
->([undefined, () => {}]);
+const InputPaddingStartContext =
+  React.createContext<InputPaddingStartContextType>([undefined, () => {}]);
+
+type InputPaddingEndContextType = [
+  React.CSSProperties["paddingInlineEnd"],
+  React.Dispatch<React.SetStateAction<React.CSSProperties["paddingInlineEnd"]>>,
+];
+
+const InputPaddingEndContext = React.createContext<InputPaddingEndContextType>([
+  undefined,
+  () => {},
+]);
 
 export type InputProps = Merge<
   Pick<
@@ -83,8 +85,8 @@ export const Input = React.forwardRef(function Input(
 });
 
 export type InputGroupProps = {
-  initialPaddingStart?: React.CSSProperties["paddingInlineStart"];
-  initialPaddingEnd?: React.CSSProperties["paddingInlineEnd"];
+  initialPaddingStart?: InputPaddingStartContextType[0];
+  initialPaddingEnd?: InputPaddingEndContextType[0];
   disabled?: boolean;
   children?: React.ReactNode;
 };
