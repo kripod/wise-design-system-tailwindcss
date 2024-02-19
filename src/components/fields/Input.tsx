@@ -110,14 +110,14 @@ export function InputGroup({
 export type InputAddonProps = {
   placement: "start" | "end";
   interactive?: boolean;
-  margin?: "none" | "sm" | "md";
+  padding?: "none" | "sm" | "md";
   children?: React.ReactNode;
 };
 
 export function InputAddon({
   placement,
   interactive = false,
-  margin = "md",
+  padding = "md",
   children,
 }: InputAddonProps) {
   const setInputPaddingStart = useSetAtom(inputPaddingStartAtom);
@@ -145,11 +145,11 @@ export function InputAddon({
         },
         interactive && "[&>*]:pointer-events-auto",
         {
-          "px-2": margin === "sm",
+          "px-2": padding === "sm",
           [clsx("px-4", {
             "pe-2": placement === "start",
             "ps-2": placement === "end",
-          })]: margin === "md",
+          })]: padding === "md",
         },
       )}
     >

@@ -95,7 +95,7 @@ export const WithSuffix: Story<{
           value={value}
           onChange={(event) => setValue(event.currentTarget.value)}
         />
-        <InputAddon placement="end" interactive margin="sm">
+        <InputAddon placement="end" interactive padding="sm">
           <ActionButton
             onClick={() => {
               navigator.clipboard.writeText(value);
