@@ -1,17 +1,17 @@
 import { CheckCircleFill, CrossCircleFill } from "@transferwise/icons";
 
-export type InstructionListProps = {
+export interface InstructionListProps {
   children?: React.ReactNode;
-};
+}
 
 export function InstructionList({ children }: InstructionListProps) {
   return <ul className="space-y-4">{children}</ul>;
 }
 
-export type InstructionProps = {
+export interface InstructionProps {
   sentiment: "negative" | "positive";
   children?: React.ReactNode;
-};
+}
 
 const IconBySentiment = {
   negative: () => (

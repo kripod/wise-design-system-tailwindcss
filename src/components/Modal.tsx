@@ -4,14 +4,14 @@ import { getResetClassName } from "css-homogenizer/reset-scoped";
 
 import { CloseButton } from "./buttons/CloseButton";
 
-export type ModalProps = {
+export interface ModalProps {
   title: string;
   open: boolean;
   footer?: React.ReactNode;
   size?: "sm" | "md" | "lg";
   children?: React.ReactNode;
   onClose: () => void;
-};
+}
 
 export function Modal({
   title,

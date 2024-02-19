@@ -3,7 +3,7 @@ import { clsx } from "clsx";
 
 import { Chip } from "./_Chip";
 
-export type RadioChipGroupProps<T = string> = {
+export interface RadioChipGroupProps<T = string> {
   name?: string;
   defaultValue?: T;
   selectedValue?: T;
@@ -12,7 +12,7 @@ export type RadioChipGroupProps<T = string> = {
   className?: string;
   children?: React.ReactNode;
   onChange?: (value: T) => void;
-};
+}
 
 export function RadioChipGroup<T = string>({
   name,
@@ -39,11 +39,11 @@ export function RadioChipGroup<T = string>({
   );
 }
 
-export type RadioChipProps<T = string> = {
+export interface RadioChipProps<T = string> {
   value: T;
   disabled?: boolean;
   children?: React.ReactNode;
-};
+}
 
 export function RadioChip<T = string>({
   value,

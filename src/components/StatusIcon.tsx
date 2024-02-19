@@ -7,14 +7,14 @@ import {
 } from "@transferwise/icons";
 import { clsx } from "clsx";
 
-type StatusIconPropsBase = {
+interface StatusIconPropsBase {
   size: 16 | 40 | 48;
-};
+}
 
-type StatusIconBaseProps = StatusIconPropsBase & {
+interface StatusIconBaseProps extends StatusIconPropsBase {
   Icon: React.ComponentType<Pick<InfoIconProps, "size">>;
   className?: string;
-};
+}
 
 function StatusIconBase({ size, Icon, className }: StatusIconBaseProps) {
   return (
@@ -34,9 +34,9 @@ function StatusIconBase({ size, Icon, className }: StatusIconBaseProps) {
   );
 }
 
-export type StatusIconProps = StatusIconPropsBase & {
+export interface StatusIconProps extends StatusIconPropsBase {
   sentiment: "neutral" | "negative" | "positive" | "warning";
-};
+}
 
 const IconBySentiment = {
   neutral: Info,
@@ -62,7 +62,7 @@ export function StatusIcon({ sentiment, ...restProps }: StatusIconProps) {
   );
 }
 
-export type CriticalBannerStatusIconProps = StatusIconPropsBase;
+export interface CriticalBannerStatusIconProps extends StatusIconPropsBase {}
 
 export function CriticalBannerStatusIcon(props: CriticalBannerStatusIconProps) {
   return (

@@ -4,12 +4,12 @@ import { clsx } from "clsx";
 
 import { Button } from "./buttons/_Button";
 
-export type DisclosureProps = {
+export interface DisclosureProps {
   summary: string;
   icon?: React.ReactNode;
   defaultOpen?: boolean;
   children?: React.ReactNode;
-};
+}
 
 export function Disclosure({
   summary,

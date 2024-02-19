@@ -10,9 +10,9 @@ const AnimatedLayoutGroupContext = React.createContext(
   new Map<LayoutId, DOMRect>(),
 );
 
-export type AnimatedLayoutGroupProps = {
+export interface AnimatedLayoutGroupProps {
   children?: React.ReactNode;
-};
+}
 
 export function AnimatedLayoutGroup({ children }: AnimatedLayoutGroupProps) {
   return (
@@ -24,14 +24,14 @@ export function AnimatedLayoutGroup({ children }: AnimatedLayoutGroupProps) {
   );
 }
 
-export type AnimatedLayoutProps = {
+export interface AnimatedLayoutProps {
   id: LayoutId;
   children?: ({
     ref,
   }: {
     ref: React.RefObject<HTMLElement>;
   }) => React.ReactNode;
-};
+}
 
 const defaultAnimationOptions: KeyframeAnimationOptions = {
   /* Adhere to the Tailwind config */

@@ -4,12 +4,10 @@ import { clsx } from "clsx";
 import { CloseButtonLabel } from "../../i18nTexts";
 import { Button, type ButtonPropsBase } from "./_Button";
 
-export type CloseButtonProps = Pick<
-  ButtonPropsBase,
-  "className" | "onClick"
-> & {
+export interface CloseButtonProps
+  extends Pick<ButtonPropsBase, "className" | "onClick"> {
   size?: "sm" | "md" | "lg";
-};
+}
 
 const iconSizeByComponentSize = {
   sm: 16,

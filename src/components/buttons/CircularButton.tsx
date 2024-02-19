@@ -4,10 +4,10 @@ import * as React from "react";
 
 import { Button, type ButtonPropsBase } from "./_Button";
 
-export type CircularButtonProps = ButtonPropsBase & {
+export interface CircularButtonProps extends ButtonPropsBase {
   icon: React.ReactNode;
   disabled?: boolean;
-};
+}
 
 export const CircularButton = React.forwardRef(function CircularButton(
   { icon, className, children, ...restProps }: CircularButtonProps,

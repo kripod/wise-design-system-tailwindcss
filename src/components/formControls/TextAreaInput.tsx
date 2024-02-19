@@ -6,25 +6,26 @@ import {
   useFormControlAriaAttributes,
 } from "./_FormControl";
 
-export type TextAreaInputProps = Pick<
-  React.ComponentPropsWithRef<"textarea">,
-  | "ref"
-  | "name"
-  | "autoComplete"
-  | "defaultValue"
-  | "value"
-  | "required"
-  | "minLength"
-  | "maxLength"
-  | "aria-invalid"
-  | "readOnly"
-  | "disabled"
-  | "rows"
-  | "className"
-  | "onChange"
-  | "onInvalid"
-  | "onSelect"
->;
+export interface TextAreaInputProps
+  extends Pick<
+    React.ComponentPropsWithRef<"textarea">,
+    | "ref"
+    | "name"
+    | "autoComplete"
+    | "defaultValue"
+    | "value"
+    | "required"
+    | "minLength"
+    | "maxLength"
+    | "aria-invalid"
+    | "readOnly"
+    | "disabled"
+    | "rows"
+    | "className"
+    | "onChange"
+    | "onInvalid"
+    | "onSelect"
+  > {}
 
 export const TextAreaInput = React.forwardRef(function TextAreaInput(
   { className, ...restProps }: TextAreaInputProps,

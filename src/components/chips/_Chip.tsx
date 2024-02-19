@@ -6,7 +6,7 @@ import { Button } from "../buttons/_Button";
 
 /* TODO: Consider having a single unified `ChipGroup` with a "listbox" role */
 
-export type ChipProps = React.ComponentPropsWithRef<"button">;
+export interface ChipProps extends React.ComponentPropsWithRef<"button"> {}
 
 export const Chip = React.forwardRef(function Chip(
   {

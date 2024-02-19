@@ -3,11 +3,11 @@ import * as React from "react";
 
 import { Button, type ButtonPropsBase } from "./_Button";
 
-export type ActionButtonProps = ButtonPropsBase & {
+export interface ActionButtonProps extends ButtonPropsBase {
   icon?: React.ReactNode;
   iconPlacement?: "start" | "end";
   disabled?: boolean;
-};
+}
 
 export const ActionButton = React.forwardRef(function ActionButton(
   {

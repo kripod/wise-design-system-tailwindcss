@@ -6,10 +6,10 @@ import { useControllableState } from "../../hooks/useControllableState";
 import { Offscreen } from "../Offscreen";
 import { Chip } from "./_Chip";
 
-export type CheckboxChipGroupProps = {
+export interface CheckboxChipGroupProps {
   className?: string;
   children?: React.ReactNode;
-};
+}
 
 export function CheckboxChipGroup({
   className,
@@ -20,7 +20,7 @@ export function CheckboxChipGroup({
   );
 }
 
-export type CheckboxChipProps = {
+export interface CheckboxChipProps {
   name?: string;
   value?: string;
   defaultChecked?: boolean;
@@ -28,7 +28,7 @@ export type CheckboxChipProps = {
   disabled?: boolean;
   children?: React.ReactNode;
   onChange?: (checked: boolean) => void;
-};
+}
 
 export function CheckboxChip({
   name,

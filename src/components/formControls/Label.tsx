@@ -1,9 +1,9 @@
 import { clsx } from "clsx";
 
-export type LabelProps = {
+export interface LabelProps {
   className?: string;
   children?: React.ReactNode;
-};
+}
 
 export function Label({ className, children }: LabelProps) {
   return (

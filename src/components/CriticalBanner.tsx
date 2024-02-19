@@ -1,10 +1,10 @@
 import { CriticalBannerStatusIcon } from "./StatusIcon";
 
-export type CriticalBannerProps = {
+export interface CriticalBannerProps {
   title: string;
   description?: string;
   action: React.ReactNode;
-};
+}
 
 export function CriticalBanner({
   title,

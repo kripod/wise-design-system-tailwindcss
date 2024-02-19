@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-export type OffscreenProps = {
+export interface OffscreenProps {
   children?: React.ReactNode;
-};
+}
 
 export function Offscreen({ children }: OffscreenProps) {
   const [documentFragment, setDocumentFragment] =

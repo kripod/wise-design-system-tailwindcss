@@ -1,4 +1,4 @@
-type Theme = {
+interface Theme {
   "color-scheme": "light" | "dark";
   "--color-content-primary": string;
   "--color-content-secondary": string;
@@ -37,7 +37,7 @@ type Theme = {
   "--color-contrast-overlay": string;
   "--color-base-light": string;
   "--color-base-dark": string;
-};
+}
 
 export const lightTheme = {
   "color-scheme": "light",

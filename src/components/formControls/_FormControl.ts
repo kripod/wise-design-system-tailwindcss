@@ -1,9 +1,9 @@
 import { clsx } from "clsx";
 import * as React from "react";
 
-export type FormControlPropsBase = {
+export interface FormControlPropsBase {
   size?: "auto" | "sm" | "md" | "xl";
-};
+}
 
 export function formControlClassNameBase({
   size = "auto",

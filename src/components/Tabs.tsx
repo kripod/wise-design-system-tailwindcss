@@ -6,12 +6,12 @@ import { parseBooleanish } from "../parseBooleanish";
 import { AnimatedLayout, AnimatedLayoutGroup } from "./AnimatedLayout";
 import { Button } from "./buttons/_Button";
 
-export type TabGroupProps = {
+export interface TabGroupProps {
   defaultIndex?: number;
   selectedIndex?: number;
   children?: React.ReactNode;
   onChange?: (index: number) => void;
-};
+}
 
 export function TabGroup({
   defaultIndex,
@@ -32,10 +32,10 @@ export function TabGroup({
   );
 }
 
-export type TabListProps = {
+export interface TabListProps {
   stretch?: boolean;
   children?: React.ReactNode;
-};
+}
 
 export function TabList({ stretch, children }: TabListProps) {
   return (
@@ -50,7 +50,7 @@ export function TabList({ stretch, children }: TabListProps) {
   );
 }
 
-type TabButtonProps = React.ComponentPropsWithRef<"button">;
+interface TabButtonProps extends React.ComponentPropsWithRef<"button"> {}
 
 const TabButton = React.forwardRef(function TabButton(
   {
@@ -81,10 +81,10 @@ const TabButton = React.forwardRef(function TabButton(
   );
 });
 
-export type TabProps = {
+export interface TabProps {
   disabled?: boolean;
   children?: React.ReactNode;
-};
+}
 
 export function Tab({ disabled, children }: TabProps) {
   return (
@@ -122,17 +122,17 @@ export function Tab({ disabled, children }: TabProps) {
   );
 }
 
-export type TabPanelsProps = {
+export interface TabPanelsProps {
   children?: React.ReactNode;
-};
+}
 
 export function TabPanels({ children }: TabPanelsProps) {
   return <TabBase.Panels>{children}</TabBase.Panels>;
 }
 
-export type TabPanelProps = {
+export interface TabPanelProps {
   children?: React.ReactNode;
-};
+}
 
 export function TabPanel({ children }: TabPanelProps) {
   return (

@@ -3,9 +3,9 @@ import * as React from "react";
 
 import { Button, type ButtonPropsBase } from "./_Button";
 
-export type TertiaryButtonProps = ButtonPropsBase & {
+export interface TertiaryButtonProps extends ButtonPropsBase {
   size?: "sm" | "md";
-};
+}
 
 export const TertiaryButton = React.forwardRef(function TertiaryButton(
   { size = "md", className, ...restProps }: TertiaryButtonProps,

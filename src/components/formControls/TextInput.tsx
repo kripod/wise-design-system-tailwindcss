@@ -25,13 +25,13 @@ type TextInputPaddingEndContextType = [
 const TextInputPaddingEndContext =
   React.createContext<TextInputPaddingEndContextType>([undefined, () => {}]);
 
-export type TextInputGroupProps = {
+export interface TextInputGroupProps {
   initialPaddingStart?: TextInputPaddingStartContextType[0];
   initialPaddingEnd?: TextInputPaddingEndContextType[0];
   disabled?: boolean;
   className?: string;
   children?: React.ReactNode;
-};
+}
 
 export function TextInputGroup({
   initialPaddingStart,
@@ -67,30 +67,31 @@ export function TextInputGroup({
   );
 }
 
-export type TextInputProps = Pick<
-  React.ComponentPropsWithRef<"input">,
-  | "ref"
-  | "inputMode"
-  | "name"
-  | "autoComplete"
-  | "defaultValue"
-  | "value"
-  | "required"
-  | "minLength"
-  | "maxLength"
-  | "pattern"
-  | "aria-invalid"
-  | "readOnly"
-  | "disabled"
-  | "className"
-  | "onChange"
-  | "onInvalid"
-  | "onSelect"
-> & {
+export interface TextInputProps
+  extends Pick<
+    React.ComponentPropsWithRef<"input">,
+    | "ref"
+    | "inputMode"
+    | "name"
+    | "autoComplete"
+    | "defaultValue"
+    | "value"
+    | "required"
+    | "minLength"
+    | "maxLength"
+    | "pattern"
+    | "aria-invalid"
+    | "readOnly"
+    | "disabled"
+    | "className"
+    | "onChange"
+    | "onInvalid"
+    | "onSelect"
+  > {
   type?: "email" | "password" | "tel" | "text" | "url";
   size?: "sm" | "md" | "xl";
   shape?: "rectangle" | "pill";
-};
+}
 
 export const TextInput = React.forwardRef(function TextInput(
   { size = "md", shape = "rectangle", className, ...restProps }: TextInputProps,
@@ -123,12 +124,12 @@ export const TextInput = React.forwardRef(function TextInput(
   );
 });
 
-export type TextInputAddonProps = {
+export interface TextInputAddonProps {
   placement: "start" | "end";
   interactive?: boolean;
   padding?: "none" | "sm" | "md";
   children?: React.ReactNode;
-};
+}
 
 export function TextInputAddon({
   placement,

@@ -10,9 +10,9 @@ import {
 } from "./_FormControl";
 import { Label } from "./Label";
 
-type FieldDescriptionProps = {
+interface FieldDescriptionProps {
   children?: React.ReactNode;
-};
+}
 
 function FieldDescription({ children }: FieldDescriptionProps) {
   const descriptionId = useFormControlDescribedBy();
@@ -38,13 +38,13 @@ function FieldDescription({ children }: FieldDescriptionProps) {
   );
 }
 
-export type FieldProps = {
+export interface FieldProps {
   label: React.ReactNode;
   hint?: React.ReactNode;
   error?: React.ReactNode;
   className?: string;
   children?: React.ReactNode;
-};
+}
 
 export function Field({ label, hint, error, className, children }: FieldProps) {
   const description = error ?? hint;

@@ -1,8 +1,8 @@
 import { Refresh } from "@transferwise/icons";
 
-export type SpinnerProps = {
+export interface SpinnerProps {
   size: 16 | 24;
-};
+}
 
 export function Spinner({ size }: SpinnerProps) {
   return (

@@ -1,8 +1,8 @@
-export type SnackbarProps = {
+export interface SnackbarProps {
   role?: "status" | "alert";
   text: string;
   action?: React.ReactNode;
-};
+}
 
 export function Snackbar({ role = "status", text, action }: SnackbarProps) {
   return (

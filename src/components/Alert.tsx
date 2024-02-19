@@ -1,12 +1,12 @@
 import { CloseButton } from "./buttons/CloseButton";
 import { StatusIcon } from "./StatusIcon";
 
-export type AlertProps = {
+export interface AlertProps {
   sentiment?: "neutral" | "negative" | "positive" | "warning";
   description: string;
   action?: React.ReactNode;
   onClose?: () => void;
-};
+}
 
 export function Alert({
   sentiment = "neutral",
