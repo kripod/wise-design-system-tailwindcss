@@ -1,12 +1,15 @@
 import { useState } from "react";
 
+import { ActionButton } from "@/components/ActionButton";
 import { Alert } from "@/components/Alert";
 
 export default function Page() {
   const [hideAlert, setHideAlert] = useState(false);
 
   return (
-    <div className="p-6">
+    <div className="space-y-6 p-6">
+      <ActionButton>Button label</ActionButton>
+
       {!hideAlert ? (
         <Alert
           onClose={() => {
