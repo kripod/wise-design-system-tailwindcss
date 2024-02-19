@@ -1,4 +1,5 @@
 export * from "./components/Alert";
+export { renderButtonAsLink } from "./components/buttons/_Button";
 export * from "./components/buttons/ActionButton";
 export * from "./components/buttons/CircularButton";
 export * from "./components/buttons/PrimaryButton";

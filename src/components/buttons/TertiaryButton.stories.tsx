@@ -1,5 +1,6 @@
 import type { Story } from "@ladle/react";
 
+import { renderButtonAsLink } from "./_Button";
 import { TertiaryButton } from "./TertiaryButton";
 
 export const Basic: Story<{
@@ -38,15 +39,17 @@ Basic.argTypes = {
 export const Link: Story<{
   text: string;
   size: "sm" | "md";
-}> = function ({ text, size }) {
+  disabled: boolean;
+}> = function ({ text, size, disabled }) {
   return (
     <TertiaryButton
       size={size}
-      render={({ className, children }) => (
+      disabled={disabled}
+      render={renderButtonAsLink(({ className, children }) => (
         <a href="#_" className={className}>
           {children}
         </a>
-      )}
+      ))}
     >
       {text}
     </TertiaryButton>
@@ -55,6 +58,7 @@ export const Link: Story<{
 
 Link.args = {
   text: "Click me",
+  disabled: false,
 };
 
 Link.argTypes = {
