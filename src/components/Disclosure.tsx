@@ -19,17 +19,17 @@ export function Disclosure({
     <DisclosureBase
       as="div"
       defaultOpen={initialOpen}
-      className="relative space-y-4 p-4 text-content-primary"
+      className="relative flex flex-col gap-y-4 p-4 text-content-primary"
     >
       {({ open }) => (
         <>
           <DisclosureBase.Button
-            className="flex w-full gap-x-4 text-lg font-semibold after:absolute after:inset-0 focus:outline-none focus-visible:ring"
+            className="flex gap-x-4 text-lg font-semibold after:absolute after:inset-0 focus:outline-none focus-visible:ring"
             style={{
               textAlign: "start", // TODO: Replace with `text-start`
             }}
           >
-            {icon} <span className="w-full">{summary}</span>{" "}
+            {icon} <span className="flex-1">{summary}</span>{" "}
             <ChevronDown
               size={24}
               className={clsx(
@@ -38,9 +38,9 @@ export function Disclosure({
               )}
             />
           </DisclosureBase.Button>
-          <DisclosureBase.Panel className="relative flex gap-x-4 text-base text-content-secondary">
+          <DisclosureBase.Panel className="relative -m-4 mt-0 flex gap-x-4 p-4 pt-0 text-base text-content-secondary">
             {icon != null ? <span className="invisible">{icon}</span> : null}
-            {children}
+            <div className="flex-1">{children}</div>
           </DisclosureBase.Panel>
         </>
       )}
