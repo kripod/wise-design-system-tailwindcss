@@ -21,11 +21,11 @@ export function Disclosure({
     <DisclosureBase
       as="div"
       defaultOpen={defaultOpen}
-      className="relative flex flex-col gap-y-4 p-4 text-content-primary"
+      className="flex flex-col gap-y-4 p-4"
     >
       <DisclosureBase.Button
         as={Button}
-        className="gap-x-4 text-lg font-semibold after:absolute after:inset-0"
+        className="relative flex gap-x-4 text-lg font-semibold text-content-primary after:absolute after:inset-0 after:-m-4"
         style={{
           textAlign: "start", // TODO: Replace with `text-start`
         }}
@@ -44,9 +44,9 @@ export function Disclosure({
           </>
         )}
       </DisclosureBase.Button>
-      <DisclosureBase.Panel className="relative -m-4 mt-0 flex gap-x-4 p-4 pt-0 text-base text-content-secondary">
+      <DisclosureBase.Panel className="flex gap-x-4 text-content-secondary">
         {icon != null ? <span className="invisible">{icon}</span> : null}
-        <div className="flex-1">{children}</div>
+        <div className="flex-1 text-base">{children}</div>
       </DisclosureBase.Panel>
     </DisclosureBase>
   );
