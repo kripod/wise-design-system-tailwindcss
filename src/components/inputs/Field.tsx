@@ -42,12 +42,18 @@ export function FieldDescription({
   const setFieldDescribedBy = useSetAtom(fieldDescribedByAtom);
   React.useEffect(() => {
     setFieldDescribedBy(id);
+    return () => {
+      setFieldDescribedBy(undefined);
+    };
   }, [id, setFieldDescribedBy]);
 
   const invalid = sentiment === "negative";
   const setFieldInvalid = useSetAtom(fieldInvalidAtom);
   React.useEffect(() => {
     setFieldInvalid(invalid);
+    return () => {
+      setFieldInvalid(undefined);
+    };
   }, [invalid, setFieldInvalid]);
 
   return (
