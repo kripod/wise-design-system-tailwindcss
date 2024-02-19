@@ -7,20 +7,20 @@ import { Button } from "./buttons/_Button";
 export type DisclosureProps = {
   summary: React.ReactNode;
   icon?: React.ReactNode;
-  initialOpen?: boolean;
+  defaultOpen?: boolean;
   children: React.ReactNode;
 };
 
 export function Disclosure({
   summary,
   icon,
-  initialOpen = false,
+  defaultOpen = false,
   children,
 }: DisclosureProps) {
   return (
     <DisclosureBase
       as="div"
-      defaultOpen={initialOpen}
+      defaultOpen={defaultOpen}
       className="relative flex flex-col gap-y-4 p-4 text-content-primary"
     >
       <DisclosureBase.Button

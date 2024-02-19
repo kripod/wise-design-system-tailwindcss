@@ -8,14 +8,14 @@ import {
 } from "./experimental/AnimatedLayout";
 
 export type TabGroupProps = {
-  initialIndex?: number;
+  defaultIndex?: number;
   selectedIndex?: number;
   onChange?: (index: number) => void;
   children: React.ReactNode;
 };
 
 export function TabGroup({
-  initialIndex = 0,
+  defaultIndex = 0,
   selectedIndex,
   onChange,
   children,
@@ -23,7 +23,7 @@ export function TabGroup({
   return (
     <AnimatedLayoutGroup>
       <TabBase.Group
-        defaultIndex={initialIndex}
+        defaultIndex={defaultIndex}
         selectedIndex={selectedIndex}
         onChange={onChange}
       >
