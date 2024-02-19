@@ -1,7 +1,8 @@
 import {
+  AlertCircleFill,
   CheckCircleFill,
   CrossCircleFill,
-  InfoCircle,
+  InfoCircleFill,
 } from "@transferwise/icons";
 
 import { CloseButton } from "./buttons/CloseButton";
@@ -17,10 +18,16 @@ const iconBySentiment: {
     [key: string]: never;
   }>;
 } = {
-  neutral: () => <InfoCircle />,
-  positive: () => <CheckCircleFill />,
-  negative: () => <CrossCircleFill />,
-  warning: () => <InfoCircle />,
+  neutral: () => <InfoCircleFill size={24} />,
+  positive: () => (
+    <CheckCircleFill size={24} className="text-sentiment-positive" />
+  ),
+  negative: () => (
+    <CrossCircleFill size={24} className="text-sentiment-negative" />
+  ),
+  warning: () => (
+    <AlertCircleFill size={24} className="text-sentiment-warning" />
+  ),
 };
 
 export function Alert({
@@ -29,18 +36,22 @@ export function Alert({
   children,
 }: AlertProps) {
   const Icon = iconBySentiment[sentiment];
-
   return (
     <div
       role="alert"
-      className="space-y-4 rounded-lg bg-background-neutral p-6"
+      className="grid grid-cols-[auto,1fr,auto] items-center gap-4 rounded-lg bg-background-neutral p-6 text-content-secondary"
     >
-      <div className="flex items-start justify-between">
-        <Icon />
-        {onClose != null ? <CloseButton size="sm" onClick={onClose} /> : null}
+      <Icon />
+      <div className="col-span-full row-start-2 space-y-2 text-sm desktop:col-span-1 desktop:row-start-auto">
+        {children}
       </div>
-
-      <div className="text-sm text-content-secondary">{children}</div>
+      {onClose != null ? (
+        <CloseButton
+          size="sm"
+          className="col-start-3 self-start"
+          onClick={onClose}
+        />
+      ) : null}
     </div>
   );
 }
