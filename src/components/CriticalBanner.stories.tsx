@@ -1,6 +1,6 @@
 import type { Story } from "@ladle/react";
 
-import { PrimaryButton } from "../index-canary";
+import { CriticalBannerPrimaryButton } from "../index-canary";
 import { CriticalBanner } from "./CriticalBanner";
 
 export const Basic: Story<{
@@ -12,7 +12,9 @@ export const Basic: Story<{
     <CriticalBanner
       title={title}
       description={description}
-      action={<PrimaryButton>{buttonText}</PrimaryButton>}
+      action={
+        <CriticalBannerPrimaryButton>{buttonText}</CriticalBannerPrimaryButton>
+      }
     />
   );
 };

@@ -35,3 +35,24 @@ export const PrimaryButton = React.forwardRef(function PrimaryButton(
     />
   );
 });
+
+export type CriticalBannerPrimaryButtonProps = ButtonPropsBase;
+
+export const CriticalBannerPrimaryButton = React.forwardRef(
+  function CriticalBannerPrimaryButton(
+    { className, ...restProps }: PrimaryButtonProps,
+    ref: React.ForwardedRef<HTMLButtonElement>,
+  ) {
+    return (
+      <Button
+        ref={ref}
+        size="sm"
+        className={clsx(
+          "rounded-full bg-contrast-overlay px-4 text-sentiment-negative hover:bg-sentiment-negative-hover hover:text-contrast-overlay focus-visible:outline-contrast-overlay active:bg-sentiment-negative-active active:text-contrast-overlay",
+          className,
+        )}
+        {...restProps}
+      />
+    );
+  },
+);
