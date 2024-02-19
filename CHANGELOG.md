@@ -1,5 +1,11 @@
 # @wise/design-system-tailwindcss
 
+## 0.2.1
+
+### Patch Changes
+
+- [`31b4660`](https://github.com/transferwise/design-system-web-tailwindcss/commit/31b46603176bbf718d9e7d87e3b88da57d7bc8f3) Thanks [@kripod-wise](https://github.com/kripod-wise)! - chore: fix missing type exports
+
 ## 0.2.0
 
 ### Minor Changes
