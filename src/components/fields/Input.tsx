@@ -1,6 +1,5 @@
 import { clsx } from "clsx";
 import * as React from "react";
-import type { Merge } from "ts-essentials";
 
 import { useResizeObserver } from "../../hooks/useResizeObserver";
 import { fieldControlClassNameBase, useFieldDescribedBy } from "./Field";
@@ -62,32 +61,29 @@ export function InputGroup({
   );
 }
 
-export type InputProps = Merge<
-  Pick<
-    React.ComponentPropsWithRef<"input">,
-    | "ref"
-    | "inputMode"
-    | "name"
-    | "defaultValue"
-    | "value"
-    | "required"
-    | "minLength"
-    | "maxLength"
-    | "pattern"
-    | "autoComplete"
-    | "readOnly"
-    | "disabled"
-    | "onChange"
-    | "onInvalid"
-    | "onSelect"
-  >,
-  {
-    type?: "email" | "password" | "tel" | "text" | "url";
-    size?: "sm" | "md" | "lg" | "xl";
-    shape?: "rectangle" | "pill";
-    "aria-invalid"?: boolean;
-  }
->;
+export type InputProps = Pick<
+  React.ComponentPropsWithRef<"input">,
+  | "ref"
+  | "inputMode"
+  | "name"
+  | "defaultValue"
+  | "value"
+  | "required"
+  | "minLength"
+  | "maxLength"
+  | "pattern"
+  | "autoComplete"
+  | "readOnly"
+  | "disabled"
+  | "onChange"
+  | "onInvalid"
+  | "onSelect"
+> & {
+  type?: "email" | "password" | "tel" | "text" | "url";
+  size?: "sm" | "md" | "lg" | "xl";
+  shape?: "rectangle" | "pill";
+  "aria-invalid"?: boolean;
+};
 
 export const Input = React.forwardRef(function Input(
   { size = "md", shape = "rectangle", ...restProps }: InputProps,
