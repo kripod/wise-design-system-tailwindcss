@@ -40,7 +40,7 @@ export const PrimaryButton = React.forwardRef(function PrimaryButton(
               "hover:bg-sentiment-negative-hover active:bg-sentiment-negative-active":
                 sentiment === "negative",
             }
-          : "cursor-not-allowed opacity-45 mix-blend-luminosity",
+          : "cursor-not-allowed opacity-50 grayscale",
         {
           "h-8 text-sm": size === "sm",
           "h-12 text-base": size === "md",
