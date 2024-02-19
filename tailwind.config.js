@@ -268,13 +268,16 @@ module.exports = {
         DEFAULT: theme("colors.border.neutral"),
       }),
       ringColor: ({ theme }) => ({
-        DEFAULT: theme("colors.interactive.accent.active"),
+        DEFAULT: theme("colors.interactive.primary.DEFAULT"),
       }),
       ringOffsetColor: ({ theme }) => ({
         DEFAULT: theme("colors.background.screen.DEFAULT"),
       }),
       ringOffsetWidth: {
         DEFAULT: defaultTheme.ringOffsetWidth[2],
+      },
+      ringWidth: {
+        DEFAULT: defaultTheme.ringWidth[2],
       },
       transitionTimingFunction: {
         DEFAULT: defaultTheme.transitionTimingFunction.out,
