@@ -31,7 +31,6 @@
     "!**/*.tsbuildinfo"
   ],
   "scripts": {
-    "prepare": "husky install",
     "dev": "ladle dev",
     "build": "npm-run-all --parallel build:*",
     "build:lib": "npm-run-all --parallel build:lib:css build:lib:js",
@@ -42,7 +41,7 @@
     "build:lib:js:watch": "pnpm run build:lib:js --watch",
     "build:stories": "ladle build",
     "start": "ladle preview",
-    "clean": "git clean --interactive -dx --exclude .env.local --exclude .env.*.local --exclude node_modules/ --exclude .husky/",
+    "clean": "git clean --interactive -dx --exclude .env.local --exclude .env.*.local --exclude node_modules/",
     "lint": "npm-run-all --parallel lint:js+ts lint:format lint:types",
     "lint:js+ts": "eslint --ext .js,.jsx,.mjs,.ts,.tsx --ignore-path .gitignore .",
     "lint:format": "prettier --check .",
@@ -89,8 +88,7 @@
     "babel-plugin-optimize-clsx": "2.6.2",
     "eslint": "8.48.0",
     "eslint-plugin-tailwindcss": "3.13.0",
-    "husky": "8.0.3",
-    "nano-staged": "0.8.0",
+    "lefthook": "1.4.11",
     "npm-run-all": "4.1.5",
     "postcss": "8.4.28",
     "postcss-cli": "10.1.0",
