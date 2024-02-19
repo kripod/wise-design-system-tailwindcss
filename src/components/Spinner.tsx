@@ -15,7 +15,7 @@ export function Spinner({ size = "md" }: SpinnerProps) {
   return (
     <Refresh
       size={iconSizeByComponentSize[size]}
-      className="animate-spin motion-reduce:animate-none"
+      className="inline-block animate-spin motion-reduce:animate-none"
     />
   );
 }
