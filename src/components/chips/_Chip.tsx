@@ -4,9 +4,9 @@ import * as React from "react";
 import { parseBooleanish } from "../../parseBooleanish";
 import { Button } from "../buttons/_Button";
 
-export type ChipButtonProps = React.ComponentPropsWithRef<"button">;
+export type ChipProps = React.ComponentPropsWithRef<"button">;
 
-export const ChipButton = React.forwardRef(function ChipButton(
+export const Chip = React.forwardRef(function Chip(
   {
     "aria-checked": ariaChecked = false,
     "aria-disabled": ariaDisabled,
@@ -14,7 +14,7 @@ export const ChipButton = React.forwardRef(function ChipButton(
     className,
     children,
     ...restProps
-  }: ChipButtonProps,
+  }: ChipProps,
   ref: React.ForwardedRef<HTMLButtonElement>,
 ) {
   const checked =

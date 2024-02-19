@@ -3,7 +3,7 @@ import { clsx } from "clsx";
 import * as React from "react";
 
 import { useControllableState } from "../../hooks/useControllableState";
-import { ChipButton } from "./_ChipButton";
+import { Chip } from "./_Chip";
 
 const CheckboxChipGroupContext = React.createContext({ disabled: false });
 
@@ -63,7 +63,7 @@ export function CheckboxChip({
           onChange={() => {}} // Suppress read-only field warning
         />
       ) : null}
-      <ChipButton
+      <Chip
         aria-checked={checked}
         disabled={disabled || groupDisabled}
         className="group/button gap-x-4"
@@ -83,7 +83,7 @@ export function CheckboxChip({
             )}
           />
         ) : null}
-      </ChipButton>
+      </Chip>
     </>
   );
 }

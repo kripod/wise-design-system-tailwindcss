@@ -1,6 +1,6 @@
 import { RadioGroup as RadioGroupBase } from "@headlessui/react";
 
-import { ChipButton } from "./_ChipButton";
+import { Chip } from "./_Chip";
 
 export type RadioChipGroupProps<T = string> = {
   name?: string;
@@ -49,7 +49,7 @@ export function RadioChip<T = string>({
   children,
 }: RadioChipProps<T>) {
   return (
-    <RadioGroupBase.Option as={ChipButton} value={value} disabled={disabled}>
+    <RadioGroupBase.Option as={Chip} value={value} disabled={disabled}>
       {children}
     </RadioGroupBase.Option>
   );
