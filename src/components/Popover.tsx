@@ -105,9 +105,7 @@ export function Popover({
             <div
               key={floatingKey} // Force inner state invalidation on open
               ref={refs.setFloating}
-              className={clsx(
-                "z-10 flex max-h-[--max-height] w-[--width] min-w-min flex-col rounded bg-background-elevated shadow-xl focus:outline-none",
-              )}
+              className="z-10 flex max-h-[--max-height] w-[--width] min-w-min flex-col rounded bg-background-elevated shadow-xl focus:outline-none"
               style={floatingStyles}
               {...getFloatingProps()}
             >
