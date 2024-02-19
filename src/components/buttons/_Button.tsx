@@ -2,6 +2,7 @@ import { clsx } from "clsx";
 import * as React from "react";
 import type { Merge } from "ts-essentials";
 
+import { parseBooleanish } from "../../parseBooleanish";
 import { Spinner } from "../Spinner";
 
 type ButtonAriaAttributes = Pick<
@@ -9,6 +10,7 @@ type ButtonAriaAttributes = Pick<
   | "aria-controls"
   | "aria-describedby"
   | "aria-details"
+  | "aria-disabled"
   | "aria-expanded"
   | "aria-haspopup"
   | "aria-keyshortcuts"
@@ -37,7 +39,8 @@ export const Button = React.forwardRef(function Button(
     size = "auto",
     equilateral = false,
     loading = false,
-    disabled = false,
+    "aria-disabled": ariaDisabledRaw = false,
+    disabled = parseBooleanish(ariaDisabledRaw),
     className,
     children,
     ...restProps

@@ -11,6 +11,7 @@ export type CircularButtonProps = Merge<
     | "size"
     | "equilateral"
     | "loading"
+    | "aria-disabled"
     | "aria-label"
     | "aria-labelledby"
     | "aria-pressed"

@@ -7,7 +7,11 @@ import { Button, ButtonProps } from "./_Button";
 export type SecondaryButtonProps = Merge<
   Omit<
     ButtonProps,
-    "equilateral" | "aria-label" | "aria-labelledby" | "aria-pressed"
+    | "equilateral"
+    | "aria-disabled"
+    | "aria-label"
+    | "aria-labelledby"
+    | "aria-pressed"
   >,
   {
     size?: "sm" | "md";

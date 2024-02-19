@@ -8,6 +8,7 @@ export type ActionButtonProps = Omit<
   | "size"
   | "equilateral"
   | "loading"
+  | "aria-disabled"
   | "aria-label"
   | "aria-labelledby"
   | "aria-pressed"
