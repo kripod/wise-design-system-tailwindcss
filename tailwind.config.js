@@ -30,6 +30,13 @@ module.exports = {
         DEFAULT: defaultTheme.transitionTimingFunction.out,
       },
     },
+    screens: {
+      xs: "480px",
+      sm: "576px",
+      md: "768px",
+      lg: "992px",
+      xl: "1200px",
+    },
     colors: ({ colors }) => ({
       inherit: colors.inherit,
       current: colors.current,
@@ -93,6 +100,7 @@ module.exports = {
     }),
     spacing: {
       px: "1px",
+      0: "0px",
       1: pxToRem(4),
       2: pxToRem(8),
       2.5: pxToRem(10),
@@ -113,12 +121,20 @@ module.exports = {
       30: pxToRem(120),
       32: pxToRem(128),
     },
+    borderColor: ({ theme }) => ({
+      ...theme("colors"),
+      DEFAULT: theme("colors.border.neutral", "currentColor"),
+    }),
     borderRadius: {
       none: "0px",
       DEFAULT: pxToRem(10),
       lg: pxToRem(16),
       xl: pxToRem(24),
       full: "9999px",
+    },
+    boxShadow: {
+      xl: "0 0 40px rgb(34 48 73 / 0.2)", // TODO: Change color
+      none: "none",
     },
     fontFamily: {
       sans: ['"Inter"', "ui-sans-serif", "system-ui"],

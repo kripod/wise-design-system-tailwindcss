@@ -2,13 +2,21 @@ import { useState } from "react";
 
 import { ActionButton } from "@/components/ActionButton";
 import { Alert } from "@/components/Alert";
+import { Dialog } from "@/components/Dialog";
 
 export default function Page() {
   const [hideAlert, setHideAlert] = useState(false);
+  const [showDialog, setShowDialog] = useState(false);
 
   return (
     <div className="space-y-6 p-6">
-      <ActionButton>Button label</ActionButton>
+      <ActionButton
+        onClick={() => {
+          setShowDialog(true);
+        }}
+      >
+        Open dialog
+      </ActionButton>
 
       {!hideAlert ? (
         <Alert
@@ -20,6 +28,33 @@ export default function Page() {
           the holidays.
         </Alert>
       ) : null}
+
+      <Dialog
+        title="Change this user’s role?"
+        open={showDialog}
+        onClose={() => {
+          setShowDialog(false);
+        }}
+      >
+        <div className="space-y-4">
+          <div>Hello, world!</div>
+          <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et impedit,
+            omnis cumque soluta culpa voluptatem vel, animi sed quisquam quaerat
+            iusto commodi natus, nam nostrum quod ratione sequi optio iure!
+          </div>
+          <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et impedit,
+            omnis cumque soluta culpa voluptatem vel, animi sed quisquam quaerat
+            iusto commodi natus, nam nostrum quod ratione sequi optio iure!
+          </div>
+          <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et impedit,
+            omnis cumque soluta culpa voluptatem vel, animi sed quisquam quaerat
+            iusto commodi natus, nam nostrum quod ratione sequi optio iure!
+          </div>
+        </div>
+      </Dialog>
     </div>
   );
 }
