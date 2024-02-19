@@ -95,7 +95,7 @@ const tailwindUtilityByNeptuneUtility = new Map([
   ["flex-wrap--lg", "lg:flex-wrap"],
   ["flex-wrap--xl", "xl:flex-wrap"],
   ["font-italic", "italic"],
-  ["font-weight-bold", "font-[number:bold]"],
+  ["font-weight-bold", "font-semibold"], // Not a 1:1 mapping on purpose
   ["font-weight-normal", "font-normal"],
   ["font-weight-semi-bold", "font-semibold"],
   ["gap-y-1", "gap-y-2"],
