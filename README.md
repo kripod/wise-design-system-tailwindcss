@@ -4,34 +4,68 @@ Experimental web implementation of Wise Design System, based upon Tailwind CSS.
 
 ## Usage
 
-### With `@transferwise/components`
+Firstly, install the package and its peer dependencies (besides React):
 
-1. Install the package:
+```sh
+pnpm add @wise/design-system-tailwindcss @transferwise/icons css-homogenizer
+```
 
-   ```sh
-   pnpm add @wise/design-system-tailwindcss
-   ```
+Fonts shall be loaded separately through `@transferwise/neptune-css`, by importing either of these styles:
 
-2. Import styles from your app’s root:
+- `@transferwise/neptune-css/dist/css/neptune-core.css`
+- `@transferwise/neptune-css/dist/css/neptune.css`
 
-   ```ts
-   import "@wise/design-system-tailwindcss/styles-legacy.css";
-   ```
+### With Tailwind CSS
 
-### Without `@transferwise/components`
+1. Add Tailwind-related optional peer dependencies:
 
-1. Install the package, optionally with its referenced fonts:
+```sh
+pnpm add -D tailwindcss @tailwindcss/container-queries
+```
 
-   ```sh
-   pnpm add @wise/design-system-tailwindcss @fontsource-variable/inter
-   ```
+2. Add `tailwind.config.ts` to your project root, following [this Next.js framework guide](https://tailwindcss.com/docs/guides/nextjs):
 
-2. Import styles from your app’s root:
+```ts
+import * as path from "node:path";
 
-   ```ts
-   import "@fontsource-variable/inter";
-   import "@wise/design-system-tailwindcss/styles.css";
-   ```
+import type { Config } from "tailwindcss";
+
+import tailwindBase from "@wise/design-system-tailwindcss/tailwind-base";
+
+export default {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx,mdx}",
+    path.join(
+      path.dirname(require.resolve("@wise/design-system-tailwindcss")),
+      "**/*.js",
+    ),
+  ],
+  presets: [tailwindBase],
+} satisfies Config;
+```
+
+The [Preflight](https://tailwindcss.com/docs/preflight) core plugin is disabled, as base styles are provided by [modern-normalize](https://github.com/sindresorhus/modern-normalize) and [css-homogenizer](https://github.com/kripod/css-homogenizer) below.
+
+3. Add `src/globals.css`:
+
+```css
+@import "@wise/design-system-tailwindcss/preflight.css";
+/* TODO: Use global reset to simplify styling once the app is ready for it */
+/* @import "css-homogenizer/reset.css"; */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+### Without Tailwind CSS
+
+Import legacy styles from your app’s root:
+
+```ts
+import "@wise/design-system-tailwindcss/preflight.css";
+import "@wise/design-system-tailwindcss/pregenerated.css";
+```
 
 ## Contributing
 

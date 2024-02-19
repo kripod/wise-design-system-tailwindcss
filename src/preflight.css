@@ -1,0 +1,21 @@
+@import "modern-normalize/modern-normalize.css";
+@import "css-homogenizer/reset-scoped.css";
+@import "@transferwise/icons/lib/styles/main.min.css";
+
+*,
+::before,
+::after {
+  border-width: 0;
+  border-style: solid;
+  border-color: theme("borderColor.DEFAULT", currentColor);
+}
+
+::before,
+::after {
+  --tw-content: "";
+}
+
+html {
+  @apply bg-background-screen font-sans text-base text-content-secondary;
+  -webkit-tap-highlight-color: transparent;
+}

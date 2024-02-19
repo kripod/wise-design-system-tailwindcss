@@ -1,7 +1,6 @@
-@import "modern-normalize/modern-normalize.css";
-@import "css-homogenizer/base.css";
 @import "@fontsource-variable/inter";
-@import "../src/styles-legacy.css";
+@import "../src/preflight.css";
+@import "../src/pregenerated.css";
 
 @layer base {
   body {

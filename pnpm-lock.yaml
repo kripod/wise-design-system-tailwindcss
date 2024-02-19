@@ -23,9 +23,6 @@ dependencies:
   clsx:
     specifier: ^2.0.0
     version: 2.0.0
-  css-homogenizer:
-    specifier: ^3.2.1
-    version: 3.2.1(react@18.2.0)
   merge-props:
     specifier: ^6.0.0
     version: 6.0.0
@@ -133,6 +130,9 @@ devDependencies:
   babel-plugin-optimize-clsx:
     specifier: 2.6.2
     version: 2.6.2
+  css-homogenizer:
+    specifier: 3.2.1
+    version: 3.2.1(react@18.2.0)
   eslint:
     specifier: 8.56.0
     version: 8.56.0
@@ -6240,7 +6240,7 @@ packages:
         optional: true
     dependencies:
       react: 18.2.0
-    dev: false
+    dev: true
 
   /css-prefers-color-scheme@9.0.1(postcss@8.4.32):
     resolution: {integrity: sha512-iFit06ochwCKPRiWagbTa1OAWCvWWVdEnIFd8BaRrgO8YrrNh4RAWUQTFcYX5tdFZgFl1DJ3iiULchZyEbnF4g==}

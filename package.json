@@ -15,8 +15,8 @@
       "import": "./dist/mod.mjs",
       "require": "./dist/mod.js"
     },
-    "./styles.css": "./dist/styles.css",
-    "./styles-legacy.css": "./dist/styles-legacy.css",
+    "./preflight.css": "./dist/preflight.css",
+    "./pregenerated.css": "./dist/pregenerated.css",
     "./tailwind-base": {
       "types": "./dist/tailwind-base.d.ts",
       "import": "./dist/tailwind-base.mjs",
@@ -39,7 +39,7 @@
     "build": "npm-run-all --parallel build:*",
     "build:lib": "npm-run-all --parallel build:lib:css build:lib:js",
     "build:lib:watch": "npm-run-all --parallel build:lib:*:watch",
-    "build:lib:css": "postcss src/styles.css src/styles-legacy.css --base src/ --dir dist/",
+    "build:lib:css": "postcss src/preflight.css src/pregenerated.css --base src/ --dir dist/",
     "build:lib:css:watch": "pnpm run build:lib:css --watch",
     "build:lib:js": "rollup --config --sourcemap",
     "build:lib:js:watch": "pnpm run build:lib:js --watch",
@@ -56,6 +56,7 @@
   "peerDependencies": {
     "@tailwindcss/container-queries": "^0.1",
     "@transferwise/icons": "^3.1",
+    "css-homogenizer": "^3.2.1",
     "react": "16.14 - 18",
     "react-dom": "16.14 - 18",
     "tailwindcss": "^3.4",
@@ -79,7 +80,6 @@
     "@radix-ui/react-id": "^1.0.1",
     "@react-aria/overlays": "^3.19.0",
     "clsx": "^2.0.0",
-    "css-homogenizer": "^3.2.1",
     "merge-props": "^6.0.0",
     "modern-normalize": "^2.0.0",
     "react-merge-refs": "^2.1.1",
@@ -117,6 +117,7 @@
     "@vitejs/plugin-react": "4.2.1",
     "@wise/eslint-config": "9.4.0",
     "babel-plugin-optimize-clsx": "2.6.2",
+    "css-homogenizer": "3.2.1",
     "eslint": "8.56.0",
     "eslint-plugin-tailwindcss": "3.13.0",
     "husky": "8.0.3",
