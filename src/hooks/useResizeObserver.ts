@@ -12,7 +12,7 @@ export function useResizeObserver(
       const resizeObserver = new ResizeObserver(([entry]) => {
         wrappedCallback(entry);
       });
-      resizeObserver.observe(ref.current);
+      resizeObserver.observe(ref.current, { box: "border-box" });
       return () => {
         resizeObserver.disconnect();
       };
