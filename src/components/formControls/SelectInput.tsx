@@ -12,22 +12,8 @@ import { clsx } from "clsx";
 import { getResetClassName } from "css-homogenizer/reset-scoped";
 import * as React from "react";
 
+import { getMonthNames } from "../../date";
 import { formControlClassNameBase } from "./_FormControl";
-
-const monthsInYear = 12;
-
-function getMonthNames(
-  locales: string | string[],
-  format: Intl.DateTimeFormatOptions["month"] = "long",
-) {
-  const dateTimeFormat = Intl.DateTimeFormat(locales, {
-    timeZone: "UTC",
-    month: format,
-  });
-  return Array.from({ length: monthsInYear }).map((_, index) =>
-    dateTimeFormat.format(new Date(0).setUTCMonth(index)),
-  );
-}
 
 const months = getMonthNames("en-US").map((name, index) => ({
   id: index + 1,
