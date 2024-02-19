@@ -2,7 +2,7 @@ import { clsx } from "clsx";
 import * as React from "react";
 
 import { useResizeObserver } from "../../hooks/useResizeObserver";
-import { fieldControlClassNameBase, useFieldDescribedBy } from "./Field";
+import { formControlClassNameBase, useFieldDescribedBy } from "./Field";
 
 type InputPaddingStartContextType = [
   React.CSSProperties["paddingInlineStart"],
@@ -99,7 +99,7 @@ export const Input = React.forwardRef(function Input(
       ref={ref}
       aria-describedby={fieldDescribedBy}
       className={clsx(
-        fieldControlClassNameBase({ size }),
+        formControlClassNameBase({ size }),
         "placeholder:text-content-tertiary enabled:group-hover/input:[&:not(:focus)]:ring-2 enabled:group-hover/input:[&:not(:focus)]:ring-interactive-secondary-hover",
         {
           rounded: shape === "rectangle",

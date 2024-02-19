@@ -11,7 +11,7 @@ import { ChevronDown } from "@transferwise/icons";
 import { clsx } from "clsx";
 import { useState } from "react";
 
-import { fieldControlClassNameBase } from "./Field";
+import { formControlClassNameBase } from "./Field";
 
 const people = [
   { id: 1, name: "Durward Reynolds", unavailable: false },
@@ -52,7 +52,7 @@ export function Listbox() {
       <ListboxBase.Button
         ref={refs.setReference}
         className={clsx(
-          fieldControlClassNameBase(),
+          formControlClassNameBase(),
           "inline-flex items-center justify-between gap-x-2 rounded text-start",
         )}
       >

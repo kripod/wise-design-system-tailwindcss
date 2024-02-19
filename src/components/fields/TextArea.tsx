@@ -1,7 +1,7 @@
 import { clsx } from "clsx";
 import * as React from "react";
 
-import { fieldControlClassNameBase, useFieldDescribedBy } from "./Field";
+import { formControlClassNameBase, useFieldDescribedBy } from "./Field";
 
 export type TextAreaProps = Pick<
   React.ComponentPropsWithRef<"textarea">,
@@ -34,7 +34,7 @@ export const TextArea = React.forwardRef(function TextArea(
       ref={ref}
       aria-describedby={fieldDescribedBy}
       className={clsx(
-        fieldControlClassNameBase(),
+        formControlClassNameBase(),
         "min-h-18 scroll-py-2 overscroll-none rounded placeholder:text-content-tertiary",
       )}
       {...restProps}

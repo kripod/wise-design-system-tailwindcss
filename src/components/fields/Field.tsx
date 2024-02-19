@@ -26,13 +26,13 @@ export function Field({ children }: FieldProps) {
   );
 }
 
-export type FieldControlPropsBase = {
+export type FormControlPropsBase = {
   size?: "auto" | "sm" | "md" | "xl";
 };
 
-export function fieldControlClassNameBase({
+export function formControlClassNameBase({
   size = "auto",
-}: FieldControlPropsBase = {}) {
+}: FormControlPropsBase = {}) {
   return clsx(
     "px-4 text-content-primary ring-1 ring-inset ring-interactive-secondary transition enabled:hover:ring-2 enabled:hover:ring-interactive-secondary-hover enabled:focus:outline-none enabled:focus:ring-3 enabled:focus:ring-interactive-primary disabled:bg-transparent disabled:opacity-45 disabled:mix-blend-luminosity aria-invalid:ring-2 aria-invalid:!ring-sentiment-negative",
     {
