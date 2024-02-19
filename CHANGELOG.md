@@ -1,5 +1,11 @@
 # @wise/design-system-tailwindcss
 
+## 0.1.4
+
+### Patch Changes
+
+- [#81](https://github.com/transferwise/design-system-web-tailwindcss/pull/81) [`1a491e3`](https://github.com/transferwise/design-system-web-tailwindcss/commit/1a491e3a6d605fd9d532e8357781386f8b4aca85) Thanks [@kripod-wise](https://github.com/kripod-wise)! - ci: remove a redundant step
+
 ## 0.1.3
 
 ### Patch Changes
