@@ -58,6 +58,7 @@ export function AnimatedLayout({ id, children }: AnimatedLayoutProps) {
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
+      window.clearTimeout(timeoutHandle);
     };
   }, []);
 
