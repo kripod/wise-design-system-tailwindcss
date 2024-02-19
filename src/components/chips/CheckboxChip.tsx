@@ -79,7 +79,7 @@ export function CheckboxChip({
           setChecked((prev) => !prev);
         }}
       >
-        {children}
+        <span className="flex-1">{children}</span>
         {checked ? (
           <CrossCircleFill
             size={16}
