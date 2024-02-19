@@ -2,9 +2,9 @@ import { clsx } from "clsx";
 import * as React from "react";
 
 import { parseBooleanish } from "../../parseBooleanish";
-import { Button, ButtonProps } from "../buttons/_Button";
+import { Button } from "../buttons/_Button";
 
-export type ChipButtonProps = ButtonProps;
+export type ChipButtonProps = React.ComponentPropsWithRef<"button">;
 
 export const ChipButton = React.forwardRef(function ChipButton(
   {
@@ -22,6 +22,7 @@ export const ChipButton = React.forwardRef(function ChipButton(
   return (
     <Button
       ref={ref}
+      size="sm"
       aria-checked={ariaChecked}
       aria-disabled={!disabled ? ariaDisabled : undefined}
       disabled={disabled}
