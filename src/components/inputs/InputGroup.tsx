@@ -153,7 +153,9 @@ function InputAddon({
           "justify-self-start": placement === "start",
           "justify-self-end": placement === "end",
         },
-        interactive && "[&>*]:pointer-events-auto",
+        interactive
+          ? "[&>*]:pointer-events-auto"
+          : "group-disabled/input:opacity-45 group-disabled/input:mix-blend-luminosity",
         {
           "px-2": padding === "sm",
           [clsx("px-4", {
