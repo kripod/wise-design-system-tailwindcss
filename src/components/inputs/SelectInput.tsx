@@ -168,7 +168,7 @@ const defaultRenderTrigger = (({
     disabled={disabled}
     className={className}
   >
-    <SelectInputTriggerButton>
+    <SelectInputTriggerButton as={ButtonInput}>
       {placeholderShown ? (
         <span className="truncate text-content-tertiary">{content}</span>
       ) : (
@@ -280,17 +280,14 @@ export function SelectInput<T = string>({
 }
 
 export type SelectInputTriggerButtonProps<
-  T extends React.ElementType = typeof ButtonInput,
+  T extends React.ComponentType | "button" = "button",
 > = {
   as?: T;
 } & React.ComponentPropsWithoutRef<T>;
 
 export function SelectInputTriggerButton<
-  T extends React.ElementType = typeof ButtonInput,
->({
-  as = ButtonInput as unknown as T,
-  ...restProps
-}: SelectInputTriggerButtonProps<T>) {
+  T extends React.ComponentType | "button" = "button",
+>({ as = "button" as T, ...restProps }: SelectInputTriggerButtonProps<T>) {
   const { ref, onClick, ...interactionProps } = React.useContext(
     SelectInputTriggerButtonPropsContext,
   );
