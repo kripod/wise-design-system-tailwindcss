@@ -8,7 +8,24 @@ import {
   fieldInvalidAtom,
 } from "./Field";
 
-export type TextAreaProps = React.ComponentPropsWithRef<"textarea">;
+export type TextAreaProps = Pick<
+  React.ComponentPropsWithRef<"textarea">,
+  | "ref"
+  | "name"
+  | "defaultValue"
+  | "value"
+  | "required"
+  | "minLength"
+  | "maxLength"
+  | "autoComplete"
+  | "readOnly"
+  | "disabled"
+  | "rows"
+  | "className"
+  | "onChange"
+  | "onInvalid"
+  | "onSelect"
+>;
 
 export const TextArea = React.forwardRef(function TextArea(
   { className, ...restProps }: TextAreaProps,
