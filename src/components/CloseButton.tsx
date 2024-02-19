@@ -8,7 +8,7 @@ export function CloseButton({ onClick }: CloseButtonProps) {
   return (
     <button
       type="button"
-      className="p-4 -m-4"
+      className="-m-4 p-4"
       onClick={() => {
         onClick?.();
       }}

@@ -34,9 +34,9 @@ export function Alert({
   return (
     <div
       role="alert"
-      className="rounded-lg bg-background-neutral p-6 space-y-4"
+      className="space-y-4 rounded-lg bg-background-neutral p-6"
     >
-      <div className="flex justify-between items-start">
+      <div className="flex items-start justify-between">
         <Icon />
         {onClose != null ? <CloseButton onClick={onClose} /> : null}
       </div>
