@@ -286,7 +286,7 @@ export const CustomTrigger: Story = function () {
         <SelectInputTriggerButton
           className={clsx(
             className,
-            "inline-flex items-center gap-x-1 text-base font-semibold text-content-link underline hover:text-content-link-hover active:text-content-link-active",
+            "inline-flex items-center gap-x-1 font-semibold text-content-link underline hover:text-content-link-hover active:text-content-link-active",
           )}
         >
           {content}

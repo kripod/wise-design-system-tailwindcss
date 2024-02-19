@@ -275,7 +275,7 @@ export function SelectInput<T = string>({
                         }
                       : undefined,
                   disabled: uiDisabled,
-                  className,
+                  className: clsx(className, "text-base"),
                 })}
               </SelectInputTriggerButtonPropsContext.Provider>
             )}
