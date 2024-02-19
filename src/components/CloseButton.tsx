@@ -13,7 +13,7 @@ export function CloseButton({ onClick }: CloseButtonProps) {
         onClick?.();
       }}
     >
-      <Cross />
+      <Cross title="Close" />
     </button>
   );
 }
