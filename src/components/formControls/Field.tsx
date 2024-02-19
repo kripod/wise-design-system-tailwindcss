@@ -33,7 +33,6 @@ function FieldDescription({ children }: FieldDescriptionProps) {
           <AlertCircle size={16} />
         </span>
       ) : null}
-
       <span className="flex-1">{children}</span>
     </span>
   );

@@ -55,7 +55,7 @@ export function SelectInput() {
         className={clsx(
           getResetClassName("button"),
           formControlClassNameBase({ size: "md" }),
-          "inline-flex items-center justify-between gap-x-2 rounded text-start",
+          "inline-flex items-center gap-x-2 rounded text-start",
         )}
       >
         <span className="flex-1 truncate">{selectedPerson.name}</span>
