@@ -15,8 +15,8 @@
       "import": "./dist/mod.mjs",
       "require": "./dist/mod.js"
     },
-    "./preflight.css": "./dist/preflight.css",
-    "./pregenerated.css": "./dist/pregenerated.css",
+    "./dist/preflight.css": "./dist/preflight.css",
+    "./dist/pregenerated.css": "./dist/pregenerated.css",
     "./tailwind-base": {
       "types": "./dist/tailwind-base.d.ts",
       "import": "./dist/tailwind-base.mjs",

@@ -73,7 +73,7 @@ Fonts shall be loaded separately through `@transferwise/neptune-css`, by importi
 
    ```css
    @import "tailwindcss/base";
-   @import "@wise/design-system-tailwindcss/preflight.css";
+   @import "@wise/design-system-tailwindcss/dist/preflight.css";
    /* TODO: Use global reset to simplify styling once the app is ready for it */
    /* @import "css-homogenizer/reset.css"; */
 
@@ -87,8 +87,8 @@ Fonts shall be loaded separately through `@transferwise/neptune-css`, by importi
 Import these styles from your app’s root:
 
 ```ts
-import "@wise/design-system-tailwindcss/preflight.css";
-import "@wise/design-system-tailwindcss/pregenerated.css";
+import "@wise/design-system-tailwindcss/dist/preflight.css";
+import "@wise/design-system-tailwindcss/dist/pregenerated.css";
 ```
 
 ## Contributing
