@@ -12,6 +12,7 @@ export const TertiaryButton = React.forwardRef(function TertiaryButton(
     size = "md",
     loading = false,
     disabled = false,
+    className,
     children,
     ...restProps
   }: TertiaryButtonProps,
@@ -28,6 +29,7 @@ export const TertiaryButton = React.forwardRef(function TertiaryButton(
         !disabled &&
           !loading &&
           "hover:text-interactive-primary-hover active:bg-background-screen-active active:text-interactive-primary-active",
+        className,
       )}
       {...restProps}
     >

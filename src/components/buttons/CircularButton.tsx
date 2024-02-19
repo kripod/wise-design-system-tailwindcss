@@ -9,12 +9,23 @@ export type CircularButtonProps = Omit<ButtonPropsBase, "loading"> & {
 };
 
 export const CircularButton = React.forwardRef(function CircularButton(
-  { icon, disabled = false, children, ...restProps }: CircularButtonProps,
+  {
+    icon,
+    disabled = false,
+    className,
+    children,
+    ...restProps
+  }: CircularButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement>,
 ) {
   const labelId = useId(); // TODO: Replace with the built-in hook in React 18
   return (
-    <span className="relative inline-flex flex-col items-center gap-y-2">
+    <span
+      className={clsx(
+        "relative inline-flex flex-col items-center gap-y-2",
+        className,
+      )}
+    >
       <Button
         ref={ref}
         aria-labelledby={labelId}

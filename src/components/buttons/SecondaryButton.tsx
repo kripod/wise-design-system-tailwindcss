@@ -14,6 +14,7 @@ export const SecondaryButton = React.forwardRef(function SecondaryButton(
     sentiment = "neutral",
     loading = false,
     disabled = false,
+    className,
     children,
     ...restProps
   }: SecondaryButtonProps,
@@ -42,6 +43,7 @@ export const SecondaryButton = React.forwardRef(function SecondaryButton(
                 sentiment === "negative",
             },
           ],
+        className,
       )}
       {...restProps}
     >

@@ -14,6 +14,7 @@ export const PrimaryButton = React.forwardRef(function PrimaryButton(
     sentiment = "neutral",
     loading = false,
     disabled = false,
+    className,
     children,
     ...restProps
   }: PrimaryButtonProps,
@@ -40,6 +41,7 @@ export const PrimaryButton = React.forwardRef(function PrimaryButton(
             "hover:bg-sentiment-negative-hover active:bg-sentiment-negative-active":
               sentiment === "negative",
           },
+        className,
       )}
       {...restProps}
     >

@@ -6,7 +6,7 @@ import { Button, ButtonPropsBase } from "./_Button";
 export type ActionButtonProps = Omit<ButtonPropsBase, "loading">;
 
 export const ActionButton = React.forwardRef(function ActionButton(
-  { disabled = false, children, ...restProps }: ActionButtonProps,
+  { disabled = false, className, children, ...restProps }: ActionButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement>,
 ) {
   return (
@@ -18,6 +18,7 @@ export const ActionButton = React.forwardRef(function ActionButton(
         "gap-x-2 rounded-full bg-interactive-accent px-3 font-semibold text-interactive-control",
         !disabled &&
           "hover:bg-interactive-accent-hover active:bg-interactive-accent-active",
+        className,
       )}
       {...restProps}
     >
