@@ -1,24 +1,53 @@
-export * from "./components/Alert";
+export { Alert, type AlertProps } from "./components/Alert";
 export { renderButtonAsLink } from "./components/buttons/_Button";
-export * from "./components/buttons/ActionButton";
-export * from "./components/buttons/CircularButton";
-// TODO: export * from "./components/buttons/PrimaryButton";
+export {
+  ActionButton,
+  type ActionButtonProps,
+} from "./components/buttons/ActionButton";
+export {
+  CircularButton,
+  type CircularButtonProps,
+} from "./components/buttons/CircularButton";
 export {
   PrimaryButton,
   type PrimaryButtonProps,
+  // TODO: CriticalBannerPrimaryButton, type CriticalBannerPrimaryButtonProps
 } from "./components/buttons/PrimaryButton";
-export * from "./components/buttons/SecondaryButton";
-export * from "./components/buttons/TertiaryButton";
-export * from "./components/chips/CheckboxChip";
-export * from "./components/chips/RadioChip";
+export {
+  SecondaryButton,
+  type SecondaryButtonProps,
+} from "./components/buttons/SecondaryButton";
+export {
+  TertiaryButton,
+  type TertiaryButtonProps,
+} from "./components/buttons/TertiaryButton";
+export {
+  CheckboxChip,
+  CheckboxChipGroup,
+  type CheckboxChipGroupProps,
+  type CheckboxChipProps,
+} from "./components/chips/CheckboxChip";
+export {
+  RadioChip,
+  RadioChipGroup,
+  type RadioChipGroupProps,
+  type RadioChipProps,
+} from "./components/chips/RadioChip";
 // TODO: export * from "./components/CriticalBanner";
 // TODO: export * from "./components/Disclosure";
-export * from "./components/inputs/Field";
+export { Field, type FieldProps } from "./components/inputs/Field";
 // TODO: export * from "./components/inputs/InputGroup";
 // TODO: export * from "./components/inputs/SelectInput";
-export * from "./components/inputs/TextAreaInput";
-// TODO: export * from "./components/inputs/TextInput";
+export {
+  TextAreaInput,
+  type TextAreaInputProps,
+} from "./components/inputs/TextAreaInput";
 export { TextInput, type TextInputProps } from "./components/inputs/TextInput";
-export * from "./components/Instruction";
+export {
+  Instruction,
+  InstructionList,
+  type InstructionListProps,
+  type InstructionProps,
+} from "./components/Instruction";
 // TODO: export * from "./components/Modal";
 // TODO: export * from "./components/Tabs";
