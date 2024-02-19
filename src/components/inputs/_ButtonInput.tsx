@@ -2,7 +2,7 @@ import { clsx } from "clsx";
 import * as React from "react";
 
 import { inputClassNameBase } from "./_Input";
-import { useInputAriaAttributes } from "./Field";
+import { useInputAttributes } from "./Field";
 import { useInputPaddings } from "./InputGroup";
 
 export interface ButtonInputProps
@@ -14,7 +14,7 @@ export const ButtonInput = React.forwardRef(function ButtonInput(
   { size = "md", className, style, ...restProps }: ButtonInputProps,
   ref: React.ForwardedRef<HTMLButtonElement>,
 ) {
-  const inputAriaAttributes = useInputAriaAttributes();
+  const inputAttributes = useInputAttributes();
   const inputPaddings = useInputPaddings();
 
   return (
@@ -27,7 +27,7 @@ export const ButtonInput = React.forwardRef(function ButtonInput(
         "inline-grid auto-cols-fr content-center rounded text-start",
       )}
       style={{ ...inputPaddings, ...style }}
-      {...inputAriaAttributes}
+      {...inputAttributes}
       {...restProps}
     />
   );

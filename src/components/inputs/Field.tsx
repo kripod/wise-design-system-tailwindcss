@@ -5,17 +5,20 @@ import * as React from "react";
 
 import { Label } from "./Label";
 
+const InputIdContext = React.createContext<string | undefined>(undefined);
+
 const InputDescribedByContext = React.createContext<string | undefined>(
   undefined,
 );
 
 const InputInvalidContext = React.createContext<boolean | undefined>(undefined);
 
-export function useInputAriaAttributes() {
+export function useInputAttributes() {
   return {
+    id: React.useContext(InputIdContext),
     "aria-describedby": React.useContext(InputDescribedByContext),
     "aria-invalid": React.useContext(InputInvalidContext),
-  } satisfies React.AriaAttributes;
+  } satisfies React.HTMLAttributes<HTMLElement>;
 }
 
 interface FieldDescriptionProps {
@@ -48,6 +51,7 @@ function FieldDescription({ children }: FieldDescriptionProps) {
 }
 
 export interface FieldProps {
+  id?: string;
   label: React.ReactNode;
   hint?: React.ReactNode;
   error?: React.ReactNode;
@@ -55,26 +59,38 @@ export interface FieldProps {
   children?: React.ReactNode;
 }
 
-export function Field({ label, hint, error, className, children }: FieldProps) {
+export function Field({
+  id,
+  label,
+  hint,
+  error,
+  className,
+  children,
+}: FieldProps) {
+  const fallbackInputId = useId();
+  const inputId = id ?? fallbackInputId;
+
   const description = error || hint;
   const descriptionId = useId();
 
   return (
-    <InputDescribedByContext.Provider
-      value={description ? descriptionId : undefined}
-    >
-      <InputInvalidContext.Provider value={Boolean(error)}>
-        <span className={clsx(className, "inline-flex flex-col gap-y-2")}>
-          <Label>
-            {label}
-            {children}
-          </Label>
+    <InputIdContext.Provider value={inputId}>
+      <InputDescribedByContext.Provider
+        value={description ? descriptionId : undefined}
+      >
+        <InputInvalidContext.Provider value={Boolean(error)}>
+          <span className={clsx(className, "inline-flex flex-col gap-y-2")}>
+            <Label htmlFor={inputId}>
+              {label}
+              {children}
+            </Label>
 
-          {description ? (
-            <FieldDescription>{description}</FieldDescription>
-          ) : null}
-        </span>
-      </InputInvalidContext.Provider>
-    </InputDescribedByContext.Provider>
+            {description ? (
+              <FieldDescription>{description}</FieldDescription>
+            ) : null}
+          </span>
+        </InputInvalidContext.Provider>
+      </InputDescribedByContext.Provider>
+    </InputIdContext.Provider>
   );
 }

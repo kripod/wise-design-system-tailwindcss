@@ -2,7 +2,7 @@ import { clsx } from "clsx";
 import * as React from "react";
 
 import { inputClassNameBase } from "./_Input";
-import { useInputAriaAttributes } from "./Field";
+import { useInputAttributes } from "./Field";
 import { useInputPaddings } from "./InputGroup";
 
 export interface TextInputProps
@@ -34,7 +34,7 @@ export const TextInput = React.forwardRef(function TextInput(
   { size = "md", shape = "rectangle", className, ...restProps }: TextInputProps,
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {
-  const inputAriaAttributes = useInputAriaAttributes();
+  const inputAttributes = useInputAttributes();
   const inputPaddings = useInputPaddings();
 
   return (
@@ -50,7 +50,7 @@ export const TextInput = React.forwardRef(function TextInput(
         },
       )}
       style={inputPaddings}
-      {...inputAriaAttributes}
+      {...inputAttributes}
       {...restProps}
     />
   );
