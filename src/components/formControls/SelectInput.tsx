@@ -26,7 +26,9 @@ export interface SelectInputProps<T = string> {
   defaultValue?: T;
   value?: T;
   renderValue?: (value: T) => React.ReactNode;
-  compareValues?: (keyof NonNullable<T> & string) | ((a: T, b: T) => boolean);
+  compareValues?:
+    | (keyof NonNullable<T> & string)
+    | ((a: T | undefined, b: T | undefined) => boolean);
   "aria-invalid"?: React.AriaAttributes["aria-invalid"];
   disabled?: boolean;
   className?: string;
