@@ -16,7 +16,7 @@ function pxToRem(value: number) {
 }
 
 export default {
-  content: ["./src/**/*.{js,jsx,mjs,ts,tsx,mts}"],
+  content: ["./src/**/*.{js,jsx,mjs,ts,tsx}"],
   safelist: [{ pattern: /^theme-/ }],
   future: {
     hoverOnlyWhenSupported: true,
