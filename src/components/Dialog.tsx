@@ -51,9 +51,7 @@ export function Dialog({
             />
           </DialogBase.Title>
 
-          <DialogBase.Description className="p-6">
-            {children}
-          </DialogBase.Description>
+          <div className="p-6">{children}</div>
 
           {footer != null ? <div className="p-6">{footer}</div> : null}
         </DialogBase.Panel>
