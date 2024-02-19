@@ -23,7 +23,12 @@
       }
     }
   },
+  "plugins": ["react-refresh"],
   "rules": {
+    "react-refresh/only-export-components": [
+      "warn",
+      { "allowConstantExport": true }
+    ],
     "tailwindcss/classnames-order": "off", // Enforced by Prettier
     "tailwindcss/no-custom-classname": "off" // Avoid distractions while typing
   },
