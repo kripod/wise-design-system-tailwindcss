@@ -55,16 +55,17 @@ export function CheckboxChip({
 
   return (
     <>
-      {name != null ? (
-        <input
-          type="checkbox"
-          name={name}
-          value={value}
-          defaultChecked={defaultChecked} // For controlled/uncontrolled warning
-          checked={controlledChecked}
-          hidden
-          onChange={() => {}} // Suppress read-only field warning
-        />
+      {/* Warn when mixing controlled and uncontrolled attributes */}
+      <input
+        type="checkbox"
+        defaultChecked={defaultChecked}
+        checked={controlledChecked}
+        hidden
+        onChange={() => {}} // Suppress read-only field warning
+      />
+
+      {name != null && checked ? (
+        <input type="hidden" name={name} value={value} />
       ) : null}
       <Chip
         aria-checked={checked}
