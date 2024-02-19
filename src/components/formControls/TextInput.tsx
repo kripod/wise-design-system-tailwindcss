@@ -7,50 +7,52 @@ import {
   useFormControlAriaAttributes,
 } from "./_FormControl";
 
-type TextInputPaddingStartContextType = [
+type InputPaddingStartContextType = [
   React.CSSProperties["paddingInlineStart"],
   React.Dispatch<
     React.SetStateAction<React.CSSProperties["paddingInlineStart"]>
   >,
 ];
 
-const TextInputPaddingStartContext =
-  React.createContext<TextInputPaddingStartContextType>([undefined, () => {}]);
+const InputPaddingStartContext =
+  React.createContext<InputPaddingStartContextType>([undefined, () => {}]);
 
-type TextInputPaddingEndContextType = [
+type InputPaddingEndContextType = [
   React.CSSProperties["paddingInlineEnd"],
   React.Dispatch<React.SetStateAction<React.CSSProperties["paddingInlineEnd"]>>,
 ];
 
-const TextInputPaddingEndContext =
-  React.createContext<TextInputPaddingEndContextType>([undefined, () => {}]);
+const InputPaddingEndContext = React.createContext<InputPaddingEndContextType>([
+  undefined,
+  () => {},
+]);
 
-export interface TextInputGroupProps {
-  initialPaddingStart?: TextInputPaddingStartContextType[0];
-  initialPaddingEnd?: TextInputPaddingEndContextType[0];
+export interface InputGroupProps {
+  initialPaddingStart?: InputPaddingStartContextType[0];
+  initialPaddingEnd?: InputPaddingEndContextType[0];
   disabled?: boolean;
   className?: string;
   children?: React.ReactNode;
 }
 
-export function TextInputGroup({
+export function InputGroup({
   initialPaddingStart,
   initialPaddingEnd,
   disabled,
   className,
   children,
-}: TextInputGroupProps) {
+}: InputGroupProps) {
   const [paddingStart, setPaddingStart] = React.useState(initialPaddingStart);
   const [paddingEnd, setPaddingEnd] = React.useState(initialPaddingEnd);
 
   return (
-    <TextInputPaddingStartContext.Provider
+    <InputPaddingStartContext.Provider
       value={React.useMemo(
         () => [paddingStart, setPaddingStart],
         [paddingStart],
       )}
     >
-      <TextInputPaddingEndContext.Provider
+      <InputPaddingEndContext.Provider
         value={React.useMemo(() => [paddingEnd, setPaddingEnd], [paddingEnd])}
       >
         <fieldset
@@ -62,8 +64,8 @@ export function TextInputGroup({
         >
           {children}
         </fieldset>
-      </TextInputPaddingEndContext.Provider>
-    </TextInputPaddingStartContext.Provider>
+      </InputPaddingEndContext.Provider>
+    </InputPaddingStartContext.Provider>
   );
 }
 
@@ -97,8 +99,8 @@ export const TextInput = React.forwardRef(function TextInput(
 ) {
   const formControlAriaAttributes = useFormControlAriaAttributes();
 
-  const [paddingStart] = React.useContext(TextInputPaddingStartContext);
-  const [paddingEnd] = React.useContext(TextInputPaddingEndContext);
+  const [paddingStart] = React.useContext(InputPaddingStartContext);
+  const [paddingEnd] = React.useContext(InputPaddingEndContext);
 
   return (
     <input
@@ -122,23 +124,21 @@ export const TextInput = React.forwardRef(function TextInput(
   );
 });
 
-export interface TextInputAddonProps {
+export interface InputAddonProps {
   placement: "start" | "end";
   interactive?: boolean;
   padding?: "none" | "sm" | "md";
   children?: React.ReactNode;
 }
 
-export function TextInputAddon({
+export function InputAddon({
   placement,
   interactive,
   padding = "md",
   children,
-}: TextInputAddonProps) {
-  const [, setTextInputPadding] = React.useContext(
-    placement === "start"
-      ? TextInputPaddingStartContext
-      : TextInputPaddingEndContext,
+}: InputAddonProps) {
+  const [, setInputPadding] = React.useContext(
+    placement === "start" ? InputPaddingStartContext : InputPaddingEndContext,
   );
 
   const ref = React.useRef<HTMLSpanElement>(null);
@@ -146,7 +146,7 @@ export function TextInputAddon({
     // TODO: Remove condition once most browsers support `borderBoxSize`
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (entry.borderBoxSize != null) {
-      setTextInputPadding(entry.borderBoxSize[0].inlineSize);
+      setInputPadding(entry.borderBoxSize[0].inlineSize);
     }
   });
 

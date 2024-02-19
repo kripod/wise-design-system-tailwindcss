@@ -5,7 +5,7 @@ import * as React from "react";
 import { ActionButton } from "../buttons/ActionButton";
 import { Field } from "./Field";
 import { Label } from "./Label";
-import { TextInput, TextInputAddon, TextInputGroup } from "./TextInput";
+import { InputAddon, InputGroup, TextInput } from "./TextInput";
 
 export const Basic: Story<{
   size: "sm" | "md" | "xl";
@@ -69,15 +69,15 @@ export const WithPrefix: Story<{
   return (
     <Label>
       Label
-      <TextInputGroup initialPaddingStart="3rem" disabled={disabled}>
-        <TextInputAddon placement="start">
+      <InputGroup initialPaddingStart="3rem" disabled={disabled}>
+        <InputAddon placement="start">
           <Search size={24} />
-        </TextInputAddon>
+        </InputAddon>
         <TextInput
           value={value}
           onChange={(event) => setValue(event.currentTarget.value)}
         />
-      </TextInputGroup>
+      </InputGroup>
     </Label>
   );
 };
@@ -95,13 +95,13 @@ export const WithSuffix: Story<{
   return (
     <Label>
       Label
-      <TextInputGroup initialPaddingEnd="4.75rem" disabled={disabled}>
+      <InputGroup initialPaddingEnd="4.75rem" disabled={disabled}>
         <TextInput
           ref={ref}
           value={value}
           onChange={(event) => setValue(event.currentTarget.value)}
         />
-        <TextInputAddon placement="end" interactive padding="sm">
+        <InputAddon placement="end" interactive padding="sm">
           <ActionButton
             onClick={async () => {
               await navigator.clipboard.writeText(value);
@@ -113,8 +113,8 @@ export const WithSuffix: Story<{
           >
             Copy
           </ActionButton>
-        </TextInputAddon>
-      </TextInputGroup>
+        </InputAddon>
+      </InputGroup>
     </Label>
   );
 };
