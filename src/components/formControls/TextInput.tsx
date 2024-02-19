@@ -56,7 +56,7 @@ export function TextInputGroup({
         <fieldset
           disabled={disabled}
           className={clsx(
-            "group/input inline-grid [&>*]:col-start-1 [&>*]:row-start-1",
+            "group/input inline-grid auto-cols-fr [&>*]:col-start-1 [&>*]:row-start-1",
             className,
           )}
         >
