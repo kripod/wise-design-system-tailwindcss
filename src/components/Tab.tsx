@@ -13,7 +13,7 @@ export type TabGroupProps = {
   defaultIndex?: number;
   selectedIndex?: number;
   onChange?: (index: number) => void;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 export function TabGroup({
@@ -37,7 +37,7 @@ export function TabGroup({
 
 export type TabListProps = {
   stretch?: boolean;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 export function TabList({ stretch = false, children }: TabListProps) {
@@ -86,7 +86,7 @@ const TabButton = React.forwardRef(function TabButton(
 
 export type TabProps = {
   disabled?: boolean;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 export function Tab({ disabled = false, children }: TabProps) {
@@ -126,7 +126,7 @@ export function Tab({ disabled = false, children }: TabProps) {
 }
 
 export type TabPanelsProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 export function TabPanels({ children }: TabPanelsProps) {
@@ -134,7 +134,7 @@ export function TabPanels({ children }: TabPanelsProps) {
 }
 
 export type TabPanelProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 export function TabPanel({ children }: TabPanelProps) {

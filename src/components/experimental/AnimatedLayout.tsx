@@ -11,7 +11,7 @@ const AnimatedLayoutGroupContext = React.createContext(
 );
 
 export type AnimatedLayoutGroupProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 export function AnimatedLayoutGroup({ children }: AnimatedLayoutGroupProps) {
@@ -26,7 +26,11 @@ export function AnimatedLayoutGroup({ children }: AnimatedLayoutGroupProps) {
 
 export type AnimatedLayoutProps = {
   id: LayoutId;
-  children: ({ ref }: { ref: React.RefObject<HTMLElement> }) => React.ReactNode;
+  children?: ({
+    ref,
+  }: {
+    ref: React.RefObject<HTMLElement>;
+  }) => React.ReactNode;
 };
 
 const defaultAnimationOptions: KeyframeAnimationOptions = {
@@ -103,5 +107,5 @@ export function AnimatedLayout({ id, children }: AnimatedLayoutProps) {
     }
   });
 
-  return <>{children({ ref: element })}</>;
+  return children != null ? <>{children({ ref: element })}</> : null;
 }

@@ -3,7 +3,7 @@ import * as React from "react";
 
 export type InstructionProps = {
   sentiment: "negative" | "positive";
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 const IconBySentiment: {
@@ -30,7 +30,7 @@ export function Instruction({ sentiment, children }: InstructionProps) {
 }
 
 export type InstructionListProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 export function InstructionList({ children }: InstructionListProps) {

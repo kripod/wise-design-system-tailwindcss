@@ -8,7 +8,7 @@ export type DisclosureProps = {
   summary: React.ReactNode;
   icon?: React.ReactNode;
   defaultOpen?: boolean;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 export function Disclosure({

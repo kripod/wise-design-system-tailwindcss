@@ -9,7 +9,7 @@ export type DialogProps = {
   footer?: React.ReactNode;
   size?: "sm" | "md" | "lg";
   onClose: () => void;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 export function Dialog({

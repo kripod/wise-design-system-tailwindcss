@@ -9,7 +9,7 @@ export type RadioChipGroupProps<T = string> = {
   disabled?: boolean;
   compareValues?: (keyof T & string) | ((a: T, b: T) => boolean);
   onChange?: (value: T) => void;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 export function RadioChipGroup<T = string>({
@@ -40,7 +40,7 @@ export function RadioChipGroup<T = string>({
 export type RadioChipProps<T = string> = {
   value: T;
   disabled?: boolean;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 export function RadioChip<T = string>({
