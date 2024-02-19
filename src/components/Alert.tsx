@@ -21,6 +21,12 @@ function IconWrapper({ className, children }: IconWrapperProps) {
   );
 }
 
+export type AlertProps = {
+  sentiment?: "neutral" | "negative" | "positive" | "warning";
+  children?: React.ReactNode;
+  onClose?: () => void;
+};
+
 const IconBySentiment = {
   neutral: () => (
     <IconWrapper className="bg-content-secondary">
@@ -44,12 +50,6 @@ const IconBySentiment = {
   ),
 } satisfies {
   [key in NonNullable<AlertProps["sentiment"]>]: React.ComponentType;
-};
-
-export type AlertProps = {
-  sentiment?: "neutral" | "negative" | "positive" | "warning";
-  children?: React.ReactNode;
-  onClose?: () => void;
 };
 
 export function Alert({
