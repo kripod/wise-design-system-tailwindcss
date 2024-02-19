@@ -20,27 +20,28 @@ Fonts shall be loaded separately through `@transferwise/neptune-css`, by importi
 1. Add build-time dependencies:
 
    ```sh
-   pnpm add -D tailwindcss @tailwindcss/container-queries postcss postcss-import postcss-preset-env
+   pnpm add -D tailwindcss @tailwindcss/container-queries postcss postcss-import postcss-url postcss-preset-env
    ```
 
-2. Add `postcss.config.js` to your project root:
+2. Add `.postcssrc.json` to your project root:
 
-   ```js
-   module.exports = {
-     plugins: {
+   ```json
+   {
+     "plugins": {
        "postcss-import": {},
+       "postcss-url": {},
        "tailwindcss/nesting": "postcss-nesting",
-       tailwindcss: {},
+       "tailwindcss": {},
        "postcss-preset-env": {
-         features: { "nesting-rules": false },
-       },
-     },
-   };
+         "features": { "nesting-rules": false }
+       }
+     }
+   }
    ```
 
    This config:
 
-   - Inlines `@import` statements
+   - Inlines `@import` statements, rebasing asset URLs when needed
    - Uses [official CSS Nesting syntax](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting) over the [Sass-like one](https://github.com/postcss/postcss-nested)
    - Provides extensive browser support via [Browserslist](https://github.com/browserslist/browserslist)
 

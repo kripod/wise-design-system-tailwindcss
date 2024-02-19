@@ -11,6 +11,7 @@ module.exports = {
       filter: (/** @type {string} */ url) =>
         !external.some((name) => name.test(url)),
     },
+    "postcss-url": {},
     "tailwindcss/nesting": "postcss-nesting",
     tailwindcss: {},
     "postcss-preset-env": {
