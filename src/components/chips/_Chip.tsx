@@ -14,7 +14,6 @@ export const Chip = React.forwardRef(function Chip(
     "aria-disabled": ariaDisabled,
     disabled = ariaDisabled != null ? parseBooleanish(ariaDisabled) : false,
     className,
-    children,
     ...restProps
   }: ChipProps,
   ref: React.ForwardedRef<HTMLButtonElement>,
@@ -35,8 +34,6 @@ export const Chip = React.forwardRef(function Chip(
         className,
       )}
       {...restProps}
-    >
-      {children}
-    </Button>
+    />
   );
 });

@@ -17,7 +17,7 @@ export type TabGroupProps = {
 };
 
 export function TabGroup({
-  defaultIndex = 0,
+  defaultIndex,
   selectedIndex,
   children,
   onChange,
@@ -40,7 +40,7 @@ export type TabListProps = {
   children?: React.ReactNode;
 };
 
-export function TabList({ stretch = false, children }: TabListProps) {
+export function TabList({ stretch, children }: TabListProps) {
   return (
     <TabBase.List
       className={clsx(
@@ -89,7 +89,7 @@ export type TabProps = {
   children?: React.ReactNode;
 };
 
-export function Tab({ disabled = false, children }: TabProps) {
+export function Tab({ disabled, children }: TabProps) {
   return (
     <span className="relative inline-flex items-center justify-center px-6">
       <TabBase

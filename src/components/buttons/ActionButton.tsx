@@ -8,21 +8,18 @@ export type ActionButtonProps = ButtonPropsBase & {
 };
 
 export const ActionButton = React.forwardRef(function ActionButton(
-  { disabled = false, className, children, ...restProps }: ActionButtonProps,
+  { className, ...restProps }: ActionButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement>,
 ) {
   return (
     <Button
       ref={ref}
       size="sm"
-      disabled={disabled}
       className={clsx(
         "rounded-full bg-interactive-accent px-3 text-interactive-control hover:bg-interactive-accent-hover active:bg-interactive-accent-active",
         className,
       )}
       {...restProps}
-    >
-      {children}
-    </Button>
+    />
   );
 });

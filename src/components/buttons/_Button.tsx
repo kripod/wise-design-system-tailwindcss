@@ -31,8 +31,8 @@ export type ButtonProps = Merge<
 export const Button = React.forwardRef(function Button(
   {
     size = "auto",
-    equilateral = false,
-    disabled = false,
+    equilateral,
+    disabled,
     className,
     children,
     render,

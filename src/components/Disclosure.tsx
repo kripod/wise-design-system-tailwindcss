@@ -14,7 +14,7 @@ export type DisclosureProps = {
 export function Disclosure({
   summary,
   icon,
-  defaultOpen = false,
+  defaultOpen,
   children,
 }: DisclosureProps) {
   return (

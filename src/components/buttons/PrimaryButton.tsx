@@ -12,9 +12,7 @@ export const PrimaryButton = React.forwardRef(function PrimaryButton(
   {
     size = "md",
     sentiment = "neutral",
-    disabled = false,
     className,
-    children,
     ...restProps
   }: PrimaryButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement>,
@@ -23,7 +21,6 @@ export const PrimaryButton = React.forwardRef(function PrimaryButton(
     <Button
       ref={ref}
       size={size}
-      disabled={disabled}
       className={clsx(
         "rounded-full px-4",
         {
@@ -35,8 +32,6 @@ export const PrimaryButton = React.forwardRef(function PrimaryButton(
         className,
       )}
       {...restProps}
-    >
-      {children}
-    </Button>
+    />
   );
 });

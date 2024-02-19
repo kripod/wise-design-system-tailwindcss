@@ -37,7 +37,7 @@ export type InputGroupProps = {
 export function InputGroup({
   initialPaddingStart,
   initialPaddingEnd,
-  disabled = false,
+  disabled,
   children,
 }: InputGroupProps) {
   const [paddingStart, setPaddingStart] = React.useState(initialPaddingStart);
@@ -127,7 +127,7 @@ export type InputAddonProps = {
 
 export function InputAddon({
   placement,
-  interactive = false,
+  interactive,
   padding = "md",
   children,
 }: InputAddonProps) {

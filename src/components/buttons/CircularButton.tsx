@@ -9,13 +9,7 @@ export type CircularButtonProps = ButtonPropsBase & {
 };
 
 export const CircularButton = React.forwardRef(function CircularButton(
-  {
-    icon,
-    disabled = false,
-    className,
-    children,
-    ...restProps
-  }: CircularButtonProps,
+  { icon, className, children, ...restProps }: CircularButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement>,
 ) {
   const labelId = React.useId();
@@ -31,7 +25,6 @@ export const CircularButton = React.forwardRef(function CircularButton(
         aria-labelledby={labelId}
         size="lg"
         equilateral
-        disabled={disabled}
         className="peer rounded-full bg-interactive-accent text-interactive-control after:absolute after:inset-0 hover:bg-interactive-accent-hover active:bg-interactive-accent-active"
         {...restProps}
       >

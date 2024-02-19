@@ -29,7 +29,7 @@ export function CheckboxChip({
   value = "on",
   defaultChecked,
   checked: controlledChecked,
-  disabled = false,
+  disabled,
   children,
   onChange,
 }: CheckboxChipProps) {

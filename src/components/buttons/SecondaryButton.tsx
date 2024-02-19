@@ -12,9 +12,7 @@ export const SecondaryButton = React.forwardRef(function SecondaryButton(
   {
     size = "md",
     sentiment = "neutral",
-    disabled = false,
     className,
-    children,
     ...restProps
   }: SecondaryButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement>,
@@ -23,7 +21,6 @@ export const SecondaryButton = React.forwardRef(function SecondaryButton(
     <Button
       ref={ref}
       size={size}
-      disabled={disabled}
       className={clsx(
         "rounded-full px-4 ring-1 ring-inset ring-current",
         {
@@ -35,8 +32,6 @@ export const SecondaryButton = React.forwardRef(function SecondaryButton(
         className,
       )}
       {...restProps}
-    >
-      {children}
-    </Button>
+    />
   );
 });

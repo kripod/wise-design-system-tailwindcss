@@ -16,7 +16,7 @@ export function RadioChipGroup<T = string>({
   name,
   defaultValue,
   selectedValue,
-  disabled = false,
+  disabled,
   compareValues,
   children,
   onChange,
@@ -44,7 +44,7 @@ export type RadioChipProps<T = string> = {
 
 export function RadioChip<T = string>({
   value,
-  disabled = false,
+  disabled,
   children,
 }: RadioChipProps<T>) {
   return (
