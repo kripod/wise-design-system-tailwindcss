@@ -9,8 +9,8 @@ import { CloseButton } from "./buttons/CloseButton";
 
 export type AlertProps = {
   sentiment?: "neutral" | "negative" | "positive" | "warning";
-  onClose?: () => void;
   children?: React.ReactNode;
+  onClose?: () => void;
 };
 
 const IconBySentiment: {
@@ -32,8 +32,8 @@ const IconBySentiment: {
 
 export function Alert({
   sentiment = "neutral",
-  onClose,
   children,
+  onClose,
 }: AlertProps) {
   const Icon = IconBySentiment[sentiment];
   return (

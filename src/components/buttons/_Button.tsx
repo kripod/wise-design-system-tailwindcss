@@ -11,8 +11,8 @@ export type ButtonPropsBase = Pick<
   | "aria-describedby"
   | "disabled"
   | "className"
-  | "onClick"
   | "children"
+  | "onClick"
 > & {
   loading?: boolean;
   render?: (
@@ -41,8 +41,8 @@ export const Button = React.forwardRef(function Button(
     loading = false,
     disabled = false,
     className,
-    render,
     children,
+    render,
     ...restProps
   }: ButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement>,

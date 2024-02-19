@@ -21,8 +21,8 @@ export type CheckboxChipProps = {
   defaultChecked?: boolean;
   checked?: boolean;
   disabled?: boolean;
-  onChange?: (checked: boolean) => void;
   children?: React.ReactNode;
+  onChange?: (checked: boolean) => void;
 };
 
 export function CheckboxChip({
@@ -31,8 +31,8 @@ export function CheckboxChip({
   defaultChecked,
   checked: controlledChecked,
   disabled = false,
-  onChange,
   children,
+  onChange,
 }: CheckboxChipProps) {
   const [checked, setChecked] = useControllableState(
     controlledChecked,

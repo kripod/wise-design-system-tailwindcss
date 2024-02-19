@@ -12,15 +12,15 @@ import {
 export type TabGroupProps = {
   defaultIndex?: number;
   selectedIndex?: number;
-  onChange?: (index: number) => void;
   children?: React.ReactNode;
+  onChange?: (index: number) => void;
 };
 
 export function TabGroup({
   defaultIndex = 0,
   selectedIndex,
-  onChange,
   children,
+  onChange,
 }: TabGroupProps) {
   return (
     <AnimatedLayoutGroup>
