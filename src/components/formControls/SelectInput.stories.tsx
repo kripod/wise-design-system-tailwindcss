@@ -22,7 +22,7 @@ export const Basic: Story<{
   return (
     <div className="flex flex-col">
       <SelectInput<Month>
-        placeholder="Month"
+        name="test"
         renderValue={(value) => value.name}
         disabled={disabled}
         onChange={onChange}
