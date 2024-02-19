@@ -1,19 +1,16 @@
-import "./styles.css";
+import "../src/styles.css";
 import "focus-visible";
 
 import { GlobalProvider, ThemeState } from "@ladle/react";
-import * as React from "react";
 
-import { useMedia } from "../src/hooks/useMedia";
+import { useColorSchemePreference } from "../src/hooks/useColorSchemePreference";
 
 export const Provider: GlobalProvider = function ({ globalState, children }) {
-  const prefersDarkTheme = useMedia("(prefers-color-scheme: dark)");
-  const theme = React.useMemo<"light" | "dark">(() => {
-    if (globalState.theme !== ThemeState.Auto) {
-      return globalState.theme;
-    }
-    return prefersDarkTheme ? "dark" : "light";
-  }, [globalState.theme, prefersDarkTheme]);
+  const colorSchemePreference = useColorSchemePreference();
+  const theme: "light" | "dark" =
+    globalState.theme !== ThemeState.Auto
+      ? globalState.theme
+      : colorSchemePreference;
 
   return (
     <div className={theme === "dark" ? "dark" : undefined}>{children}</div>
