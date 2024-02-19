@@ -311,7 +311,7 @@ const tailwindUtilityByNeptuneUtility = new Map([
   ["text-underline", "underline underline-offset-2"],
   ["text-uppercase", "uppercase"],
   // TODO: `text-warning` (only as a bg with `text-content-primary`)
-  ["text-word-break", "break-words"], // Not a 1:1 mapping
+  ["text-word-break", "break-words"],
   ["visible-xs", "hidden max-sm:block"],
   ["visible-sm", "hidden sm:max-md:block"],
   ["visible-md", "hidden md:max-lg:block"],
