@@ -8,7 +8,7 @@ export default {
       "@babel/preset-react",
       {
         runtime: "automatic",
-        importSource: "jsx-scoped-css-reset",
+        importSource: "css-homogenizer/reset-scoped/react",
       },
     ],
     "@babel/preset-typescript",

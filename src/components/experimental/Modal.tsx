@@ -1,5 +1,6 @@
 import { Dialog as DialogBase } from "@headlessui/react";
 import { clsx } from "clsx";
+import { getResetClassName } from "css-homogenizer/reset-scoped";
 
 import { CloseButton } from "../buttons/CloseButton";
 
@@ -47,7 +48,12 @@ export function Modal({
             )}
           >
             <div className="flex items-start justify-between gap-x-6 p-6">
-              <DialogBase.Title className="flex-1 text-lg font-semibold">
+              <DialogBase.Title
+                className={clsx(
+                  getResetClassName("h2"),
+                  "flex-1 text-lg font-semibold",
+                )}
+              >
                 {title}
               </DialogBase.Title>
               <CloseButton size="lg" onClick={onClose} />

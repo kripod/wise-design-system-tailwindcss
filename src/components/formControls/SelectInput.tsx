@@ -9,6 +9,7 @@ import {
 import { Listbox as ListboxBase } from "@headlessui/react";
 import { ChevronDown } from "@transferwise/icons";
 import { clsx } from "clsx";
+import { getResetClassName } from "css-homogenizer/reset-scoped";
 import * as React from "react";
 
 import { formControlClassNameBase } from "./_FormControl";
@@ -52,6 +53,7 @@ export function SelectInput() {
       <ListboxBase.Button
         ref={refs.setReference}
         className={clsx(
+          getResetClassName("button"),
           formControlClassNameBase({ size: "md" }),
           "inline-flex items-center justify-between gap-x-2 rounded text-start",
         )}
@@ -63,7 +65,10 @@ export function SelectInput() {
       <FloatingPortal>
         <ListboxBase.Options
           ref={refs.setFloating}
-          className="z-10 overflow-auto rounded bg-background-elevated p-2 shadow-xl focus:outline-none"
+          className={clsx(
+            getResetClassName("ul"),
+            "z-10 overflow-auto rounded bg-background-elevated p-2 shadow-xl focus:outline-none",
+          )}
           style={{
             ...floatingStyles,
             maxHeight,
