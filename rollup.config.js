@@ -20,7 +20,7 @@ module.exports = defineConfig({
     {
       format: "cjs",
       dir: outDir,
-      interop: "esModule",
+      interop: "auto",
     },
   ],
   external: [
