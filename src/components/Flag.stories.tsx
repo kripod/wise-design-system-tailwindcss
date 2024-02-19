@@ -4,12 +4,12 @@ import { Flag } from "./Flag";
 
 export const Basic: Story<{
   code: string;
-  size: number;
-}> = function ({ code, size }) {
-  return <Flag code={code} size={size} />;
+  intrinsicSize: number;
+}> = function ({ code, intrinsicSize }) {
+  return <Flag code={code} intrinsicSize={intrinsicSize} />;
 };
 
 Basic.args = {
   code: "USD",
-  size: 64,
+  intrinsicSize: 64,
 };

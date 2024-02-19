@@ -7,14 +7,14 @@ export interface FlagProps {
   code: string;
 
   /**
-   * Width and height to reserve for the underlying image, in pixels.
+   * Width and height to reserve for the underlying image, in pixels. A detailed variant is shown from 150px and above.
    */
-  size?: number;
+  intrinsicSize?: number;
 }
 
 const defaultFlagName = "wise";
 
-export function Flag({ code, size = 64 }: FlagProps) {
+export function Flag({ code, intrinsicSize = 64 }: FlagProps) {
   const [fallback, setFallback] = React.useState<"simple" | "default" | null>(
     null,
   );
@@ -25,7 +25,7 @@ export function Flag({ code, size = 64 }: FlagProps) {
   const name =
     fallback !== "default"
       ? `${code.toLowerCase()}${
-          fallback == null && size >= 150 ? "-detailed" : ""
+          fallback == null && intrinsicSize >= 150 ? "-detailed" : ""
         }`
       : defaultFlagName;
 
@@ -33,8 +33,8 @@ export function Flag({ code, size = 64 }: FlagProps) {
     <img
       src={`https://wise.com/web-art/assets/flags/${name}.svg`}
       alt=""
-      width={size}
-      height={size}
+      width={intrinsicSize}
+      height={intrinsicSize}
       onError={() => {
         setFallback((prev) => (prev == null ? "simple" : "default"));
       }}
