@@ -10,6 +10,6 @@ export const Basic: Story<{
 };
 
 Basic.args = {
-  code: "usd",
+  code: "USD",
   size: 64,
 };
