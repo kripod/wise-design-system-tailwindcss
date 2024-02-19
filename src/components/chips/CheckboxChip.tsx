@@ -68,6 +68,7 @@ export function CheckboxChip({
         <input type="hidden" name={name} value={value} />
       ) : null}
       <Chip
+        role="checkbox"
         aria-checked={checked}
         disabled={disabled || groupDisabled}
         className="group/button gap-x-4"
