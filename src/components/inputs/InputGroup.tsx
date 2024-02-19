@@ -35,25 +35,27 @@ interface InputGroupAddon {
   padding?: InputAddonProps["padding"];
 }
 
-function useInputPaddingState({
-  initialContentWidth,
-  padding = inputAddonDefaultPadding,
-}: Pick<InputGroupAddon, "initialContentWidth" | "padding"> = {}) {
-  return React.useState<InputPaddingContextType[0]>(() =>
-    initialContentWidth != null
-      ? `calc(${cssValueWithUnit(initialContentWidth)} + ${cssValueWithUnit(
-          inputAddonContentWidthAddendByPadding[padding],
-        )})`
-      : undefined,
-  );
-}
-
 export interface InputGroupProps {
   addonStart?: InputGroupAddon;
   addonEnd?: InputGroupAddon;
   disabled?: boolean;
   className?: string;
   children?: React.ReactNode;
+}
+
+function inputPaddingInitialState({
+  initialContentWidth,
+  padding = inputAddonDefaultPadding,
+}: Pick<
+  InputGroupAddon,
+  "initialContentWidth" | "padding"
+> = {}): () => InputPaddingContextType[0] {
+  return () =>
+    initialContentWidth != null
+      ? `calc(${cssValueWithUnit(initialContentWidth)} + ${cssValueWithUnit(
+          inputAddonContentWidthAddendByPadding[padding],
+        )})`
+      : undefined;
 }
 
 export function InputGroup({
@@ -63,8 +65,12 @@ export function InputGroup({
   className,
   children,
 }: InputGroupProps) {
-  const [paddingStart, setPaddingStart] = useInputPaddingState(addonStart);
-  const [paddingEnd, setPaddingEnd] = useInputPaddingState(addonEnd);
+  const [paddingStart, setPaddingStart] = React.useState(
+    inputPaddingInitialState(addonStart),
+  );
+  const [paddingEnd, setPaddingEnd] = React.useState(
+    inputPaddingInitialState(addonEnd),
+  );
 
   return (
     <InputPaddingStartContext.Provider
