@@ -1,5 +1,11 @@
 # @wise/design-system-tailwindcss
 
+## 0.5.2
+
+### Patch Changes
+
+- [`defe94d`](https://github.com/transferwise/design-system-web-tailwindcss/commit/defe94d8cf019003d7f54ef60520134b535634ad) Thanks [@kripod-wise](https://github.com/kripod-wise)! - fix(codemod): subsequent utility class matching
+
 ## 0.5.1
 
 ### Patch Changes
