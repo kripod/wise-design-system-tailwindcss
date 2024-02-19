@@ -5,6 +5,7 @@ export interface PolymorphicWithOverridesProps {
     as: React.ElementType;
     [key: string]: unknown;
   };
+  [key: string]: unknown;
 }
 
 export const PolymorphicWithOverrides = React.forwardRef(
