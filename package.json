@@ -24,7 +24,8 @@
   "types": "./dist/index.d.ts",
   "files": [
     "dist/",
-    "src/"
+    "src/",
+    "!**/*.tsbuildinfo"
   ],
   "scripts": {
     "prepare": "husky install",

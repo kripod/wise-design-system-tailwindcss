@@ -31,9 +31,8 @@ module.exports = defineConfig({
     typescript({
       exclude: ["**/*.stories.*"],
       filterRoot: rootDir,
-      outputToFilesystem: true, // Let `tsconfig.tsbuildinfo` be in the root
       compilerOptions: {
-        declarationDir: outDir,
+        outDir,
       },
     }),
     babel({
