@@ -45,7 +45,7 @@ export type RadioChipProps<T = string> = {
 
 export function RadioChip<T = string>({
   value,
-  disabled,
+  disabled = false,
   children,
 }: RadioChipProps<T>) {
   return (
