@@ -91,6 +91,14 @@ Fonts shall be loaded separately through `@transferwise/neptune-css`, by importi
    @import "tailwindcss/utilities";
    ```
 
+#### Migrating from Neptune CSS
+
+Legacy utility class names can be converted to their Tailwind counterparts with a codemod:
+
+```sh
+pnpm dlx jscodeshift --extensions js,jsx,ts,tsx,mdx --transform @wise/design-system-tailwindcss/codemods/neptune-css-utilities-to-tailwind.ts ./src/
+```
+
 ### Without Tailwind CSS (not recommended)
 
 Import these styles from your app’s root:
