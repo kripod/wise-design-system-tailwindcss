@@ -68,7 +68,7 @@ export function AnimatedLayout({ id, children }: AnimatedLayoutProps) {
 
   const reduceMotion = useReducedMotionPreference();
 
-  useResizeObserver(element, ([entry]) => {
+  useResizeObserver(element, (entry) => {
     const last = entry.target.getBoundingClientRect();
     const first = boundingClientRectById.get(id);
     boundingClientRectById.set(id, last);
