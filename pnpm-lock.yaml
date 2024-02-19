@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@next/bundle-analyzer': 12.2.5
+  '@transferwise/icons': ^3.1.0
   '@tsconfig/next': 1.0.2
   '@types/node': 16.11.56
   '@types/react': 18.0.18
@@ -47,6 +48,7 @@ dependencies:
   tailwindcss: 3.1.8
 
 devDependencies:
+  '@transferwise/icons': 3.1.0_react@18.2.0
   '@tsconfig/next': 1.0.2
   '@types/node': 16.11.56
   '@types/react': 18.0.18
@@ -481,6 +483,15 @@ packages:
     dependencies:
       tslib: 2.4.0
     dev: false
+
+  /@transferwise/icons/3.1.0_react@18.2.0:
+    resolution: {integrity: sha512-i9ED5v/WleJ1wXhbP2r6DEjiG2dhRZOHz2YQzpSMcUte2y30wsLKDcayNHUks7AyPlgBI52NRkfrq/IF6Ws2tg==}
+    peerDependencies:
+      angular: '*'
+      react: '*'
+    dependencies:
+      react: 18.2.0
+    dev: true
 
   /@tsconfig/next/1.0.2:
     resolution: {integrity: sha512-8/iOg2XM5hZqs6+2asWLv04vzZ8eue7xe/ZWvLZD1cTSpulkTZLFKP+WEDzHGEZYeWpR+JlStWBZZJ7SL4a6pA==}
@@ -3006,7 +3017,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /read-cache/1.0.0:
     resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}
