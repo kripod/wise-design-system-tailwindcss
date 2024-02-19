@@ -13,8 +13,8 @@ export const Basic: Story<{
   required: boolean;
   readOnly: boolean;
   disabled: boolean;
-  onClick: () => void;
-}> = function ({ size, shape, required, readOnly, disabled }) {
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
+}> = function ({ size, shape, required, readOnly, disabled, onChange }) {
   const [value, setValue] = React.useState("Text value");
 
   return (
@@ -30,7 +30,10 @@ export const Basic: Story<{
         required={required}
         readOnly={readOnly}
         disabled={disabled}
-        onChange={(event) => setValue(event.currentTarget.value)}
+        onChange={(event) => {
+          setValue(event.currentTarget.value);
+          onChange(event);
+        }}
       />
     </Field>
   );
@@ -53,11 +56,13 @@ Basic.argTypes = {
     defaultValue: "rectangle",
     control: { type: "radio" },
   },
+  onChange: {
+    action: "changed",
+  },
 };
 
 export const WithPrefix: Story<{
   disabled: boolean;
-  onClick: () => void;
 }> = function ({ disabled }) {
   const [value, setValue] = React.useState("Text value");
 
@@ -83,7 +88,6 @@ WithPrefix.args = {
 
 export const WithSuffix: Story<{
   disabled: boolean;
-  onClick: () => void;
 }> = function ({ disabled }) {
   const ref = React.useRef<HTMLInputElement>(null);
   const [value, setValue] = React.useState("Text value");

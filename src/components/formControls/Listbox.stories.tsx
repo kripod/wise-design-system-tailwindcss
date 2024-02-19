@@ -7,7 +7,6 @@ export const Basic: Story<{
   required: boolean;
   readOnly: boolean;
   disabled: boolean;
-  onClick: () => void;
 }> = function ({ required, readOnly, disabled }) {
   const [value, setValue] = React.useState("Text value");
 

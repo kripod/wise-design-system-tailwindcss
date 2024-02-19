@@ -8,8 +8,8 @@ export const Basic: Story<{
   required: boolean;
   readOnly: boolean;
   disabled: boolean;
-  onClick: () => void;
-}> = function ({ required, readOnly, disabled }) {
+  onChange: React.ChangeEventHandler<HTMLTextAreaElement>;
+}> = function ({ required, readOnly, disabled, onChange }) {
   const [value, setValue] = React.useState("Text value");
 
   return (
@@ -23,7 +23,10 @@ export const Basic: Story<{
         required={required}
         readOnly={readOnly}
         disabled={disabled}
-        onChange={(event) => setValue(event.currentTarget.value)}
+        onChange={(event) => {
+          setValue(event.currentTarget.value);
+          onChange(event);
+        }}
       />
     </Field>
   );
@@ -33,4 +36,10 @@ Basic.args = {
   required: true,
   readOnly: false,
   disabled: false,
+};
+
+Basic.argTypes = {
+  onChange: {
+    action: "changed",
+  },
 };
