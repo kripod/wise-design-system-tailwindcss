@@ -30,6 +30,7 @@ function roundByDPR(value: number) {
 export function Listbox() {
   const [selectedPerson, setSelectedPerson] = useState(people[0]);
   const { x, y, strategy, refs } = useFloating<HTMLButtonElement>({
+    placement: "bottom-start",
     middleware: [
       offset(8),
       flip(),
@@ -53,7 +54,7 @@ export function Listbox() {
 
       <ListboxBase.Options
         ref={refs.setFloating}
-        className="top-0 left-0 w-max rounded-md shadow-xl"
+        className="top-0 left-0 w-max rounded-md bg-background-elevated shadow-xl"
         style={{
           position: strategy,
           transform: `translate(${roundByDPR(x ?? 0)}px, ${roundByDPR(
