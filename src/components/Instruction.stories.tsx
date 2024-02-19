@@ -24,7 +24,7 @@ export const Basic = function () {
   );
 };
 
-export const ListItem: Story<{
+export const Single: Story<{
   text: string;
   sentiment: "negative" | "positive";
 }> = function ({ text, sentiment }) {
@@ -35,11 +35,11 @@ export const ListItem: Story<{
   );
 };
 
-ListItem.args = {
+Single.args = {
   text: "Do an initial money transfer",
 };
 
-ListItem.argTypes = {
+Single.argTypes = {
   sentiment: {
     options: ["negative", "positive"],
     defaultValue: "positive",
