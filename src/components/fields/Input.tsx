@@ -10,8 +10,8 @@ import {
   fieldInvalidAtom,
 } from "./Field";
 
-export const inputPaddingInlineStartAtom = atom<number | undefined>(undefined);
-export const inputPaddingInlineEndAtom = atom<number | undefined>(undefined);
+export const inputPaddingStartAtom = atom<number | undefined>(undefined);
+export const inputPaddingEndAtom = atom<number | undefined>(undefined);
 
 export type InputProps = Merge<
   Pick<
@@ -47,8 +47,8 @@ export const Input = React.forwardRef(function Input(
   const fieldDescribedBy = useAtomValue(fieldDescribedByAtom);
   const fieldInvalid = useAtomValue(fieldInvalidAtom);
 
-  const paddingInlineStart = useAtomValue(inputPaddingInlineStartAtom);
-  const paddingInlineEnd = useAtomValue(inputPaddingInlineEndAtom);
+  const inputPaddingStart = useAtomValue(inputPaddingStartAtom);
+  const inputPaddingEnd = useAtomValue(inputPaddingEndAtom);
 
   return (
     <input
@@ -64,8 +64,8 @@ export const Input = React.forwardRef(function Input(
         className,
       )}
       style={{
-        paddingInlineStart,
-        paddingInlineEnd,
+        paddingInlineStart: inputPaddingStart,
+        paddingInlineEnd: inputPaddingEnd,
       }}
       {...restProps}
     />
@@ -97,11 +97,11 @@ export function InputAddon({
   margin = "md",
   children,
 }: InputAddonProps) {
-  const setInputPaddingInlineStart = useSetAtom(inputPaddingInlineStartAtom);
-  const setInputPaddingInlineEnd = useSetAtom(inputPaddingInlineEndAtom);
+  const setInputPaddingStart = useSetAtom(inputPaddingStartAtom);
+  const setInputPaddingEnd = useSetAtom(inputPaddingEndAtom);
   const setInputPadding = !interactive
-    ? setInputPaddingInlineStart
-    : setInputPaddingInlineEnd;
+    ? setInputPaddingStart
+    : setInputPaddingEnd;
 
   const ref = React.useRef<HTMLSpanElement>(null);
   useResizeObserver(ref, (entry) => {
