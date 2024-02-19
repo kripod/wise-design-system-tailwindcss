@@ -36,6 +36,7 @@ jobs:
         with:
           package-manager: pnpm
           npm-token: ${{ secrets.NPM_TOKEN_AUTOMATION }}
+      - run: pnpm run build
       - name: Publish on npm
         run: |
           pnpm exec changeset version --snapshot experimental --snapshot-prerelease-template {tag}-${GITHUB_SHA:0:7}
