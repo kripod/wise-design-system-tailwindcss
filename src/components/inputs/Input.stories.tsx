@@ -1,8 +1,9 @@
 import type { Story } from "@ladle/react";
+import { Search } from "@transferwise/icons";
 import * as React from "react";
 
 import { Field, FieldDescription, Label } from "./Field";
-import { Input } from "./Input";
+import { Input, InputGroup } from "./Input";
 
 export const Basic: Story<{
   required: boolean;
@@ -35,5 +36,35 @@ export const Basic: Story<{
 Basic.args = {
   required: true,
   readOnly: false,
+  disabled: false,
+};
+
+export const WithPrefix: Story<{
+  disabled: boolean;
+  onClick: () => void;
+}> = function ({ disabled }) {
+  const [value, setValue] = React.useState("Text value");
+  return (
+    <Label>
+      Label
+      <InputGroup
+        prefix={
+          <span className="px-4">
+            <Search size={24} />
+          </span>
+        }
+        prefixWidth="3rem"
+      >
+        <Input
+          value={value}
+          disabled={disabled}
+          onChange={(event) => setValue(event.currentTarget.value)}
+        />
+      </InputGroup>
+    </Label>
+  );
+};
+
+WithPrefix.args = {
   disabled: false,
 };
