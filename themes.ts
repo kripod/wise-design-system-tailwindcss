@@ -80,6 +80,39 @@ export const lightTheme = {
   "--color-base-dark": "rgb(18 21 17)",
 } as const satisfies Theme;
 
+export const lightGreenTheme = {
+  ...lightTheme,
+  "--color-content-primary": "rgb(22 51 0)",
+  "--color-content-secondary": "rgb(22 51 0)",
+  "--color-content-tertiary": "transparent",
+  "--color-interactive-accent": "rgb(22 51 0)",
+  "--color-interactive-accent-hover": "rgb(13 31 0)",
+  "--color-interactive-accent-active": "rgb(14 15 12)",
+  "--color-interactive-secondary": "transparent",
+  "--color-interactive-secondary-hover": "transparent",
+  "--color-interactive-secondary-active": "transparent",
+  "--color-interactive-control": "rgb(159 232 112)",
+  "--color-interactive-control-hover": "rgb(187 239 154)",
+  "--color-interactive-control-active": "rgb(217 246 198)",
+  "--color-background-screen": "rgb(159 232 112)",
+  "--color-background-screen-hover": "transparent", // TODO: Validate
+  "--color-background-screen-active": "rgb(255 255 255 / 0.4)", // TODO: Validate
+  "--color-background-elevated": "transparent",
+  "--color-background-neutral": "rgb(255 255 255 / 0.3)", // TODO: Validate
+  "--color-background-neutral-hover": "transparent", // TODO: Validate
+  "--color-background-neutral-active": "transparent", // TODO: Validate
+  "--color-background-overlay": "transparent",
+  "--color-border-neutral": "transparent",
+  "--color-border-overlay": "transparent",
+  "--color-sentiment-negative": "transparent",
+  "--color-sentiment-negative-hover": "transparent",
+  "--color-sentiment-negative-active": "transparent",
+  "--color-sentiment-positive": "transparent",
+  "--color-sentiment-warning": "transparent",
+  "--color-contrast-theme": "rgb(22 51 0)",
+  "--color-base-dark": "rgb(22 51 0)",
+} as const satisfies Theme;
+
 export const darkTheme = {
   "color-scheme": "dark",
   "--color-content-primary": "rgb(243 245 241)",
@@ -119,4 +152,20 @@ export const darkTheme = {
   "--color-contrast-overlay": "rgb(18 21 17)",
   "--color-base-light": "rgb(255 255 255)",
   "--color-base-dark": "rgb(18 21 17)",
+} as const satisfies Theme;
+
+export const darkGreenTheme = {
+  ...darkTheme,
+  "--color-content-primary": "rgb(159 232 112)",
+  "--color-content-tertiary": "rgb(208 213 206)",
+  "--color-interactive-secondary": "rgb(203 217 195)",
+  "--color-interactive-secondary-hover": "rgb(217 227 211)",
+  "--color-interactive-secondary-active": "rgb(231 237 227)",
+  "--color-background-screen": "rgb(22 51 0)",
+  "--color-background-screen-hover": "rgb(255 255 255 / 0.1)",
+  "--color-background-screen-active": "rgb(255 255 255 / 0.2)",
+  "--color-background-elevated": "rgb(34 61 13)",
+  // TODO: Verify `--color-sentiment-negative`
+  "--color-contrast-overlay": "rgb(22 51 0)",
+  "--color-base-dark": "rgb(22 51 0)",
 } as const satisfies Theme;

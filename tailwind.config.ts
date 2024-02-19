@@ -3,7 +3,12 @@ import type { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
 import plugin from "tailwindcss/plugin";
 
-import { darkTheme, lightTheme } from "./themes";
+import {
+  darkGreenTheme,
+  darkTheme,
+  lightGreenTheme,
+  lightTheme,
+} from "./themes";
 
 function roundTo(value: number, fractionDigits: number) {
   return Number(
@@ -300,6 +305,8 @@ export default {
       addComponents({
         ".theme-light,\n.theme-dark .theme-invert": lightTheme,
         ".theme-dark,\n.theme-light .theme-invert,\n.theme-invert": darkTheme,
+        ".theme-light-green,\n.theme-dark-green .theme-invert": lightGreenTheme,
+        ".theme-dark-green,\n.theme-light-green .theme-invert": darkGreenTheme,
       });
     }),
   ],
