@@ -9,6 +9,10 @@ export function useMedia(query: string) {
         mediaQueryList.removeEventListener("change", onStoreChange);
       };
     },
-    () => window.matchMedia(query).matches,
+    () =>
+      typeof window !== "undefined"
+        ? window.matchMedia(query).matches
+        : undefined,
+    () => undefined,
   );
 }
