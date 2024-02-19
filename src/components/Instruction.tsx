@@ -6,17 +6,15 @@ export type InstructionProps = {
   children?: React.ReactNode;
 };
 
-const IconBySentiment: {
-  [key in InstructionProps["sentiment"]]: React.ComponentType<{
-    [key: string]: never;
-  }>;
-} = {
+const IconBySentiment = {
   negative: () => (
     <CrossCircleFill size={24} className="text-sentiment-negative" />
   ),
   positive: () => (
     <CheckCircleFill size={24} className="text-sentiment-positive" />
   ),
+} satisfies {
+  [key in InstructionProps["sentiment"]]: React.ComponentType;
 };
 
 export function Instruction({ sentiment, children }: InstructionProps) {

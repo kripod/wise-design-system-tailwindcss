@@ -21,11 +21,7 @@ function IconWrapper({ className, children }: IconWrapperProps) {
   );
 }
 
-const IconBySentiment: {
-  [key in NonNullable<AlertProps["sentiment"]>]: React.ComponentType<{
-    [key: string]: never;
-  }>;
-} = {
+const IconBySentiment = {
   neutral: () => (
     <IconWrapper className="bg-content-secondary">
       <Info size={32} className="text-contrast-overlay" />
@@ -46,6 +42,8 @@ const IconBySentiment: {
       <AlertIcon size={32} className="text-content-primary" />
     </IconWrapper>
   ),
+} satisfies {
+  [key in NonNullable<AlertProps["sentiment"]>]: React.ComponentType;
 };
 
 export type AlertProps = {
