@@ -30,7 +30,7 @@ export const Basic: Story<{
       >
         <SelectInput
           placeholder="Month"
-          renderValue={(value: Month) => value.name}
+          renderValue={(value) => value.name}
           disabled={disabled}
           onChange={onChange}
         >

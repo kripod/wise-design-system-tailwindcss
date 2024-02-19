@@ -19,7 +19,7 @@ import {
   useFormControlAriaAttributes,
 } from "./_FormControl";
 
-export interface SelectInputProps<T = string, R extends boolean = false> {
+export type SelectInputProps<T = string> = {
   name?: string;
   placeholder?: string;
   // TODO: multiple?: boolean;
@@ -29,15 +29,22 @@ export interface SelectInputProps<T = string, R extends boolean = false> {
   compareValues?:
     | (keyof NonNullable<T> & string)
     | ((a: T | undefined, b: T | undefined) => boolean);
-  required?: R;
   "aria-invalid"?: React.AriaAttributes["aria-invalid"];
   disabled?: boolean;
   className?: string;
   children?: React.ReactNode;
-  onChange?: (value: T | (R extends false ? undefined : never)) => void;
-}
+} & (
+  | {
+      required: true;
+      onChange?: (value: T) => void;
+    }
+  | {
+      required?: false;
+      onChange?: (value: T | undefined) => void;
+    }
+);
 
-export function SelectInput<T = string, R extends boolean = false>({
+export function SelectInput<T = string>({
   name,
   placeholder,
   defaultValue,
@@ -50,7 +57,7 @@ export function SelectInput<T = string, R extends boolean = false>({
   children,
   onChange,
   ...restProps
-}: SelectInputProps<T, R>) {
+}: SelectInputProps<T>) {
   const formControlAriaAttributes = useFormControlAriaAttributes();
 
   const [maxHeight, setMaxHeight] = React.useState<number>();
