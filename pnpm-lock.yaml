@@ -82,6 +82,9 @@ devDependencies:
   babel-plugin-optimize-clsx:
     specifier: 2.6.2
     version: 2.6.2
+  css-homogenizer:
+    specifier: 3.0.1
+    version: 3.0.1
   eslint:
     specifier: 8.42.0
     version: 8.42.0
@@ -3728,6 +3731,10 @@ packages:
       postcss: 8.4.24
       postcss-selector-parser: 6.0.13
       postcss-value-parser: 4.2.0
+    dev: true
+
+  /css-homogenizer@3.0.1:
+    resolution: {integrity: sha512-qnva0y0Gw5RAG34N3Vy8F2ZU9lF0MzzSxv83vvxQp2Kyrn5vj46EVfb7BFojpfiIRbeKtFfP6Ab72cjMzU5YdQ==}
     dev: true
 
   /css-prefers-color-scheme@8.0.2(postcss@8.4.24):
