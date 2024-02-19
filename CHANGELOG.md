@@ -1,5 +1,23 @@
 # @wise/design-system-tailwindcss
 
+## 0.4.0
+
+### Minor Changes
+
+- [#92](https://github.com/transferwise/design-system-web-tailwindcss/pull/92) [`7b53856`](https://github.com/transferwise/design-system-web-tailwindcss/commit/7b53856b3cc9bad3b979c805d2fad7a7f0626833) Thanks [@kripod-wise](https://github.com/kripod-wise)! - refactor(BottomSheet)!: require `onClose` prop
+
+- [`66f82a5`](https://github.com/transferwise/design-system-web-tailwindcss/commit/66f82a54bd9b45afe7c8a7e4fe9ebc1c16760bef) Thanks [@kripod-wise](https://github.com/kripod-wise)! - refactor!: css entry points
+
+### Patch Changes
+
+- [`1d96827`](https://github.com/transferwise/design-system-web-tailwindcss/commit/1d968276f4effa2cb55adade56411e9e0f2664d2) Thanks [@kripod-wise](https://github.com/kripod-wise)! - feat: expose Tailwind preset from package
+
+- [`66f82a5`](https://github.com/transferwise/design-system-web-tailwindcss/commit/66f82a54bd9b45afe7c8a7e4fe9ebc1c16760bef) Thanks [@kripod-wise](https://github.com/kripod-wise)! - feat: expose Tailwind CSS preset
+
+- [#92](https://github.com/transferwise/design-system-web-tailwindcss/pull/92) [`7b53856`](https://github.com/transferwise/design-system-web-tailwindcss/commit/7b53856b3cc9bad3b979c805d2fad7a7f0626833) Thanks [@kripod-wise](https://github.com/kripod-wise)! - perf(css): remove redundant scoped reset
+
+- [#92](https://github.com/transferwise/design-system-web-tailwindcss/pull/92) [`7b53856`](https://github.com/transferwise/design-system-web-tailwindcss/commit/7b53856b3cc9bad3b979c805d2fad7a7f0626833) Thanks [@kripod-wise](https://github.com/kripod-wise)! - fix(SelectInput): trigger button keyboard interactivity for space and down/up arrow keys
+
 ## 0.3.0
 
 ### Minor Changes
