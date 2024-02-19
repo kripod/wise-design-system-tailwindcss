@@ -1,5 +1,11 @@
 # @wise/design-system-tailwindcss
 
+## 0.1.2
+
+### Patch Changes
+
+- [#77](https://github.com/transferwise/design-system-web-tailwindcss/pull/77) [`fd65fca`](https://github.com/transferwise/design-system-web-tailwindcss/commit/fd65fca048117146d0d26e190aeb066cb3d8826d) Thanks [@kripod-wise](https://github.com/kripod-wise)! - ci: fix git credentials
+
 ## 0.1.1
 
 ### Patch Changes
