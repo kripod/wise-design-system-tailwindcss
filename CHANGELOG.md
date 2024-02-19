@@ -1,5 +1,11 @@
 # @wise/design-system-tailwindcss
 
+## 0.1.1
+
+### Patch Changes
+
+- [#75](https://github.com/transferwise/design-system-web-tailwindcss/pull/75) [`386a685`](https://github.com/transferwise/design-system-web-tailwindcss/commit/386a6851e945805f77612eca6514f04d90ef0a97) Thanks [@kripod-wise](https://github.com/kripod-wise)! - ci: fix npm distribution tags
+
 ## 0.1.0
 
 ### Minor Changes
