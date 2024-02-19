@@ -1,7 +1,9 @@
 import { Tab as TabBase } from "@headlessui/react";
 import { clsx } from "clsx";
+import * as React from "react";
 
-import { Button } from "./buttons/_Button";
+import { parseBooleanish } from "../parseBooleanish";
+import { Button, ButtonProps } from "./buttons/_Button";
 import {
   AnimatedLayout,
   AnimatedLayoutGroup,
@@ -42,15 +44,45 @@ export function TabList({ stretch = false, children }: TabListProps) {
   return (
     <TabBase.List
       className={clsx(
-        "relative grid grid-flow-col overflow-x-auto whitespace-nowrap",
+        "grid h-12 grid-flow-col overflow-x-auto whitespace-nowrap border-b",
         !stretch && "justify-start",
       )}
     >
-      <div className="absolute inset-0 border-b" />
       {children}
     </TabBase.List>
   );
 }
+
+type TabButtonProps = ButtonProps;
+
+export const TabButton = React.forwardRef(function TabButton(
+  {
+    "aria-selected": ariaSelectedRaw = false,
+    className,
+    children,
+    ...restProps
+  }: TabButtonProps,
+  ref: React.ForwardedRef<HTMLButtonElement>,
+) {
+  const ariaSelected = parseBooleanish(ariaSelectedRaw);
+  return (
+    <Button
+      ref={ref}
+      aria-selected={ariaSelectedRaw}
+      className={clsx(
+        "inline-grid text-base",
+        ariaSelected && "font-semibold tracking-1",
+        className,
+      )}
+      {...restProps}
+    >
+      <span className="col-start-1 row-start-1">{children}</span>
+      <span className="invisible col-start-1 row-start-1 font-semibold tracking-1">
+        {children}
+      </span>
+    </Button>
+  );
+});
 
 export type TabProps = {
   disabled?: boolean;
@@ -59,16 +91,16 @@ export type TabProps = {
 
 export function Tab({ disabled = false, children }: TabProps) {
   return (
-    <span className="relative inline-grid h-12 items-center px-6 text-base">
+    <span className="relative inline-flex items-center justify-center px-6">
       <TabBase
-        as={Button}
+        as={TabButton}
         disabled={disabled}
-        className="col-start-1 row-start-1 after:absolute after:inset-0 ui-selected:font-semibold ui-selected:tracking-1"
+        className="after:absolute after:inset-0"
         /* TODO: Remove this once focus management is improved in Headless UI */
-        onClick={() => {
+        onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
           requestAnimationFrame(() => {
-            if (document.activeElement instanceof HTMLElement) {
-              document.activeElement.blur();
+            if (event.target instanceof HTMLElement) {
+              event.target.blur();
             }
           });
         }}
@@ -89,9 +121,6 @@ export function Tab({ disabled = false, children }: TabProps) {
           </>
         )}
       </TabBase>
-      <span className="invisible col-start-1 row-start-1 font-semibold tracking-1">
-        {children}
-      </span>
     </span>
   );
 }
