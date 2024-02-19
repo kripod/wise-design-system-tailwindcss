@@ -82,14 +82,11 @@ function dedupeSelectInputOptionItem<T>(
   item: SelectInputOptionItem<T>,
   existingValues: Set<T>,
 ): SelectInputOptionItem<T | undefined> {
-  if (existingValues.has(item.value)) {
-    return {
-      ...item,
-      value: undefined,
-    };
+  if (!existingValues.has(item.value)) {
+    existingValues.add(item.value);
+    return item;
   }
-  existingValues.add(item.value);
-  return item;
+  return { ...item, value: undefined };
 }
 
 function dedupeSelectInputItems<T>(
@@ -113,6 +110,15 @@ function dedupeSelectInputItems<T>(
     }
     return item;
   });
+}
+
+function filterSelectInputOptionItem<T>(
+  item: SelectInputOptionItem<T>,
+  needle: string,
+) {
+  return inferSearchableStrings(item.filterMatchers ?? item.value).some(
+    (haystack) => haystack.includes(needle),
+  );
 }
 
 export interface SelectInputProps<T = string> {
@@ -483,7 +489,7 @@ function SelectInputOptions<T = string>({
           tabIndex={0}
           className="p-2 focus:outline-none"
         >
-          {(needle == null ? items : dedupeSelectInputItems(items)).map(
+          {(needle != null ? dedupeSelectInputItems(items) : items).map(
             (item, index) => (
               <SelectInputItemView
                 // eslint-disable-next-line react/no-array-index-key
@@ -517,10 +523,7 @@ function SelectInputItemView<T = string>({
     case "option": {
       if (
         item.value != null &&
-        (!needle ||
-          inferSearchableStrings(item.filterMatchers ?? item.value).some(
-            (haystack) => haystack.includes(needle),
-          ))
+        (needle == null || filterSelectInputOptionItem(item, needle))
       ) {
         return (
           <SelectInputOption value={item.value} disabled={item.disabled}>
