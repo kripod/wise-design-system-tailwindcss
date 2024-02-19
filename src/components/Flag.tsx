@@ -22,10 +22,11 @@ export function Flag({ code, intrinsicSize = 64 }: FlagProps) {
     setFallback(null);
   }, [code]);
 
+  const detailed = intrinsicSize >= 150;
   const name =
     fallback !== "default"
       ? `${code.toLowerCase()}${
-          fallback == null && intrinsicSize >= 150 ? "-detailed" : ""
+          fallback == null && detailed ? "-detailed" : ""
         }`
       : defaultFlagName;
 
@@ -36,7 +37,9 @@ export function Flag({ code, intrinsicSize = 64 }: FlagProps) {
       width={intrinsicSize}
       height={intrinsicSize}
       onError={() => {
-        setFallback((prev) => (prev == null ? "simple" : "default"));
+        setFallback((prev) =>
+          prev == null && detailed ? "simple" : "default",
+        );
       }}
     />
   );
