@@ -90,7 +90,7 @@ export const WithSuffix: Story<{
   return (
     <Label>
       Label
-      <InputGroup disabled={disabled}>
+      <InputGroup initialPaddingEnd="4.75rem" disabled={disabled}>
         <Input
           value={value}
           onChange={(event) => setValue(event.currentTarget.value)}
