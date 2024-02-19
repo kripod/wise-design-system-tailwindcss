@@ -11,6 +11,7 @@ export type CloseButtonProps = Merge<
     | "equilateral"
     | "loading"
     | "disabled"
+    | "children"
     | "aria-label"
     | "aria-labelledby"
     | "aria-pressed"
