@@ -11,19 +11,7 @@ export const Basic: Story<{
   onClick: () => void;
 }> = function ({ required, readOnly, disabled }) {
   const [value, setValue] = React.useState("Text value");
-  return (
-    <Field>
-      <Label>
-        Label
-        <Listbox />
-      </Label>
-      {value.length > 0 ? (
-        <FieldDescription>Information message.</FieldDescription>
-      ) : (
-        <FieldDescription sentiment="negative">Error message.</FieldDescription>
-      )}
-    </Field>
-  );
+  return <Listbox />;
 };
 
 Basic.args = {
