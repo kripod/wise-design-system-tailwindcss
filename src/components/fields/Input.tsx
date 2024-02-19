@@ -38,12 +38,18 @@ export function InputGroup({
   disabled = false,
   children,
 }: InputGroupProps) {
+  const [paddingStart, setPaddingStart] = React.useState(initialPaddingStart);
+  const [paddingEnd, setPaddingEnd] = React.useState(initialPaddingEnd);
+
   return (
     <InputPaddingStartContext.Provider
-      value={React.useState(initialPaddingStart)}
+      value={React.useMemo(
+        () => [paddingStart, setPaddingStart],
+        [paddingStart],
+      )}
     >
       <InputPaddingEndContext.Provider
-        value={React.useState(initialPaddingEnd)}
+        value={React.useMemo(() => [paddingEnd, setPaddingEnd], [paddingEnd])}
       >
         <fieldset
           disabled={disabled}
