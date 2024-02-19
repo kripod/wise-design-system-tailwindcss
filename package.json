@@ -6,9 +6,9 @@
     "design-system",
     "tailwindcss"
   ],
-  "homepage": "https://github.com/transferwise/design-system-web-tailwind#readme",
-  "bugs": "https://github.com/transferwise/design-system-web-tailwind/issues",
-  "repository": "transferwise/design-system-web-tailwind",
+  "homepage": "https://github.com/transferwise/design-system-web-tailwindcss#readme",
+  "bugs": "https://github.com/transferwise/design-system-web-tailwindcss/issues",
+  "repository": "transferwise/design-system-web-tailwindcss",
   "license": "MIT",
   "author": "Wise Payments Ltd.",
   "sideEffects": false,
