@@ -1,5 +1,5 @@
 import { Cross, CrossIconProps } from "@transferwise/icons";
-import clsx from "clsx";
+import { clsx } from "clsx";
 
 export type CloseButtonProps = {
   size?: "md" | "lg";

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import * as React from "react";
 
 import { ActionButton } from "@/components/ActionButton";
 import { Alert } from "@/components/Alert";
@@ -6,8 +6,8 @@ import { Dialog } from "@/components/Dialog";
 import { Input } from "@/components/Input";
 
 export default function Page() {
-  const [hideAlert, setHideAlert] = useState(false);
-  const [showDialog, setShowDialog] = useState(false);
+  const [hideAlert, setHideAlert] = React.useState(false);
+  const [showDialog, setShowDialog] = React.useState(false);
 
   return (
     <div className="space-y-6 p-6">

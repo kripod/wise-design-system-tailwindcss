@@ -3,7 +3,6 @@ import {
   CrossCircleFill,
   InfoCircle,
 } from "@transferwise/icons";
-import type React from "react";
 
 import { CloseButton } from "./CloseButton";
 

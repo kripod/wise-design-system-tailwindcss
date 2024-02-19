@@ -1,5 +1,5 @@
 import { Dialog as DialogBase } from "@headlessui/react";
-import clsx from "clsx";
+import { clsx } from "clsx";
 
 import { CloseButton } from "./CloseButton";
 
