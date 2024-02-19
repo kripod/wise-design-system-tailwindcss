@@ -264,8 +264,10 @@ export const Currencies: Story<{
           icon={<Flag code={currency.code} intrinsicSize={24} />}
         />
       )}
-      renderFooter={(normalizedQuery) =>
-        normalizedQuery != null && normalizedQuery.length === 3 ? (
+      renderFooter={({ resultsEmpty, normalizedQuery }) =>
+        resultsEmpty &&
+        normalizedQuery != null &&
+        /^[a-z]{3}$/u.test(normalizedQuery) ? (
           <>
             It’s not possible use {normalizedQuery.toUpperCase()} yet.{" "}
             <InlineLink href="#_">Email me when it’s available.</InlineLink>

@@ -144,9 +144,10 @@ export interface SelectInputProps<T = string> {
     value: NonNullable<T>,
     withinTrigger: boolean,
   ) => React.ReactNode;
-  renderFooter?: (
-    normalizedQuery: string | null | undefined,
-  ) => React.ReactNode;
+  renderFooter?: (args: {
+    resultsEmpty: boolean;
+    normalizedQuery: string | null | undefined;
+  }) => React.ReactNode;
   renderTrigger?: (args: {
     content: React.ReactNode;
     placeholderShown: boolean;
@@ -449,7 +450,7 @@ function SelectInputOptions<T = string>({
     }
     return undefined;
   }, [filterable, query]);
-  const empty =
+  const resultsEmpty =
     needle != null && filterSelectInputItems(items, needle).length === 0;
 
   const listboxContainerRef = React.useRef<HTMLDivElement>(null);
@@ -462,7 +463,7 @@ function SelectInputOptions<T = string>({
     }
   }, []);
 
-  const showStatus = empty;
+  const showStatus = resultsEmpty;
   const statusId = useId();
   const listboxId = useId();
 
@@ -513,7 +514,7 @@ function SelectInputOptions<T = string>({
           items.some((item) => item.type === "group") && "scroll-pt-8",
         )}
       >
-        {empty ? (
+        {resultsEmpty ? (
           <div id={statusId} className="flex items-center gap-x-2 px-6 pt-2">
             <CrossCircle size={16} className="px-1 text-content-tertiary" />
             {NoResultsFound}
@@ -552,7 +553,10 @@ function SelectInputOptions<T = string>({
                 }
               }}
             >
-              {renderFooter(needle)}
+              {renderFooter({
+                resultsEmpty,
+                normalizedQuery: needle,
+              })}
             </div>
           </footer>
         ) : null}
