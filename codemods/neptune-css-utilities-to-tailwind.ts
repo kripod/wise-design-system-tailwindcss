@@ -336,7 +336,7 @@ const neptuneUtilityMatcher = new RegExp(
   "gmu",
 );
 
-const classAttributes = ["class", "className"];
+const classAttributes = [/^class(?:Name)?$/u, /Class/u];
 const classConcatFunctions = ["clsx", "classNames", "classnames", "cva", "cx"];
 
 function replaceUtilities(value: string) {
@@ -414,8 +414,12 @@ const transform: Transform = (fileInfo, api) => {
 
   root
     .find(j.JSXAttribute, (node) => {
-      if (typeof node.name.name === "string") {
-        return classAttributes.includes(node.name.name);
+      const attributeName = node.name.name;
+      if (typeof attributeName === "string") {
+        return (
+          classAttributes.find((attribute) => attribute.test(attributeName)) !=
+          null
+        );
       }
       return false;
     })
@@ -428,8 +432,7 @@ const transform: Transform = (fileInfo, api) => {
   root
     .find(j.CallExpression, (node) => {
       if (node.callee.type === "Identifier") {
-        const calleeName = node.callee.name;
-        return classConcatFunctions.includes(calleeName);
+        return classConcatFunctions.includes(node.callee.name);
       }
       return false;
     })
@@ -442,8 +445,7 @@ const transform: Transform = (fileInfo, api) => {
   root
     .find(j.TaggedTemplateExpression, (node) => {
       if (node.tag.type === "Identifier") {
-        const tagName = node.tag.name;
-        return classConcatFunctions.includes(tagName);
+        return classConcatFunctions.includes(node.tag.name);
       }
       return false;
     })
