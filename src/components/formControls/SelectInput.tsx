@@ -12,18 +12,33 @@ import { clsx } from "clsx";
 import { getResetClassName } from "css-homogenizer/reset-scoped";
 import * as React from "react";
 
-import { getMonthNames } from "../../date";
+import { identity } from "../../identity";
 import { formControlClassNameBase } from "./_FormControl";
 
-const months = getMonthNames("en-US").map((name, index) => ({
-  id: index + 1,
+export interface SelectInputProps<T = string> {
+  name?: string;
+  // TODO: multiple?: boolean;
+  defaultValue?: T;
+  value?: T;
+  renderValue?: (value: T | undefined) => React.ReactNode;
+  compare?: (keyof T & string) | ((a: T, b: T) => boolean);
+  disabled?: boolean;
+  className?: string;
+  children?: React.ReactNode;
+  onChange?: (value: T) => void;
+}
+
+export function SelectInput<T = string>({
   name,
-  unavailable: index % 6 === 2,
-}));
-
-export function SelectInput() {
-  const [selectedMonth, setSelectedMonth] = React.useState(months[0]);
-
+  defaultValue,
+  value: controlledValue,
+  renderValue = identity,
+  compare,
+  disabled,
+  className,
+  children,
+  onChange,
+}: SelectInputProps<T>) {
   const [maxHeight, setMaxHeight] = React.useState<number>();
   const [width, setWidth] = React.useState<number>();
   const { refs, floatingStyles } = useFloating<HTMLButtonElement>({
@@ -44,17 +59,29 @@ export function SelectInput() {
   });
 
   return (
-    <ListboxBase value={selectedMonth} onChange={setSelectedMonth}>
+    <ListboxBase
+      name={name}
+      defaultValue={defaultValue}
+      value={controlledValue}
+      by={compare}
+      disabled={disabled}
+      onChange={onChange}
+    >
       <ListboxBase.Button
         ref={refs.setReference}
         className={clsx(
           getResetClassName("button"),
+          className,
           formControlClassNameBase({ size: "md" }),
           "inline-flex items-center gap-x-2 rounded text-start",
         )}
       >
-        <span className="flex-1 truncate">{selectedMonth.name}</span>
-        <ChevronDown size={16} />
+        {({ value }: { value: T | undefined }) => (
+          <>
+            <span className="flex-1 truncate">{renderValue(value)}</span>
+            <ChevronDown size={16} />
+          </>
+        )}
       </ListboxBase.Button>
 
       <FloatingPortal>
@@ -70,27 +97,40 @@ export function SelectInput() {
             width,
           }}
         >
-          {months.map((month) => (
-            <ListboxBase.Option
-              key={month.id}
-              value={month}
-              disabled={month.unavailable}
-              className={({ active, selected, disabled }) =>
-                clsx(
-                  "rounded px-4 py-3 text-base text-content-primary",
-                  disabled && "opacity-45",
-                  selected
-                    ? "bg-background-screen-active"
-                    : active && "bg-background-screen-hover",
-                  active && "-outline-offset outline",
-                )
-              }
-            >
-              {month.name}
-            </ListboxBase.Option>
-          ))}
+          {children}
         </ListboxBase.Options>
       </FloatingPortal>
     </ListboxBase>
+  );
+}
+
+export interface SelectInputOptionProps<T = string> {
+  value: T;
+  disabled?: boolean;
+  children?: React.ReactNode;
+}
+
+export function SelectInputOption<T = string>({
+  value,
+  disabled,
+  children,
+}: SelectInputOptionProps<T>) {
+  return (
+    <ListboxBase.Option
+      value={value}
+      disabled={disabled}
+      className={({ active, selected, disabled: uiDisabled }) =>
+        clsx(
+          "rounded px-4 py-3 text-base text-content-primary",
+          active && "-outline-offset outline",
+          selected
+            ? "bg-background-screen-active"
+            : active && "bg-background-screen-hover",
+          uiDisabled && "opacity-45",
+        )
+      }
+    >
+      {children}
+    </ListboxBase.Option>
   );
 }

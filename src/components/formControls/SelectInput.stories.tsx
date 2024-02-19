@@ -1,24 +1,51 @@
 import type { Story } from "@ladle/react";
-import * as React from "react";
 
-import { SelectInput } from "./SelectInput";
+import { getMonthNames } from "../../date";
+import { SelectInput, SelectInputOption } from "./SelectInput";
+
+interface Month {
+  id: number;
+  name: string;
+  unavailable: boolean;
+}
+
+const months: Month[] = getMonthNames("en-US").map((name, index) => ({
+  id: index + 1,
+  name,
+  unavailable: index % 6 === 2,
+}));
 
 export const Basic: Story<{
-  required: boolean;
-  readOnly: boolean;
   disabled: boolean;
-}> = function ({ required, readOnly, disabled }) {
-  const [value, setValue] = React.useState("Text value");
-
+  onChange: (value: Month) => void;
+}> = function ({ disabled, onChange }) {
   return (
     <div className="flex flex-col">
-      <SelectInput />
+      <SelectInput<Month>
+        renderValue={(value) => value?.name}
+        disabled={disabled}
+        onChange={onChange}
+      >
+        {months.map((month) => (
+          <SelectInputOption
+            key={month.id}
+            value={month}
+            disabled={month.unavailable}
+          >
+            {month.name}
+          </SelectInputOption>
+        ))}
+      </SelectInput>
     </div>
   );
 };
 
 Basic.args = {
-  required: true,
-  readOnly: false,
   disabled: false,
+};
+
+Basic.argTypes = {
+  onChange: {
+    action: "changed",
+  },
 };
