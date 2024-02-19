@@ -147,7 +147,7 @@ module.exports = {
       full: "9999px",
     },
     boxShadow: {
-      xl: "0 0 40px rgb(34 48 73 / 0.2)", // TODO: Change color
+      xl: "0 0 40px rgb(69 71 69 / 0.2)", // TODO: Change color
       none: "none",
     },
     fontFamily: {
