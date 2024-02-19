@@ -39,12 +39,22 @@ const defaultAnimationOptions: KeyframeAnimationOptions = {
 
 export function AnimatedLayout({ id, children }: AnimatedLayoutProps) {
   const element = React.useRef<HTMLElement>(null);
-  const animation = React.useRef<Animation | null>(null);
-  const reduceMotion = useReducedMotionPreference();
-
   const { boundingClientRectById } = React.useContext(
     AnimatedLayoutGroupContext,
   );
+
+  const animation = React.useRef<Animation | null>(null);
+  React.useEffect(() => {
+    const handleResize = () => {
+      animation.current?.finish();
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const reduceMotion = useReducedMotionPreference();
 
   useRequestAnimationFrame(() => {
     if (element.current != null) {
