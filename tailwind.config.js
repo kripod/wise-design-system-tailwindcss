@@ -30,10 +30,13 @@ module.exports = {
   theme: {
     extend: {
       borderColor: ({ theme }) => ({
-        DEFAULT: theme("colors.border.neutral", "currentColor"),
+        DEFAULT: theme("colors.border.neutral"),
       }),
       ringColor: ({ theme }) => ({
         DEFAULT: theme("colors.interactive.accent.active"),
+      }),
+      ringOffsetColor: ({ theme }) => ({
+        DEFAULT: theme("colors.background.screen.DEFAULT"),
       }),
       ringOffsetWidth: {
         DEFAULT: defaultTheme.ringOffsetWidth[2],
