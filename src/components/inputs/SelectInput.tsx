@@ -406,9 +406,16 @@ const SelectInputOptionsContainer = React.forwardRef(
         ref={ref}
         onKeyDown={(event) => {
           // Prevent absorbing dismissal requests too early
-          if (event.key !== "Escape") {
-            onKeyDown?.(event);
+          if (event.key === "Escape") {
+            return;
           }
+
+          // Prevent confirmation close without an active item
+          if (event.key === "Enter" && ariaActiveDescendant == null) {
+            return;
+          }
+
+          onKeyDown?.(event);
         }}
         {...restProps}
       />
