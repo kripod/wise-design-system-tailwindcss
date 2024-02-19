@@ -1,4 +1,5 @@
 type Theme = {
+  "color-scheme": "light" | "dark";
   "--color-content-primary": string;
   "--color-content-secondary": string;
   "--color-content-tertiary": string;
@@ -39,6 +40,7 @@ type Theme = {
 };
 
 export const lightTheme = {
+  "color-scheme": "light",
   "--color-content-primary": "rgb(14 15 12)",
   "--color-content-secondary": "rgb(69 71 69)",
   "--color-content-tertiary": "rgb(106 108 106)",
@@ -79,6 +81,7 @@ export const lightTheme = {
 } as const satisfies Theme;
 
 export const darkTheme = {
+  "color-scheme": "dark",
   "--color-content-primary": "rgb(243 245 241)",
   "--color-content-secondary": "rgb(232 235 230)",
   "--color-content-tertiary": "rgb(202 207 199)",
