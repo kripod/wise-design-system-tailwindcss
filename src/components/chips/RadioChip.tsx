@@ -24,8 +24,7 @@ export function RadioChipGroup<T = string>({
   return (
     <RadioGroupBase
       name={name}
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      defaultValue={defaultValue as any /* TODO: Remove assertion */}
+      defaultValue={defaultValue}
       value={selectedValue}
       disabled={disabled}
       by={compareValues}

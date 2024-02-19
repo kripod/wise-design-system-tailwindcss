@@ -25,14 +25,13 @@ export const Chip = React.forwardRef(function Chip(
     <Button
       ref={ref}
       size="sm"
-      aria-checked={ariaChecked}
-      aria-disabled={!disabled ? ariaDisabled : undefined}
+      aria-checked={checked}
       disabled={disabled}
       className={clsx(
         "rounded-full px-4 ring-1 ring-inset",
         checked
-          ? "bg-interactive-accent text-interactive-control ring-interactive-accent enabled:hover:bg-interactive-accent-hover enabled:hover:ring-interactive-accent-hover enabled:active:bg-interactive-accent-active enabled:active:ring-interactive-accent-active"
-          : "text-interactive-primary ring-interactive-secondary enabled:hover:bg-background-screen-hover enabled:hover:text-interactive-primary-hover enabled:hover:ring-interactive-secondary-hover enabled:active:bg-background-screen-active enabled:active:text-interactive-primary-active enabled:active:ring-interactive-secondary-active",
+          ? "bg-interactive-accent text-interactive-control ring-interactive-accent hover:bg-interactive-accent-hover hover:ring-interactive-accent-hover active:bg-interactive-accent-active active:ring-interactive-accent-active"
+          : "text-interactive-primary ring-interactive-secondary hover:bg-background-screen-hover hover:text-interactive-primary-hover hover:ring-interactive-secondary-hover active:bg-background-screen-active active:text-interactive-primary-active active:ring-interactive-secondary-active",
         className,
       )}
       {...restProps}
