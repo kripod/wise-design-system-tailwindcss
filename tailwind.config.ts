@@ -1,28 +1,20 @@
-const containerQueriesPlugin = require("@tailwindcss/container-queries");
-const { transparentize } = require("color2k");
-const defaultTheme = require("tailwindcss/defaultTheme");
+import containerQueriesPlugin from "@tailwindcss/container-queries";
+import { transparentize } from "color2k";
+import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 
-/**
- * @param {number} value
- * @param {number} fractionDigits
- * @returns {number}
- */
-function roundTo(value, fractionDigits) {
+function roundTo(value: number, fractionDigits: number) {
   return Number(
     `${Math.round(Number(`${value}e+${fractionDigits}`))}e-${fractionDigits}`,
   );
 }
 
-/**
- * @param {number} value
- * @returns {string}
- */
-function pxToRem(value) {
+function pxToRem(value: number) {
   return `${roundTo(value / 16, 4)}rem`;
 }
 
 /** @type {import("tailwindcss").Config} */
-module.exports = {
+export default {
   content: ["./src/**/*.{js,jsx,mjs,ts,tsx,mts}"],
   future: {
     hoverOnlyWhenSupported: true,
@@ -295,4 +287,4 @@ module.exports = {
     },
   },
   plugins: [containerQueriesPlugin],
-};
+} satisfies Config;
