@@ -4,7 +4,7 @@ import { RadioChip, RadioChipGroup } from "./RadioChip";
 
 export const Basic: Story<{
   disabled: boolean;
-  onChange: () => void;
+  onChange: (value: string) => void;
 }> = function ({ disabled, onChange }) {
   return (
     <RadioChipGroup name="amount" disabled={disabled} onChange={onChange}>

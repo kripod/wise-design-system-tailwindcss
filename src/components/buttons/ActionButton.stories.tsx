@@ -6,7 +6,7 @@ import { ActionButton } from "./ActionButton";
 export const Basic: Story<{
   text: string;
   disabled: boolean;
-  onClick: () => void;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
 }> = function ({ text, disabled, onClick }) {
   return (
     <ActionButton disabled={disabled} onClick={onClick}>

@@ -3,7 +3,7 @@ import type { Story } from "@ladle/react";
 import { CheckboxChip, CheckboxChipGroup } from "./CheckboxChip";
 
 export const Basic: Story<{
-  onChange: () => void;
+  onChange: (checked: boolean) => void;
 }> = function ({ onChange }) {
   return (
     <CheckboxChipGroup>

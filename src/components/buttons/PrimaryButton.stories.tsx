@@ -7,7 +7,7 @@ export const Basic: Story<{
   size: "sm" | "md";
   sentiment: "neutral" | "negative";
   disabled: boolean | "loading";
-  onClick: () => void;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
 }> = function ({ text, size, sentiment, disabled, onClick }) {
   return (
     <PrimaryButton

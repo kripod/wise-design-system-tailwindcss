@@ -6,7 +6,7 @@ export const Basic: Story<{
   text: string;
   size: "sm" | "md";
   disabled: boolean | "loading";
-  onClick: () => void;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
 }> = function ({ text, size, disabled, onClick }) {
   return (
     <TertiaryButton size={size} disabled={disabled} onClick={onClick}>
