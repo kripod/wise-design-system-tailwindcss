@@ -52,7 +52,7 @@ export const Button = React.forwardRef(function Button(
       {(render ?? ((props) => <button ref={ref} type="button" {...props} />))({
         disabled: disabled || loading,
         className: clsx(
-          "transition focus:outline-none focus-visible:ring",
+          "transition focus-visible:outline-offset focus-visible:outline",
           size !== "auto" && "inline-flex items-center justify-center",
           {
             [clsx("h-8 text-sm tracking-2.5", equilateral && "w-8")]:

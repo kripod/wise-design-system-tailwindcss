@@ -30,7 +30,7 @@ export const SecondaryButton = React.forwardRef(function SecondaryButton(
         "rounded-full px-4 font-semibold inner-border inner-border-current",
         {
           "text-interactive-primary": sentiment === "neutral",
-          "text-sentiment-negative ring-sentiment-negative-active":
+          "text-sentiment-negative focus-visible:outline-sentiment-negative":
             sentiment === "negative",
         },
         !disabled &&

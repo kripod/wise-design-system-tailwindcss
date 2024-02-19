@@ -267,6 +267,15 @@ module.exports = {
       borderColor: ({ theme }) => ({
         DEFAULT: theme("colors.border.neutral"),
       }),
+      outlineColor: ({ theme }) => ({
+        DEFAULT: theme("colors.interactive.primary.DEFAULT"),
+      }),
+      outlineOffset: ({ theme }) => ({
+        DEFAULT: defaultTheme.outlineOffset[2],
+      }),
+      outlineWidth: ({ theme }) => ({
+        DEFAULT: defaultTheme.outlineWidth[2],
+      }),
       ringColor: ({ theme }) => ({
         DEFAULT: theme("colors.interactive.primary.DEFAULT"),
       }),
