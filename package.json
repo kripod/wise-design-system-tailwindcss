@@ -2,18 +2,13 @@
   "name": "@wise/design-system-tailwindcss",
   "version": "0.3.0",
   "description": "Experimental web implementation of Wise Design System, based upon Tailwind CSS.",
-  "keywords": [
-    "design-system",
-    "tailwindcss"
-  ],
+  "repository": "transferwise/design-system-web-tailwindcss",
   "homepage": "https://github.com/transferwise/design-system-web-tailwindcss#readme",
   "bugs": "https://github.com/transferwise/design-system-web-tailwindcss/issues",
-  "repository": "transferwise/design-system-web-tailwindcss",
-  "license": "MIT",
   "author": "Wise Payments Ltd.",
-  "sideEffects": [
-    "*.css"
-  ],
+  "license": "MIT",
+  "packageManager": "pnpm@8.12.1",
+  "main": "./dist/mod.js",
   "exports": {
     ".": {
       "types": "./dist/mod.d.ts",
@@ -23,12 +18,15 @@
     "./styles.css": "./dist/styles.css",
     "./styles-legacy.css": "./dist/styles-legacy.css"
   },
-  "main": "./dist/mod.js",
   "types": "./dist/mod.d.ts",
   "files": [
     "dist/",
     "src/",
     "!**/*.tsbuildinfo"
+  ],
+  "keywords": [
+    "design-system",
+    "tailwindcss"
   ],
   "scripts": {
     "prepare": "husky install",
@@ -49,6 +47,17 @@
     "lint:fix": "npm-run-all --serial lint:fix:*",
     "lint:fix:js+ts": "pnpm run lint:js+ts --fix",
     "lint:fix:format": "prettier --write ."
+  },
+  "peerDependencies": {
+    "@transferwise/icons": "^3.1",
+    "react": "16.14 - 18",
+    "react-dom": "16.14 - 18",
+    "typescript": ">=4.5"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
   },
   "dependencies": {
     "@babel/runtime": "^7.23.6",
@@ -114,19 +123,10 @@
     "typescript": "5.3.3",
     "vite": "5.0.10"
   },
-  "peerDependencies": {
-    "@transferwise/icons": "^3.1",
-    "react": "16.14 - 18",
-    "react-dom": "16.14 - 18",
-    "typescript": ">=4.5"
-  },
-  "peerDependenciesMeta": {
-    "typescript": {
-      "optional": true
-    }
-  },
-  "packageManager": "pnpm@8.12.1",
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "sideEffects": [
+    "*.css"
+  ]
 }
