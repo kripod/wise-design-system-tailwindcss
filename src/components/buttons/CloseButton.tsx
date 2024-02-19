@@ -5,7 +5,7 @@ import { CloseButtonLabel } from "../../i18nTexts";
 import { Button, ButtonOwnProps } from "./_Button";
 
 export type CloseButtonProps = Pick<ButtonOwnProps, "size"> &
-  Pick<React.ComponentPropsWithoutRef<"button">, "onClick">;
+  React.ComponentPropsWithoutRef<"button">;
 
 const iconSizeByComponentSize: {
   [key in NonNullable<CloseButtonProps["size"]>]: CrossIconProps["size"];
@@ -14,17 +14,25 @@ const iconSizeByComponentSize: {
   md: 24,
 };
 
-export function CloseButton({ size = "md", onClick }: CloseButtonProps) {
+export function CloseButton({
+  size = "md",
+  className,
+  ...restProps
+}: CloseButtonProps) {
   return (
     <Button
       aria-label={CloseButtonLabel}
       size={size}
       equilateral
-      className={clsx("hover:bg-background-screen-hover", {
-        "-m-2": size === "sm",
-        "-m-3": size === "md",
-      })}
-      onClick={onClick}
+      className={clsx(
+        "text-interactive-primary hover:bg-background-screen-hover",
+        {
+          "-m-2": size === "sm",
+          "-m-3": size === "md",
+        },
+        className,
+      )}
+      {...restProps}
     >
       <Cross size={iconSizeByComponentSize[size]} />
     </Button>
