@@ -53,6 +53,7 @@ export const Button = React.forwardRef(function Button(
         disabled: disabled || loading,
         className: clsx(
           "transition focus-visible:outline-offset focus-visible:outline disabled:pointer-events-none disabled:opacity-45 disabled:mix-blend-luminosity",
+          size !== "auto" && "inline-flex items-center justify-center gap-x-2",
           {
             [clsx("h-8 text-sm font-semibold", equilateral && "w-8")]:
               size === "sm",
@@ -61,7 +62,6 @@ export const Button = React.forwardRef(function Button(
             [clsx("h-14 text-base font-semibold", equilateral && "w-14")]:
               size === "lg",
           },
-          equilateral && "inline-flex items-center justify-center",
           loading && "cursor-wait",
           className,
         ),
