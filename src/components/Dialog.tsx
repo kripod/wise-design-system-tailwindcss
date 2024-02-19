@@ -30,28 +30,27 @@ export function Dialog({
     >
       <div className="fixed inset-0 bg-background-overlay" aria-hidden />
 
-      <div className="fixed inset-0 flex items-center justify-center p-4">
-        <DialogBase.Panel
-          className={clsx(
-            "w-full divide-y rounded-xl bg-background-screen shadow-xl",
-            {
-              "max-w-xl": size === "sm",
-              "max-w-3xl": size === "md",
-              "max-w-5xl": size === "lg",
-            },
-          )}
+      <div className="fixed inset-0 flex overflow-auto">
+        <div
+          className={clsx("m-auto w-full p-4", {
+            "max-w-xl": size === "sm",
+            "max-w-3xl": size === "md",
+            "max-w-5xl": size === "lg",
+          })}
         >
-          <div className="flex items-start justify-between gap-6 p-6">
-            <DialogBase.Title className="text-lg font-semibold">
-              {title}
-            </DialogBase.Title>
-            <CloseButton size="lg" onClick={onClose} />
-          </div>
+          <DialogBase.Panel className="divide-y rounded-xl bg-background-screen shadow-xl">
+            <div className="flex items-start justify-between gap-6 p-6">
+              <DialogBase.Title className="text-lg font-semibold">
+                {title}
+              </DialogBase.Title>
+              <CloseButton size="lg" onClick={onClose} />
+            </div>
 
-          <div className="p-6">{children}</div>
+            <div className="p-6">{children}</div>
 
-          {footer != null ? <div className="p-6">{footer}</div> : null}
-        </DialogBase.Panel>
+            {footer != null ? <div className="p-6">{footer}</div> : null}
+          </DialogBase.Panel>
+        </div>
       </div>
     </DialogBase>
   );
