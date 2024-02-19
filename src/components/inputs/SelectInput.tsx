@@ -395,13 +395,18 @@ const SelectInputOptionsContainer = React.forwardRef(
       <div
         ref={ref}
         onKeyDown={(event) => {
-          // Prevent absorbing dismissal requests too early
-          if (event.key === "Escape") {
+          // Prevent confirmation close without an active item
+          if (event.key === "Enter" && ariaActiveDescendant == null) {
             return;
           }
 
-          // Prevent confirmation close without an active item
-          if (event.key === "Enter" && ariaActiveDescendant == null) {
+          // Prevent absorbing actions early
+          if (event.key === "Escape" || event.key === "Tab") {
+            onKeyDown?.({
+              ...event,
+              preventDefault: () => {},
+              stopPropagation: () => {},
+            });
             return;
           }
 
@@ -520,7 +525,7 @@ function SelectInputOptions<T = string>({
           id={listboxId}
           role="listbox"
           aria-orientation="vertical"
-          tabIndex={0}
+          tabIndex={!filterable ? 0 : undefined}
           className="p-2 focus:outline-none"
         >
           {(needle != null ? dedupeSelectInputItems(items) : items).map(
@@ -537,7 +542,17 @@ function SelectInputOptions<T = string>({
         </div>
 
         {renderFooter != null ? (
-          <footer className="px-6 pb-4 pt-1">{renderFooter(needle)}</footer>
+          <footer className="px-6 pb-4 pt-1">
+            <div
+              role="presentation"
+              onKeyDown={(event) => {
+                // Prevent interfering with Headless UI
+                event.stopPropagation();
+              }}
+            >
+              {renderFooter(needle)}
+            </div>
+          </footer>
         ) : null}
       </section>
     </ListboxBase.Options>
