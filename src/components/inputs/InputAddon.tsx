@@ -67,14 +67,12 @@ export function InputGroup({
 
 export interface InputAddonProps {
   placement: "start" | "end";
-  interactive?: boolean;
   padding?: "none" | "sm" | "md";
   children?: React.ReactNode;
 }
 
 export function InputAddon({
   placement,
-  interactive,
   padding = "md",
   children,
 }: InputAddonProps) {
@@ -95,13 +93,11 @@ export function InputAddon({
     <span
       ref={ref}
       className={clsx(
-        "pointer-events-none self-center text-interactive-secondary",
+        "z-10 inline-flex items-center text-interactive-secondary transition group-[:has(>:is(input,select):focus)]/input:!text-interactive-primary group-[:has(>:is(input,select):hover)]/input:text-interactive-secondary-hover",
         {
           "justify-self-start": placement === "start",
           "justify-self-end": placement === "end",
         },
-        !interactive &&
-          "transition group-[:has(>:is(input,select):focus)]/input:!text-interactive-primary group-[:has(>:is(input,select):hover)]/input:text-interactive-secondary-hover",
         {
           "px-2": padding === "sm",
           [clsx("px-4", {
@@ -111,11 +107,7 @@ export function InputAddon({
         },
       )}
     >
-      {interactive ? (
-        <span className="pointer-events-auto">{children}</span>
-      ) : (
-        children
-      )}
+      {children}
     </span>
   );
 }
