@@ -147,14 +147,12 @@ function InputAddon({
     <span
       ref={ref}
       className={clsx(
-        "pointer-events-none z-10 inline-flex items-center text-interactive-secondary",
+        "pointer-events-none z-10 inline-flex items-center text-interactive-secondary transition group-[:has(>:is(input,button,select):focus)]/input:!text-interactive-primary group-[:has(>:is(input,button,select):hover)]/input:text-interactive-secondary-hover",
         {
           "justify-self-start": placement === "start",
           "justify-self-end": placement === "end",
         },
-        interactive
-          ? "[&>*]:pointer-events-auto"
-          : "transition group-[:has(>:is(input,button,select):focus)]/input:!text-interactive-primary group-[:has(>:is(input,button,select):hover)]/input:text-interactive-secondary-hover",
+        interactive && "[&>*]:pointer-events-auto",
         {
           "px-2": padding === "sm",
           [clsx("px-4", {
