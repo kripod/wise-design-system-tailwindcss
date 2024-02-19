@@ -17,6 +17,7 @@ import { formControlClassNameBase } from "./_FormControl";
 
 export interface SelectInputProps<T = string> {
   name?: string;
+  placeholder?: string;
   // TODO: multiple?: boolean;
   defaultValue?: T;
   value?: T;
@@ -33,6 +34,7 @@ const placeholderValue = ""; // See: https://html.spec.whatwg.org/multipage/form
 
 export function SelectInput<T = string>({
   name,
+  placeholder,
   defaultValue,
   value: controlledValue,
   renderValue = identity,
@@ -88,7 +90,11 @@ export function SelectInput<T = string>({
         {({ value }: { value: T | typeof placeholderValue }) => (
           <>
             <span className="flex-1 truncate">
-              {value !== placeholderValue ? renderValue(value) : null}
+              {value === placeholderValue
+                ? placeholder && (
+                    <span className="text-content-tertiary">{placeholder}</span>
+                  )
+                : renderValue(value)}
             </span>
             <ChevronDown size={16} />
           </>

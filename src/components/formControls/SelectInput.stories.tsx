@@ -23,7 +23,7 @@ export const Basic: Story<{
   return (
     <div className="flex flex-col">
       <SelectInput<Month>
-        name="test"
+        placeholder="Month"
         renderValue={(value) => value.name}
         aria-invalid={invalid}
         disabled={disabled}
