@@ -1,8 +1,8 @@
 import type { Story } from "@ladle/react";
 import * as React from "react";
 
+import { PrimaryButton } from "./buttons/PrimaryButton";
 import { Dialog, DialogProps } from "./Dialog";
-import { PrimaryButton } from "./PrimaryButton";
 
 export const Basic: Story<
   Pick<DialogProps, "title" | "size" | "onClose" | "children">

@@ -4,7 +4,7 @@ import {
   InfoCircle,
 } from "@transferwise/icons";
 
-import { CloseButton } from "./CloseButton";
+import { CloseButton } from "./buttons/CloseButton";
 
 export type AlertProps = {
   sentiment?: "neutral" | "positive" | "negative" | "warning";

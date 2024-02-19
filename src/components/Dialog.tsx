@@ -1,7 +1,7 @@
 import { Dialog as DialogBase } from "@headlessui/react";
 import { clsx } from "clsx";
 
-import { CloseButton } from "./CloseButton";
+import { CloseButton } from "./buttons/CloseButton";
 
 export type DialogProps = {
   title: string;
