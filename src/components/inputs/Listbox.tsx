@@ -57,7 +57,7 @@ export function Listbox() {
           "px-4 text-content-primary ring-1 ring-inset ring-interactive-secondary transition-shadow invalid:ring invalid:!ring-sentiment-negative enabled:hover:ring enabled:hover:ring-interactive-secondary-hover enabled:focus:outline-none enabled:focus:ring-3 enabled:focus:ring-interactive-primary disabled:opacity-45 disabled:mix-blend-luminosity",
           "py-3 text-base",
           "rounded",
-          "inline-flex items-center gap-x-2",
+          "inline-flex items-center justify-between gap-x-2 text-start",
         )}
       >
         {selectedPerson.name}

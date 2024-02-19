@@ -11,7 +11,11 @@ export const Basic: Story<{
   onClick: () => void;
 }> = function ({ required, readOnly, disabled }) {
   const [value, setValue] = React.useState("Text value");
-  return <Listbox />;
+  return (
+    <div className="flex flex-col">
+      <Listbox />
+    </div>
+  );
 };
 
 Basic.args = {
