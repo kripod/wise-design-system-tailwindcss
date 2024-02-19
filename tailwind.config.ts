@@ -107,7 +107,7 @@ export default {
       },
     }),
     fontFamily: {
-      sans: ['"InterVariable"', '"Inter"', "ui-sans-serif", "system-ui"],
+      sans: ['"Inter Variable"', '"Inter"', "ui-sans-serif", "system-ui"],
     },
     fontSize: {
       xs: [

@@ -25,17 +25,12 @@ const people = [
   { id: 5, name: "Katelyn Rohan", unavailable: false },
 ];
 
-function roundByDPR(value: number) {
-  const dpr = window.devicePixelRatio;
-  return Math.round(value * dpr) / dpr;
-}
-
 export function Listbox() {
   const [selectedPerson, setSelectedPerson] = useState(people[0]);
 
   const [maxHeight, setMaxHeight] = useState<number>();
   const [width, setWidth] = useState<number>();
-  const { x, y, strategy, refs } = useFloating<HTMLButtonElement>({
+  const { refs, floatingStyles } = useFloating<HTMLButtonElement>({
     placement: "bottom-start",
     middleware: [
       offset(8),
@@ -68,14 +63,11 @@ export function Listbox() {
       <FloatingPortal>
         <ListboxBase.Options
           ref={refs.setFloating}
-          className="left-0 top-0 z-10 overflow-auto rounded bg-background-elevated p-2 shadow-xl focus:outline-none"
+          className="z-10 overflow-auto rounded bg-background-elevated p-2 shadow-xl focus:outline-none"
           style={{
-            position: strategy,
+            ...floatingStyles,
             maxHeight,
             width,
-            transform: `translate(${roundByDPR(x ?? 0)}px, ${roundByDPR(
-              y ?? 0,
-            )}px)`,
           }}
         >
           {people.map((person) => (
