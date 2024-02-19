@@ -4,8 +4,8 @@ import * as React from "react";
 
 import { ActionButton } from "../buttons/ActionButton";
 import { Field } from "./Field";
-import { Input, InputAddon, InputGroup } from "./Input";
 import { Label } from "./Label";
+import { TextInput, TextInputAddon, TextInputGroup } from "./TextInput";
 
 export const Basic: Story<{
   size: "sm" | "md" | "xl";
@@ -23,7 +23,7 @@ export const Basic: Story<{
       hint={<>Information message.</>}
       error={value.length === 0 ? <>Error message.</> : undefined}
     >
-      <Input
+      <TextInput
         size={size}
         shape={shape}
         value={value}
@@ -69,15 +69,15 @@ export const WithPrefix: Story<{
   return (
     <Label>
       Label
-      <InputGroup initialPaddingStart="3rem" disabled={disabled}>
-        <InputAddon placement="start">
+      <TextInputGroup initialPaddingStart="3rem" disabled={disabled}>
+        <TextInputAddon placement="start">
           <Search size={24} />
-        </InputAddon>
-        <Input
+        </TextInputAddon>
+        <TextInput
           value={value}
           onChange={(event) => setValue(event.currentTarget.value)}
         />
-      </InputGroup>
+      </TextInputGroup>
     </Label>
   );
 };
@@ -95,13 +95,13 @@ export const WithSuffix: Story<{
   return (
     <Label>
       Label
-      <InputGroup initialPaddingEnd="4.75rem" disabled={disabled}>
-        <Input
+      <TextInputGroup initialPaddingEnd="4.75rem" disabled={disabled}>
+        <TextInput
           ref={ref}
           value={value}
           onChange={(event) => setValue(event.currentTarget.value)}
         />
-        <InputAddon placement="end" interactive padding="sm">
+        <TextInputAddon placement="end" interactive padding="sm">
           <ActionButton
             onClick={() => {
               navigator.clipboard.writeText(value);
@@ -113,8 +113,8 @@ export const WithSuffix: Story<{
           >
             Copy
           </ActionButton>
-        </InputAddon>
-      </InputGroup>
+        </TextInputAddon>
+      </TextInputGroup>
     </Label>
   );
 };

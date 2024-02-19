@@ -7,52 +7,50 @@ import {
   useFormControlAriaAttributes,
 } from "./_FormControl";
 
-type InputPaddingStartContextType = [
+type TextInputPaddingStartContextType = [
   React.CSSProperties["paddingInlineStart"],
   React.Dispatch<
     React.SetStateAction<React.CSSProperties["paddingInlineStart"]>
   >,
 ];
 
-const InputPaddingStartContext =
-  React.createContext<InputPaddingStartContextType>([undefined, () => {}]);
+const TextInputPaddingStartContext =
+  React.createContext<TextInputPaddingStartContextType>([undefined, () => {}]);
 
-type InputPaddingEndContextType = [
+type TextInputPaddingEndContextType = [
   React.CSSProperties["paddingInlineEnd"],
   React.Dispatch<React.SetStateAction<React.CSSProperties["paddingInlineEnd"]>>,
 ];
 
-const InputPaddingEndContext = React.createContext<InputPaddingEndContextType>([
-  undefined,
-  () => {},
-]);
+const TextInputPaddingEndContext =
+  React.createContext<TextInputPaddingEndContextType>([undefined, () => {}]);
 
-export type InputGroupProps = {
-  initialPaddingStart?: InputPaddingStartContextType[0];
-  initialPaddingEnd?: InputPaddingEndContextType[0];
+export type TextInputGroupProps = {
+  initialPaddingStart?: TextInputPaddingStartContextType[0];
+  initialPaddingEnd?: TextInputPaddingEndContextType[0];
   disabled?: boolean;
   className?: string;
   children?: React.ReactNode;
 };
 
-export function InputGroup({
+export function TextInputGroup({
   initialPaddingStart,
   initialPaddingEnd,
   disabled,
   className,
   children,
-}: InputGroupProps) {
+}: TextInputGroupProps) {
   const [paddingStart, setPaddingStart] = React.useState(initialPaddingStart);
   const [paddingEnd, setPaddingEnd] = React.useState(initialPaddingEnd);
 
   return (
-    <InputPaddingStartContext.Provider
+    <TextInputPaddingStartContext.Provider
       value={React.useMemo(
         () => [paddingStart, setPaddingStart],
         [paddingStart],
       )}
     >
-      <InputPaddingEndContext.Provider
+      <TextInputPaddingEndContext.Provider
         value={React.useMemo(() => [paddingEnd, setPaddingEnd], [paddingEnd])}
       >
         <fieldset
@@ -64,12 +62,12 @@ export function InputGroup({
         >
           {children}
         </fieldset>
-      </InputPaddingEndContext.Provider>
-    </InputPaddingStartContext.Provider>
+      </TextInputPaddingEndContext.Provider>
+    </TextInputPaddingStartContext.Provider>
   );
 }
 
-export type InputProps = Pick<
+export type TextInputProps = Pick<
   React.ComponentPropsWithRef<"input">,
   | "ref"
   | "inputMode"
@@ -94,14 +92,14 @@ export type InputProps = Pick<
   shape?: "rectangle" | "pill";
 };
 
-export const Input = React.forwardRef(function Input(
-  { size = "md", shape = "rectangle", className, ...restProps }: InputProps,
+export const TextInput = React.forwardRef(function TextInput(
+  { size = "md", shape = "rectangle", className, ...restProps }: TextInputProps,
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {
   const formControlAriaAttributes = useFormControlAriaAttributes();
 
-  const [inputPaddingStart] = React.useContext(InputPaddingStartContext);
-  const [inputPaddingEnd] = React.useContext(InputPaddingEndContext);
+  const [paddingStart] = React.useContext(TextInputPaddingStartContext);
+  const [paddingEnd] = React.useContext(TextInputPaddingEndContext);
 
   return (
     <input
@@ -117,29 +115,31 @@ export const Input = React.forwardRef(function Input(
         className,
       )}
       style={{
-        paddingInlineStart: inputPaddingStart,
-        paddingInlineEnd: inputPaddingEnd,
+        paddingInlineStart: paddingStart,
+        paddingInlineEnd: paddingEnd,
       }}
       {...restProps}
     />
   );
 });
 
-export type InputAddonProps = {
+export type TextInputAddonProps = {
   placement: "start" | "end";
   interactive?: boolean;
   padding?: "none" | "sm" | "md";
   children?: React.ReactNode;
 };
 
-export function InputAddon({
+export function TextInputAddon({
   placement,
   interactive,
   padding = "md",
   children,
-}: InputAddonProps) {
-  const [, setInputPadding] = React.useContext(
-    placement === "start" ? InputPaddingStartContext : InputPaddingEndContext,
+}: TextInputAddonProps) {
+  const [, setTextInputPadding] = React.useContext(
+    placement === "start"
+      ? TextInputPaddingStartContext
+      : TextInputPaddingEndContext,
   );
 
   const ref = React.useRef<HTMLSpanElement>(null);
@@ -147,7 +147,7 @@ export function InputAddon({
     // TODO: Remove condition once most browsers support `borderBoxSize`
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (entry.borderBoxSize != null) {
-      setInputPadding(entry.borderBoxSize[0].inlineSize);
+      setTextInputPadding(entry.borderBoxSize[0].inlineSize);
     }
   });
 
