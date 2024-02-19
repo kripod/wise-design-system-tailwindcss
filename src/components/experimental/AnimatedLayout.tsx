@@ -4,22 +4,18 @@ import { useConstant } from "../../hooks/useConstant";
 import { useReducedMotionPreference } from "../../hooks/useReducedMotionPreference";
 import { useResizeObserver } from "../../hooks/useResizeObserver";
 
-const AnimatedLayoutGroupContext = React.createContext({
-  boundingClientRectById: new Map<string, DOMRect>(),
-});
+const AnimatedLayoutGroupContext = React.createContext(
+  new Map<string, DOMRect>(),
+);
 
 export type AnimatedLayoutGroupProps = {
   children: React.ReactNode;
 };
 
 export function AnimatedLayoutGroup({ children }: AnimatedLayoutGroupProps) {
-  const boundingClientRectById = useConstant(() => new Map<string, DOMRect>());
   return (
     <AnimatedLayoutGroupContext.Provider
-      value={React.useMemo(
-        () => ({ boundingClientRectById }),
-        [boundingClientRectById],
-      )}
+      value={useConstant(() => new Map<string, DOMRect>())}
     >
       {children}
     </AnimatedLayoutGroupContext.Provider>
@@ -43,9 +39,7 @@ export function AnimatedLayout({ id, children }: AnimatedLayoutProps) {
   // TODO: Warn about IDs being used twice
   const element = React.useRef<HTMLElement>(null);
 
-  const { boundingClientRectById } = React.useContext(
-    AnimatedLayoutGroupContext,
-  );
+  const boundingClientRectById = React.useContext(AnimatedLayoutGroupContext);
   // TODO: Call `boundingClientRectById.delete(id)` based on ref counting
 
   const animation = React.useRef<Animation | null>(null);
