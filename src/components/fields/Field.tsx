@@ -11,36 +11,16 @@ export function useFieldDescribedBy() {
 }
 
 export type FieldProps = {
-  description?: React.ReactNode;
   children?: React.ReactNode;
 };
 
-export function Field({ description, children }: FieldProps) {
+export function Field({ children }: FieldProps) {
   const descriptionId = React.useId();
 
   return (
     <FieldDescribedByContext.Provider value={descriptionId}>
       <span className="group/field inline-flex flex-col gap-y-2">
         {children}
-        {description != null ? (
-          <span
-            id={descriptionId}
-            className={
-              'inline-flex gap-x-1 text-sm text-content-secondary transition-colors group-[:has([aria-invalid="true"])]/field:text-sentiment-negative'
-            }
-          >
-            <span
-              className={
-                'hidden items-center self-start group-[:has([aria-invalid="true"])]/field:inline-flex'
-              }
-            >
-              {/* TODO: Use `h-1lh` on container and remove zero-width space */}
-              &#8203; {/* Mimics `height: 1lh` on container */}
-              <AlertCircle size={16} />
-            </span>
-            <span>{description}</span>
-          </span>
-        ) : null}
       </span>
     </FieldDescribedByContext.Provider>
   );
@@ -78,6 +58,29 @@ export function Label({ children }: LabelProps) {
 }
 
 export type FieldDescriptionProps = {
-  sentiment?: "neutral" | "negative";
   children?: React.ReactNode;
 };
+
+export function FieldDescription({ children }: FieldDescriptionProps) {
+  const fieldDescribedBy = useFieldDescribedBy();
+
+  return (
+    <span
+      id={fieldDescribedBy}
+      className={
+        'inline-flex gap-x-1 text-sm text-content-secondary transition-colors group-[:has([aria-invalid="true"])]/field:text-sentiment-negative'
+      }
+    >
+      <span
+        className={
+          'hidden items-center self-start group-[:has([aria-invalid="true"])]/field:inline-flex'
+        }
+      >
+        {/* TODO: Use `h-1lh` on container and remove zero-width space */}
+        &#8203; {/* Mimics `height: 1lh` on container */}
+        <AlertCircle size={16} />
+      </span>
+      <span>{children}</span>
+    </span>
+  );
+}

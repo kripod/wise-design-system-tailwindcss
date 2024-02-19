@@ -3,7 +3,7 @@ import { Search } from "@transferwise/icons";
 import * as React from "react";
 
 import { ActionButton } from "../buttons/ActionButton";
-import { Field, Label } from "./Field";
+import { Field, FieldDescription, Label } from "./Field";
 import { Input, InputAddon, InputGroup } from "./Input";
 
 export const Basic: Story<{
@@ -17,11 +17,7 @@ export const Basic: Story<{
   const [value, setValue] = React.useState("Text value");
 
   return (
-    <Field
-      description={
-        value.length > 0 ? <>Information message.</> : <>Error message.</>
-      }
-    >
+    <Field>
       <Label>
         Label
         <Input
@@ -35,6 +31,9 @@ export const Basic: Story<{
           onChange={(event) => setValue(event.currentTarget.value)}
         />
       </Label>
+      <FieldDescription>
+        {value.length > 0 ? <>Information message.</> : <>Error message.</>}
+      </FieldDescription>
     </Field>
   );
 };
