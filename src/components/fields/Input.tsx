@@ -1,34 +1,29 @@
 import { clsx } from "clsx";
-import { useAtomValue } from "jotai";
+import { atom, Provider, useAtomValue, useSetAtom } from "jotai";
 import * as React from "react";
 import type { Merge } from "ts-essentials";
 
+import { useResizeObserver } from "../../hooks/useResizeObserver";
 import {
   fieldControlClassNameBase,
   fieldDescribedByAtom,
   fieldInvalidAtom,
 } from "./Field";
 
-type InputGroupContextType = {
-  prefixWidth?: React.CSSProperties["paddingInlineStart"];
-};
-
-const InputGroupContext = React.createContext<InputGroupContextType>({});
+export const inputPaddingInlineStartAtom = atom<number | undefined>(undefined);
+export const inputPaddingInlineEndAtom = atom<number | undefined>(undefined);
 
 export type InputGroupProps = {
-  prefixWidth?: React.CSSProperties["paddingInlineStart"];
   children?: React.ReactNode;
 };
 
-export function InputGroup({ prefixWidth, children }: InputGroupProps) {
+export function InputGroup({ children }: InputGroupProps) {
   return (
-    <InputGroupContext.Provider
-      value={React.useMemo(() => ({ prefixWidth }), [prefixWidth])}
-    >
+    <Provider>
       <span className="group/input inline-grid [&>*]:col-start-1 [&>*]:row-start-1">
         {children}
       </span>
-    </InputGroupContext.Provider>
+    </Provider>
   );
 }
 
@@ -43,16 +38,32 @@ export function InputAddon({
   margin = "md",
   children,
 }: InputAddonProps) {
+  const setInputPaddingInlineStart = useSetAtom(inputPaddingInlineStartAtom);
+  const setInputPaddingInlineEnd = useSetAtom(inputPaddingInlineEndAtom);
+  const setInputPadding = !interactive
+    ? setInputPaddingInlineStart
+    : setInputPaddingInlineEnd;
+
+  const ref = React.useRef<HTMLSpanElement>(null);
+  useResizeObserver(ref, (entry) => {
+    // TODO: Remove condition once most browsers support `borderBoxSize`
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    if (entry.borderBoxSize != null) {
+      setInputPadding(entry.borderBoxSize[0].inlineSize);
+    }
+  });
+
   return (
     <span
+      ref={ref}
       className={clsx(
-        "z-10 self-center text-interactive-secondary transition group-[:has(>input:focus:enabled:enabled)]/input:text-interactive-primary group-[:has(>input:hover:enabled)]/input:text-interactive-secondary-hover group-[:has(>input:disabled)]/input:opacity-45 group-[:has(>input:disabled)]/input:mix-blend-luminosity",
-        interactive
-          ? "justify-self-end"
-          : "pointer-events-none justify-self-start",
+        "pointer-events-none z-10 self-center text-interactive-secondary transition group-[:has(>input:focus:enabled:enabled)]/input:text-interactive-primary group-[:has(>input:hover:enabled)]/input:text-interactive-secondary-hover group-[:has(>input:disabled)]/input:opacity-45 group-[:has(>input:disabled)]/input:mix-blend-luminosity",
+        !interactive
+          ? "justify-self-start"
+          : "justify-self-end [&>*]:pointer-events-auto",
         {
-          "mx-4": margin === "md",
-          "mx-2": margin === "sm",
+          "px-2": margin === "sm",
+          [clsx("px-4", !interactive ? "pe-2" : "ps-2")]: margin === "md",
         },
       )}
     >
@@ -95,7 +106,8 @@ export const Input = React.forwardRef(function Input(
   const fieldDescribedBy = useAtomValue(fieldDescribedByAtom);
   const fieldInvalid = useAtomValue(fieldInvalidAtom);
 
-  const { prefixWidth } = React.useContext(InputGroupContext);
+  const paddingInlineStart = useAtomValue(inputPaddingInlineStartAtom);
+  const paddingInlineEnd = useAtomValue(inputPaddingInlineEndAtom);
 
   return (
     <input
@@ -111,8 +123,8 @@ export const Input = React.forwardRef(function Input(
         className,
       )}
       style={{
-        paddingInlineStart:
-          typeof prefixWidth === "number" ? `${prefixWidth}px` : prefixWidth,
+        paddingInlineStart,
+        paddingInlineEnd,
       }}
       {...restProps}
     />
