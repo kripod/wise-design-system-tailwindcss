@@ -7,7 +7,7 @@ import {
   useFloating,
 } from "@floating-ui/react";
 import { Listbox as ListboxBase } from "@headlessui/react";
-import { ChevronDown } from "@transferwise/icons";
+import { ChevronDown, Cross } from "@transferwise/icons";
 import { clsx } from "clsx";
 import { getResetClassName } from "css-homogenizer/reset-scoped";
 import * as React from "react";
@@ -19,7 +19,7 @@ import {
   useFormControlAriaAttributes,
 } from "./_FormControl";
 
-export interface SelectInputProps<T = string> {
+export interface SelectInputProps<T = string, R extends boolean = false> {
   name?: string;
   placeholder?: string;
   // TODO: multiple?: boolean;
@@ -29,27 +29,28 @@ export interface SelectInputProps<T = string> {
   compareValues?:
     | (keyof NonNullable<T> & string)
     | ((a: T | undefined, b: T | undefined) => boolean);
+  required?: R;
   "aria-invalid"?: React.AriaAttributes["aria-invalid"];
   disabled?: boolean;
   className?: string;
   children?: React.ReactNode;
-  onChange?: (value: T) => void;
-  // TODO: onClear?: () => void;
+  onChange?: (value: T | (R extends false ? undefined : never)) => void;
 }
 
-export function SelectInput<T = string>({
+export function SelectInput<T = string, R extends boolean = false>({
   name,
   placeholder,
   defaultValue,
   value: controlledValue,
   renderValue = identity,
   compareValues,
+  required,
   disabled,
   className,
   children,
   onChange,
   ...restProps
-}: SelectInputProps<T>) {
+}: SelectInputProps<T, R>) {
   const formControlAriaAttributes = useFormControlAriaAttributes();
 
   const [maxHeight, setMaxHeight] = React.useState<number>();
@@ -100,6 +101,14 @@ export function SelectInput<T = string>({
                     <span className="text-content-tertiary">{placeholder}</span>
                   )}
                 </span>
+
+                {!required && value !== undefined ? (
+                  <>
+                    <Cross size={16} />
+                    <span className="inline-block h-6 border-s" />
+                  </>
+                ) : null}
+
                 <ChevronDown size={16} />
               </>
             )}
