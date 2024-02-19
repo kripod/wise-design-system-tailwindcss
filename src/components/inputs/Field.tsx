@@ -55,14 +55,14 @@ export interface FieldProps {
 }
 
 export function Field({ label, hint, error, className, children }: FieldProps) {
-  const description = error ?? hint;
+  const description = error || hint;
   const descriptionId = useId();
 
   return (
     <InputDescribedByContext.Provider
       value={description ? descriptionId : undefined}
     >
-      <InputInvalidContext.Provider value={error != null}>
+      <InputInvalidContext.Provider value={Boolean(error)}>
         <span className={clsx(className, "inline-flex flex-col gap-y-2")}>
           <Label>
             {label}
