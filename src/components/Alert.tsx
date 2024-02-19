@@ -1,3 +1,4 @@
+import { useId } from "@radix-ui/react-id";
 import {
   AlertCircleFill,
   CheckCircleFill,
@@ -35,9 +36,14 @@ export function Alert({
   onClose,
   children,
 }: AlertProps) {
+  const id = useId();
   const Icon = iconBySentiment[sentiment];
+
   return (
-    <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 rounded-lg bg-background-neutral p-6 text-content-secondary">
+    <div
+      id={id}
+      className="grid grid-cols-[auto_1fr_auto] items-center gap-4 rounded-lg bg-background-neutral p-6 text-content-secondary"
+    >
       <Icon />
       <div
         role="alert"
@@ -47,6 +53,7 @@ export function Alert({
       </div>
       {onClose != null ? (
         <CloseButton
+          aria-controls={id}
           size="sm"
           className="col-start-3 self-start"
           onClick={onClose}
