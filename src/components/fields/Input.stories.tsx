@@ -3,7 +3,7 @@ import { Search } from "@transferwise/icons";
 import * as React from "react";
 
 import { Field, FieldDescription, Label } from "./Field";
-import { Input, InputGroup } from "./Input";
+import { Input, InputAddon, InputGroup } from "./Input";
 
 export const Basic: Story<{
   size: "sm" | "md" | "lg" | "xl";
@@ -64,14 +64,10 @@ export const WithPrefix: Story<{
   return (
     <Label>
       Label
-      <InputGroup
-        prefix={
-          <span className="px-4">
-            <Search size={24} />
-          </span>
-        }
-        prefixWidth="3rem"
-      >
+      <InputGroup prefixWidth="3rem">
+        <InputAddon>
+          <Search size={24} />
+        </InputAddon>
         <Input
           value={value}
           disabled={disabled}

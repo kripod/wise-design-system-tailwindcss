@@ -15,43 +15,49 @@ type InputGroupContextType = {
 
 const InputGroupContext = React.createContext<InputGroupContextType>({});
 
-export type InputGroupProps = (
-  | {
-      prefix: React.ReactNode;
-      prefixWidth: React.CSSProperties["paddingInlineStart"];
-      prefixInteractive?: boolean;
-    }
-  | {
-      prefix?: never;
-      prefixWidth?: never;
-      prefixInteractive?: never;
-    }
-) & {
+export type InputGroupProps = {
+  prefixWidth?: React.CSSProperties["paddingInlineStart"];
   children?: React.ReactNode;
 };
 
-export function InputGroup({
-  prefix,
-  prefixWidth,
-  prefixInteractive = false,
-  children,
-}: InputGroupProps) {
+export function InputGroup({ prefixWidth, children }: InputGroupProps) {
   return (
     <InputGroupContext.Provider
       value={React.useMemo(() => ({ prefixWidth }), [prefixWidth])}
     >
       <span className="group/input inline-grid [&>*]:col-start-1 [&>*]:row-start-1">
-        <span
-          className={clsx(
-            "z-10 inline-flex items-center justify-self-start text-interactive-secondary transition group-[:has(>input:focus:enabled:enabled)]/input:text-interactive-primary group-[:has(>input:hover:enabled)]/input:text-interactive-secondary-hover group-[:has(>input:disabled)]/input:opacity-45 group-[:has(>input:disabled)]/input:mix-blend-luminosity",
-            !prefixInteractive && "pointer-events-none",
-          )}
-        >
-          {prefix}
-        </span>
         {children}
       </span>
     </InputGroupContext.Provider>
+  );
+}
+
+export type InputAddonProps = {
+  interactive?: boolean;
+  margin?: "none" | "sm" | "md";
+  children?: React.ReactNode;
+};
+
+export function InputAddon({
+  interactive = false,
+  margin = "md",
+  children,
+}: InputAddonProps) {
+  return (
+    <span
+      className={clsx(
+        "z-10 self-center text-interactive-secondary transition group-[:has(>input:focus:enabled:enabled)]/input:text-interactive-primary group-[:has(>input:hover:enabled)]/input:text-interactive-secondary-hover group-[:has(>input:disabled)]/input:opacity-45 group-[:has(>input:disabled)]/input:mix-blend-luminosity",
+        interactive
+          ? "justify-self-end"
+          : "pointer-events-none justify-self-start",
+        {
+          "mx-4": margin === "md",
+          "mx-2": margin === "sm",
+        },
+      )}
+    >
+      {children}
+    </span>
   );
 }
 
