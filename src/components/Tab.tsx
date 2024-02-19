@@ -57,6 +57,14 @@ export function Tab({ disabled = false, children }: TabProps) {
         as={Button}
         disabled={disabled}
         className="col-start-1 row-start-1 after:absolute after:inset-0 ui-selected:font-semibold ui-selected:tracking-1"
+        /* TODO: Remove this once focus management is improved in Headless UI */
+        onClick={() => {
+          requestAnimationFrame(() => {
+            if (document.activeElement instanceof HTMLElement) {
+              document.activeElement.blur();
+            }
+          });
+        }}
       >
         {({ selected }) => (
           <>
