@@ -29,7 +29,7 @@ export function RadioChipGroup<T = string>({
       value={selectedValue}
       disabled={disabled}
       by={compareValues}
-      className="inline-flex flex-wrap gap-2"
+      className="flex flex-wrap gap-2"
       onChange={onChange}
     >
       {children}

@@ -12,7 +12,7 @@ export type CheckboxChipGroupProps = {
 };
 
 export function CheckboxChipGroup({ children }: CheckboxChipGroupProps) {
-  return <div className="inline-flex flex-wrap gap-2">{children}</div>;
+  return <div className="flex flex-wrap gap-2">{children}</div>;
 }
 
 export type CheckboxChipProps = {
