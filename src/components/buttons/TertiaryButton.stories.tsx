@@ -3,12 +3,12 @@ import type { Story } from "@ladle/react";
 import { TertiaryButton } from "./TertiaryButton";
 
 export const Basic: Story<{
-  contents: string;
+  text: string;
   size: "sm" | "md";
   loading: boolean;
   disabled: boolean;
   onClick: () => void;
-}> = function ({ contents, size, loading, disabled, onClick }) {
+}> = function ({ text, size, loading, disabled, onClick }) {
   return (
     <TertiaryButton
       size={size}
@@ -16,13 +16,13 @@ export const Basic: Story<{
       disabled={disabled}
       onClick={onClick}
     >
-      {contents}
+      {text}
     </TertiaryButton>
   );
 };
 
 Basic.args = {
-  contents: "Click me",
+  text: "Click me",
   loading: false,
   disabled: false,
 };
@@ -39,9 +39,9 @@ Basic.argTypes = {
 };
 
 export const Link: Story<{
-  contents: string;
+  text: string;
   size: "sm" | "md";
-}> = function ({ contents, size }) {
+}> = function ({ text, size }) {
   return (
     <TertiaryButton
       size={size}
@@ -51,13 +51,13 @@ export const Link: Story<{
         </a>
       )}
     >
-      {contents}
+      {text}
     </TertiaryButton>
   );
 };
 
 Link.args = {
-  contents: "Click me",
+  text: "Click me",
 };
 
 Link.argTypes = {

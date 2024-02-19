@@ -4,23 +4,23 @@ import { Plus } from "@transferwise/icons";
 import { CircularButton } from "./CircularButton";
 
 export const Basic: Story<{
-  contents: string;
+  text: string;
   disabled: boolean;
   onClick: () => void;
-}> = function ({ contents, disabled, onClick }) {
+}> = function ({ text, disabled, onClick }) {
   return (
     <CircularButton
       icon={<Plus size={24} />}
       disabled={disabled}
       onClick={onClick}
     >
-      {contents}
+      {text}
     </CircularButton>
   );
 };
 
 Basic.args = {
-  contents: "Add money",
+  text: "Add money",
   disabled: false,
 };
 

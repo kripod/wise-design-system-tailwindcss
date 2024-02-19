@@ -3,13 +3,13 @@ import type { Story } from "@ladle/react";
 import { SecondaryButton } from "./SecondaryButton";
 
 export const Basic: Story<{
-  contents: string;
+  text: string;
   size: "sm" | "md";
   sentiment: "neutral" | "negative";
   loading: boolean;
   disabled: boolean;
   onClick: () => void;
-}> = function ({ contents, size, sentiment, loading, disabled, onClick }) {
+}> = function ({ text, size, sentiment, loading, disabled, onClick }) {
   return (
     <SecondaryButton
       size={size}
@@ -18,13 +18,13 @@ export const Basic: Story<{
       disabled={disabled}
       onClick={onClick}
     >
-      {contents}
+      {text}
     </SecondaryButton>
   );
 };
 
 Basic.args = {
-  contents: "Click me",
+  text: "Click me",
   loading: false,
   disabled: false,
 };

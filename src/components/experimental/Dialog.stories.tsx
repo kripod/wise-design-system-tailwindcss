@@ -6,10 +6,10 @@ import { Dialog } from "./Dialog";
 
 export const Basic: Story<{
   title: string;
-  contents: string;
+  text: string;
   size: "sm" | "md" | "lg";
   onClose: () => void;
-}> = function ({ title, contents, size, onClose }) {
+}> = function ({ title, text, size, onClose }) {
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -24,7 +24,7 @@ export const Basic: Story<{
           setOpen(false);
         }}
       >
-        {contents}
+        {text}
       </Dialog>
     </>
   );
@@ -32,7 +32,7 @@ export const Basic: Story<{
 
 Basic.args = {
   title: "Change this user’s role?",
-  contents: "Content goes here",
+  text: "Content goes here",
 };
 
 Basic.argTypes = {

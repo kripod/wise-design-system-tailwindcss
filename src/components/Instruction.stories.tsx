@@ -3,14 +3,14 @@ import type { Story } from "@ladle/react";
 import { Instruction, InstructionList } from "./Instruction";
 
 export const Basic: Story<{
-  contents: string;
+  text: string;
   sentiment: "negative" | "positive";
-}> = function ({ contents, sentiment }) {
-  return <Instruction sentiment={sentiment}>{contents}</Instruction>;
+}> = function ({ text, sentiment }) {
+  return <Instruction sentiment={sentiment}>{text}</Instruction>;
 };
 
 Basic.args = {
-  contents: "Do an initial money transfer",
+  text: "Do an initial money transfer",
 };
 
 Basic.argTypes = {

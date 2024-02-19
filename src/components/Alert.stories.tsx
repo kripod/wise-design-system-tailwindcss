@@ -3,14 +3,14 @@ import type { Story } from "@ladle/react";
 import { Alert } from "./Alert";
 
 export const Basic: Story<{
-  contents: string;
+  text: string;
   sentiment: "neutral" | "negative" | "positive" | "warning";
   unclosable: boolean;
   onClose: () => void;
-}> = function ({ contents, sentiment, unclosable, onClose }) {
+}> = function ({ text, sentiment, unclosable, onClose }) {
   return (
     <Alert sentiment={sentiment} onClose={!unclosable ? onClose : undefined}>
-      {contents}
+      {text}
       {/* TODO: Consider creating an `Alert.Link` component */}
       <a
         href="#_"
@@ -23,8 +23,7 @@ export const Basic: Story<{
 };
 
 Basic.args = {
-  contents:
-    "Payments sent to your bank details today might not arrive in time for the holidays.",
+  text: "Payments sent to your bank details today might not arrive in time for the holidays.",
   unclosable: false,
 };
 

@@ -4,19 +4,19 @@ import { Profile } from "@transferwise/icons";
 import { ActionButton } from "./ActionButton";
 
 export const Basic: Story<{
-  contents: string;
+  text: string;
   disabled: boolean;
   onClick: () => void;
-}> = function ({ contents, disabled, onClick }) {
+}> = function ({ text, disabled, onClick }) {
   return (
     <ActionButton disabled={disabled} onClick={onClick}>
-      <Profile size={16} /> {contents}
+      <Profile size={16} /> {text}
     </ActionButton>
   );
 };
 
 Basic.args = {
-  contents: "Click me",
+  text: "Click me",
   disabled: false,
 };
 
