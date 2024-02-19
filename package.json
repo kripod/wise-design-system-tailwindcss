@@ -11,7 +11,9 @@
   "repository": "transferwise/design-system-web-tailwindcss",
   "license": "MIT",
   "author": "Wise Payments Ltd.",
-  "sideEffects": false,
+  "sideEffects": [
+    "*.css"
+  ],
   "exports": {
     ".": {
       "types": "./dist/mod.d.ts",
