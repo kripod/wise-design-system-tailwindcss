@@ -21,7 +21,7 @@
     "./styles-legacy.css": "./dist/styles-legacy.css"
   },
   "main": "./dist/index.js",
-  "types": "./dist/types/index.d.ts",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist/",
     "src/",
