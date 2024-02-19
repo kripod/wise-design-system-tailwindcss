@@ -4,11 +4,19 @@ import * as React from "react";
 import { Button, type ButtonPropsBase } from "./_Button";
 
 export type ActionButtonProps = ButtonPropsBase & {
+  icon: React.ReactNode;
+  iconPlacement?: "start" | "end";
   disabled?: boolean;
 };
 
 export const ActionButton = React.forwardRef(function ActionButton(
-  { className, ...restProps }: ActionButtonProps,
+  {
+    icon,
+    iconPlacement = "start",
+    className,
+    children,
+    ...restProps
+  }: ActionButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement>,
 ) {
   return (
@@ -17,9 +25,13 @@ export const ActionButton = React.forwardRef(function ActionButton(
       size="sm"
       className={clsx(
         "inline-flex items-center justify-center gap-x-2 rounded-full bg-interactive-accent px-3 text-interactive-control hover:bg-interactive-accent-hover active:bg-interactive-accent-active",
+        iconPlacement === "end" && "flex-row-reverse",
         className,
       )}
       {...restProps}
-    />
+    >
+      {icon}
+      <span className="flex-1">{children}</span>
+    </Button>
   );
 });

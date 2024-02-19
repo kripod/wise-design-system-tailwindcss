@@ -5,12 +5,18 @@ import { ActionButton } from "./ActionButton";
 
 export const Basic: Story<{
   text: string;
+  iconPlacement: "start" | "end";
   disabled: boolean;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
-}> = function ({ text, disabled, onClick }) {
+}> = function ({ text, iconPlacement, disabled, onClick }) {
   return (
-    <ActionButton disabled={disabled} onClick={onClick}>
-      <Profile size={16} /> {text}
+    <ActionButton
+      icon={<Profile size={16} />}
+      iconPlacement={iconPlacement}
+      disabled={disabled}
+      onClick={onClick}
+    >
+      {text}
     </ActionButton>
   );
 };
@@ -21,6 +27,11 @@ Basic.args = {
 };
 
 Basic.argTypes = {
+  iconPlacement: {
+    options: ["start", "end"],
+    defaultValue: "start",
+    control: { type: "radio" },
+  },
   onClick: {
     action: "clicked",
   },
