@@ -16,6 +16,7 @@
     "start": "ladle preview"
   },
   "dependencies": {
+    "@radix-ui/react-id": "^1.0.0",
     "clsx": "^1.2.1",
     "use-sync-external-store": "^1.2.0"
   },
