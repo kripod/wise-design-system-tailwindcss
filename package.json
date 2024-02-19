@@ -79,7 +79,7 @@
     "@types/react-dom": "16.9.19",
     "@types/use-sync-external-store": "^0.0.3",
     "@vitejs/plugin-react": "4.0.1",
-    "@wise/eslint-config": "0.0.0-experimental-3539ab0",
+    "@wise/eslint-config": "0.0.0-experimental-21dc494",
     "babel-plugin-optimize-clsx": "2.6.2",
     "eslint": "8.43.0",
     "eslint-plugin-tailwindcss": "3.12.1",
@@ -102,7 +102,13 @@
   "peerDependencies": {
     "@transferwise/icons": "^3.1",
     "react": "16.14 - 18",
-    "react-dom": "16.14 - 18"
+    "react-dom": "16.14 - 18",
+    "typescript": ">=4.5"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
   },
   "packageManager": "pnpm@8.6.4",
   "publishConfig": {
