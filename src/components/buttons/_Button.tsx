@@ -64,7 +64,7 @@ export const Button = React.forwardRef(function Button(
             <>{children}</>
           ) : (
             <span className="inline-flex items-center justify-center gap-x-2">
-              <Spinner />
+              <Spinner size={16} />
               <span className="flex-1">{children}</span>
             </span>
           ),

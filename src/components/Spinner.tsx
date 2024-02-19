@@ -1,21 +1,14 @@
-import { Refresh, type RefreshIconProps } from "@transferwise/icons";
+import { Refresh } from "@transferwise/icons";
 
 export type SpinnerProps = {
-  size?: "md" | "lg";
+  size: 16 | 24;
 };
 
-const iconSizeByComponentSize = {
-  md: 16,
-  lg: 24,
-} satisfies {
-  [key in NonNullable<SpinnerProps["size"]>]: RefreshIconProps["size"];
-};
-
-export function Spinner({ size = "md" }: SpinnerProps) {
+export function Spinner({ size }: SpinnerProps) {
   return (
     // TODO: Change icon
     <Refresh
-      size={iconSizeByComponentSize[size]}
+      size={size}
       className="inline-block animate-spin motion-reduce:animate-none"
     />
   );
