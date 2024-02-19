@@ -28,7 +28,10 @@ export function Dialog({
         onClose();
       }}
     >
-      <div className="fixed inset-0 bg-content-primary/40" aria-hidden />
+      <div
+        className="fixed inset-0 bg-content-primary opacity-40"
+        aria-hidden
+      />
 
       <div className="fixed inset-0 overflow-y-auto">
         <div className="flex min-h-full items-center justify-center p-4">

@@ -40,62 +40,44 @@ export default {
       current: colors.current,
       transparent: colors.transparent,
       content: {
-        primary: "rgb(var(--color-content-primary, 14 15 12) / <alpha-value>)",
-        secondary:
-          "rgb(var(--color-content-secondary, 69 71 69) / <alpha-value>)",
-        tertiary:
-          "rgb(var(--color-content-tertiary, 106 108 106) / <alpha-value>)",
+        primary: "rgb(var(--color-content-primary, 14 15 12))",
+        secondary: "rgb(var(--color-content-secondary, 69 71 69))",
+        tertiary: "rgb(var(--color-content-tertiary, 106 108 106))",
         link: {
-          DEFAULT: "rgb(var(--color-content-link, 22 51 0) / <alpha-value>)",
-          hover:
-            "rgb(var(--color-content-link-hover, 13 31 0) / <alpha-value>)",
-          active:
-            "rgb(var(--color-content-link-active, 14 15 12) / <alpha-value>)",
+          DEFAULT: "rgb(var(--color-content-link, 22 51 0))",
+          hover: "rgb(var(--color-content-link-hover, 13 31 0))",
+          active: "rgb(var(--color-content-link-active, 14 15 12))",
         },
       },
       interactive: {
         primary: {
-          DEFAULT:
-            "rgb(var(--color-interactive-primary, 22 51 0) / <alpha-value>)",
-          hover:
-            "rgb(var(--color-interactive-primary-hover, 13 31 0) / <alpha-value>)",
-          active:
-            "rgb(var(--color-interactive-primary-active, 14 15 12) / <alpha-value>)",
+          DEFAULT: "rgb(var(--color-interactive-primary, 22 51 0))",
+          hover: "rgb(var(--color-interactive-primary-hover, 13 31 0))",
+          active: "rgb(var(--color-interactive-primary-active, 14 15 12))",
         },
         accent: {
-          DEFAULT:
-            "rgb(var(--color-interactive-accent, 159 232 112) / <alpha-value>)",
-          hover:
-            "rgb(var(--color-interactive-accent-hover, 128 225 66) / <alpha-value>)",
-          active:
-            "rgb(var(--color-interactive-accent-active, 101 207 33) / <alpha-value>)",
+          DEFAULT: "rgb(var(--color-interactive-accent, 159 232 112))",
+          hover: "rgb(var(--color-interactive-accent-hover, 128 225 66))",
+          active: "rgb(var(--color-interactive-accent-active, 101 207 33))",
         },
         secondary: {
-          DEFAULT:
-            "rgb(var(--color-interactive-secondary, 134 134 133) / <alpha-value>)",
-          hover:
-            "rgb(var(--color-interactive-secondary-hover, 108 108 107) / <alpha-value>)",
-          active:
-            "rgb(var(--color-interactive-secondary-active, 82 82 81) / <alpha-value>)",
+          DEFAULT: "rgb(var(--color-interactive-secondary, 134 134 133))",
+          hover: "rgb(var(--color-interactive-secondary-hover, 108 108 107))",
+          active: "rgb(var(--color-interactive-secondary-active, 82 82 81))",
         },
         control: {
-          DEFAULT:
-            "rgb(var(--color-interactive-control, 22 51 0) / <alpha-value>)",
-          hover:
-            "rgb(var(--color-interactive-control-hover, 13 31 0) / <alpha-value>)",
-          active:
-            "rgb(var(--color-interactive-control-active, 14 15 12) / <alpha-value>)",
+          DEFAULT: "rgb(var(--color-interactive-control, 22 51 0))",
+          hover: "rgb(var(--color-interactive-control-hover, 13 31 0))",
+          active: "rgb(var(--color-interactive-control-active, 14 15 12))",
         },
       },
       background: {
         screen: {
-          DEFAULT:
-            "rgb(var(--color-background-screen, 255 255 255) / <alpha-value>)",
+          DEFAULT: "rgb(var(--color-background-screen, 255 255 255))",
           hover: "rgb(var(--color-background-screen-hover, 22 51 0) / 0.08)",
           active: "rgb(var(--color-background-screen-active, 22 51 0) / 0.13)",
         },
-        elevated:
-          "rgb(var(--color-background-elevated, 255 255 255) / <alpha-value>)",
+        elevated: "rgb(var(--color-background-elevated, 255 255 255))",
         neutral: {
           DEFAULT: "rgb(var(--color-background-neutral, 22 51 0) / 0.08)",
           hover: "rgb(var(--color-background-neutral-hover, 22 51 0) / 0.13)",
@@ -109,21 +91,15 @@ export default {
       },
       sentiment: {
         negative: {
-          DEFAULT:
-            "rgb(var(--color-sentiment-negative, 168 32 13) / <alpha-value>)",
-          hover:
-            "rgb(var(--color-sentiment-negative-hover, 142 27 11) / <alpha-value>)",
-          active:
-            "rgb(var(--color-sentiment-negative-active, 118 23 9) / <alpha-value>)",
+          DEFAULT: "rgb(var(--color-sentiment-negative, 168 32 13))",
+          hover: "rgb(var(--color-sentiment-negative-hover, 142 27 11))",
+          active: "rgb(var(--color-sentiment-negative-active, 118 23 9))",
         },
-        positive:
-          "rgb(var(--color-sentiment-positive, 47 87 17) / <alpha-value>)",
-        warning:
-          "rgb(var(--color-sentiment-warning, 237 200 67) / <alpha-value>)",
+        positive: "rgb(var(--color-sentiment-positive, 47 87 17))",
+        warning: "rgb(var(--color-sentiment-warning, 237 200 67))",
       },
       base: {
-        contrast:
-          "rgb(var(--color-base-contrast, 255 255 255) / <alpha-value>)",
+        contrast: "rgb(var(--color-base-contrast, 255 255 255))",
       },
     }),
     fontFamily: {
