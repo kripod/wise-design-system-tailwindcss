@@ -14,7 +14,15 @@ export const Basic: Story<{
   return (
     <>
       <PrimaryButton onClick={() => setOpen(true)}>Open dialog</PrimaryButton>
-      <Dialog title={title} open={open} size={size} onClose={onClose}>
+      <Dialog
+        title={title}
+        open={open}
+        size={size}
+        onClose={() => {
+          onClose();
+          setOpen(false);
+        }}
+      >
         {contents}
       </Dialog>
     </>
