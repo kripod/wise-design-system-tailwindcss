@@ -1,9 +1,9 @@
-import ts from "rollup-plugin-ts";
+const ts = require("rollup-plugin-ts");
 
-import pkg from "./package.json";
+const pkg = require("./package.json");
 
 /** @type {import("rollup").RollupOptions} */
-export default {
+module.exports = {
   input: {
     index: "src/index.ts",
     _canary: "src/index-canary.ts",
