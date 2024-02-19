@@ -83,7 +83,7 @@ export function SelectInput<T = string>({
       disabled={disabled}
       onChange={onChange}
     >
-      {({ open }) => (
+      {({ value, open }) => (
         <>
           <ListboxBase.Button
             ref={refs.setReference}
@@ -96,26 +96,22 @@ export function SelectInput<T = string>({
             {...inputAriaAttributes}
             {...restProps}
           >
-            {({ value }: { value: T | undefined }) => (
+            <span className="flex-1 truncate">
+              {value !== undefined ? (
+                renderValue(value)
+              ) : (
+                <span className="text-content-tertiary">{placeholder}</span>
+              )}
+            </span>
+
+            {!required && value !== undefined ? (
               <>
-                <span className="flex-1 truncate">
-                  {value !== undefined ? (
-                    renderValue(value)
-                  ) : (
-                    <span className="text-content-tertiary">{placeholder}</span>
-                  )}
-                </span>
-
-                {!required && value !== undefined ? (
-                  <>
-                    <Cross size={16} />
-                    <span className="inline-block h-6 border-s" />
-                  </>
-                ) : null}
-
-                <ChevronDown size={16} />
+                <Cross size={16} />
+                <span className="inline-block h-6 border-s" />
               </>
-            )}
+            ) : null}
+
+            <ChevronDown size={16} />
           </ListboxBase.Button>
 
           {open ? (
