@@ -1,22 +1,30 @@
 import { useId } from "@radix-ui/react-id";
 import { AlertCircle } from "@transferwise/icons";
 import { clsx } from "clsx";
+import * as React from "react";
 
-import {
-  InputDescribedByProvider,
-  InputInvalidProvider,
-  useInputDescribedBy,
-  useInputInvalid,
-} from "./_Input";
 import { Label } from "./Label";
+
+const InputDescribedByContext = React.createContext<string | undefined>(
+  undefined,
+);
+
+const InputInvalidContext = React.createContext<boolean | undefined>(undefined);
+
+export function useInputAriaAttributes() {
+  return {
+    "aria-describedby": React.useContext(InputDescribedByContext),
+    "aria-invalid": React.useContext(InputInvalidContext),
+  } satisfies React.AriaAttributes;
+}
 
 interface FieldDescriptionProps {
   children?: React.ReactNode;
 }
 
 function FieldDescription({ children }: FieldDescriptionProps) {
-  const descriptionId = useInputDescribedBy();
-  const invalid = useInputInvalid();
+  const descriptionId = React.useContext(InputDescribedByContext);
+  const invalid = React.useContext(InputInvalidContext);
 
   return (
     <span
@@ -51,8 +59,10 @@ export function Field({ label, hint, error, className, children }: FieldProps) {
   const descriptionId = useId();
 
   return (
-    <InputDescribedByProvider value={description ? descriptionId : undefined}>
-      <InputInvalidProvider value={error != null}>
+    <InputDescribedByContext.Provider
+      value={description ? descriptionId : undefined}
+    >
+      <InputInvalidContext.Provider value={error != null}>
         <span className={clsx(className, "inline-flex flex-col gap-y-2")}>
           <Label>
             {label}
@@ -63,7 +73,7 @@ export function Field({ label, hint, error, className, children }: FieldProps) {
             <FieldDescription>{description}</FieldDescription>
           ) : null}
         </span>
-      </InputInvalidProvider>
-    </InputDescribedByProvider>
+      </InputInvalidContext.Provider>
+    </InputDescribedByContext.Provider>
   );
 }

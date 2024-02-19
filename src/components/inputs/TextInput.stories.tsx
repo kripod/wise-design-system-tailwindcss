@@ -70,7 +70,7 @@ export const WithPrefix: Story<{
   return (
     <Label>
       Label
-      <InputGroup initialPaddingStart="3rem" disabled={disabled}>
+      <InputGroup initialPaddingStart={48} disabled={disabled}>
         <InputAddon placement="start">
           <Search size={24} />
         </InputAddon>
@@ -96,7 +96,7 @@ export const WithSuffix: Story<{
   return (
     <Label>
       Label
-      <InputGroup initialPaddingEnd="4.75rem" disabled={disabled}>
+      <InputGroup initialPaddingEnd={76} disabled={disabled}>
         <TextInput
           ref={ref}
           value={value}

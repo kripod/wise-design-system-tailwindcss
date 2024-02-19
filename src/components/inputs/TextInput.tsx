@@ -1,7 +1,8 @@
 import { clsx } from "clsx";
 import * as React from "react";
 
-import { inputClassNameBase, useInputAriaAttributes } from "./_Input";
+import { inputClassNameBase } from "./_Input";
+import { useInputAriaAttributes } from "./Field";
 import { useInputPaddings } from "./InputAddon";
 
 export interface TextInputProps

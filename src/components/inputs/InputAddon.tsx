@@ -2,43 +2,30 @@ import { clsx } from "clsx";
 import * as React from "react";
 
 import { useResizeObserver } from "../../hooks/useResizeObserver";
+import { pxToRem } from "../../pxToRem";
 
-type InputPaddingStartContextType = [
-  React.CSSProperties["paddingInlineStart"],
-  React.Dispatch<
-    React.SetStateAction<React.CSSProperties["paddingInlineStart"]>
-  >,
-];
+const InputPaddingStartContext = React.createContext<
+  [number | undefined, React.Dispatch<React.SetStateAction<number | undefined>>]
+>([undefined, () => {}]);
 
-const InputPaddingStartContext =
-  React.createContext<InputPaddingStartContextType>([undefined, () => {}]);
+const InputPaddingEndContext = React.createContext<
+  [number | undefined, React.Dispatch<React.SetStateAction<number | undefined>>]
+>([undefined, () => {}]);
 
-type InputPaddingEndContextType = [
-  React.CSSProperties["paddingInlineEnd"],
-  React.Dispatch<React.SetStateAction<React.CSSProperties["paddingInlineEnd"]>>,
-];
-
-const InputPaddingEndContext = React.createContext<InputPaddingEndContextType>([
-  undefined,
-  () => {},
-]);
-
-export function useInputPaddings(): Pick<
-  React.CSSProperties,
-  "paddingInlineStart" | "paddingInlineEnd"
-> {
+export function useInputPaddings() {
   const [paddingStart] = React.useContext(InputPaddingStartContext);
   const [paddingEnd] = React.useContext(InputPaddingEndContext);
 
   return {
-    paddingInlineStart: paddingStart,
-    paddingInlineEnd: paddingEnd,
-  };
+    paddingInlineStart:
+      paddingStart != null ? pxToRem(paddingStart) : undefined,
+    paddingInlineEnd: paddingEnd != null ? pxToRem(paddingEnd) : undefined,
+  } satisfies React.CSSProperties;
 }
 
 export interface InputGroupProps {
-  initialPaddingStart?: InputPaddingStartContextType[0];
-  initialPaddingEnd?: InputPaddingEndContextType[0];
+  initialPaddingStart?: number;
+  initialPaddingEnd?: number;
   disabled?: boolean;
   className?: string;
   children?: React.ReactNode;

@@ -14,7 +14,8 @@ import * as React from "react";
 
 import { identity } from "../../identity";
 import { PreventScroll } from "../PreventScroll";
-import { inputClassNameBase, useInputAriaAttributes } from "./_Input";
+import { inputClassNameBase } from "./_Input";
+import { useInputAriaAttributes } from "./Field";
 
 export type SelectInputProps<T = string> = {
   name?: string;
