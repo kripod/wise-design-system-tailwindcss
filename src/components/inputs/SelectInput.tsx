@@ -18,7 +18,7 @@ import { InputGroup } from "./InputGroup";
 import { SearchInput } from "./SearchInput";
 
 function searchableString(value: string) {
-  return value.trim().replace(/\s+/gu, " ").toLowerCase();
+  return value.trim().replace(/\s+/gu, " ").normalize("NFKC").toLowerCase();
 }
 
 function inferSearchableStrings(value: unknown) {
