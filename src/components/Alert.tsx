@@ -37,7 +37,7 @@ export function Alert({
     >
       <div className="flex items-start justify-between">
         <Icon />
-        {onClose != null ? <CloseButton onClick={onClose} /> : null}
+        {onClose != null ? <CloseButton size="sm" onClick={onClose} /> : null}
       </div>
 
       <div className="text-sm text-content-secondary">{children}</div>

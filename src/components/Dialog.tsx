@@ -46,7 +46,7 @@ export function Dialog({
               <DialogBase.Title className="text-lg font-semibold">
                 {title}
               </DialogBase.Title>
-              <CloseButton size="lg" onClick={onClose} />
+              <CloseButton onClick={onClose} />
             </div>
 
             <div className="p-6">{children}</div>

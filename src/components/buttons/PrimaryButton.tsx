@@ -27,6 +27,7 @@ export const PrimaryButton = React.forwardRef(function PrimaryButton(
       loading={loading}
       disabled={disabled}
       className={clsx(
+        "px-4",
         {
           "bg-interactive-accent text-interactive-control":
             sentiment === "neutral",

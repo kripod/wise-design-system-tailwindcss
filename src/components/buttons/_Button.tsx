@@ -37,15 +37,14 @@ export const Button = React.forwardRef(function Button(
           [clsx("h-12 text-base tracking-1", equilateral && "w-12")]:
             size === "md",
         },
-        !equilateral && "gap-x-2 px-4",
+        !equilateral && "gap-x-2",
         (disabled || loading) && "opacity-45 mix-blend-luminosity",
         disabled ? "cursor-not-allowed" : loading && "cursor-wait",
         className,
       )}
       {...restProps}
     >
-      {children}
-      {loading ? <Spinner /> : null}
+      {children} {loading ? <Spinner /> : null}
     </button>
   );
 });
