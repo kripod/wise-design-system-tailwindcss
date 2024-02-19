@@ -52,7 +52,7 @@ export function RadioChip<T = string>({
       value={value}
       disabled={disabled}
     >
-      <span className="-mx-px">{children}</span>
+      {children}
     </RadioGroupBase.Option>
   );
 }
