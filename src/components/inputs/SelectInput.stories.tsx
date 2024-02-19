@@ -141,7 +141,10 @@ export const Months: Story<{
     <div className="flex flex-col">
       <SelectInput
         placeholder="Month"
-        items={months.map((month) => ({ type: "option", value: month }))}
+        items={months.map((month) => ({
+          type: "option",
+          value: month,
+        }))}
         value={selectedMonth}
         renderValue={(month) => <SelectInputOptionContent title={month.name} />}
         onChange={(month) => {
@@ -224,6 +227,11 @@ export const Currencies: Story<{
             options: popularCurrencies.map((currency) => ({
               type: "option",
               value: currency,
+              filterMatchers: [
+                currency.code,
+                currency.name,
+                ...(currency.countries ?? []),
+              ],
             })),
           },
           {
