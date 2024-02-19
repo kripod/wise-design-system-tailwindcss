@@ -17,7 +17,6 @@ export type CloseButtonProps = Merge<
     | "aria-pressed"
   >,
   {
-    "aria-controls": string;
     size?: "sm" | "md";
   }
 >;

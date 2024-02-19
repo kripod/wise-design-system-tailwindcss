@@ -1,5 +1,4 @@
 import { Dialog as DialogBase } from "@headlessui/react";
-import { useId } from "@radix-ui/react-id";
 import { clsx } from "clsx";
 
 import { CloseButton } from "../buttons/CloseButton";
@@ -21,11 +20,8 @@ export function Dialog({
   onClose,
   children,
 }: DialogProps) {
-  const id = useId();
-
   return (
     <DialogBase
-      id={id}
       open={open}
       className="relative z-50"
       onClose={() => {
@@ -51,7 +47,7 @@ export function Dialog({
               <DialogBase.Title className="flex-1 text-lg font-semibold">
                 {title}
               </DialogBase.Title>
-              <CloseButton aria-controls={id} onClick={onClose} />
+              <CloseButton onClick={onClose} />
             </div>
 
             <div className="p-6">{children}</div>
