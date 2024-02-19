@@ -28,7 +28,11 @@ export const ListItem: Story<{
   text: string;
   sentiment: "negative" | "positive";
 }> = function ({ text, sentiment }) {
-  return <Instruction sentiment={sentiment}>{text}</Instruction>;
+  return (
+    <InstructionList>
+      <Instruction sentiment={sentiment}>{text}</Instruction>
+    </InstructionList>
+  );
 };
 
 ListItem.args = {
