@@ -84,13 +84,13 @@ export function SelectInput<T = string>({
     >
       <ListboxBase.Button
         ref={refs.setReference}
-        {...formControlAriaAttributes}
         className={clsx(
           getResetClassName("button"),
           className,
           formControlClassNameBase({ size: "md" }),
           "inline-flex items-center gap-x-2 rounded text-start",
         )}
+        {...formControlAriaAttributes}
         {...restProps}
       >
         {({ value }: { value: T | typeof placeholderValue }) => (

@@ -103,7 +103,6 @@ export const TextInput = React.forwardRef(function TextInput(
   return (
     <input
       ref={ref}
-      {...formControlAriaAttributes}
       className={clsx(
         className,
         formControlClassNameBase({ size }),
@@ -117,6 +116,7 @@ export const TextInput = React.forwardRef(function TextInput(
         paddingInlineStart: paddingStart,
         paddingInlineEnd: paddingEnd,
       }}
+      {...formControlAriaAttributes}
       {...restProps}
     />
   );

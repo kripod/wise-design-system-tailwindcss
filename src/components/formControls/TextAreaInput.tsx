@@ -34,12 +34,12 @@ export const TextAreaInput = React.forwardRef(function TextAreaInput(
   return (
     <textarea
       ref={ref}
-      {...formControlAriaAttributes}
       className={clsx(
         className,
         formControlClassNameBase(),
         "min-h-18 scroll-py-2 overscroll-none rounded py-3 text-base placeholder:text-content-tertiary",
       )}
+      {...formControlAriaAttributes}
       {...restProps}
     />
   );
