@@ -1,6 +1,5 @@
 import * as React from "react";
 
-import { useConstant } from "../hooks/useConstant";
 import { useReducedMotionPreference } from "../hooks/useReducedMotionPreference";
 import { useResizeObserver } from "../hooks/useResizeObserver";
 
@@ -15,10 +14,9 @@ export interface AnimatedLayoutGroupProps {
 }
 
 export function AnimatedLayoutGroup({ children }: AnimatedLayoutGroupProps) {
+  const [value] = React.useState(() => new Map<LayoutId, DOMRect>());
   return (
-    <AnimatedLayoutGroupContext.Provider
-      value={useConstant(() => new Map<LayoutId, DOMRect>())}
-    >
+    <AnimatedLayoutGroupContext.Provider value={value}>
       {children}
     </AnimatedLayoutGroupContext.Provider>
   );
