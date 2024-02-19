@@ -72,9 +72,9 @@ export function BottomSheet({
           }}
         >
           <Transition.Child
-            enter="transition-opacity"
+            enter="transition-opacity duration-300"
             enterFrom="opacity-0"
-            leave="transition-opacity"
+            leave="transition-opacity duration-300"
             leaveTo="opacity-0"
           >
             <div className="fixed inset-0 bg-content-primary opacity-40" />
