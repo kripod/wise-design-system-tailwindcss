@@ -1,6 +1,9 @@
 import containerQueriesPlugin from "@tailwindcss/container-queries";
 import type { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
+import plugin from "tailwindcss/plugin";
+
+import { darkTheme, lightTheme } from "./themes";
 
 function roundTo(value: number, fractionDigits: number) {
   return Number(
@@ -41,71 +44,71 @@ export default {
       current: colors.current,
       transparent: colors.transparent,
       content: {
-        primary: "var(--color-content-primary, rgb(14 15 12))",
-        secondary: "var(--color-content-secondary, rgb(69 71 69))",
-        tertiary: "var(--color-content-tertiary, rgb(106 108 106))",
+        primary: `var(--color-content-primary, ${lightTheme["--color-content-primary"]})`,
+        secondary: `var(--color-content-secondary, ${lightTheme["--color-content-secondary"]})`,
+        tertiary: `var(--color-content-tertiary, ${lightTheme["--color-content-tertiary"]})`,
         link: {
-          DEFAULT: "var(--color-content-link, rgb(22 51 0))",
-          hover: "var(--color-content-link-hover, rgb(13 31 0))",
-          active: "var(--color-content-link-active, rgb(14 15 12))",
+          DEFAULT: `var(--color-content-link, ${lightTheme["--color-content-link"]})`,
+          hover: `var(--color-content-link-hover, ${lightTheme["--color-content-link-hover"]})`,
+          active: `var(--color-content-link-active, ${lightTheme["--color-content-link-active"]})`,
         },
       },
       interactive: {
         primary: {
-          DEFAULT: "var(--color-interactive-primary, rgb(22 51 0))",
-          hover: "var(--color-interactive-primary-hover, rgb(13 31 0))",
-          active: "var(--color-interactive-primary-active, rgb(14 15 12))",
+          DEFAULT: `var(--color-interactive-primary, ${lightTheme["--color-interactive-primary"]})`,
+          hover: `var(--color-interactive-primary-hover, ${lightTheme["--color-interactive-primary-hover"]})`,
+          active: `var(--color-interactive-primary-active, ${lightTheme["--color-interactive-primary-active"]})`,
         },
         accent: {
-          DEFAULT: "var(--color-interactive-accent, rgb(159 232 112))",
-          hover: "var(--color-interactive-accent-hover, rgb(128 225 66))",
-          active: "var(--color-interactive-accent-active, rgb(101 207 33))",
+          DEFAULT: `var(--color-interactive-accent, ${lightTheme["--color-interactive-accent"]})`,
+          hover: `var(--color-interactive-accent-hover, ${lightTheme["--color-interactive-accent-hover"]})`,
+          active: `var(--color-interactive-accent-active, ${lightTheme["--color-interactive-accent-active"]})`,
         },
         secondary: {
-          DEFAULT: "var(--color-interactive-secondary, rgb(134 134 133))",
-          hover: "var(--color-interactive-secondary-hover, rgb(108 108 107))",
-          active: "var(--color-interactive-secondary-active, rgb(82 82 81))",
+          DEFAULT: `var(--color-interactive-secondary, ${lightTheme["--color-interactive-secondary"]})`,
+          hover: `var(--color-interactive-secondary-hover, ${lightTheme["--color-interactive-secondary-hover"]})`,
+          active: `var(--color-interactive-secondary-active, ${lightTheme["--color-interactive-secondary-active"]})`,
         },
         control: {
-          DEFAULT: "var(--color-interactive-control, rgb(22 51 0))",
-          hover: "var(--color-interactive-control-hover, rgb(13 31 0))",
-          active: "var(--color-interactive-control-active, rgb(14 15 12))",
+          DEFAULT: `var(--color-interactive-control, ${lightTheme["--color-interactive-control"]})`,
+          hover: `var(--color-interactive-control-hover, ${lightTheme["--color-interactive-control-hover"]})`,
+          active: `var(--color-interactive-control-active, ${lightTheme["--color-interactive-control-active"]})`,
         },
       },
       background: {
         screen: {
-          DEFAULT: "var(--color-background-screen, rgb(255 255 255))",
-          hover: "var(--color-background-screen-hover, rgb(22 51 0 / 0.08))",
-          active: "var(--color-background-screen-active, rgb(22 51 0 / 0.13))",
+          DEFAULT: `var(--color-background-screen, ${lightTheme["--color-background-screen"]})`,
+          hover: `var(--color-background-screen-hover, ${lightTheme["--color-background-screen-hover"]})`,
+          active: `var(--color-background-screen-active, ${lightTheme["--color-background-screen-active"]})`,
         },
-        elevated: "var(--color-background-elevated, rgb(255 255 255))",
+        elevated: `var(--color-background-elevated, ${lightTheme["--color-background-elevated"]})`,
         neutral: {
-          DEFAULT: "var(--color-background-neutral, rgb(22 51 0 / 0.08))",
-          hover: "var(--color-background-neutral-hover, rgb(22 51 0 / 0.13))",
-          active: "var(--color-background-neutral-active, rgb(22 51 0 / 0.18))",
+          DEFAULT: `var(--color-background-neutral, ${lightTheme["--color-background-neutral"]})`,
+          hover: `var(--color-background-neutral-hover, ${lightTheme["--color-background-neutral-hover"]})`,
+          active: `var(--color-background-neutral-active, ${lightTheme["--color-background-neutral-active"]})`,
         },
-        overlay: "var(--color-background-overlay, rgb(22 51 0 / 0.08))",
+        overlay: `var(--color-background-overlay, ${lightTheme["--color-background-overlay"]})`,
       },
       border: {
-        neutral: "var(--color-border-neutral, rgb(14 15 12 / 0.12))",
-        overlay: "var(--color-border-overlay, rgb(14 15 12 / 0.12))",
+        neutral: `var(--color-border-neutral, ${lightTheme["--color-border-neutral"]})`,
+        overlay: `var(--color-border-overlay, ${lightTheme["--color-border-overlay"]})`,
       },
       sentiment: {
         negative: {
-          DEFAULT: "var(--color-sentiment-negative, rgb(168 32 13))",
-          hover: "var(--color-sentiment-negative-hover, rgb(142 27 11))",
-          active: "var(--color-sentiment-negative-active, rgb(118 23 9))",
+          DEFAULT: `var(--color-sentiment-negative, ${lightTheme["--color-sentiment-negative"]})`,
+          hover: `var(--color-sentiment-negative-hover, ${lightTheme["--color-sentiment-negative-hover"]})`,
+          active: `var(--color-sentiment-negative-active, ${lightTheme["--color-sentiment-negative-active"]})`,
         },
-        positive: "var(--color-sentiment-positive, rgb(47 87 17))",
-        warning: "var(--color-sentiment-warning, rgb(237 200 67))",
+        positive: `var(--color-sentiment-positive, ${lightTheme["--color-sentiment-positive"]})`,
+        warning: `var(--color-sentiment-warning, ${lightTheme["--color-sentiment-warning"]})`,
       },
       contrast: {
-        theme: "var(--color-contrast-theme, rgb(18 21 17))",
-        overlay: "var(--color-contrast-overlay, rgb(255 255 255))",
+        theme: `var(--color-contrast-theme, ${lightTheme["--color-contrast-theme"]})`,
+        overlay: `var(--color-contrast-overlay, ${lightTheme["--color-contrast-overlay"]})`,
       },
       base: {
-        light: "var(--color-base-light, rgb(255 255 255))",
-        dark: "var(--color-base-dark, rgb(18 21 17))",
+        light: `var(--color-base-light, ${lightTheme["--color-base-light"]})`,
+        dark: `var(--color-base-dark, ${lightTheme["--color-base-dark"]})`,
       },
     }),
     fontFamily: {
@@ -291,5 +294,18 @@ export default {
   corePlugins: {
     preflight: false,
   },
-  plugins: [containerQueriesPlugin],
+  plugins: [
+    containerQueriesPlugin,
+    plugin(({ addComponents }) => {
+      addComponents({
+        ".theme-light": lightTheme,
+        ".theme-dark": darkTheme,
+        ".theme-invert": {
+          ...darkTheme,
+          ".theme-light &": darkTheme,
+          ".theme-dark &": lightTheme,
+        },
+      });
+    }),
+  ],
 } satisfies Config;
