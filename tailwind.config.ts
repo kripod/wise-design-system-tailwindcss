@@ -100,6 +100,8 @@ export default {
       },
       base: {
         contrast: "rgb(var(--color-base-contrast, 255 255 255))",
+        light: "rgb(var(--color-base-light, 255 255 255))",
+        dark: "rgb(var(--color-base-dark, 18 21 17))",
       },
     }),
     fontFamily: {
