@@ -21,14 +21,16 @@ export function Field({ description, children }: FieldProps) {
     <FieldDescribedByContext.Provider value={descriptionId}>
       <span className="group/field inline-flex flex-col gap-y-2">
         {children}
-        <span
-          id={descriptionId}
-          className={clsx(
-            'text-sm text-content-secondary transition-colors group-[:has([aria-invalid="true"])]/field:text-sentiment-negative',
-          )}
-        >
-          {description}
-        </span>
+        {description != null ? (
+          <span
+            id={descriptionId}
+            className={clsx(
+              'text-sm text-content-secondary transition-colors group-[:has([aria-invalid="true"])]/field:text-sentiment-negative',
+            )}
+          >
+            {description}
+          </span>
+        ) : null}
       </span>
     </FieldDescribedByContext.Provider>
   );
