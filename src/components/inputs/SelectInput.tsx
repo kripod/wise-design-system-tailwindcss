@@ -16,7 +16,7 @@ import { PreventScroll } from "../PreventScroll";
 import { inputClassNameBase } from "./_Input";
 import { useInputAriaAttributes } from "./Field";
 
-export type SelectInputProps<T = string> = {
+export interface SelectInputProps<T = string> {
   name?: string;
   placeholder?: string;
   // TODO: multiple?: boolean;
@@ -26,20 +26,13 @@ export type SelectInputProps<T = string> = {
   compareValues?:
     | (keyof NonNullable<T> & string)
     | ((a: T | undefined, b: T | undefined) => boolean);
+  required?: boolean;
   "aria-invalid"?: React.AriaAttributes["aria-invalid"];
   disabled?: boolean;
   className?: string;
   children?: React.ReactNode;
-} & (
-  | {
-      required: true;
-      onChange?: (value: T) => void;
-    }
-  | {
-      required?: false;
-      onChange?: (value: T | undefined) => void;
-    }
-);
+  onChange?: (value: T | undefined) => void;
+}
 
 export function SelectInput<T = string>({
   name,
