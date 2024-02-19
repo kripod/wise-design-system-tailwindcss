@@ -1,15 +1,19 @@
 import { clsx } from "clsx";
 import * as React from "react";
+import type { Merge } from "ts-essentials";
 
-import { Button, ButtonOwnProps } from "./_Button";
+import { Button, ButtonProps } from "./_Button";
 
-export type SecondaryButtonOwnProps = Pick<ButtonOwnProps, "loading"> & {
-  size?: Extract<ButtonOwnProps["size"], "sm" | "md">;
-  sentiment?: "neutral" | "negative";
-};
-
-export type SecondaryButtonProps = React.ComponentPropsWithRef<"button"> &
-  SecondaryButtonOwnProps;
+export type SecondaryButtonProps = Merge<
+  Omit<
+    ButtonProps,
+    "equilateral" | "aria-label" | "aria-labelledby" | "aria-pressed"
+  >,
+  {
+    size?: "sm" | "md";
+    sentiment?: "neutral" | "negative";
+  }
+>;
 
 export const SecondaryButton = React.forwardRef(function SecondaryButton(
   {

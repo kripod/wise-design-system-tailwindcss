@@ -1,15 +1,24 @@
 import { useId } from "@radix-ui/react-id";
 import { clsx } from "clsx";
 import * as React from "react";
+import type { Merge } from "ts-essentials";
 
-import { Button } from "./_Button";
+import { Button, ButtonProps } from "./_Button";
 
-export type CircularButtonOwnProps = {
-  icon?: React.ReactNode;
-};
-
-export type CircularButtonProps = React.ComponentPropsWithRef<"button"> &
-  CircularButtonOwnProps;
+export type CircularButtonProps = Merge<
+  Omit<
+    ButtonProps,
+    | "size"
+    | "equilateral"
+    | "loading"
+    | "aria-label"
+    | "aria-labelledby"
+    | "aria-pressed"
+  >,
+  {
+    icon: React.ReactNode;
+  }
+>;
 
 export const CircularButton = React.forwardRef(function CircularButton(
   {

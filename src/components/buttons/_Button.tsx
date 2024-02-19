@@ -1,5 +1,6 @@
 import { clsx } from "clsx";
 import * as React from "react";
+import type { Merge } from "ts-essentials";
 
 import { Spinner } from "../Spinner";
 
@@ -16,24 +17,23 @@ type ButtonAriaAttributes = Pick<
   | "aria-pressed"
 >;
 
-export type ButtonInheritedProps = Pick<
-  React.ComponentPropsWithRef<"button">,
-  "ref" | "type" | "className" | "style" | "onClick"
-> &
-  ButtonAriaAttributes;
-
-export type ButtonOwnProps = {
-  size?: "sm" | "md" | "lg";
-  equilateral?: boolean;
-  loading?: boolean;
-  disabled?: boolean;
-  children: React.ReactNode;
-};
-
-export type ButtonProps = ButtonInheritedProps & ButtonOwnProps;
+export type ButtonProps = Merge<
+  Pick<
+    React.ComponentPropsWithRef<"button">,
+    "ref" | "type" | "disabled" | "className" | "style" | "onClick"
+  > &
+    ButtonAriaAttributes,
+  {
+    size?: "sm" | "md" | "lg";
+    equilateral?: boolean;
+    loading?: boolean;
+    children: React.ReactNode;
+  }
+>;
 
 export const Button = React.forwardRef(function Button(
   {
+    type = "button",
     size = "md",
     equilateral = false,
     loading = false,
@@ -47,7 +47,10 @@ export const Button = React.forwardRef(function Button(
   return (
     <button
       ref={ref}
-      type="button"
+      type={
+        // eslint-disable-next-line react/button-has-type
+        type
+      }
       disabled={disabled || loading}
       className={clsx(
         "inline-flex items-center justify-center rounded-full font-semibold transition focus:outline-none focus-visible:ring",

@@ -18,6 +18,7 @@
   "dependencies": {
     "@radix-ui/react-id": "^1.0.0",
     "clsx": "^1.2.1",
+    "ts-essentials": "^9.3.0",
     "use-sync-external-store": "^1.2.0"
   },
   "devDependencies": {

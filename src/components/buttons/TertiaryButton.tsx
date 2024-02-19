@@ -1,14 +1,18 @@
 import { clsx } from "clsx";
 import * as React from "react";
+import type { Merge } from "ts-essentials";
 
-import { Button, ButtonOwnProps } from "./_Button";
+import { Button, ButtonProps } from "./_Button";
 
-export type TertiaryButtonOwnProps = Pick<ButtonOwnProps, "loading"> & {
-  size?: Extract<ButtonOwnProps["size"], "sm" | "md">;
-};
-
-export type TertiaryButtonProps = React.ComponentPropsWithRef<"button"> &
-  TertiaryButtonOwnProps;
+export type TertiaryButtonProps = Merge<
+  Omit<
+    ButtonProps,
+    "equilateral" | "aria-label" | "aria-labelledby" | "aria-pressed"
+  >,
+  {
+    size?: "sm" | "md";
+  }
+>;
 
 export const TertiaryButton = React.forwardRef(function TertiaryButton(
   {
