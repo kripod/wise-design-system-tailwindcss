@@ -78,12 +78,14 @@ export const Input = React.forwardRef(function Input(
 export type InputGroupProps = {
   initialPaddingStart?: React.CSSProperties["paddingInlineStart"];
   initialPaddingEnd?: React.CSSProperties["paddingInlineEnd"];
+  disabled?: boolean;
   children?: React.ReactNode;
 };
 
 export function InputGroup({
   initialPaddingStart,
   initialPaddingEnd,
+  disabled = false,
   children,
 }: InputGroupProps) {
   return (
@@ -94,9 +96,12 @@ export function InputGroup({
           [inputPaddingEndAtom, initialPaddingEnd],
         ]}
       >
-        <span className="group/input inline-grid [&>*]:col-start-1 [&>*]:row-start-1">
+        <fieldset
+          disabled={disabled}
+          className="group/input inline-grid [&>*]:col-start-1 [&>*]:row-start-1"
+        >
           {children}
-        </span>
+        </fieldset>
       </HydrateAtoms>
     </Provider>
   );
@@ -132,7 +137,7 @@ export function InputAddon({
     <span
       ref={ref}
       className={clsx(
-        "pointer-events-none z-10 self-center text-interactive-secondary transition group-[:has(>input:focus:enabled:enabled)]/input:text-interactive-primary group-[:has(>input:hover:enabled)]/input:text-interactive-secondary-hover group-[:has(>input:disabled)]/input:opacity-45 group-[:has(>input:disabled)]/input:mix-blend-luminosity",
+        "pointer-events-none z-10 self-center text-interactive-secondary transition group-[:has(>input:focus:enabled:enabled)]/input:text-interactive-primary group-[:has(>input:hover:enabled)]/input:text-interactive-secondary-hover group-[:has(>input:disabled)]/input:mix-blend-luminosity",
         !interactive
           ? "justify-self-start"
           : "justify-self-end [&>*]:pointer-events-auto",
