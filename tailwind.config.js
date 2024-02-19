@@ -79,20 +79,23 @@ module.exports = {
           hover: "#6c6c6b",
           active: "#525251",
         },
-        tertiary: "#ffffff",
-        control: "#163300",
+        control: {
+          DEFAULT: "#163300",
+          hover: "#0d1f00",
+          active: "#0e0f0c",
+        },
       },
       background: {
         screen: {
           DEFAULT: "#ffffff",
           hover: transparentize("#163300", 1 - 0.08),
-          active: transparentize("#163300", 1 - 0.18),
+          active: transparentize("#163300", 1 - 0.13),
         },
         elevated: "#ffffff",
         neutral: {
           DEFAULT: transparentize("#163300", 1 - 0.08),
-          hover: transparentize("#163300", 1 - 0.18),
-          active: transparentize("#163300", 1 - 0.28),
+          hover: transparentize("#163300", 1 - 0.13),
+          active: transparentize("#163300", 1 - 0.18),
         },
         overlay: transparentize("#163300", 1 - 0.08),
       },
@@ -103,11 +106,14 @@ module.exports = {
       sentiment: {
         negative: {
           DEFAULT: "#a8200d",
-          hover: "#761709",
-          active: "#470e05",
+          hover: "#8e1b0b",
+          active: "#761709",
         },
         positive: "#2f5711",
         warning: "#edc843",
+      },
+      base: {
+        contrast: "#ffffff",
       },
     }),
     spacing: {
