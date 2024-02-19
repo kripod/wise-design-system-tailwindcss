@@ -72,8 +72,10 @@ export const WithPrefix: Story<{
       <Label>
         Label
         <InputGroup
-          addonStart={<Search size={24} />}
-          addonStartInitialContentWidth={24}
+          addonStart={{
+            content: <Search size={24} />,
+            initialContentWidth: 24,
+          }}
           disabled={disabled}
         >
           <TextInput
@@ -101,20 +103,22 @@ export const WithSuffix: Story<{
       <Label>
         Label
         <InputGroup
-          addonEnd={
-            <ActionButton
-              onClick={async () => {
-                await navigator.clipboard.writeText(value);
-                if (ref.current != null) {
-                  ref.current.focus({ preventScroll: true });
-                  ref.current.select();
-                }
-              }}
-            >
-              Copy
-            </ActionButton>
-          }
-          addonPadding="sm"
+          addonEnd={{
+            content: (
+              <ActionButton
+                onClick={async () => {
+                  await navigator.clipboard.writeText(value);
+                  if (ref.current != null) {
+                    ref.current.focus({ preventScroll: true });
+                    ref.current.select();
+                  }
+                }}
+              >
+                Copy
+              </ActionButton>
+            ),
+            padding: "sm",
+          }}
           disabled={disabled}
         >
           <TextInput
