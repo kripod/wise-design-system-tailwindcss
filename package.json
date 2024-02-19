@@ -78,8 +78,8 @@
     "@types/react": "17.0.62",
     "@types/react-dom": "17.0.20",
     "@types/use-sync-external-store": "^0.0.3",
-    "@vitejs/plugin-react": "4.0.0",
-    "@wise/eslint-config": "0.0.0-experimental-46a4baf",
+    "@vitejs/plugin-react": "4.0.1",
+    "@wise/eslint-config": "0.0.0-experimental-d74100b",
     "babel-plugin-optimize-clsx": "2.6.2",
     "eslint": "8.43.0",
     "eslint-plugin-tailwindcss": "3.12.1",
@@ -89,7 +89,7 @@
     "postcss": "8.4.24",
     "postcss-cli": "10.1.0",
     "postcss-import": "15.1.0",
-    "postcss-preset-env": "8.5.0",
+    "postcss-preset-env": "8.5.1",
     "prettier": "2.8.8",
     "prettier-plugin-tailwindcss": "0.3.0",
     "react": "16.14.0",
@@ -104,7 +104,7 @@
     "react": "16.14 - 18",
     "react-dom": "16.14 - 18"
   },
-  "packageManager": "pnpm@8.6.2",
+  "packageManager": "pnpm@8.6.3",
   "publishConfig": {
     "access": "public"
   }
