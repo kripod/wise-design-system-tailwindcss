@@ -23,7 +23,7 @@ Basic.args = {
 
 Basic.argTypes = {
   sentiment: {
-    options: ["neutral", "positive", "negative", "warning"],
+    options: ["neutral", "negative", "positive", "warning"],
     defaultValue: "neutral",
     control: { type: "radio" },
   },

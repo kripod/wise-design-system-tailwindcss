@@ -4,7 +4,7 @@ import { Instruction, InstructionList } from "./Instruction";
 
 export const Basic: Story<{
   contents: string;
-  sentiment: "positive" | "negative";
+  sentiment: "negative" | "positive";
 }> = function ({ contents, sentiment }) {
   return <Instruction sentiment={sentiment}>{contents}</Instruction>;
 };
@@ -15,7 +15,7 @@ Basic.args = {
 
 Basic.argTypes = {
   sentiment: {
-    options: ["positive", "negative"],
+    options: ["negative", "positive"],
     defaultValue: "positive",
     control: { type: "radio" },
   },

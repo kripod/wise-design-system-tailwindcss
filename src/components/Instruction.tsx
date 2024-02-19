@@ -2,7 +2,7 @@ import { CheckCircleFill, CrossCircleFill } from "@transferwise/icons";
 import * as React from "react";
 
 export type InstructionProps = {
-  sentiment: "positive" | "negative";
+  sentiment: "negative" | "positive";
   children: React.ReactNode;
 };
 
@@ -11,11 +11,11 @@ const iconBySentiment: {
     [key: string]: never;
   }>;
 } = {
-  positive: () => (
-    <CheckCircleFill size={24} className="text-sentiment-positive" />
-  ),
   negative: () => (
     <CrossCircleFill size={24} className="text-sentiment-negative" />
+  ),
+  positive: () => (
+    <CheckCircleFill size={24} className="text-sentiment-positive" />
   ),
 };
 

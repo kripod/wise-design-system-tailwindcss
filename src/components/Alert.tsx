@@ -8,7 +8,7 @@ import {
 import { CloseButton } from "./buttons/CloseButton";
 
 export type AlertProps = {
-  sentiment?: "neutral" | "positive" | "negative" | "warning";
+  sentiment?: "neutral" | "negative" | "positive" | "warning";
   onClose?: () => void;
   children?: React.ReactNode;
 };
@@ -19,11 +19,11 @@ const iconBySentiment: {
   }>;
 } = {
   neutral: () => <InfoCircleFill size={24} />,
-  positive: () => (
-    <CheckCircleFill size={24} className="text-sentiment-positive" />
-  ),
   negative: () => (
     <CrossCircleFill size={24} className="text-sentiment-negative" />
+  ),
+  positive: () => (
+    <CheckCircleFill size={24} className="text-sentiment-positive" />
   ),
   warning: () => (
     <AlertCircleFill size={24} className="text-sentiment-warning" />
