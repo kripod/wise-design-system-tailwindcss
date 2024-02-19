@@ -43,7 +43,7 @@ const SelectInputTriggerButtonPropsContext = React.createContext<{
   onClick?: () => void;
   [key: string]: unknown;
 }>({});
-const SelectInputOptionContentCompactContext = React.createContext(false);
+const SelectInputOptionContentWithinTriggerContext = React.createContext(false);
 
 interface SelectInputOptionItem<T = string> {
   type: "option";
@@ -114,7 +114,10 @@ export interface SelectInputProps<T = string> {
   compareValues?:
     | (keyof NonNullable<T> & string)
     | ((a: T | undefined, b: T | undefined) => boolean);
-  renderValue?: (value: NonNullable<T>, compact: boolean) => React.ReactNode;
+  renderValue?: (
+    value: NonNullable<T>,
+    withinTrigger: boolean,
+  ) => React.ReactNode;
   renderTrigger?: (args: {
     content: React.ReactNode;
     placeholderShown: boolean;
@@ -260,9 +263,11 @@ export function SelectInput<T = string>({
                 {renderTrigger({
                   content:
                     value != null ? (
-                      <SelectInputOptionContentCompactContext.Provider value>
+                      <SelectInputOptionContentWithinTriggerContext.Provider
+                        value
+                      >
                         {renderValue(value, true)}
-                      </SelectInputOptionContentCompactContext.Provider>
+                      </SelectInputOptionContentWithinTriggerContext.Provider>
                     ) : (
                       placeholder
                     ),
@@ -617,16 +622,20 @@ export function SelectInputOptionContent({
   description,
   icon,
 }: SelectInputOptionContentProps) {
-  const compact = React.useContext(SelectInputOptionContentCompactContext);
+  const withinTrigger = React.useContext(
+    SelectInputOptionContentWithinTriggerContext,
+  );
 
   return (
     <div className="flex items-center gap-x-2 text-base text-content-primary">
       {icon ? (
-        <div className={clsx("flex", !compact && "self-start")}>{icon}</div>
+        <div className={clsx("flex", !withinTrigger && "self-start")}>
+          {icon}
+        </div>
       ) : null}
 
       <div className="flex flex-1 flex-col overflow-hidden">
-        <div className={clsx("space-x-2", compact && "truncate")}>
+        <div className={clsx("space-x-2", withinTrigger && "truncate")}>
           <h4 className="inline">{title}</h4>
           {note ? (
             <span className="text-sm text-content-secondary">{note}</span>
@@ -637,7 +646,7 @@ export function SelectInputOptionContent({
           <div
             className={clsx(
               "text-sm text-content-secondary",
-              compact && "truncate",
+              withinTrigger && "truncate",
             )}
           >
             {description}

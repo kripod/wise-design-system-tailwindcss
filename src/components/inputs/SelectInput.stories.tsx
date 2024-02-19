@@ -78,11 +78,11 @@ export const Basic: Story<{
           ])
           .slice(0, -1)}
         value={selectedMonth}
-        renderValue={(month, compact) => (
+        renderValue={(month, withinTrigger) => (
           <SelectInputOptionContent
             title={month.name}
             note="Note"
-            description={compact ? undefined : `Month #${month.id}`}
+            description={withinTrigger ? undefined : `Month #${month.id}`}
             icon={<Calendar size={24} />}
           />
         )}
@@ -281,8 +281,12 @@ export const CustomTrigger: Story = function () {
         type: "option",
         value: month,
       }))}
-      renderValue={(month, compact) =>
-        compact ? month.name : <SelectInputOptionContent title={month.name} />
+      renderValue={(month, withinTrigger) =>
+        withinTrigger ? (
+          month.name
+        ) : (
+          <SelectInputOptionContent title={month.name} />
+        )
       }
       renderTrigger={({ content, className }) => (
         <SelectInputTriggerButton
