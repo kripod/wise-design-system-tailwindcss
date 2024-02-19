@@ -37,33 +37,33 @@
     "lint:fix:format": "prettier --write ."
   },
   "dependencies": {
-    "@babel/runtime": "^7.20.13",
+    "@babel/runtime": "^7.21.0",
     "@fontsource/inter": "^4.5.15",
-    "@headlessui/react": "^1.7.11",
+    "@headlessui/react": "^1.7.12",
     "@radix-ui/react-id": "^1.0.0",
     "clsx": "^1.2.1",
-    "ts-essentials": "^9.3.0",
+    "ts-essentials": "^9.3.1",
     "use-sync-external-store": "^1.2.0"
   },
   "devDependencies": {
-    "@babel/core": "7.20.12",
-    "@babel/plugin-transform-runtime": "7.19.6",
+    "@babel/core": "7.21.0",
+    "@babel/plugin-transform-runtime": "7.21.0",
     "@babel/preset-env": "7.20.2",
     "@babel/preset-react": "7.18.6",
-    "@babel/preset-typescript": "7.18.6",
+    "@babel/preset-typescript": "7.21.0",
     "@ladle/react": "2.9.0",
     "@tailwindcss/container-queries": "0.1.0",
-    "@transferwise/icons": "3.3.2",
+    "@transferwise/icons": "3.5.0",
     "@tsconfig/next": "1.0.5",
-    "@types/node": "18.14.0",
+    "@types/node": "18.14.5",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
     "@types/use-sync-external-store": "0.0.3",
-    "@typescript-eslint/eslint-plugin": "5.52.0",
-    "@typescript-eslint/parser": "5.52.0",
+    "@typescript-eslint/eslint-plugin": "5.54.0",
+    "@typescript-eslint/parser": "5.54.0",
     "babel-plugin-optimize-clsx": "2.6.2",
     "color2k": "2.0.2",
-    "eslint": "8.34.0",
+    "eslint": "8.35.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-airbnb-typescript": "17.0.0",
     "eslint-config-prettier": "8.6.0",
@@ -74,7 +74,7 @@
     "eslint-plugin-react-etc": "2.0.0",
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-simple-import-sort": "10.0.0",
-    "eslint-plugin-tailwindcss": "3.8.3",
+    "eslint-plugin-tailwindcss": "3.10.1",
     "focus-visible": "5.2.0",
     "husky": "8.0.3",
     "nano-staged": "0.8.0",
@@ -84,10 +84,10 @@
     "postcss-import": "15.1.0",
     "postcss-preset-env": "8.0.1",
     "prettier": "2.8.4",
-    "prettier-plugin-tailwindcss": "0.2.3",
+    "prettier-plugin-tailwindcss": "0.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "rollup": "3.17.1",
+    "rollup": "3.18.0",
     "rollup-plugin-ts": "3.2.0",
     "tailwindcss": "3.2.7",
     "typescript": "4.9.5"
@@ -103,5 +103,5 @@
       "optional": true
     }
   },
-  "packageManager": "pnpm@7.13.6"
+  "packageManager": "pnpm@7.28.0"
 }
