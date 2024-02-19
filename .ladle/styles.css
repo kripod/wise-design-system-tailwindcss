@@ -1,4 +1,5 @@
 @import "modern-normalize";
+@import "@fontsource-variable/inter";
 @import "../src/styles.css";
 
 @layer base {

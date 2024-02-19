@@ -2,6 +2,21 @@
 
 Web implementation of Wise Design System.
 
+## Usage
+
+1. Install the package, optionally with its referenced fonts:
+
+   ```sh
+   pnpm add @wise/design-system @fontsource-variable/inter
+   ```
+
+2. Import styles from your app’s root:
+
+   ```ts
+   import "@fontsource-variable/inter";
+   import "@wise/design-system/styles.css";
+   ```
+
 ## Contributing
 
 First, start the development server:

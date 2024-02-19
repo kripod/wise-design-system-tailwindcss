@@ -7,9 +7,6 @@ dependencies:
   '@floating-ui/react':
     specifier: ^0.24.1
     version: 0.24.1(react-dom@18.2.0)(react@18.2.0)
-  '@fontsource-variable/inter':
-    specifier: ^5.0.1
-    version: 5.0.1
   '@headlessui/react':
     specifier: ^1.7.14
     version: 1.7.14(react-dom@18.2.0)(react@18.2.0)
@@ -42,6 +39,9 @@ devDependencies:
   '@changesets/cli':
     specifier: 2.26.1
     version: 2.26.1
+  '@fontsource-variable/inter':
+    specifier: 5.0.1
+    version: 5.0.1
   '@ladle/react':
     specifier: 2.12.3
     version: 2.12.3(@types/node@18.16.14)(react-dom@18.2.0)(react@18.2.0)
@@ -2288,7 +2288,7 @@ packages:
 
   /@fontsource-variable/inter@5.0.1:
     resolution: {integrity: sha512-cqBEayOWZqERrWnwDUTyUsClZpN1Pv3w/1+NRxwKV4sRdy3RyyRL9DRIgauq8ySxNtJ5ZkNimxsZzCdoiR2Fcw==}
-    dev: false
+    dev: true
 
   /@headlessui/react@1.7.14(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-znzdq9PG8rkwcu9oQ2FwIy0ZFtP9Z7ycS+BAqJ3R5EIqC/0bJGvhT7193rFf+45i9nnPsYvCQVW4V/bB9Xc+gA==}
