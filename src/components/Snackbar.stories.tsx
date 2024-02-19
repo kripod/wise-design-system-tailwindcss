@@ -1,6 +1,6 @@
 import type { Story } from "@ladle/react";
 
-import { ActionButton } from "../index-canary";
+import { ActionButton } from "./buttons/ActionButton";
 import { Snackbar } from "./Snackbar";
 
 export const Basic: Story<{
