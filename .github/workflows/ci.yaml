@@ -23,25 +23,6 @@ jobs:
       - run: pnpm run lint
       - run: pnpm run --if-present test
 
-  release-experimental:
-    name: Release experimental version
-    needs: [build-lint-test]
-    if: ${{ github.event_name == 'pull_request' && !startsWith(github.head_ref, 'changeset-release/') }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: transferwise/actions-bootstrap-node@v1
-        with:
-          package-manager: pnpm
-          npm-token: ${{ secrets.NPM_TOKEN_AUTOMATION }}
-      - run: pnpm run build
-      - name: Publish on npm
-        run: |
-          pnpm exec changeset version --snapshot experimental --snapshot-prerelease-template {tag}-${GITHUB_SHA:0:7}
-          pnpm exec changeset publish --tag experimental --no-git-tag
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   release-latest:
     name: Release latest version
     needs: [build-lint-test]
