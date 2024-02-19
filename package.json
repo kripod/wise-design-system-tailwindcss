@@ -1,6 +1,6 @@
 {
   "name": "@wise/design-system-tailwindcss",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "Experimental web implementation of Wise Design System, based upon Tailwind CSS.",
   "repository": "transferwise/design-system-web-tailwindcss",
   "homepage": "https://github.com/transferwise/design-system-web-tailwindcss#readme",

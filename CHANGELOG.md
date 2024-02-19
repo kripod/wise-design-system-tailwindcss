@@ -1,5 +1,11 @@
 # @wise/design-system-tailwindcss
 
+## 0.5.4
+
+### Patch Changes
+
+- [`0c37862`](https://github.com/transferwise/design-system-web-tailwindcss/commit/0c37862d7590cc743cb2414c0d5bb7d36516a5d8) Thanks [@kripod-wise](https://github.com/kripod-wise)! - fix(codemod): missing RTL-aware utility mappings
+
 ## 0.5.3
 
 ### Patch Changes
