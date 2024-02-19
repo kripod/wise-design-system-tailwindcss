@@ -4,8 +4,9 @@ import * as React from "react";
 
 import { ActionButton } from "../buttons/ActionButton";
 import { Field } from "./Field";
+import { InputAddon, InputGroup } from "./InputGroup";
 import { Label } from "./Label";
-import { InputAddon, InputGroup, TextInput } from "./TextInput";
+import { TextInput } from "./TextInput";
 
 export const Basic: Story<{
   size: "sm" | "md" | "xl";
