@@ -16,6 +16,7 @@ module.exports = defineConfig({
       format: "es",
       dir: outDir,
       entryFileNames: "[name].mjs",
+      chunkFileNames: "[name]-[hash].mjs",
     },
     {
       format: "cjs",
