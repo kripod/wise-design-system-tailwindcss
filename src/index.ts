@@ -7,6 +7,7 @@ export * from "./components/buttons/SecondaryButton";
 export * from "./components/buttons/TertiaryButton";
 export * from "./components/chips/CheckboxChip";
 export * from "./components/chips/RadioChip";
+// TODO: export * from "./components/CriticalBanner";
 // TODO: export * from "./components/Disclosure";
 export * from "./components/formControls/Field";
 // TODO: export * from "./components/formControls/SelectInput";
