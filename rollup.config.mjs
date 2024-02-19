@@ -2,7 +2,7 @@ import ts from "rollup-plugin-ts";
 
 import pkg from "./package.json" assert { type: "json" };
 
-/** @type {import('rollup').RollupOptions} */
+/** @type {import("rollup").RollupOptions} */
 export default {
   input: {
     index: "src/index.ts",
