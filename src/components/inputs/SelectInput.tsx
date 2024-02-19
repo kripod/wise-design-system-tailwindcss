@@ -140,7 +140,7 @@ export function SelectInput<T = string>({
                 ref={refs.setFloating}
                 className={clsx(
                   getResetClassName("ul"),
-                  "z-10 overflow-auto rounded bg-background-elevated p-2 shadow-xl focus:outline-none",
+                  "z-10 scroll-py-2 overflow-auto rounded bg-background-elevated p-2 shadow-xl focus:outline-none",
                 )}
                 style={floatingStyles}
               >
