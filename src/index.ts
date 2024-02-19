@@ -13,14 +13,11 @@ export * from "./components/chips/CheckboxChip";
 export * from "./components/chips/RadioChip";
 // TODO: export * from "./components/CriticalBanner";
 // TODO: export * from "./components/Disclosure";
-export * from "./components/formControls/Field";
-// TODO: export * from "./components/formControls/SelectInput";
-export * from "./components/formControls/TextAreaInput";
-// TODO: export * from "./components/formControls/TextInput";
-export {
-  TextInput,
-  type TextInputProps,
-} from "./components/formControls/TextInput";
+export * from "./components/inputs/Field";
+// TODO: export * from "./components/inputs/SelectInput";
+export * from "./components/inputs/TextAreaInput";
+// TODO: export * from "./components/inputs/TextInput";
+export { TextInput, type TextInputProps } from "./components/inputs/TextInput";
 export * from "./components/Instruction";
 // TODO: export * from "./components/Modal";
 // TODO: export * from "./components/Tabs";

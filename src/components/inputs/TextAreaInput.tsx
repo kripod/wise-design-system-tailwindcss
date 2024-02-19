@@ -1,10 +1,7 @@
 import { clsx } from "clsx";
 import * as React from "react";
 
-import {
-  formControlClassNameBase,
-  useFormControlAriaAttributes,
-} from "./_FormControl";
+import { inputClassNameBase, useInputAriaAttributes } from "./_Input";
 
 export interface TextAreaInputProps
   extends Pick<
@@ -29,17 +26,17 @@ export const TextAreaInput = React.forwardRef(function TextAreaInput(
   { className, ...restProps }: TextAreaInputProps,
   ref: React.ForwardedRef<HTMLTextAreaElement>,
 ) {
-  const formControlAriaAttributes = useFormControlAriaAttributes();
+  const inputAriaAttributes = useInputAriaAttributes();
 
   return (
     <textarea
       ref={ref}
       className={clsx(
         className,
-        formControlClassNameBase(),
+        inputClassNameBase(),
         "min-h-18 scroll-py-2 overscroll-none rounded py-3 text-base placeholder:text-content-tertiary",
       )}
-      {...formControlAriaAttributes}
+      {...inputAriaAttributes}
       {...restProps}
     />
   );

@@ -3,11 +3,11 @@ import { AlertCircle } from "@transferwise/icons";
 import { clsx } from "clsx";
 
 import {
-  FormControlDescribedByProvider,
-  FormControlInvalidProvider,
-  useFormControlDescribedBy,
-  useFormControlInvalid,
-} from "./_FormControl";
+  InputDescribedByProvider,
+  InputInvalidProvider,
+  useInputDescribedBy,
+  useInputInvalid,
+} from "./_Input";
 import { Label } from "./Label";
 
 interface FieldDescriptionProps {
@@ -15,8 +15,8 @@ interface FieldDescriptionProps {
 }
 
 function FieldDescription({ children }: FieldDescriptionProps) {
-  const descriptionId = useFormControlDescribedBy();
-  const invalid = useFormControlInvalid();
+  const descriptionId = useInputDescribedBy();
+  const invalid = useInputInvalid();
 
   return (
     <span
@@ -51,10 +51,8 @@ export function Field({ label, hint, error, className, children }: FieldProps) {
   const descriptionId = useId();
 
   return (
-    <FormControlDescribedByProvider
-      value={description ? descriptionId : undefined}
-    >
-      <FormControlInvalidProvider value={Boolean(error)}>
+    <InputDescribedByProvider value={description ? descriptionId : undefined}>
+      <InputInvalidProvider value={Boolean(error)}>
         <span className={clsx(className, "inline-flex flex-col gap-y-2")}>
           <Label>
             {label}
@@ -65,7 +63,7 @@ export function Field({ label, hint, error, className, children }: FieldProps) {
             <FieldDescription>{description}</FieldDescription>
           ) : null}
         </span>
-      </FormControlInvalidProvider>
-    </FormControlDescribedByProvider>
+      </InputInvalidProvider>
+    </InputDescribedByProvider>
   );
 }

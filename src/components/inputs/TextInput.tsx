@@ -2,10 +2,7 @@ import { clsx } from "clsx";
 import * as React from "react";
 
 import { useResizeObserver } from "../../hooks/useResizeObserver";
-import {
-  formControlClassNameBase,
-  useFormControlAriaAttributes,
-} from "./_FormControl";
+import { inputClassNameBase, useInputAriaAttributes } from "./_Input";
 
 type InputPaddingStartContextType = [
   React.CSSProperties["paddingInlineStart"],
@@ -97,7 +94,7 @@ export const TextInput = React.forwardRef(function TextInput(
   { size = "md", shape = "rectangle", className, ...restProps }: TextInputProps,
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {
-  const formControlAriaAttributes = useFormControlAriaAttributes();
+  const inputAriaAttributes = useInputAriaAttributes();
 
   const [paddingStart] = React.useContext(InputPaddingStartContext);
   const [paddingEnd] = React.useContext(InputPaddingEndContext);
@@ -107,7 +104,7 @@ export const TextInput = React.forwardRef(function TextInput(
       ref={ref}
       className={clsx(
         className,
-        formControlClassNameBase({ size }),
+        inputClassNameBase({ size }),
         "placeholder:text-content-tertiary enabled:group-hover/input:ring-2 enabled:group-hover/input:ring-interactive-secondary-hover",
         {
           rounded: shape === "rectangle",
@@ -118,7 +115,7 @@ export const TextInput = React.forwardRef(function TextInput(
         paddingInlineStart: paddingStart,
         paddingInlineEnd: paddingEnd,
       }}
-      {...formControlAriaAttributes}
+      {...inputAriaAttributes}
       {...restProps}
     />
   );

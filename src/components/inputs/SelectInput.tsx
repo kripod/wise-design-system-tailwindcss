@@ -14,10 +14,7 @@ import * as React from "react";
 
 import { identity } from "../../identity";
 import { PreventScroll } from "../PreventScroll";
-import {
-  formControlClassNameBase,
-  useFormControlAriaAttributes,
-} from "./_FormControl";
+import { inputClassNameBase, useInputAriaAttributes } from "./_Input";
 
 export type SelectInputProps<T = string> = {
   name?: string;
@@ -58,7 +55,7 @@ export function SelectInput<T = string>({
   onChange,
   ...restProps
 }: SelectInputProps<T>) {
-  const formControlAriaAttributes = useFormControlAriaAttributes();
+  const inputAriaAttributes = useInputAriaAttributes();
 
   const [maxHeight, setMaxHeight] = React.useState<number>();
   const [width, setWidth] = React.useState<number>();
@@ -93,10 +90,10 @@ export function SelectInput<T = string>({
             className={clsx(
               getResetClassName("button"),
               className,
-              formControlClassNameBase({ size: "md" }),
+              inputClassNameBase({ size: "md" }),
               "inline-flex items-center gap-x-2 rounded text-start",
             )}
-            {...formControlAriaAttributes}
+            {...inputAriaAttributes}
             {...restProps}
           >
             {({ value }: { value: T | undefined }) => (
