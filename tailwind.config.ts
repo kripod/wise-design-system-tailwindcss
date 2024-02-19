@@ -80,7 +80,11 @@ export default {
           hover: `var(--color-interactive-control-hover, ${lightTheme["--color-interactive-control-hover"]})`,
           active: `var(--color-interactive-control-active, ${lightTheme["--color-interactive-control-active"]})`,
         },
-        contrast: `var(--color-interactive-contrast, ${lightTheme["--color-interactive-contrast"]})`,
+        contrast: {
+          DEFAULT: `var(--color-interactive-contrast, ${lightTheme["--color-interactive-contrast"]})`,
+          hover: `var(--color-interactive-contrast-hover, ${lightTheme["--color-interactive-contrast-hover"]})`,
+          active: `var(--color-interactive-contrast-active, ${lightTheme["--color-interactive-contrast-active"]})`,
+        },
       },
       background: {
         screen: {

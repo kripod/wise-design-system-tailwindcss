@@ -19,6 +19,8 @@ interface Theme {
   "--color-interactive-control-hover": string;
   "--color-interactive-control-active": string;
   "--color-interactive-contrast": string;
+  "--color-interactive-contrast-hover": string;
+  "--color-interactive-contrast-active": string;
   "--color-background-screen": string;
   "--color-background-screen-hover": string;
   "--color-background-screen-active": string;
@@ -61,6 +63,8 @@ export const lightTheme = {
   "--color-interactive-control-hover": "rgb(13 31 0)",
   "--color-interactive-control-active": "rgb(14 15 12)",
   "--color-interactive-contrast": "rgb(159 232 112)",
+  "--color-interactive-contrast-hover": "rgb(205 255 173)",
+  "--color-interactive-contrast-active": "rgb(236 255 224)",
   "--color-background-screen": "rgb(255 255 255)",
   "--color-background-screen-hover": "rgb(22 51 0 / 0.08)",
   "--color-background-screen-active": "rgb(22 51 0 / 0.13)",
@@ -136,6 +140,8 @@ export const darkTheme = {
   "--color-interactive-control-hover": "rgb(33 77 0)",
   "--color-interactive-control-active": "rgb(44 102 0)",
   "--color-interactive-contrast": "rgb(22 51 0)",
+  "--color-interactive-contrast-hover": "rgb(33 77 0)",
+  "--color-interactive-contrast-active": "rgb(44 102 0)",
   "--color-background-screen": "rgb(18 21 17)",
   "--color-background-screen-hover": "rgb(255 255 255 / 0.1)",
   "--color-background-screen-active": "rgb(255 255 255 / 0.2)",
