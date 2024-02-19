@@ -281,7 +281,9 @@ export const CustomTrigger: Story = function () {
         type: "option",
         value: month,
       }))}
-      renderValue={(month) => <SelectInputOptionContent title={month.name} />}
+      renderValue={(month, compact) =>
+        compact ? month.name : <SelectInputOptionContent title={month.name} />
+      }
       renderTrigger={({ content, className }) => (
         <SelectInputTriggerButton
           className={clsx(
