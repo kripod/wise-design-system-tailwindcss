@@ -17,10 +17,11 @@ const months: Month[] = getMonthNames("en-US").map((name, index) => ({
 }));
 
 export const Basic: Story<{
+  required: boolean;
   invalid: boolean;
   disabled: boolean;
   onChange: (value: Month | undefined) => void;
-}> = function ({ invalid, disabled, onChange }) {
+}> = function ({ required, invalid, disabled, onChange }) {
   return (
     <div className="flex flex-col">
       <Field
@@ -31,6 +32,7 @@ export const Basic: Story<{
         <SelectInput
           placeholder="Month"
           renderValue={(value) => value.name}
+          required={required}
           disabled={disabled}
           onChange={onChange}
         >
@@ -50,6 +52,7 @@ export const Basic: Story<{
 };
 
 Basic.args = {
+  required: false,
   invalid: false,
   disabled: false,
 };
