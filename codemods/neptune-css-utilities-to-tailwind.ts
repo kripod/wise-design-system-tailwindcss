@@ -296,8 +296,8 @@ const neptuneUtilityMatcher = new RegExp(
   // https://exploringjs.com/impatient-js/ch_template-literals.html#template-strings-cooked-vs-raw
   `(^|\\s|\\\\[\\w{}]+)(${[...tailwindUtilityByNeptuneUtility.keys()].join(
     "|",
-  )})($|\\s|\\\\[\\w{}]+)`,
-  "gu",
+  )})(?=$|\\s|\\\\[\\w{}])`,
+  "gmu",
 );
 
 function replaceUtilities(value: string) {
@@ -305,13 +305,14 @@ function replaceUtilities(value: string) {
 
   const replaced = value.replace(
     neptuneUtilityMatcher,
-    (substring, start: string, neptuneUtility: string, end: string) => {
-      didTransform = true;
+    (substring, start: string, neptuneUtility: string) => {
       const tailwindUtility =
         tailwindUtilityByNeptuneUtility.get(neptuneUtility);
-      return tailwindUtility != null
-        ? `${start}${tailwindUtility}${end}`
-        : substring;
+      if (tailwindUtility != null) {
+        didTransform = true;
+        return `${start}${tailwindUtility}`;
+      }
+      return substring;
     },
   );
 
