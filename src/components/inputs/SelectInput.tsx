@@ -332,6 +332,7 @@ export function SelectInput<T = string>({
             </SelectInputTriggerButtonPropsContext.Provider>
           )}
           initialFocusRef={controllerRef}
+          size={filterable ? "lg" : "md"}
           padding="none"
           onClose={() => {
             setOpen(false);

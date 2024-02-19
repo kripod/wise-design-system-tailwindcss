@@ -6,7 +6,7 @@ import {
   offset,
   type Placement,
   shift,
-  size,
+  size as floatingSize,
   useDismiss,
   useFloating,
   useInteractions,
@@ -28,6 +28,7 @@ export interface PopoverProps {
     };
   }) => React.ReactNode;
   title?: string;
+  size?: "md" | "lg";
   padding?: "none" | "md";
   children?: React.ReactNode;
   onClose?: () => void;
@@ -40,6 +41,7 @@ export function Popover({
   open,
   renderTrigger,
   title,
+  size = "md",
   padding = "md",
   children,
   onClose,
@@ -50,7 +52,7 @@ export function Popover({
       offset(8),
       flip({ padding: floatingPadding, crossAxis: false }),
       shift(),
-      size({
+      floatingSize({
         padding: floatingPadding,
         apply: ({ elements, rects, availableHeight }) => {
           elements.floating.style.setProperty(
@@ -103,7 +105,13 @@ export function Popover({
             <div
               key={floatingKey} // Force inner state invalidation on open
               ref={refs.setFloating}
-              className="z-10 flex max-h-[--max-height] w-[--width] min-w-[24rem] flex-col overflow-hidden rounded bg-background-elevated shadow-xl focus:outline-none"
+              className={clsx(
+                "z-10 flex max-h-[--max-height] w-[--width] flex-col overflow-hidden rounded bg-background-elevated shadow-xl focus:outline-none",
+                {
+                  "min-w-[20rem]": size === "md",
+                  "min-w-[24rem]": size === "lg",
+                },
+              )}
               style={floatingStyles}
               {...getFloatingProps()}
             >
