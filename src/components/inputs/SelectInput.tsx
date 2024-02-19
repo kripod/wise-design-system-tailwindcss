@@ -143,17 +143,13 @@ const defaultRenderTrigger = (({
         <span className="pointer-events-none inline-flex items-center">
           {clear != null && !placeholderShown ? (
             <>
-              <button
-                type="button"
-                aria-label={ClearButtonLabel}
-                className="pointer-events-auto inline-flex h-8 w-8 items-center justify-center rounded-xs text-interactive-secondary hover:text-interactive-secondary-hover focus-visible:outline"
+              <SelectInputClearButton
+                className="pointer-events-auto"
                 onClick={(event) => {
                   event.preventDefault();
                   clear();
                 }}
-              >
-                <Cross size={16} />
-              </button>
+              />
               <span className="h-6 border-s" />
             </>
           ) : null}
@@ -177,6 +173,31 @@ const defaultRenderTrigger = (({
     </SelectInputTriggerButton>
   </InputGroup>
 )) satisfies SelectInputProps["renderTrigger"];
+
+interface SelectInputClearButtonProps
+  extends Pick<
+    React.ComponentPropsWithoutRef<"button">,
+    "className" | "onClick"
+  > {}
+
+function SelectInputClearButton({
+  className,
+  onClick,
+}: SelectInputClearButtonProps) {
+  return (
+    <button
+      type="button"
+      aria-label={ClearButtonLabel}
+      className={clsx(
+        className,
+        "inline-flex h-8 w-8 items-center justify-center rounded-xs text-interactive-secondary hover:text-interactive-secondary-hover focus-visible:outline",
+      )}
+      onClick={onClick}
+    >
+      <Cross size={16} />
+    </button>
+  );
+}
 
 export function SelectInput<T = string>({
   name,
