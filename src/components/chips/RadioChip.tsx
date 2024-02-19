@@ -7,7 +7,7 @@ export interface RadioChipGroupProps<T = string> {
   name?: string;
   defaultValue?: T;
   value?: T;
-  compare?: (keyof T & string) | ((a: T, b: T) => boolean);
+  compareValues?: (keyof T & string) | ((a: T, b: T) => boolean);
   disabled?: boolean;
   className?: string;
   children?: React.ReactNode;
@@ -19,7 +19,7 @@ export function RadioChipGroup<T = string>({
   defaultValue,
   value,
   disabled,
-  compare,
+  compareValues,
   className,
   children,
   onChange,
@@ -29,7 +29,7 @@ export function RadioChipGroup<T = string>({
       name={name}
       defaultValue={defaultValue}
       value={value}
-      by={compare}
+      by={compareValues}
       disabled={disabled}
       className={clsx(className, "flex flex-wrap gap-2")}
       onChange={onChange}

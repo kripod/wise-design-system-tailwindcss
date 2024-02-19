@@ -21,7 +21,7 @@ export interface SelectInputProps<T = string> {
   defaultValue?: T;
   value?: T;
   renderValue?: (value: T | undefined) => React.ReactNode;
-  compare?: (keyof T & string) | ((a: T, b: T) => boolean);
+  compareValues?: (keyof T & string) | ((a: T, b: T) => boolean);
   disabled?: boolean;
   className?: string;
   children?: React.ReactNode;
@@ -33,7 +33,7 @@ export function SelectInput<T = string>({
   defaultValue,
   value: controlledValue,
   renderValue = identity,
-  compare,
+  compareValues,
   disabled,
   className,
   children,
@@ -63,7 +63,7 @@ export function SelectInput<T = string>({
       name={name}
       defaultValue={defaultValue}
       value={controlledValue}
-      by={compare}
+      by={compareValues}
       disabled={disabled}
       onChange={onChange}
     >
