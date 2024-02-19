@@ -1,6 +1,6 @@
 import ts from "rollup-plugin-ts";
 
-import pkg from "./package.json" assert { type: "json" };
+import pkg from "./package.json";
 
 /** @type {import("rollup").RollupOptions} */
 export default {
@@ -23,7 +23,7 @@ export default {
   external: [
     ...Object.keys(pkg.dependencies),
     ...Object.keys(pkg.peerDependencies),
-  ].map((packageName) => new RegExp(`^${packageName}($|/)`)),
+  ].map((packageName) => new RegExp(`^${packageName}($|/)`, "u")),
   plugins: [
     ts({
       transpiler: {

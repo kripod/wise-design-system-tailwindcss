@@ -17,7 +17,7 @@ function pxToRem(value: number) {
 
 export default {
   content: ["./src/**/*.{js,jsx,mjs,ts,tsx}"],
-  safelist: [{ pattern: /^theme-/ }],
+  safelist: [{ pattern: /^theme-/u }],
   future: {
     hoverOnlyWhenSupported: true,
     respectDefaultRingColorOpacity: true,

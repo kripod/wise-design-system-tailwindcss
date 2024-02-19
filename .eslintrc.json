@@ -1,22 +1,11 @@
 {
   "root": true,
   "extends": [
-    "airbnb",
-    "airbnb/hooks",
-    "airbnb-typescript",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/strict",
-    "plugin:eslint-comments/recommended",
-    "plugin:react/jsx-runtime",
-    "plugin:react-etc/recommended",
-    "plugin:tailwindcss/recommended",
-    "prettier",
-    "prettier/prettier"
+    "@wise/eslint-config/base",
+    "@wise/eslint-config/typescript",
+    "@wise/eslint-config/react",
+    "@wise/eslint-config/storybook"
   ],
-  "parserOptions": {
-    "project": "./tsconfig.json"
-  },
-  "plugins": ["simple-import-sort"],
   "settings": {
     "jsx-a11y": {
       "components": {
@@ -32,67 +21,9 @@
       }
     }
   },
-
   "rules": {
-    /* Auto-sort imports and exports */
-    "simple-import-sort/imports": "warn",
-    "simple-import-sort/exports": "warn",
-    "sort-imports": "off",
-    "import/order": "off",
-
-    /* Custom preferences */
-    "@typescript-eslint/consistent-indexed-object-style": [
-      "warn",
-      "index-signature" // Prevent ambiguity with Records & Tuples
-    ],
-    "@typescript-eslint/consistent-type-definitions": ["warn", "type"],
-    "@typescript-eslint/method-signature-style": "warn", // Force type safety
-    "curly": ["error", "all"],
-    "func-names": ["warn", "as-needed"],
-    "import/no-default-export": "warn", // Default exports are confusing
-    "import/prefer-default-export": "off",
-    "jsx-a11y/label-has-associated-control": [
-      "error",
-      { "assert": "either" } // Allow nesting
-    ],
-    "react/jsx-props-no-spreading": "off", // TypeScript makes this safe
-    "react/prop-types": "off", // TypeScript makes this safe
-    "react/require-default-props": "off", // React `defaultProps` are deprecated
+    "storybook/default-exports": "off",
     "tailwindcss/classnames-order": "off", // Enforced by Prettier
     "tailwindcss/no-custom-classname": "off" // Avoid distractions while typing
-  },
-
-  "overrides": [
-    {
-      "files": ["*.config.*", "*.stories.*"],
-      "rules": {
-        "import/no-default-export": "off",
-        "import/no-extraneous-dependencies": [
-          "error",
-          { "optionalDependencies": false }
-        ]
-      }
-    },
-    {
-      "files": "*.js",
-      "rules": {
-        "@typescript-eslint/no-var-requires": "off" // Allow CommonJS imports
-      }
-    },
-    {
-      "files": "src/env.ts",
-      "rules": {
-        "@typescript-eslint/naming-convention": [
-          "error",
-          {
-            "selector": "variable",
-            "format": ["UPPER_CASE"],
-            "leadingUnderscore": "allowDouble",
-            "trailingUnderscore": "allowDouble"
-          }
-        ],
-        "no-underscore-dangle": "off"
-      }
-    }
-  ]
+  }
 }
