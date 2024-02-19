@@ -36,6 +36,7 @@ export function Dialog({
             className={clsx(
               "w-full divide-y rounded-xl bg-background-screen shadow-xl",
               {
+                /* TODO: Assess sizing */
                 "max-w-xl": size === "sm",
                 "max-w-3xl": size === "md",
                 "max-w-5xl": size === "lg",
