@@ -1,30 +1,60 @@
-import type { Story } from "@ladle/react";
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn, type Mock } from "@storybook/test";
 
-import { CheckboxChip, CheckboxChipGroup } from "./CheckboxChip";
+import {
+  CheckboxChip,
+  CheckboxChipGroup,
+  type CheckboxChipGroupProps,
+  type CheckboxChipProps,
+} from "./CheckboxChip";
 
-export const Basic: Story<{
-  onChange: (checked: boolean) => void;
-}> = function ({ onChange }) {
-  return (
-    <CheckboxChipGroup>
-      <CheckboxChip name="accounting" defaultChecked onChange={onChange}>
-        Accounting
-      </CheckboxChip>
-      <CheckboxChip name="payroll" onChange={onChange}>
-        Payroll
-      </CheckboxChip>
-      <CheckboxChip name="reporting" onChange={onChange}>
-        Reporting
-      </CheckboxChip>
-      <CheckboxChip name="payments" disabled onChange={onChange}>
-        Payments
-      </CheckboxChip>
+const meta: Meta<
+  CheckboxChipGroupProps & { items: CheckboxChipProps[]; children?: never }
+> = {
+  title: "components/CheckboxChip",
+  component: CheckboxChipGroup,
+  tags: ["autodocs"],
+};
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+const CheckboxChipGroupTemplate = {
+  render: ({ items, ...args }) => (
+    <CheckboxChipGroup {...args}>
+      {items.map((item) => (
+        <CheckboxChip key={item.name} {...item} />
+      ))}
     </CheckboxChipGroup>
-  );
-};
+  ),
+} satisfies Story;
 
-Basic.argTypes = {
-  onChange: {
-    action: "changed",
+export const Basic = {
+  ...CheckboxChipGroupTemplate,
+  args: {
+    items: [
+      {
+        name: "accounting",
+        defaultChecked: true,
+        onChange: fn() satisfies Mock,
+        children: "Accounting",
+      },
+      {
+        name: "payroll",
+        onChange: fn() satisfies Mock,
+        children: "Payroll",
+      },
+      {
+        name: "reporting",
+        onChange: fn() satisfies Mock,
+        children: "Reporting",
+      },
+      {
+        name: "payments",
+        disabled: true,
+        onChange: fn() satisfies Mock,
+        children: "Payments",
+      },
+    ],
   },
-};
+} satisfies Story;

@@ -1,6 +1,6 @@
 node_modules/
-build/
 dist/
+storybook-static/
 .rollup.cache/
 *.tsbuildinfo
 *.log*

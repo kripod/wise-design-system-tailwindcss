@@ -29,9 +29,9 @@ export function CloseButton({
         className,
         "inline-flex items-center justify-center rounded-full bg-background-neutral text-interactive-primary hover:bg-background-neutral-hover active:bg-background-neutral-active",
         {
-          "h-6 w-6": size === "sm",
-          "h-8 w-8": size === "md",
-          "h-10 w-10": size === "lg",
+          "size-6": size === "sm",
+          "size-8": size === "md",
+          "size-10": size === "lg",
         },
       )}
       {...restProps}

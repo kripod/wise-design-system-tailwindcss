@@ -1,4 +1,12 @@
-import type { Story } from "@ladle/react";
+import type { Meta, StoryObj } from "@storybook/react";
+import {
+  expect,
+  fn,
+  type Mock,
+  screen,
+  userEvent,
+  within,
+} from "@storybook/test";
 import { Calendar, ChevronDown } from "@transferwise/icons";
 import { clsx } from "clsx";
 import * as React from "react";
@@ -10,127 +18,18 @@ import {
   SelectInput,
   type SelectInputItem,
   SelectInputOptionContent,
+  type SelectInputProps,
   SelectInputTriggerButton,
 } from "./SelectInput";
 
-interface TestMonth {
-  id: number;
-  name: string;
-  unavailable: boolean;
-}
+const meta = {
+  title: "components/SelectInput",
+  component: SelectInput,
+  tags: ["autodocs"],
+} satisfies Meta<typeof SelectInput>;
+export default meta;
 
-const testMonths: TestMonth[] = getMonthNames("en-US").map((name, index) => ({
-  id: index + 1,
-  name,
-  unavailable: index % 6 === 2,
-}));
-
-const testQuarters = [
-  testMonths.slice(0, 3),
-  testMonths.slice(3, 6),
-  testMonths.slice(6, 9),
-  testMonths.slice(9, 12),
-] as const;
-
-export const Basic: Story<{
-  filterable: boolean;
-  filterPlaceholder: string;
-  clearable: boolean;
-  invalid: boolean;
-  disabled: boolean;
-  size: "md" | "xl";
-  onChange: (value: TestMonth | null) => void;
-  onClear: () => void;
-}> = function ({
-  filterable,
-  filterPlaceholder,
-  clearable,
-  disabled,
-  size,
-  onChange,
-  onClear,
-}) {
-  const [selectedMonth, setSelectedMonth] = React.useState<TestMonth | null>(
-    null,
-  );
-
-  return (
-    <div className="flex flex-col">
-      {/* TODO:
-      <Field
-        label="Label"
-        hint="Information message."
-        error={invalid ? "Error message." : undefined}
-      >
-      */}
-      <SelectInput
-        placeholder="Month"
-        items={testQuarters
-          .flatMap<SelectInputItem<TestMonth>>((quarterMonths, index) => [
-            {
-              type: "group",
-              label: `Quarter #${index + 1}`,
-              options: quarterMonths.map((month) => ({
-                type: "option",
-                value: month,
-                filterMatchers: [month.name],
-                disabled: month.unavailable,
-              })),
-            },
-            { type: "separator" },
-          ])
-          .slice(0, -1)}
-        value={selectedMonth}
-        renderValue={(month, withinTrigger) => (
-          <SelectInputOptionContent
-            title={month.name}
-            note="Note"
-            description={withinTrigger ? undefined : `Month #${month.id}`}
-            icon={<Calendar size={24} />}
-          />
-        )}
-        filterable={filterable}
-        filterPlaceholder={filterPlaceholder}
-        disabled={disabled}
-        size={size}
-        onChange={(month) => {
-          setSelectedMonth(month);
-          onChange(month);
-        }}
-        onClear={
-          clearable
-            ? () => {
-                setSelectedMonth(null);
-                onClear();
-              }
-            : undefined
-        }
-      />
-    </div>
-  );
-};
-
-Basic.args = {
-  filterable: true,
-  filterPlaceholder: "Type a month’s name",
-  clearable: true,
-  invalid: false,
-  disabled: false,
-  size: "md",
-};
-
-Basic.argTypes = {
-  size: {
-    control: { type: "radio" },
-    options: ["md", "xl"],
-  },
-  onChange: {
-    action: "changed",
-  },
-  onClear: {
-    action: "cleared",
-  },
-};
+type Story<T> = StoryObj<SelectInputProps<T>>;
 
 interface Month {
   id: number;
@@ -142,41 +41,58 @@ const months: Month[] = getMonthNames("en-US").map((name, index) => ({
   name,
 }));
 
-export const Months: Story<{
-  onChange: (value: Month | null) => void;
-  onClear: () => void;
-}> = function ({ onChange, onClear }) {
-  const [selectedMonth, setSelectedMonth] = React.useState<Month | null>(null);
+export const Months: Story<Month | null> = {
+  args: {
+    placeholder: "Month",
+    items: months.map((month) => ({
+      type: "option",
+      value: month,
+    })),
+    renderValue: (month) => <SelectInputOptionContent title={month.name} />,
+    onChange: fn() satisfies Mock,
+    onClear: fn() satisfies Mock,
+  },
+  render: function Render({ onChange, onClear, ...args }) {
+    const [selectedMonth, setSelectedMonth] = React.useState<Month | null>(
+      null,
+    );
 
-  return (
-    <div className="flex flex-col">
+    return (
       <SelectInput
-        placeholder="Month"
-        items={months.map((month) => ({
-          type: "option",
-          value: month,
-        }))}
+        {...args}
         value={selectedMonth}
-        renderValue={(month) => <SelectInputOptionContent title={month.name} />}
         onChange={(month) => {
           setSelectedMonth(month);
-          onChange(month);
+          onChange?.(month);
         }}
         onClear={() => {
           setSelectedMonth(null);
-          onClear();
+          onClear?.();
         }}
       />
-    </div>
-  );
-};
-
-Months.argTypes = {
-  onChange: {
-    action: "changed",
+    );
   },
-  onClear: {
-    action: "cleared",
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step("Render placeholder", async () => {
+      const triggerButton = canvas.getByRole("button");
+      await expect(triggerButton).toHaveTextContent("Month");
+    });
+
+    await step("Select item via mouse", async () => {
+      const triggerButton = canvas.getByRole("button");
+
+      await userEvent.click(triggerButton);
+      await userEvent.unhover(triggerButton);
+
+      const option = within(screen.getByRole("listbox")).getByRole("option", {
+        name: "May",
+      });
+      await userEvent.click(option);
+
+      await expect(triggerButton).toHaveTextContent("May");
+    });
   },
 };
 
@@ -233,96 +149,155 @@ function currencyOption(currency: Currency) {
   } satisfies SelectInputItem<Currency>;
 }
 
-export const Currencies: Story<{
-  onChange: (value: Currency) => void;
-}> = function ({ onChange }) {
-  const [selectedCurrency, setSelectedCurrency] = React.useState<Currency>(
-    popularCurrencies[0],
-  );
+export const Currencies: Story<Currency> = {
+  args: {
+    items: [
+      {
+        type: "group",
+        label: "Popular currencies",
+        options: popularCurrencies.map((currency) => currencyOption(currency)),
+      },
+      {
+        type: "group",
+        label: "All currencies",
+        options: allCurrencies.map((currency) => currencyOption(currency)),
+      },
+    ],
+    defaultValue: popularCurrencies[0],
+    renderValue: (currency, withinTrigger) => (
+      <SelectInputOptionContent
+        title={currency.code}
+        note={withinTrigger ? undefined : currency.name}
+        icon={<Flag code={currency.code} intrinsicSize={24} />}
+      />
+    ),
+    renderFooter: ({ resultsEmpty, normalizedQuery }) =>
+      resultsEmpty &&
+      normalizedQuery != null &&
+      /^[a-z]{3}$/u.test(normalizedQuery) ? (
+        <>
+          It’s not possible use {normalizedQuery.toUpperCase()} yet.{" "}
+          <InlineLink href="#_" onClick={(event) => event.preventDefault()}>
+            Email me when it’s available.
+          </InlineLink>
+        </>
+      ) : (
+        <>
+          Can’t find it?{" "}
+          <InlineLink href="#_" onClick={(event) => event.preventDefault()}>
+            Request the currency you need,
+          </InlineLink>{" "}
+          and we’ll notify you once it’s available.
+        </>
+      ),
+    filterable: true,
+    filterPlaceholder: "Type a currency / country",
+    size: "xl",
+    onChange: fn() satisfies Mock,
+  },
+  play: async ({ step }) => {
+    await step("Filter items via keyboard", async () => {
+      await userEvent.tab();
+      await userEvent.keyboard(" ");
 
-  return (
-    <SelectInput
-      items={[
-        {
-          type: "group",
-          label: "Popular currencies",
-          options: popularCurrencies.map((currency) =>
-            currencyOption(currency),
-          ),
-        },
-        {
-          type: "group",
-          label: "All currencies",
-          options: allCurrencies.map((currency) => currencyOption(currency)),
-        },
-      ]}
-      value={selectedCurrency}
-      renderValue={(currency, withinTrigger) => (
-        <SelectInputOptionContent
-          title={currency.code}
-          note={withinTrigger ? undefined : currency.name}
-          icon={<Flag code={currency.code} intrinsicSize={24} />}
-        />
-      )}
-      renderFooter={({ resultsEmpty, normalizedQuery }) =>
-        resultsEmpty &&
-        normalizedQuery != null &&
-        /^[a-z]{3}$/u.test(normalizedQuery) ? (
-          <>
-            It’s not possible use {normalizedQuery.toUpperCase()} yet.{" "}
-            <InlineLink href="#_">Email me when it’s available.</InlineLink>
-          </>
-        ) : (
-          <>
-            Can’t find it?{" "}
-            <InlineLink href="#_">Request the currency you need,</InlineLink>{" "}
-            and we’ll notify you once it’s available.
-          </>
-        )
-      }
-      filterable
-      filterPlaceholder="Type a currency / country"
-      size="xl"
-      onChange={(currency) => {
-        setSelectedCurrency(currency);
-        onChange(currency);
-      }}
-    />
-  );
-};
+      await expect(
+        within(screen.getByRole("listbox")).queryAllByRole("option"),
+      ).toHaveLength(8);
+      await expect(screen.getByText(/^Can’t find it?/u)).toBeInTheDocument();
 
-Currencies.argTypes = {
-  onChange: {
-    action: "changed",
+      const input = screen.getByRole("searchbox");
+
+      await userEvent.type(input, "huf");
+      await expect(
+        within(screen.getByRole("listbox")).queryAllByRole("option"),
+      ).toHaveLength(0);
+      await expect(
+        screen.getByText(/^It’s not possible use HUF yet./u),
+      ).toBeInTheDocument();
+
+      await userEvent.type(input, "{Backspace}{Backspace}");
+      await expect(
+        within(screen.getByRole("listbox")).queryAllByRole("option"),
+      ).toHaveLength(2);
+    });
   },
 };
 
-export const CustomTrigger: Story = function () {
-  return (
-    <SelectInput
-      placeholder="Month"
-      items={months.map((month) => ({
-        type: "option",
-        value: month,
-      }))}
-      renderValue={(month, withinTrigger) =>
-        withinTrigger ? (
-          month.name
-        ) : (
-          <SelectInputOptionContent title={month.name} />
-        )
-      }
-      renderTrigger={({ content, className }) => (
-        <SelectInputTriggerButton
-          className={clsx(
-            className,
-            "inline-flex items-center gap-x-1 text-base font-semibold text-content-link underline hover:text-content-link-hover active:text-content-link-active",
-          )}
-        >
-          {content}
-          <ChevronDown size={16} />
-        </SelectInputTriggerButton>
-      )}
-    />
-  );
+export const CustomTrigger: Story<Month> = {
+  args: {
+    placeholder: "Month",
+    items: months.map((month) => ({
+      type: "option",
+      value: month,
+    })),
+    renderValue: (month, withinTrigger) =>
+      withinTrigger ? (
+        month.name
+      ) : (
+        <SelectInputOptionContent title={month.name} />
+      ),
+    renderTrigger: ({ content, className }) => (
+      <SelectInputTriggerButton
+        className={clsx(
+          className,
+          "inline-flex items-center gap-x-1 text-base font-semibold text-content-link underline hover:text-content-link-hover active:text-content-link-active",
+        )}
+      >
+        {content}
+        <ChevronDown size={16} />
+      </SelectInputTriggerButton>
+    ),
+    onChange: fn() satisfies Mock,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const triggerButton = canvas.getByRole("button");
+    await userEvent.click(triggerButton);
+  },
+};
+
+const quarters = [
+  months.slice(0, 3),
+  months.slice(3, 6),
+  months.slice(6, 9),
+  months.slice(9, 12),
+] as const;
+
+export const Advanced: Story<Month> = {
+  args: {
+    placeholder: "Month",
+    items: quarters
+      .flatMap<SelectInputItem<Month>>((quarterMonths, quarterIndex) => [
+        {
+          type: "group",
+          label: `Quarter #${quarterIndex + 1}`,
+          options: quarterMonths.map((month, monthIndex) => ({
+            type: "option",
+            value: month,
+            filterMatchers: [month.name],
+            disabled: monthIndex % 6 === 2,
+          })),
+        },
+        { type: "separator" },
+      ])
+      .slice(0, -1),
+    renderValue: (month, withinTrigger) => (
+      <SelectInputOptionContent
+        title={month.name}
+        note="Note"
+        description={withinTrigger ? undefined : `Month #${month.id}`}
+        icon={<Calendar size={24} />}
+      />
+    ),
+    filterable: true,
+    filterPlaceholder: "Type a month’s name",
+    onChange: fn() satisfies Mock,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const triggerButton = canvas.getByRole("button");
+    await userEvent.click(triggerButton);
+  },
 };

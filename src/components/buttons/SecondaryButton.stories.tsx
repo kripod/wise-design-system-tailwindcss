@@ -1,48 +1,27 @@
-import type { Story } from "@ladle/react";
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn, type Mock } from "@storybook/test";
 
 import { SecondaryButton } from "./SecondaryButton";
 
-export const Basic: Story<{
-  text: string;
-  size: "sm" | "md";
-  sentiment: "neutral" | "negative";
-  disabled: boolean | "loading";
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
-}> = function ({ text, size, sentiment, disabled, onClick }) {
-  return (
-    <SecondaryButton
-      size={size}
-      sentiment={sentiment}
-      disabled={disabled}
-      onClick={onClick}
-    >
-      {text}
-    </SecondaryButton>
-  );
-};
+const meta = {
+  title: "components/SecondaryButton",
+  component: SecondaryButton,
+  tags: ["autodocs"],
+} satisfies Meta<typeof SecondaryButton>;
+export default meta;
 
-Basic.args = {
-  text: "Click me",
-  size: "md",
-  sentiment: "neutral",
-  disabled: false,
-};
+type Story = StoryObj<typeof meta>;
 
-Basic.argTypes = {
-  size: {
-    control: { type: "radio" },
-    options: ["sm", "md"],
+export const Basic = {
+  args: {
+    onClick: fn() satisfies Mock,
+    children: "Click me",
   },
-  sentiment: {
-    control: { type: "radio" },
-    options: ["neutral", "negative"],
+} satisfies Story;
+
+export const Disabled = {
+  args: {
+    ...Basic.args,
+    disabled: true,
   },
-  disabled: {
-    control: { type: "radio" },
-    options: [false, true, "loading"],
-    defaultValue: false, // TODO: Remove once Ladle gets fixed
-  },
-  onClick: {
-    action: "clicked",
-  },
-};
+} satisfies Story;

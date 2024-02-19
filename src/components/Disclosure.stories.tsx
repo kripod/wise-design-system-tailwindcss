@@ -1,28 +1,43 @@
-import type { Story } from "@ladle/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Bank } from "@transferwise/icons";
 
 import { Disclosure } from "./Disclosure";
 
-export const Basic: Story<{
-  summary: string;
-  text: string;
-  showIcon: boolean;
-  defaultOpen: boolean;
-}> = function ({ summary, text, showIcon, defaultOpen }) {
-  return (
-    <Disclosure
-      summary={summary}
-      icon={showIcon ? <Bank size={24} /> : undefined}
-      defaultOpen={defaultOpen}
-    >
-      {text}
-    </Disclosure>
-  );
-};
+const meta = {
+  component: Disclosure,
+  tags: ["autodocs"],
+  argTypes: {
+    icon: {
+      options: ["none", "bank"],
+      mapping: {
+        none: null,
+        bank: <Bank size={24} />,
+      },
+    },
+  },
+} satisfies Meta<typeof Disclosure>;
+export default meta;
 
-Basic.args = {
-  summary: "It will be faster to pay in at your bank branch",
-  text: "The fastest way to send 30,000 GBP to is by branch. Daily bank limits are around 25,000 GBP meaning it would take longer to pay with a series of transfers.",
-  showIcon: false,
-  defaultOpen: false,
-};
+type Story = StoryObj<typeof meta>;
+
+export const Basic = {
+  args: {
+    summary: "It will be faster to pay in at your bank branch",
+    children:
+      "The fastest way to send 30,000 GBP to is by branch. Daily bank limits are around 25,000 GBP meaning it would take longer to pay with a series of transfers.",
+  },
+} satisfies Story;
+
+export const WithIcon = {
+  args: {
+    ...Basic.args,
+    icon: "bank",
+  },
+} satisfies Story;
+
+export const OpenByDefault = {
+  args: {
+    ...Basic.args,
+    defaultOpen: true,
+  },
+} satisfies Story;

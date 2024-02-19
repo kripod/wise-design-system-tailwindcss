@@ -1,45 +1,41 @@
-import type { Story } from "@ladle/react";
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn, type Mock } from "@storybook/test";
 import * as React from "react";
 
-import { Field } from "./Field";
 import { TextAreaInput } from "./TextAreaInput";
 
-export const Basic: Story<{
-  required: boolean;
-  readOnly: boolean;
-  disabled: boolean;
-  onChange: React.ChangeEventHandler<HTMLTextAreaElement>;
-}> = function ({ required, readOnly, disabled, onChange }) {
-  const [value, setValue] = React.useState("Text value");
+const meta = {
+  title: "components/TextAreaInput",
+  component: TextAreaInput,
+  tags: ["autodocs"],
+} satisfies Meta<typeof TextAreaInput>;
+export default meta;
 
-  return (
-    <Field
-      label="Label"
-      hint="Information message."
-      error={value.length === 0 ? "Error message." : undefined}
-    >
+type Story = StoryObj<typeof meta>;
+
+export const Basic = {
+  args: {
+    defaultValue: "Text value",
+    onChange: fn() satisfies Mock,
+  },
+} satisfies Story;
+
+export const Controlled = {
+  args: {
+    onChange: fn() satisfies Mock,
+  },
+  render: function Render({ onChange, ...args }) {
+    const [value, setValue] = React.useState("Text value");
+
+    return (
       <TextAreaInput
+        {...args}
         value={value}
-        required={required}
-        readOnly={readOnly}
-        disabled={disabled}
         onChange={(event) => {
           setValue(event.currentTarget.value);
-          onChange(event);
+          onChange?.(event);
         }}
       />
-    </Field>
-  );
-};
-
-Basic.args = {
-  required: true,
-  readOnly: false,
-  disabled: false,
-};
-
-Basic.argTypes = {
-  onChange: {
-    action: "changed",
+    );
   },
-};
+} satisfies Story;

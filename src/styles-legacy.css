@@ -1,3 +1,4 @@
+@import "css-homogenizer/reset-scoped.css";
 @import "./_styles-common.css";
 
 .np-theme-personal--dark {

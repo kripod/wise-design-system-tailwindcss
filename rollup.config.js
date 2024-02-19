@@ -37,7 +37,7 @@ module.exports = defineConfig({
       },
     }),
     babel({
-      extensions: [".js", ".jsx", ".mjs", ".ts", ".tsx", ".mts"],
+      extensions: [".js", ".jsx", ".mjs", ".ts", ".tsx"],
       babelHelpers: "runtime",
     }),
   ],

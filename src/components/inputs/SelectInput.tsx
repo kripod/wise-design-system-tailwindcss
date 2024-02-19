@@ -40,7 +40,8 @@ function inferSearchableStrings(value: unknown) {
 
 const SelectInputTriggerButtonPropsContext = React.createContext<{
   ref?: React.ForwardedRef<HTMLButtonElement>;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent) => void;
+  onKeyDown?: (event: React.KeyboardEvent) => void;
   [key: string]: unknown;
 }>({});
 const SelectInputOptionContentWithinTriggerContext = React.createContext(false);
@@ -190,7 +191,7 @@ const defaultRenderTrigger = (({
             </>
           ) : null}
 
-          <span className="inline-flex h-6 w-6 items-center justify-center">
+          <span className="inline-flex size-6 items-center justify-center">
             <ChevronDown size={16} />
           </span>
         </span>
@@ -226,7 +227,7 @@ function SelectInputClearButton({
       aria-label={ClearButtonLabel}
       className={clsx(
         className,
-        "inline-flex h-6 w-6 items-center justify-center rounded-xs text-interactive-secondary hover:text-interactive-secondary-hover focus-visible:outline",
+        "inline-flex size-6 items-center justify-center rounded-xs text-interactive-secondary hover:text-interactive-secondary-hover focus-visible:outline",
       )}
       onClick={onClick}
     >
@@ -290,6 +291,16 @@ export function SelectInput<T = string>({
                     onClick: () => {
                       setOpen((prev) => !prev);
                     },
+                    onKeyDown: (event: React.KeyboardEvent) => {
+                      if (
+                        event.key === " " ||
+                        event.key === "Enter" ||
+                        event.key === "ArrowDown" ||
+                        event.key === "ArrowUp"
+                      ) {
+                        setOpen((prev) => !prev);
+                      }
+                    },
                   },
                   getInteractionProps(),
                 ),
@@ -350,7 +361,7 @@ export type SelectInputTriggerButtonProps<
 export function SelectInputTriggerButton<
   T extends SelectInputTriggerButtonElementType = "button",
 >({ as = "button" as T, ...restProps }: SelectInputTriggerButtonProps<T>) {
-  const { ref, onClick, ...interactionProps } = React.useContext(
+  const { ref, onClick, onKeyDown, ...interactionProps } = React.useContext(
     SelectInputTriggerButtonPropsContext,
   );
 
@@ -359,7 +370,7 @@ export function SelectInputTriggerButton<
       ref={ref}
       as={PolymorphicWithOverrides}
       __overrides={{ as, ...interactionProps }}
-      {...mergeProps({ onClick }, restProps)}
+      {...mergeProps({ onClick, onKeyDown }, restProps)}
     />
   );
 }

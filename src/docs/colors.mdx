@@ -1,0 +1,143 @@
+import {
+  ColorItem,
+  ColorPalette,
+  Meta,
+  Subtitle,
+  Title,
+} from "@storybook/blocks";
+
+import { lightTheme as theme } from "../config/themes";
+
+<Meta title="Tokens/Colors" />
+
+<Title>Colors</Title>
+
+<Subtitle>Default</Subtitle>
+
+<ColorPalette>
+  <ColorItem
+    title="content"
+    colors={{
+      primary: theme["--color-content-primary"],
+      secondary: theme["--color-content-secondary"],
+      tertiary: theme["--color-content-tertiary"],
+      link: theme["--color-content-link"],
+    }}
+  />
+  <ColorItem
+    title="interactive"
+    colors={{
+      primary: theme["--color-interactive-primary"],
+      accent: theme["--color-interactive-accent"],
+      secondary: theme["--color-interactive-secondary"],
+      control: theme["--color-interactive-control"],
+      contrast: theme["--color-interactive-contrast"],
+    }}
+  />
+  <ColorItem
+    title="background"
+    colors={{
+      screen: theme["--color-background-screen"],
+      elevated: theme["--color-background-elevated"],
+      neutral: theme["--color-background-neutral"],
+      overlay: theme["--color-background-overlay"],
+    }}
+  />
+  <ColorItem
+    title="border"
+    colors={{
+      neutral: theme["--color-border-neutral"],
+      overlay: theme["--color-border-overlay"],
+    }}
+  />
+  <ColorItem
+    title="sentiment"
+    colors={{
+      negative: theme["--color-sentiment-negative"],
+      positive: theme["--color-sentiment-positive"],
+      warning: theme["--color-sentiment-warning"],
+    }}
+  />
+  <ColorItem
+    title="contrast"
+    colors={{
+      theme: theme["--color-contrast-theme"],
+      overlay: theme["--color-contrast-overlay"],
+    }}
+  />
+  <ColorItem
+    title="base"
+    colors={{
+      light: theme["--color-base-light"],
+      dark: theme["--color-base-dark"],
+    }}
+  />
+</ColorPalette>
+
+<Subtitle>Hover</Subtitle>
+
+<ColorPalette>
+  <ColorItem
+    title="content"
+    colors={{
+      "link-hover": theme["--color-content-link-hover"],
+    }}
+  />
+  <ColorItem
+    title="interactive"
+    colors={{
+      "primary-hover": theme["--color-interactive-primary-hover"],
+      "accent-hover": theme["--color-interactive-accent-hover"],
+      "secondary-hover": theme["--color-interactive-secondary-hover"],
+      "control-hover": theme["--color-interactive-control-hover"],
+      "contrast-hover": theme["--color-interactive-contrast-hover"],
+    }}
+  />
+  <ColorItem
+    title="background"
+    colors={{
+      "screen-hover": theme["--color-background-screen-hover"],
+      "neutral-hover": theme["--color-background-neutral-hover"],
+    }}
+  />
+  <ColorItem
+    title="sentiment"
+    colors={{
+      "negative-hover": theme["--color-sentiment-negative-hover"],
+    }}
+  />
+</ColorPalette>
+
+<Subtitle>Active</Subtitle>
+
+<ColorPalette>
+  <ColorItem
+    title="content"
+    colors={{
+      "link-active": theme["--color-content-link-active"],
+    }}
+  />
+  <ColorItem
+    title="interactive"
+    colors={{
+      "primary-active": theme["--color-interactive-primary-active"],
+      "accent-active": theme["--color-interactive-accent-active"],
+      "secondary-active": theme["--color-interactive-secondary-active"],
+      "control-active": theme["--color-interactive-control-active"],
+      "contrast-active": theme["--color-interactive-contrast-active"],
+    }}
+  />
+  <ColorItem
+    title="background"
+    colors={{
+      "screen-active": theme["--color-background-screen-active"],
+      "neutral-active": theme["--color-background-neutral-active"],
+    }}
+  />
+  <ColorItem
+    title="sentiment"
+    colors={{
+      "negative-active": theme["--color-sentiment-negative-active"],
+    }}
+  />
+</ColorPalette>

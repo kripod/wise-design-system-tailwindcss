@@ -1,15 +1,26 @@
-import type { Story } from "@ladle/react";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import { Flag } from "./Flag";
 
-export const Basic: Story<{
-  code: string;
-  intrinsicSize: number;
-}> = function ({ code, intrinsicSize }) {
-  return <Flag code={code} intrinsicSize={intrinsicSize} />;
-};
+const meta = {
+  component: Flag,
+  tags: ["autodocs"],
+  argTypes: {
+    intrinsicSize: {
+      control: {
+        type: "number",
+        min: 0,
+      },
+    },
+  },
+} satisfies Meta<typeof Flag>;
+export default meta;
 
-Basic.args = {
-  code: "USD",
-  intrinsicSize: 64,
-};
+type Story = StoryObj<typeof meta>;
+
+export const Basic = {
+  args: {
+    code: "USD",
+    intrinsicSize: 64,
+  },
+} satisfies Story;

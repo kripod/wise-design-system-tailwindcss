@@ -16,7 +16,7 @@ export function InlineLink({
       rel={target === "_blank" ? "noreferrer" : rel}
       className={clsx(
         className,
-        "font-semibold text-content-link underline hover:text-content-link-hover active:text-content-link-active",
+        "font-semibold text-content-link underline underline-offset-2 hover:text-content-link-hover active:text-content-link-active",
       )}
       {...restProps}
     >

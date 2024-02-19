@@ -1,31 +1,37 @@
-import type { Story } from "@ladle/react";
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn, type Mock } from "@storybook/test";
 import { Plus } from "@transferwise/icons";
 
 import { CircularButton } from "./CircularButton";
 
-export const Basic: Story<{
-  text: string;
-  disabled: boolean;
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
-}> = function ({ text, disabled, onClick }) {
-  return (
-    <CircularButton
-      icon={<Plus size={24} />}
-      disabled={disabled}
-      onClick={onClick}
-    >
-      {text}
-    </CircularButton>
-  );
-};
-
-Basic.args = {
-  text: "Add money",
-  disabled: false,
-};
-
-Basic.argTypes = {
-  onClick: {
-    action: "clicked",
+const meta = {
+  title: "components/CircularButton",
+  component: CircularButton,
+  tags: ["autodocs"],
+  argTypes: {
+    icon: {
+      options: ["plus"],
+      mapping: {
+        plus: <Plus size={24} />,
+      },
+    },
   },
-};
+} satisfies Meta<typeof CircularButton>;
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Basic = {
+  args: {
+    icon: "plus",
+    children: "Add money",
+    onClick: fn() satisfies Mock,
+  },
+} satisfies Story;
+
+export const Disabled = {
+  args: {
+    ...Basic.args,
+    disabled: true,
+  },
+} satisfies Story;

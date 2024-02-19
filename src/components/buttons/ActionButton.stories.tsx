@@ -1,38 +1,44 @@
-import type { Story } from "@ladle/react";
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn, type Mock } from "@storybook/test";
 import { Profile } from "@transferwise/icons";
 
 import { ActionButton } from "./ActionButton";
 
-export const Basic: Story<{
-  text: string;
-  iconPlacement: "start" | "end";
-  disabled: boolean;
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
-}> = function ({ text, iconPlacement, disabled, onClick }) {
-  return (
-    <ActionButton
-      icon={<Profile size={16} />}
-      iconPlacement={iconPlacement}
-      disabled={disabled}
-      onClick={onClick}
-    >
-      {text}
-    </ActionButton>
-  );
-};
-
-Basic.args = {
-  text: "Click me",
-  iconPlacement: "start",
-  disabled: false,
-};
-
-Basic.argTypes = {
-  iconPlacement: {
-    control: { type: "radio" },
-    options: ["start", "end"],
+const meta = {
+  title: "components/ActionButton",
+  component: ActionButton,
+  tags: ["autodocs"],
+  argTypes: {
+    icon: {
+      options: ["none", "profile"],
+      mapping: {
+        none: null,
+        profile: <Profile size={16} />,
+      },
+    },
   },
-  onClick: {
-    action: "clicked",
+} satisfies Meta<typeof ActionButton>;
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Basic = {
+  args: {
+    children: "Click me",
+    onClick: fn() satisfies Mock,
   },
-};
+} satisfies Story;
+
+export const WithIcon = {
+  args: {
+    ...Basic.args,
+    icon: "profile",
+  },
+} satisfies Story;
+
+export const Disabled = {
+  args: {
+    ...Basic.args,
+    disabled: true,
+  },
+} satisfies Story;

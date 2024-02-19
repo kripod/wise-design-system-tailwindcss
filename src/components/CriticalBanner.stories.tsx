@@ -1,26 +1,30 @@
-import type { Story } from "@ladle/react";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import { CriticalBannerPrimaryButton } from "./buttons/PrimaryButton";
 import { CriticalBanner } from "./CriticalBanner";
 
-export const Basic: Story<{
-  title: string;
-  description: string;
-  action: string;
-}> = function ({ title, description, action }) {
-  return (
-    <CriticalBanner
-      title={title}
-      description={description}
-      action={
-        <CriticalBannerPrimaryButton>{action}</CriticalBannerPrimaryButton>
-      }
-    />
-  );
-};
+const meta = {
+  component: CriticalBanner,
+  tags: ["autodocs"],
+  argTypes: {
+    action: {
+      options: ["button"],
+      mapping: {
+        button: (
+          <CriticalBannerPrimaryButton>Action</CriticalBannerPrimaryButton>
+        ),
+      },
+    },
+  },
+} satisfies Meta<typeof CriticalBanner>;
+export default meta;
 
-Basic.args = {
-  title: "Title.",
-  description: "Description text if necessary. Avoid if possible.",
-  action: "Click me",
-};
+type Story = StoryObj<typeof meta>;
+
+export const Basic = {
+  args: {
+    title: "Title.",
+    description: "Description text if necessary. Avoid if possible.",
+    action: "button",
+  },
+} satisfies Story;

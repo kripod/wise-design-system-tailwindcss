@@ -1,138 +1,41 @@
-import type { Story } from "@ladle/react";
-import { Search } from "@transferwise/icons";
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn, type Mock } from "@storybook/test";
 import * as React from "react";
 
-import { ActionButton } from "../buttons/ActionButton";
-import { Field } from "./Field";
-import { InputGroup } from "./InputGroup";
-import { Label } from "./Label";
 import { TextInput } from "./TextInput";
 
-export const Basic: Story<{
-  size: "sm" | "md" | "xl";
-  shape: "rectangle" | "pill";
-  required: boolean;
-  readOnly: boolean;
-  disabled: boolean;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
-}> = function ({ size, shape, required, readOnly, disabled, onChange }) {
-  const [value, setValue] = React.useState("Text value");
+const meta = {
+  title: "components/TextInput",
+  component: TextInput,
+  tags: ["autodocs"],
+} satisfies Meta<typeof TextInput>;
+export default meta;
 
-  return (
-    <Field
-      label="Label"
-      hint="Information message."
-      error={value.length === 0 ? "Error message." : undefined}
-    >
+type Story = StoryObj<typeof meta>;
+
+export const Basic = {
+  args: {
+    defaultValue: "Text value",
+    onChange: fn() satisfies Mock,
+  },
+} satisfies Story;
+
+export const Controlled = {
+  args: {
+    onChange: fn() satisfies Mock,
+  },
+  render: function Render({ onChange, ...args }) {
+    const [value, setValue] = React.useState("Text value");
+
+    return (
       <TextInput
-        size={size}
-        shape={shape}
+        {...args}
         value={value}
-        required={required}
-        readOnly={readOnly}
-        disabled={disabled}
         onChange={(event) => {
           setValue(event.currentTarget.value);
-          onChange(event);
+          onChange?.(event);
         }}
       />
-    </Field>
-  );
-};
-
-Basic.args = {
-  size: "md",
-  shape: "rectangle",
-  required: true,
-  readOnly: false,
-  disabled: false,
-};
-
-Basic.argTypes = {
-  size: {
-    control: { type: "radio" },
-    options: ["sm", "md", "xl"],
+    );
   },
-  shape: {
-    control: { type: "radio" },
-    options: ["rectangle", "pill"],
-  },
-  onChange: {
-    action: "changed",
-  },
-};
-
-export const WithPrefix: Story<{
-  disabled: boolean;
-}> = function ({ disabled }) {
-  const [value, setValue] = React.useState("Text value");
-
-  return (
-    <div className="flex flex-col">
-      <Label>
-        Label
-        <InputGroup
-          addonStart={{
-            content: <Search size={24} />,
-            initialContentWidth: 24,
-          }}
-          disabled={disabled}
-        >
-          <TextInput
-            value={value}
-            onChange={(event) => setValue(event.currentTarget.value)}
-          />
-        </InputGroup>
-      </Label>
-    </div>
-  );
-};
-
-WithPrefix.args = {
-  disabled: false,
-};
-
-export const WithSuffix: Story<{
-  disabled: boolean;
-}> = function ({ disabled }) {
-  const ref = React.useRef<HTMLInputElement>(null);
-  const [value, setValue] = React.useState("Text value");
-
-  return (
-    <div className="flex flex-col">
-      <Label>
-        Label
-        <InputGroup
-          addonEnd={{
-            content: (
-              <ActionButton
-                onClick={async () => {
-                  await navigator.clipboard.writeText(value);
-                  if (ref.current != null) {
-                    ref.current.focus({ preventScroll: true });
-                    ref.current.select();
-                  }
-                }}
-              >
-                Copy
-              </ActionButton>
-            ),
-            interactive: true,
-            padding: "sm",
-          }}
-          disabled={disabled}
-        >
-          <TextInput
-            ref={ref}
-            value={value}
-            onChange={(event) => setValue(event.currentTarget.value)}
-          />
-        </InputGroup>
-      </Label>
-    </div>
-  );
-};
-
-WithSuffix.args = {
-  disabled: false,
-};
+} satisfies Story;

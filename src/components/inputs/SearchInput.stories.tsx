@@ -1,46 +1,41 @@
-import type { Story } from "@ladle/react";
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn, type Mock } from "@storybook/test";
 import * as React from "react";
 
 import { SearchInput } from "./SearchInput";
 
-export const Basic: Story<{
-  size: "sm" | "md";
-  shape: "rectangle" | "pill";
-  disabled: boolean;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
-}> = function ({ size, shape, disabled, onChange }) {
-  const [value, setValue] = React.useState("Text value");
+const meta = {
+  title: "components/SearchInput",
+  component: SearchInput,
+  tags: ["autodocs"],
+} satisfies Meta<typeof SearchInput>;
+export default meta;
 
-  return (
-    <SearchInput
-      size={size}
-      shape={shape}
-      value={value}
-      disabled={disabled}
-      onChange={(event) => {
-        setValue(event.currentTarget.value);
-        onChange(event);
-      }}
-    />
-  );
-};
+type Story = StoryObj<typeof meta>;
 
-Basic.args = {
-  size: "md",
-  shape: "pill",
-  disabled: false,
-};
+export const Basic = {
+  args: {
+    defaultValue: "Text value",
+    onChange: fn() satisfies Mock,
+  },
+} satisfies Story;
 
-Basic.argTypes = {
-  size: {
-    control: { type: "radio" },
-    options: ["sm", "md"],
+export const Controlled = {
+  args: {
+    onChange: fn() satisfies Mock,
   },
-  shape: {
-    control: { type: "radio" },
-    options: ["rectangle", "pill"],
+  render: function Render({ onChange, ...args }) {
+    const [value, setValue] = React.useState("Text value");
+
+    return (
+      <SearchInput
+        {...args}
+        value={value}
+        onChange={(event) => {
+          setValue(event.currentTarget.value);
+          onChange?.(event);
+        }}
+      />
+    );
   },
-  onChange: {
-    action: "changed",
-  },
-};
+} satisfies Story;

@@ -22,7 +22,7 @@ function pxToRem(value: number) {
 }
 
 export default {
-  content: ["./src/**/*.{js,jsx,mjs,ts,tsx,mts}"],
+  content: ["./src/**/*.{js,jsx,mjs,ts,tsx}"],
   safelist: [{ pattern: /^theme-/u }],
   future: {
     hoverOnlyWhenSupported: true,
@@ -271,7 +271,7 @@ export default {
     },
     textUnderlineOffset: {
       auto: "auto",
-      3: "3px",
+      2: "2px",
     },
     extend: {
       aria: {
@@ -279,10 +279,6 @@ export default {
       },
       borderColor: ({ theme }) => ({
         DEFAULT: theme("colors.border.neutral") as string,
-      }),
-      minHeight: ({ theme }) => ({
-        12: theme("spacing.12") as string,
-        18: theme("spacing.18") as string,
       }),
       outlineColor: ({ theme }) => ({
         DEFAULT: theme("colors.interactive.primary.DEFAULT") as string,

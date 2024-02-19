@@ -25,7 +25,7 @@ export interface BottomSheetProps {
   initialFocusRef?: React.RefObject<HTMLElement>;
   padding?: "none" | "md";
   children?: React.ReactNode;
-  onClose?: () => void;
+  onClose: () => void;
 }
 
 export function BottomSheet({
@@ -41,7 +41,7 @@ export function BottomSheet({
     open,
     onOpenChange: (value) => {
       if (!value) {
-        onClose?.();
+        onClose();
       }
     },
   });
@@ -101,7 +101,7 @@ export function BottomSheet({
                   <div className="self-end p-4">
                     <CloseButton
                       onClick={() => {
-                        onClose?.();
+                        onClose();
                       }}
                     />
                   </div>

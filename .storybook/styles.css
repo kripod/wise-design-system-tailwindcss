@@ -4,7 +4,7 @@
 @import "../src/styles-legacy.css";
 
 @layer base {
-  main {
-    @apply text-xs font-normal text-content-tertiary;
+  body {
+    @apply text-xs font-normal leading-none text-content-tertiary;
   }
 }

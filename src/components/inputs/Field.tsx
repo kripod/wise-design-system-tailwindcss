@@ -27,6 +27,7 @@ function FieldDescription({ children }: FieldDescriptionProps) {
   const invalid = React.useContext(InputInvalidContext);
 
   return (
+    /* Align icon with first line: https://twitter.com/adamwathan/status/1217864323466432516 */
     <span
       id={descriptionId}
       className={clsx(

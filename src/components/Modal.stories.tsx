@@ -1,47 +1,21 @@
-import type { Story } from "@ladle/react";
-import * as React from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn, type Mock } from "@storybook/test";
 
-import { PrimaryButton } from "./buttons/PrimaryButton";
 import { Modal } from "./Modal";
 
-export const Basic: Story<{
-  title: string;
-  text: string;
-  size: "sm" | "md" | "lg";
-  onClose: () => void;
-}> = function ({ title, text, size, onClose }) {
-  const [open, setOpen] = React.useState(false);
+const meta = {
+  component: Modal,
+  tags: ["autodocs"],
+} satisfies Meta<typeof Modal>;
+export default meta;
 
-  return (
-    <>
-      <PrimaryButton onClick={() => setOpen(true)}>Open modal</PrimaryButton>
-      <Modal
-        title={title}
-        open={open}
-        size={size}
-        onClose={() => {
-          onClose();
-          setOpen(false);
-        }}
-      >
-        {text}
-      </Modal>
-    </>
-  );
-};
+type Story = StoryObj<typeof meta>;
 
-Basic.args = {
-  title: "Change this user’s role?",
-  text: "Content goes here",
-  size: "md",
-};
-
-Basic.argTypes = {
-  size: {
-    control: { type: "radio" },
-    options: ["sm", "md", "lg"],
+export const Basic = {
+  args: {
+    open: false,
+    title: "Change this user’s role?",
+    children: "Content goes here",
+    onClose: fn() satisfies Mock,
   },
-  onClose: {
-    action: "closed",
-  },
-};
+} satisfies Story;

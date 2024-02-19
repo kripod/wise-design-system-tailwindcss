@@ -17,7 +17,7 @@ export const TertiaryButton = React.forwardRef(function TertiaryButton(
       size={size}
       className={clsx(
         className,
-        "rounded-full px-4 text-interactive-primary underline underline-offset-3 hover:text-interactive-primary-hover active:bg-background-screen-active active:text-interactive-primary-active",
+        "rounded-full px-4 text-interactive-primary underline underline-offset-2 hover:text-interactive-primary-hover active:bg-background-screen-active active:text-interactive-primary-active",
       )}
       {...restProps}
     />

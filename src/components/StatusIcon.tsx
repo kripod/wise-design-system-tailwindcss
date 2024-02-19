@@ -23,9 +23,9 @@ function StatusIconBase({ size, Icon, className }: StatusIconBaseProps) {
         className,
         "inline-flex items-center justify-center rounded-full",
         {
-          "h-4 w-4 p-px": size === 16,
-          "h-10 w-10": size === 40,
-          "h-12 w-12": size === 48,
+          "size-4 p-px": size === 16,
+          "size-10": size === 40,
+          "size-12": size === 48,
         },
       )}
     >
