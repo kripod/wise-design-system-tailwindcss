@@ -23,7 +23,7 @@ export interface SearchInputProps
 }
 
 export const SearchInput = React.forwardRef(function SearchInput(
-  { shape = "pill", className, ...restProps }: SearchInputProps,
+  { shape = "pill", disabled, className, ...restProps }: SearchInputProps,
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {
   return (
@@ -32,6 +32,7 @@ export const SearchInput = React.forwardRef(function SearchInput(
         content: <Search size={24} />,
         initialContentWidth: 24,
       }}
+      disabled={disabled}
       className={className}
     >
       <TextInput
