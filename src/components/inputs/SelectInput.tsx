@@ -10,8 +10,9 @@ import { useScreenSize } from "../../hooks/useScreenSize";
 import { ClearButtonLabel } from "../../i18nTexts";
 import { wrapInFragment } from "../../wrapInFragment";
 import { BottomSheet } from "../BottomSheet";
+import { PolymorphicWithOverrides } from "../PolymorphicWithOverrides";
 import { Popover } from "../Popover";
-import { ButtonInput, type ButtonInputProps } from "./_ButtonInput";
+import { ButtonInput } from "./_ButtonInput";
 import { InputGroup } from "./InputGroup";
 import { SearchInput } from "./SearchInput";
 
@@ -36,7 +37,10 @@ function inferSearchableStrings(value: unknown) {
 }
 
 const SelectInputHasValueContext = React.createContext(false);
-
+const SelectInputTriggerButtonPropsContext = React.createContext<{
+  ref?: React.ForwardedRef<HTMLButtonElement>;
+  [key: string]: unknown;
+}>({});
 const SelectInputOptionContentCompactContext = React.createContext(false);
 
 interface SelectInputOptionItem<T = string> {
@@ -105,10 +109,17 @@ export interface SelectInputProps<T = string> {
   items: readonly SelectInputItem<NonNullable<T>>[];
   defaultValue?: T;
   value?: T;
-  renderValue?: (value: NonNullable<T>, compact: boolean) => React.ReactNode;
   compareValues?:
     | (keyof NonNullable<T> & string)
     | ((a: T | undefined, b: T | undefined) => boolean);
+  renderValue?: (value: NonNullable<T>, compact: boolean) => React.ReactNode;
+  renderTrigger?: (args: {
+    content: React.ReactNode;
+    placeholderShown: boolean;
+    clear: (() => void) | undefined;
+    disabled: boolean;
+    className: string | undefined;
+  }) => React.ReactNode;
   filterable?: boolean;
   filterPlaceholder?: string;
   disabled?: boolean;
@@ -117,14 +128,63 @@ export interface SelectInputProps<T = string> {
   onClear?: () => void;
 }
 
+const defaultRenderTrigger = (({
+  content,
+  placeholderShown,
+  clear,
+  disabled,
+  className,
+}) => (
+  <InputGroup
+    addonEnd={{
+      content: (
+        <span className="pointer-events-none inline-flex items-center">
+          {clear != null && !placeholderShown ? (
+            <>
+              <button
+                type="button"
+                aria-label={ClearButtonLabel}
+                className="pointer-events-auto inline-flex h-8 w-8 items-center justify-center rounded-xs text-interactive-secondary hover:text-interactive-secondary-hover focus-visible:outline"
+                onClick={(event) => {
+                  event.preventDefault();
+                  clear();
+                }}
+              >
+                <Cross size={16} />
+              </button>
+              <span className="h-6 border-s" />
+            </>
+          ) : null}
+
+          <span className="inline-flex h-8 w-8 items-center justify-center">
+            <ChevronDown size={16} />
+          </span>
+        </span>
+      ),
+      padding: "sm",
+    }}
+    disabled={disabled}
+    className={className}
+  >
+    <SelectInputTriggerButton>
+      {placeholderShown ? (
+        <span className="truncate text-content-tertiary">{content}</span>
+      ) : (
+        content
+      )}
+    </SelectInputTriggerButton>
+  </InputGroup>
+)) satisfies SelectInputProps["renderTrigger"];
+
 export function SelectInput<T>({
   name,
   placeholder,
   items,
   defaultValue,
   value: controlledValue,
-  renderValue = wrapInFragment,
   compareValues,
+  renderValue = wrapInFragment,
+  renderTrigger = defaultRenderTrigger,
   filterable,
   filterPlaceholder,
   disabled,
@@ -157,92 +217,86 @@ export function SelectInput<T>({
     >
       {({ disabled: uiDisabled, value }) => (
         <SelectInputHasValueContext.Provider value={value != null}>
-          <InputGroup
-            addonEnd={{
-              content: (
-                <span className="pointer-events-none inline-flex items-center">
-                  {onClear != null && value != null ? (
-                    <>
-                      <button
-                        type="button"
-                        aria-label={ClearButtonLabel}
-                        className="pointer-events-auto inline-flex h-8 w-8 items-center justify-center rounded-xs text-interactive-secondary hover:text-interactive-secondary-hover focus-visible:outline"
-                        onClick={(event) => {
-                          event.preventDefault();
+          <OptionsOverlay
+            open={open}
+            renderTrigger={({ ref, getInteractionProps }) => (
+              <SelectInputTriggerButtonPropsContext.Provider
+                // eslint-disable-next-line react/jsx-no-constructed-context-values
+                value={{
+                  ref: mergeRefs([ref, triggerRef]),
+                  ...getInteractionProps(),
+                  onClick: () => {
+                    setOpen((prev) => !prev);
+                  },
+                }}
+              >
+                {renderTrigger({
+                  content:
+                    value != null ? (
+                      <SelectInputOptionContentCompactContext.Provider value>
+                        {renderValue(value, true)}
+                      </SelectInputOptionContentCompactContext.Provider>
+                    ) : (
+                      placeholder
+                    ),
+                  placeholderShown: value == null,
+                  clear:
+                    onClear != null
+                      ? () => {
                           onClear();
                           triggerRef.current?.focus({ preventScroll: true });
-                        }}
-                      >
-                        <Cross size={16} />
-                      </button>
-                      <span className="h-6 border-s" />
-                    </>
-                  ) : null}
-
-                  <span className="inline-flex h-8 w-8 items-center justify-center">
-                    <ChevronDown size={16} />
-                  </span>
-                </span>
-              ),
-              padding: "sm",
+                        }
+                      : undefined,
+                  disabled: uiDisabled,
+                  className,
+                })}
+              </SelectInputTriggerButtonPropsContext.Provider>
+            )}
+            initialFocusRef={controllerRef}
+            padding="none"
+            onClose={() => {
+              setOpen(false);
             }}
-            disabled={uiDisabled}
-            className={className}
           >
-            <OptionsOverlay
-              open={open}
-              renderTrigger={({ ref, getInteractionProps }) => (
-                <ListboxBase.Button
-                  ref={mergeRefs([ref, triggerRef])}
-                  as={SelectInputButton}
-                  overrides={getInteractionProps()}
-                  onClick={() => {
-                    setOpen((prev) => !prev);
-                  }}
-                >
-                  {value != null ? (
-                    <SelectInputOptionContentCompactContext.Provider value>
-                      {renderValue(value, true)}
-                    </SelectInputOptionContentCompactContext.Provider>
-                  ) : (
-                    <span className="truncate text-content-tertiary">
-                      {placeholder}
-                    </span>
-                  )}
-                </ListboxBase.Button>
-              )}
-              initialFocusRef={controllerRef}
-              padding="none"
-              onClose={() => {
-                setOpen(false);
-              }}
-            >
-              <SelectInputOptions
-                items={items}
-                renderValue={renderValue}
-                filterable={filterable}
-                filterPlaceholder={filterPlaceholder}
-                searchInputRef={searchInputRef}
-                listboxRef={listboxRef}
-              />
-            </OptionsOverlay>
-          </InputGroup>
+            <SelectInputOptions
+              items={items}
+              renderValue={renderValue}
+              filterable={filterable}
+              filterPlaceholder={filterPlaceholder}
+              searchInputRef={searchInputRef}
+              listboxRef={listboxRef}
+            />
+          </OptionsOverlay>
         </SelectInputHasValueContext.Provider>
       )}
     </ListboxBase>
   );
 }
 
-interface SelectInputButtonProps extends ButtonInputProps {
-  overrides?: { [key: string]: unknown };
-}
+export type SelectInputTriggerButtonProps<T extends React.ElementType> = {
+  as?: T;
+} & React.ComponentPropsWithoutRef<T>;
 
-const SelectInputButton = React.forwardRef(function SelectInputButton(
-  { overrides, ...restProps }: SelectInputButtonProps,
-  ref: React.ForwardedRef<HTMLButtonElement>,
-) {
-  return <ButtonInput ref={ref} {...restProps} {...overrides} />;
-});
+export function SelectInputTriggerButton<T extends React.ElementType>({
+  as = ButtonInput as unknown as T,
+  ...restProps
+}: SelectInputTriggerButtonProps<T>) {
+  const { ref, ...overrides } = React.useContext(
+    SelectInputTriggerButtonPropsContext,
+  );
+
+  return (
+    <ListboxBase.Button
+      ref={ref}
+      as={PolymorphicWithOverrides}
+      __overrides={{
+        as,
+        ...restProps,
+        ...overrides,
+      }}
+    />
+  );
+}
 
 interface SelectInputOptionsContainerProps
   extends React.ComponentPropsWithRef<"div"> {
