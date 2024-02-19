@@ -266,7 +266,8 @@ module.exports = {
     },
     opacity: {
       0: "0",
-      45: "0.45",
+      40: "0.4",
+      45: "0.45", // TODO: Remove if needed
       100: "1",
     },
   },
