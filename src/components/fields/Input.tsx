@@ -100,7 +100,7 @@ export const Input = React.forwardRef(function Input(
       aria-describedby={fieldDescribedBy}
       className={clsx(
         fieldControlClassNameBase({ size }),
-        "enabled:group-hover/input:[&:not(:focus)]:ring-2 enabled:group-hover/input:[&:not(:focus)]:ring-interactive-secondary-hover",
+        "placeholder:text-content-tertiary enabled:group-hover/input:[&:not(:focus)]:ring-2 enabled:group-hover/input:[&:not(:focus)]:ring-interactive-secondary-hover",
         {
           rounded: shape === "rectangle",
           "rounded-full": shape === "pill",
