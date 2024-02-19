@@ -1,5 +1,4 @@
 import containerQueriesPlugin from "@tailwindcss/container-queries";
-import { transparentize } from "color2k";
 import type { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
 
@@ -41,66 +40,90 @@ export default {
       current: colors.current,
       transparent: colors.transparent,
       content: {
-        primary: "#0e0f0c",
-        secondary: "#454745",
-        tertiary: "#6a6c6a",
+        primary: "rgb(var(--color-content-primary, 14 15 12) / <alpha-value>)",
+        secondary:
+          "rgb(var(--color-content-secondary, 69 71 69) / <alpha-value>)",
+        tertiary:
+          "rgb(var(--color-content-tertiary, 106 108 106) / <alpha-value>)",
         link: {
-          DEFAULT: "#163300",
-          hover: "#0d1f00",
-          active: "#0e0f0c",
+          DEFAULT: "rgb(var(--color-content-link, 22 51 0) / <alpha-value>)",
+          hover:
+            "rgb(var(--color-content-link-hover, 13 31 0) / <alpha-value>)",
+          active:
+            "rgb(var(--color-content-link-active, 14 15 12) / <alpha-value>)",
         },
       },
       interactive: {
         primary: {
-          DEFAULT: "#163300",
-          hover: "#0d1f00",
-          active: "#0e0f0c",
+          DEFAULT:
+            "rgb(var(--color-interactive-primary, 22 51 0) / <alpha-value>)",
+          hover:
+            "rgb(var(--color-interactive-primary-hover, 13 31 0) / <alpha-value>)",
+          active:
+            "rgb(var(--color-interactive-primary-active, 14 15 12) / <alpha-value>)",
         },
         accent: {
-          DEFAULT: "#9fe870",
-          hover: "#80e142",
-          active: "#65cf21",
+          DEFAULT:
+            "rgb(var(--color-interactive-accent, 159 232 112) / <alpha-value>)",
+          hover:
+            "rgb(var(--color-interactive-accent-hover, 128 225 66) / <alpha-value>)",
+          active:
+            "rgb(var(--color-interactive-accent-active, 101 207 33) / <alpha-value>)",
         },
         secondary: {
-          DEFAULT: "#868685",
-          hover: "#6c6c6b",
-          active: "#525251",
+          DEFAULT:
+            "rgb(var(--color-interactive-secondary, 134 134 133) / <alpha-value>)",
+          hover:
+            "rgb(var(--color-interactive-secondary-hover, 108 108 107) / <alpha-value>)",
+          active:
+            "rgb(var(--color-interactive-secondary-active, 82 82 81) / <alpha-value>)",
         },
         control: {
-          DEFAULT: "#163300",
-          hover: "#0d1f00",
-          active: "#0e0f0c",
+          DEFAULT:
+            "rgb(var(--color-interactive-control, 22 51 0) / <alpha-value>)",
+          hover:
+            "rgb(var(--color-interactive-control-hover, 13 31 0) / <alpha-value>)",
+          active:
+            "rgb(var(--color-interactive-control-active, 14 15 12) / <alpha-value>)",
         },
       },
       background: {
         screen: {
-          DEFAULT: "#ffffff",
-          hover: transparentize("#163300", 1 - 0.08),
-          active: transparentize("#163300", 1 - 0.13),
+          DEFAULT:
+            "rgb(var(--color-background-screen, 255 255 255) / <alpha-value>)",
+          hover: "rgb(var(--color-background-screen-hover, 22 51 0) / 0.08)",
+          active: "rgb(var(--color-background-screen-active, 22 51 0) / 0.13)",
         },
-        elevated: "#ffffff",
+        elevated:
+          "rgb(var(--color-background-elevated, 255 255 255) / <alpha-value>)",
         neutral: {
-          DEFAULT: transparentize("#163300", 1 - 0.08),
-          hover: transparentize("#163300", 1 - 0.13),
-          active: transparentize("#163300", 1 - 0.18),
+          DEFAULT: "rgb(var(--color-background-neutral, 22 51 0) / 0.08)",
+          hover: "rgb(var(--color-background-neutral-hover, 22 51 0) / 0.13)",
+          active: "rgb(var(--color-background-neutral-active, 22 51 0) / 0.18)",
         },
-        overlay: transparentize("#163300", 1 - 0.08),
+        overlay: "rgb(var(--color-background-overlay, 22 51 0) / 0.08)",
       },
       border: {
-        neutral: transparentize("#0e0f0c", 1 - 0.12),
-        overlay: transparentize("#0e0f0c", 1 - 0.12),
+        neutral: "rgb(var(--color-border-neutral, 14 15 12) / 0.12)",
+        overlay: "rgb(var(--color-border-overlay, 14 15 12) / 0.12)",
       },
       sentiment: {
         negative: {
-          DEFAULT: "#a8200d",
-          hover: "#8e1b0b",
-          active: "#761709",
+          DEFAULT:
+            "rgb(var(--color-sentiment-negative, 168 32 13) / <alpha-value>)",
+          hover:
+            "rgb(var(--color-sentiment-negative-hover, 142 27 11) / <alpha-value>)",
+          active:
+            "rgb(var(--color-sentiment-negative-active, 118 23 9) / <alpha-value>)",
         },
-        positive: "#2f5711",
-        warning: "#edc843",
+        positive:
+          "rgb(var(--color-sentiment-positive, 47 87 17) / <alpha-value>)",
+        warning:
+          "rgb(var(--color-sentiment-warning, 237 200 67) / <alpha-value>)",
       },
       base: {
-        contrast: "#ffffff",
+        contrast:
+          "rgb(var(--color-base-contrast, 255 255 255) / <alpha-value>)",
       },
     }),
     fontFamily: {

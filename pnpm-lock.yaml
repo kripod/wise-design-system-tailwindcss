@@ -66,9 +66,6 @@ devDependencies:
   babel-plugin-optimize-clsx:
     specifier: 2.6.2
     version: 2.6.2
-  color2k:
-    specifier: 2.0.2
-    version: 2.0.2
   eslint:
     specifier: 8.37.0
     version: 8.37.0
@@ -3120,10 +3117,6 @@ packages:
 
   /color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
-    dev: true
-
-  /color2k@2.0.2:
-    resolution: {integrity: sha512-kJhwH5nAwb34tmyuqq/lgjEKzlFXn1U99NlnB6Ws4qVaERcRUYeYP1cBw6BJ4vxaWStAUEef4WMr7WjOCnBt8w==}
     dev: true
 
   /comma-separated-tokens@2.0.3:
