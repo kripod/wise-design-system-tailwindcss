@@ -11,7 +11,7 @@ export const Basic: Story<
   return (
     <Disclosure
       summary={summary}
-      icon={showIcon ? Bank : undefined}
+      icon={showIcon ? <Bank size={24} /> : undefined}
       initialOpen={initialOpen}
     >
       {children}
