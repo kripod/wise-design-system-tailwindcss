@@ -14,7 +14,9 @@ export const Provider: GlobalProvider = function ({ globalState, children }) {
 
   return (
     <React.StrictMode>
-      <div className={theme === "dark" ? "dark" : undefined}>{children}</div>
+      <div className={theme === "dark" ? "theme-dark" : undefined}>
+        {children}
+      </div>
     </React.StrictMode>
   );
 };

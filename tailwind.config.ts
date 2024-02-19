@@ -17,13 +17,13 @@ function pxToRem(value: number) {
 
 export default {
   content: ["./src/**/*.{js,jsx,mjs,ts,tsx,mts}"],
+  safelist: [{ pattern: /^theme-/ }],
   future: {
     hoverOnlyWhenSupported: true,
     respectDefaultRingColorOpacity: true,
     disableColorOpacityUtilitiesByDefault: true,
     relativeContentPathsByDefault: true,
   },
-  darkMode: "class",
   theme: {
     borderRadius: {
       none: "0px",
