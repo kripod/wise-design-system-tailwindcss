@@ -112,9 +112,12 @@ devDependencies:
   eslint-plugin-tailwindcss:
     specifier: 3.13.0
     version: 3.13.0(tailwindcss@3.3.3)
-  lefthook:
-    specifier: 1.4.11
-    version: 1.4.11
+  husky:
+    specifier: 8.0.3
+    version: 8.0.3
+  nano-staged:
+    specifier: 0.8.0
+    version: 0.8.0
   npm-run-all:
     specifier: 4.1.5
     version: 4.1.5
@@ -5545,6 +5548,12 @@ packages:
     engines: {node: '>=14.18.0'}
     dev: true
 
+  /husky@8.0.3:
+    resolution: {integrity: sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dev: true
+
   /iconv-lite@0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
     engines: {node: '>=0.10.0'}
@@ -6094,85 +6103,6 @@ packages:
     resolution: {integrity: sha512-qJhlO9cGXi6hBGKoxEG/sKZDAHD5Hnu9Hs4WbOY3pCWXDhw0N8x1NenNzm2EnNLkLkk7J2SdxAkDSbb6ftT+UQ==}
     dependencies:
       language-subtag-registry: 0.3.22
-    dev: true
-
-  /lefthook-darwin-arm64@1.4.11:
-    resolution: {integrity: sha512-XyF532yTp+UoqN22QNHk1TxnbUaGPBkIlQ1N4GlYRl3GJiBeiCVEoGzmibXcWnR0OIN+nAhRjoNkaj3JocPvYQ==}
-    cpu: [arm64]
-    os: [darwin]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /lefthook-darwin-x64@1.4.11:
-    resolution: {integrity: sha512-OGyCwRqCLsy14/eSNIC3QiZvy+q9UdwsJUn/iVXYegFwYIhTMpUeyLspoXNrYoPZmDs4OB6Nd5n5JHcrSuOVvQ==}
-    cpu: [x64]
-    os: [darwin]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /lefthook-freebsd-arm64@1.4.11:
-    resolution: {integrity: sha512-3JGAyuf8PmGWkNUL8z1G5PQKrLaiJGOeXXeCgCIJG7AevITyrEljYhP2qxaRSTyoBnwavBPeNYQXt+AG4Smthw==}
-    cpu: [arm64]
-    os: [freebsd]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /lefthook-freebsd-x64@1.4.11:
-    resolution: {integrity: sha512-8J7lZOwbxarFk3mivQTh5kXf0FhQSydCiB8KUFy/j2RAIYtpZdGOHEBtLw6aGAFzzhBfo0zPkVZ2ouhisLNelw==}
-    cpu: [x64]
-    os: [freebsd]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /lefthook-linux-arm64@1.4.11:
-    resolution: {integrity: sha512-H1ArFa3K54V3lQ0xV2cZKiNAjmzJA/xi2kuD8ERV96gwYq4vpGzY4x/wJL77UVKdw7Ofqy/FS8kEn3uCT2JvOA==}
-    cpu: [arm64]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /lefthook-linux-x64@1.4.11:
-    resolution: {integrity: sha512-KtDmtnsg6kjNufx97N47BdP2ZFgHBHQb+rWwR2RagzNY3exYQM9iH+d0BeY0RuIUL+QwUCkpkVeEYgTrMcN3+A==}
-    cpu: [x64]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /lefthook-windows-arm64@1.4.11:
-    resolution: {integrity: sha512-9GbPflx7F70jqHy8bEVxthmlmUUb+2NnzPU/Kk10DpWuZLXLOXWK7yGqIQogAnqwhlo4bSrWaWGfRULtAsQ2DQ==}
-    cpu: [arm64]
-    os: [win32]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /lefthook-windows-x64@1.4.11:
-    resolution: {integrity: sha512-UI3EiY4OXplWx3WTddOyakazs5uD8QD5XIawRxNamZ4iJe/paLzBWbWZ6Xix9kpE06tmE2z9DfLT3A/08l23Gg==}
-    cpu: [x64]
-    os: [win32]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /lefthook@1.4.11:
-    resolution: {integrity: sha512-pz1578a2zoiUHZRt3x3fANgx8W9nRex37Xt96NqU4YPXNvwNAZucsEchSjYzkxZqV/UK/IAU6R+IQGBeuFx7Dg==}
-    hasBin: true
-    requiresBuild: true
-    optionalDependencies:
-      lefthook-darwin-arm64: 1.4.11
-      lefthook-darwin-x64: 1.4.11
-      lefthook-freebsd-arm64: 1.4.11
-      lefthook-freebsd-x64: 1.4.11
-      lefthook-linux-arm64: 1.4.11
-      lefthook-linux-x64: 1.4.11
-      lefthook-windows-arm64: 1.4.11
-      lefthook-windows-x64: 1.4.11
     dev: true
 
   /levn@0.4.1:
@@ -6944,6 +6874,14 @@ packages:
       any-promise: 1.3.0
       object-assign: 4.1.1
       thenify-all: 1.6.0
+    dev: true
+
+  /nano-staged@0.8.0:
+    resolution: {integrity: sha512-QSEqPGTCJbkHU2yLvfY6huqYPjdBrOaTMKatO1F8nCSrkQGXeKwtCiCnsdxnuMhbg3DTVywKaeWLGCE5oJpq0g==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    hasBin: true
+    dependencies:
+      picocolors: 1.0.0
     dev: true
 
   /nanoid@3.3.6:
