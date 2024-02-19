@@ -30,15 +30,18 @@ export function Dialog({
     >
       <div className="fixed inset-0 bg-background-overlay" aria-hidden />
 
-      <div className="fixed inset-0 flex overflow-auto">
-        <div
-          className={clsx("m-auto w-full p-4", {
-            "max-w-xl": size === "sm",
-            "max-w-3xl": size === "md",
-            "max-w-5xl": size === "lg",
-          })}
-        >
-          <DialogBase.Panel className="divide-y rounded-xl bg-background-screen shadow-xl">
+      <div className="fixed inset-0 overflow-y-auto">
+        <div className="flex min-h-full items-center justify-center p-4">
+          <DialogBase.Panel
+            className={clsx(
+              "w-full divide-y rounded-xl bg-background-screen shadow-xl",
+              {
+                "max-w-xl": size === "sm",
+                "max-w-3xl": size === "md",
+                "max-w-5xl": size === "lg",
+              },
+            )}
+          >
             <div className="flex items-start justify-between gap-6 p-6">
               <DialogBase.Title className="text-lg font-semibold">
                 {title}
