@@ -264,9 +264,6 @@ export const Currencies: Story<{
           icon={<Flag code={currency.code} intrinsicSize={24} />}
         />
       )}
-      filterable
-      filterPlaceholder="Type a currency / country"
-      size="xl"
       renderFooter={(normalizedQuery) =>
         normalizedQuery != null && normalizedQuery.length === 3 ? (
           <>
@@ -281,6 +278,9 @@ export const Currencies: Story<{
           </>
         )
       }
+      filterable
+      filterPlaceholder="Type a currency / country"
+      size="xl"
       onChange={(currency) => {
         setSelectedCurrency(currency);
         onChange(currency);
