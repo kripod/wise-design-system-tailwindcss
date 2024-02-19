@@ -60,6 +60,7 @@ export const Input = React.forwardRef(function Input(
       aria-invalid={fieldInvalid}
       className={clsx(
         fieldControlClassNameBase({ size }),
+        "enabled:group-hover/input:ring-2 enabled:group-hover/input:ring-interactive-secondary-hover",
         {
           rounded: shape === "rectangle",
           "rounded-full": shape === "pill",
