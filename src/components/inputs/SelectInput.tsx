@@ -1,6 +1,6 @@
 import { Listbox as ListboxBase } from "@headlessui/react";
 import { useId } from "@radix-ui/react-id";
-import { Check, ChevronDown, Cross } from "@transferwise/icons";
+import { Check, ChevronDown, Cross, CrossCircle } from "@transferwise/icons";
 import { clsx } from "clsx";
 import mergeProps from "merge-props";
 import * as React from "react";
@@ -9,7 +9,7 @@ import type { Merge } from "ts-essentials";
 
 import { useEffectEvent } from "../../hooks/useEffectEvent";
 import { useScreenSize } from "../../hooks/useScreenSize";
-import { ClearButtonLabel } from "../../i18nTexts";
+import { ClearButtonLabel, NoResultsFound } from "../../i18nTexts";
 import { wrapInFragment } from "../../wrapInFragment";
 import { BottomSheet } from "../BottomSheet";
 import { PolymorphicWithOverrides } from "../PolymorphicWithOverrides";
@@ -119,6 +119,26 @@ function filterSelectInputOptionItem<T>(
   return inferSearchableStrings(item.filterMatchers ?? item.value).some(
     (haystack) => haystack.includes(needle),
   );
+}
+
+function filterSelectInputItems<T>(
+  items: readonly SelectInputItem<T>[],
+  needle: string,
+) {
+  return items.filter((item) => {
+    switch (item.type) {
+      case "option": {
+        return filterSelectInputOptionItem(item, needle);
+      }
+      case "group": {
+        return item.options.some((option) =>
+          filterSelectInputOptionItem(option, needle),
+        );
+      }
+      default:
+    }
+    return false;
+  });
 }
 
 export interface SelectInputProps<T = string> {
@@ -413,6 +433,8 @@ function SelectInputOptions<T = string>({
   searchInputRef,
   listboxRef,
 }: SelectInputOptionsProps<T>) {
+  const controllerRef = filterable ? searchInputRef : listboxRef;
+
   const [query, setQuery] = React.useState("");
   const needle = React.useMemo(() => {
     if (filterable) {
@@ -420,6 +442,8 @@ function SelectInputOptions<T = string>({
     }
     return undefined;
   }, [filterable, query]);
+  const empty =
+    needle != null && filterSelectInputItems(items, needle).length === 0;
 
   const listboxContainerRef = React.useRef<HTMLDivElement>(null);
   React.useEffect(() => {
@@ -431,9 +455,9 @@ function SelectInputOptions<T = string>({
     }
   }, []);
 
+  const showStatus = empty;
+  const statusId = useId();
   const listboxId = useId();
-
-  const controllerRef = filterable ? searchInputRef : listboxRef;
 
   return (
     <ListboxBase.Options
@@ -460,6 +484,7 @@ function SelectInputOptions<T = string>({
             placeholder={filterPlaceholder}
             value={query}
             aria-controls={listboxId}
+            aria-describedby={showStatus ? statusId : undefined}
             onKeyDown={(event) => {
               // Prevent interfering with the matcher of Headless UI
               // https://mathiasbynens.be/notes/javascript-unicode#regex
@@ -481,13 +506,20 @@ function SelectInputOptions<T = string>({
           items.some((item) => item.type === "group") && "scroll-pt-8",
         )}
       >
+        {empty ? (
+          <div id={statusId} className="flex items-center gap-x-2 px-6 pt-2">
+            <CrossCircle size={16} className="px-1" />
+            {NoResultsFound}
+          </div>
+        ) : null}
+
         <div
           ref={listboxRef}
           id={listboxId}
           role="listbox"
           aria-orientation="vertical"
           tabIndex={0}
-          className="p-2 focus:outline-none"
+          className={clsx("focus:outline-none", "p-2")}
         >
           {(needle != null ? dedupeSelectInputItems(items) : items).map(
             (item, index) => (
