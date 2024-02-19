@@ -33,7 +33,7 @@ export const CircularButton = React.forwardRef(function CircularButton(
         equilateral
         disabled={disabled}
         className={clsx(
-          "peer rounded-full bg-interactive-accent px-4 text-interactive-control after:absolute after:inset-0",
+          "peer rounded-full bg-interactive-accent text-interactive-control after:absolute after:inset-0",
           !disabled &&
             "hover:bg-interactive-accent-hover active:bg-interactive-accent-active",
         )}
