@@ -3,13 +3,22 @@ import type { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
 import plugin from "tailwindcss/plugin";
 
-import { pxToRem } from "./src/pxToRem";
 import {
   darkGreenTheme,
   darkTheme,
   lightGreenTheme,
   lightTheme,
 } from "./themes";
+
+function roundTo(value: number, fractionDigits: number) {
+  return Number(
+    `${Math.round(Number(`${value}e+${fractionDigits}`))}e-${fractionDigits}`,
+  );
+}
+
+function pxToRem(value: number) {
+  return `${roundTo(value / 16, 4)}rem`;
+}
 
 export default {
   content: ["./src/**/*.{js,jsx,mjs,ts,tsx}"],

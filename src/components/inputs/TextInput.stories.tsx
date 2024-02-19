@@ -68,15 +68,21 @@ export const WithPrefix: Story<{
   const [value, setValue] = React.useState("Text value");
 
   return (
-    <Label>
-      Label
-      <InputGroup addonStart={<Search size={24} />} disabled={disabled}>
-        <TextInput
-          value={value}
-          onChange={(event) => setValue(event.currentTarget.value)}
-        />
-      </InputGroup>
-    </Label>
+    <div className="flex flex-col">
+      <Label>
+        Label
+        <InputGroup
+          addonStart={<Search size={24} />}
+          addonStartInitialContentWidth={24}
+          disabled={disabled}
+        >
+          <TextInput
+            value={value}
+            onChange={(event) => setValue(event.currentTarget.value)}
+          />
+        </InputGroup>
+      </Label>
+    </div>
   );
 };
 
@@ -91,32 +97,34 @@ export const WithSuffix: Story<{
   const [value, setValue] = React.useState("Text value");
 
   return (
-    <Label>
-      Label
-      <InputGroup
-        addonEnd={
-          <ActionButton
-            onClick={async () => {
-              await navigator.clipboard.writeText(value);
-              if (ref.current != null) {
-                ref.current.focus({ preventScroll: true });
-                ref.current.select();
-              }
-            }}
-          >
-            Copy
-          </ActionButton>
-        }
-        addonPadding="sm"
-        disabled={disabled}
-      >
-        <TextInput
-          ref={ref}
-          value={value}
-          onChange={(event) => setValue(event.currentTarget.value)}
-        />
-      </InputGroup>
-    </Label>
+    <div className="flex flex-col">
+      <Label>
+        Label
+        <InputGroup
+          addonEnd={
+            <ActionButton
+              onClick={async () => {
+                await navigator.clipboard.writeText(value);
+                if (ref.current != null) {
+                  ref.current.focus({ preventScroll: true });
+                  ref.current.select();
+                }
+              }}
+            >
+              Copy
+            </ActionButton>
+          }
+          addonPadding="sm"
+          disabled={disabled}
+        >
+          <TextInput
+            ref={ref}
+            value={value}
+            onChange={(event) => setValue(event.currentTarget.value)}
+          />
+        </InputGroup>
+      </Label>
+    </div>
   );
 };
 

@@ -1,30 +1,37 @@
 import { clsx } from "clsx";
 import * as React from "react";
 
+import { cssValueWithUnit } from "../../cssValueWithUnit";
 import { useResizeObserver } from "../../hooks/useResizeObserver";
-import { pxToRem } from "../../pxToRem";
 
-const InputPaddingStartContext = React.createContext<
-  [number | undefined, React.Dispatch<React.SetStateAction<number | undefined>>]
->([undefined, () => {}]);
+type InputPaddingContextType = [
+  number | string | undefined,
+  React.Dispatch<React.SetStateAction<number | string | undefined>>,
+];
 
-const InputPaddingEndContext = React.createContext<
-  [number | undefined, React.Dispatch<React.SetStateAction<number | undefined>>]
->([undefined, () => {}]);
+const InputPaddingStartContext = React.createContext<InputPaddingContextType>([
+  undefined,
+  () => {},
+]);
+
+const InputPaddingEndContext = React.createContext<InputPaddingContextType>([
+  undefined,
+  () => {},
+]);
 
 export function useInputPaddings() {
   const [paddingStart] = React.useContext(InputPaddingStartContext);
   const [paddingEnd] = React.useContext(InputPaddingEndContext);
 
   return {
-    paddingInlineStart:
-      paddingStart != null ? pxToRem(paddingStart) : undefined,
-    paddingInlineEnd: paddingEnd != null ? pxToRem(paddingEnd) : undefined,
+    paddingInlineStart: paddingStart,
+    paddingInlineEnd: paddingEnd,
   } satisfies React.CSSProperties;
 }
 
 export interface InputGroupProps {
   addonStart?: React.ReactNode;
+  addonStartInitialContentWidth?: number | string;
   addonEnd?: React.ReactNode;
   addonPadding?: InputAddonProps["padding"];
   disabled?: boolean;
@@ -34,14 +41,26 @@ export interface InputGroupProps {
 
 export function InputGroup({
   addonStart,
+  addonStartInitialContentWidth,
   addonEnd,
   addonPadding = "md",
   disabled,
   className,
   children,
 }: InputGroupProps) {
-  const [paddingStart, setPaddingStart] = React.useState<number>();
-  const [paddingEnd, setPaddingEnd] = React.useState<number>();
+  const [paddingStart, setPaddingStart] = React.useState<
+    InputPaddingContextType[0]
+  >(() =>
+    addonStartInitialContentWidth != null
+      ? `calc(${cssValueWithUnit(
+          addonStartInitialContentWidth,
+        )} + ${cssValueWithUnit(
+          inputAddonContentWidthAddendByPadding[addonPadding],
+        )})`
+      : undefined,
+  );
+  const [paddingEnd, setPaddingEnd] =
+    React.useState<InputPaddingContextType[0]>();
 
   return (
     <InputPaddingStartContext.Provider
@@ -82,6 +101,14 @@ interface InputAddonProps {
   padding: "none" | "sm" | "md";
   children?: React.ReactNode;
 }
+
+const inputAddonContentWidthAddendByPadding = {
+  none: 0,
+  sm: "1rem",
+  md: "1.5rem",
+} satisfies {
+  [key in InputAddonProps["padding"]]: InputPaddingContextType[0];
+};
 
 function InputAddon({ placement, padding, children }: InputAddonProps) {
   const [, setInputPadding] = React.useContext(
