@@ -52,7 +52,7 @@ export const Button = React.forwardRef(function Button(
       {(render ?? ((props) => <button ref={ref} type="button" {...props} />))({
         disabled: disabled || loading,
         className: clsx(
-          "transition focus-visible:outline-offset focus-visible:outline",
+          "gap-x-2 transition focus-visible:outline-offset focus-visible:outline disabled:opacity-45 disabled:mix-blend-luminosity",
           size !== "auto" && "inline-flex items-center justify-center",
           {
             [clsx("h-8 text-sm tracking-2.5", equilateral && "w-8")]:
@@ -62,8 +62,7 @@ export const Button = React.forwardRef(function Button(
             [clsx("h-14 text-base tracking-1", equilateral && "w-14")]:
               size === "lg",
           },
-          loading ? "cursor-wait gap-x-2" : disabled && "cursor-not-allowed",
-          (disabled || loading) && "opacity-45 mix-blend-luminosity",
+          loading ? "cursor-wait" : "disabled:cursor-not-allowed",
           className,
         ),
         children: (

@@ -78,11 +78,7 @@ export function CheckboxChip({
         {checked ? (
           <CrossCircleFill
             size={16}
-            className={clsx(
-              "-mx-2",
-              !disabled &&
-                "group-hover/button:text-interactive-control-hover group-active/button:text-interactive-control-active",
-            )}
+            className="-mx-2 group-enabled/button:group-hover/button:text-interactive-control-hover group-enabled/button:group-active/button:text-interactive-control-active"
           />
         ) : null}
       </Chip>

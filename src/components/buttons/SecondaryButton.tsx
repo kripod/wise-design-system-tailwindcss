@@ -33,13 +33,12 @@ export const SecondaryButton = React.forwardRef(function SecondaryButton(
           "text-sentiment-negative focus-visible:outline-sentiment-negative":
             sentiment === "negative",
         },
-        !disabled &&
-          !loading && {
-            "hover:bg-interactive-accent-hover hover:text-interactive-control hover:ring-interactive-accent-hover active:bg-interactive-accent-active active:text-interactive-control active:ring-interactive-accent-active":
-              sentiment === "neutral",
-            "hover:bg-sentiment-negative-hover hover:text-base-contrast hover:ring-sentiment-negative-hover active:bg-sentiment-negative-active active:text-base-contrast active:ring-sentiment-negative-active":
-              sentiment === "negative",
-          },
+        {
+          "enabled:hover:bg-interactive-accent-hover enabled:hover:text-interactive-control enabled:hover:ring-interactive-accent-hover enabled:active:bg-interactive-accent-active enabled:active:text-interactive-control enabled:active:ring-interactive-accent-active":
+            sentiment === "neutral",
+          "enabled:hover:bg-sentiment-negative-hover enabled:hover:text-base-contrast enabled:hover:ring-sentiment-negative-hover enabled:active:bg-sentiment-negative-active enabled:active:text-base-contrast enabled:active:ring-sentiment-negative-active":
+            sentiment === "negative",
+        },
         className,
       )}
       {...restProps}

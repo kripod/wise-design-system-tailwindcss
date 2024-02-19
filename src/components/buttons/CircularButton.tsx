@@ -32,23 +32,14 @@ export const CircularButton = React.forwardRef(function CircularButton(
         size="lg"
         equilateral
         disabled={disabled}
-        className={clsx(
-          "peer rounded-full bg-interactive-accent text-interactive-control after:absolute after:inset-0",
-          !disabled &&
-            "hover:bg-interactive-accent-hover active:bg-interactive-accent-active",
-        )}
+        className="peer rounded-full bg-interactive-accent text-interactive-control after:absolute after:inset-0 enabled:hover:bg-interactive-accent-hover enabled:active:bg-interactive-accent-active"
         {...restProps}
       >
         {icon}
       </Button>
       <span
         id={labelId}
-        className={clsx(
-          "text-sm font-semibold tracking-2.5 text-interactive-primary transition",
-          !disabled
-            ? "peer-hover:text-interactive-primary-hover peer-active:text-interactive-primary-active"
-            : "cursor-not-allowed opacity-45 mix-blend-luminosity",
-        )}
+        className="text-sm font-semibold tracking-2.5 text-interactive-primary transition peer-enabled:peer-hover:text-interactive-primary-hover peer-enabled:peer-active:text-interactive-primary-active peer-disabled:cursor-not-allowed peer-disabled:opacity-45 peer-disabled:mix-blend-luminosity"
       >
         {children}
       </span>

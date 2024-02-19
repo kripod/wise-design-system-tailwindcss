@@ -15,9 +15,7 @@ export const ActionButton = React.forwardRef(function ActionButton(
       size="sm"
       disabled={disabled}
       className={clsx(
-        "gap-x-2 rounded-full bg-interactive-accent px-3 font-semibold text-interactive-control",
-        !disabled &&
-          "hover:bg-interactive-accent-hover active:bg-interactive-accent-active",
+        "gap-x-2 rounded-full bg-interactive-accent px-3 font-semibold text-interactive-control enabled:hover:bg-interactive-accent-hover enabled:active:bg-interactive-accent-active",
         className,
       )}
       {...restProps}

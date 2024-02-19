@@ -34,13 +34,12 @@ export const PrimaryButton = React.forwardRef(function PrimaryButton(
           "bg-sentiment-negative text-base-contrast focus-visible:outline-sentiment-negative":
             sentiment === "negative",
         },
-        !disabled &&
-          !loading && {
-            "hover:bg-interactive-accent-hover active:bg-interactive-accent-active":
-              sentiment === "neutral",
-            "hover:bg-sentiment-negative-hover active:bg-sentiment-negative-active":
-              sentiment === "negative",
-          },
+        {
+          "enabled:hover:bg-interactive-accent-hover enabled:active:bg-interactive-accent-active":
+            sentiment === "neutral",
+          "enabled:hover:bg-sentiment-negative-hover enabled:active:bg-sentiment-negative-active":
+            sentiment === "negative",
+        },
         className,
       )}
       {...restProps}
