@@ -5,6 +5,7 @@ import * as React from "react";
 
 import { getMonthNames } from "../../date";
 import { Flag } from "../Flag";
+import { InlineLink } from "../InlineLink";
 import {
   SelectInput,
   type SelectInputItem,
@@ -266,6 +267,20 @@ export const Currencies: Story<{
       filterable
       filterPlaceholder="Type a currency / country"
       size="xl"
+      renderFooter={(normalizedQuery) =>
+        normalizedQuery != null && normalizedQuery.length === 3 ? (
+          <>
+            It’s not possible use {normalizedQuery.toUpperCase()} yet.{" "}
+            <InlineLink href="#_">Email me when it’s available.</InlineLink>
+          </>
+        ) : (
+          <>
+            Can’t find it?{" "}
+            <InlineLink href="#_">Request the currency you need,</InlineLink>{" "}
+            and we’ll notify you once it’s available.
+          </>
+        )
+      }
       onChange={(currency) => {
         setSelectedCurrency(currency);
         onChange(currency);

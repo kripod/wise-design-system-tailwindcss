@@ -144,6 +144,9 @@ export interface SelectInputProps<T = string> {
     value: NonNullable<T>,
     withinTrigger: boolean,
   ) => React.ReactNode;
+  renderFooter?: (
+    normalizedQuery: string | null | undefined,
+  ) => React.ReactNode;
   renderTrigger?: (args: {
     content: React.ReactNode;
     placeholderShown: boolean;
@@ -239,6 +242,7 @@ export function SelectInput<T = string>({
   value: controlledValue,
   compareValues,
   renderValue = wrapInFragment,
+  renderFooter,
   renderTrigger = defaultRenderTrigger,
   filterable,
   filterPlaceholder,
@@ -324,6 +328,7 @@ export function SelectInput<T = string>({
           <SelectInputOptions
             items={items}
             renderValue={renderValue}
+            renderFooter={renderFooter}
             filterable={filterable}
             filterPlaceholder={filterPlaceholder}
             searchInputRef={searchInputRef}
@@ -411,7 +416,11 @@ const SelectInputOptionsContainer = React.forwardRef(
 interface SelectInputOptionsProps<T = string>
   extends Pick<
     SelectInputProps<T>,
-    "items" | "renderValue" | "filterable" | "filterPlaceholder"
+    | "items"
+    | "renderValue"
+    | "renderFooter"
+    | "filterable"
+    | "filterPlaceholder"
   > {
   searchInputRef: React.RefObject<HTMLInputElement>;
   listboxRef: React.RefObject<HTMLDivElement>;
@@ -420,6 +429,7 @@ interface SelectInputOptionsProps<T = string>
 function SelectInputOptions<T = string>({
   items,
   renderValue = wrapInFragment,
+  renderFooter,
   filterable = false,
   filterPlaceholder,
   searchInputRef,
@@ -491,7 +501,7 @@ function SelectInputOptions<T = string>({
         </div>
       ) : null}
 
-      <div
+      <section
         ref={listboxContainerRef}
         className={clsx(
           "relative h-[--initial-height] scroll-py-2 overflow-y-auto sm:h-auto",
@@ -525,7 +535,11 @@ function SelectInputOptions<T = string>({
             ),
           )}
         </div>
-      </div>
+
+        {renderFooter != null ? (
+          <footer className="px-6 pb-4 pt-1">{renderFooter(needle)}</footer>
+        ) : null}
+      </section>
     </ListboxBase.Options>
   );
 }

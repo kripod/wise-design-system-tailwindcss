@@ -12,6 +12,7 @@
       "components": {
         "ActionButton": "button",
         "CircularButton": "button",
+        "InlineLink": "a",
         "Label": "label",
         "Link": "a",
         "PrimaryButton": "button",
