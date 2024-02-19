@@ -223,7 +223,6 @@ module.exports = {
         pxToRem(40),
         {
           lineHeight: "0.85",
-          letterSpacing: "-0.015em",
           fontWeight: "900",
         },
       ],
@@ -231,7 +230,6 @@ module.exports = {
         pxToRem(64),
         {
           lineHeight: "0.85",
-          letterSpacing: "-0.015em",
           fontWeight: "900",
         },
       ],
@@ -239,7 +237,6 @@ module.exports = {
         pxToRem(96),
         {
           lineHeight: "0.85",
-          letterSpacing: "-0.025em",
           fontWeight: "900",
         },
       ],
