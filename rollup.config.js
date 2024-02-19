@@ -9,7 +9,7 @@ const outDir = "dist";
 
 module.exports = defineConfig({
   input: {
-    index: `${rootDir}/index.ts`,
+    mod: `${rootDir}/mod.ts`,
   },
   output: [
     {
