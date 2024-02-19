@@ -11,6 +11,7 @@ export default {
     {
       format: "es",
       dir: "dist/es",
+      entryFileNames: "[name].mjs",
     },
     {
       format: "cjs",
