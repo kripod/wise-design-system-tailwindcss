@@ -7,7 +7,7 @@ export const Basic: Story<{
   onChange: () => void;
 }> = function ({ disabled, onChange }) {
   return (
-    <RadioChipGroup disabled={disabled} onChange={onChange}>
+    <RadioChipGroup name="amount" disabled={disabled} onChange={onChange}>
       <RadioChip value="100">100 GBP</RadioChip>
       <RadioChip value="200">200 GBP</RadioChip>
       <RadioChip value="300">300 GBP</RadioChip>
