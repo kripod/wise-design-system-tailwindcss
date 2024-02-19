@@ -62,9 +62,8 @@ export const Button = React.forwardRef(function Button(
             [clsx("h-14 text-base tracking-1", equilateral && "w-14")]:
               size === "lg",
           },
-          loading && "gap-x-2",
+          loading ? "cursor-wait gap-x-2" : disabled && "cursor-not-allowed",
           (disabled || loading) && "opacity-45 mix-blend-luminosity",
-          disabled ? "cursor-not-allowed" : loading && "cursor-wait",
           className,
         ),
         children: (
