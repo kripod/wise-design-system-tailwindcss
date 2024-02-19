@@ -6,13 +6,7 @@ export type InstructionListProps = {
 };
 
 export function InstructionList({ children }: InstructionListProps) {
-  return (
-    <ul className="space-y-4">
-      {React.Children.map(children, (child) => (
-        <li>{child}</li>
-      ))}
-    </ul>
-  );
+  return <ul className="space-y-4">{children}</ul>;
 }
 
 export type InstructionProps = {
@@ -34,9 +28,9 @@ const IconBySentiment = {
 export function Instruction({ sentiment, children }: InstructionProps) {
   const Icon = IconBySentiment[sentiment];
   return (
-    <div className="flex gap-x-2 text-base text-content-primary">
+    <li className="flex gap-x-2 text-base text-content-primary">
       <Icon />
       <div className="flex-1">{children}</div>
-    </div>
+    </li>
   );
 }
