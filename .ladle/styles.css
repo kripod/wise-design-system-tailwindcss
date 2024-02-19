@@ -3,7 +3,7 @@
 @import "../src/styles.css";
 
 @layer base {
-  body {
+  main {
     @apply text-xs font-normal text-content-tertiary;
   }
 }
