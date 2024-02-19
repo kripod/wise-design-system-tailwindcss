@@ -6,15 +6,9 @@ import { Spinner } from "../Spinner";
 
 export type ButtonPropsBase = Pick<
   React.ComponentPropsWithRef<"button">,
-  | "ref"
-  | "type"
-  | "aria-describedby"
-  | "disabled"
-  | "className"
-  | "children"
-  | "onClick"
+  "ref" | "type" | "aria-describedby" | "className" | "children" | "onClick"
 > & {
-  loading?: boolean;
+  disabled?: boolean | "loading";
   render?: (
     props: React.ComponentPropsWithoutRef<"button"> &
       Required<
@@ -38,7 +32,6 @@ export const Button = React.forwardRef(function Button(
   {
     size = "auto",
     equilateral = false,
-    loading = false,
     disabled = false,
     className,
     children,
@@ -50,7 +43,7 @@ export const Button = React.forwardRef(function Button(
   return (
     <>
       {(render ?? ((props) => <button ref={ref} type="button" {...props} />))({
-        disabled: disabled || loading,
+        disabled: Boolean(disabled),
         className: clsx(
           "transition focus-visible:outline-offset focus-visible:outline disabled:pointer-events-none disabled:opacity-45 disabled:mix-blend-luminosity",
           size !== "auto" && "inline-flex items-center justify-center gap-x-2",
@@ -62,12 +55,11 @@ export const Button = React.forwardRef(function Button(
             [clsx("h-14 text-base font-semibold", equilateral && "w-14")]:
               size === "lg",
           },
-          loading && "cursor-wait",
           className,
         ),
         children: (
           <>
-            {children} {loading ? <Spinner /> : null}
+            {children} {disabled === "loading" ? <Spinner /> : null}
           </>
         ),
         ...restProps,

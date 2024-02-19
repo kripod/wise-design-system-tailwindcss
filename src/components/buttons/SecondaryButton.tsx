@@ -12,7 +12,6 @@ export const SecondaryButton = React.forwardRef(function SecondaryButton(
   {
     size = "md",
     sentiment = "neutral",
-    loading = false,
     disabled = false,
     className,
     children,
@@ -24,7 +23,6 @@ export const SecondaryButton = React.forwardRef(function SecondaryButton(
     <Button
       ref={ref}
       size={size}
-      loading={loading}
       disabled={disabled}
       className={clsx(
         "rounded-full px-4 ring-1 ring-inset ring-current",
