@@ -67,11 +67,11 @@ const TabButton = React.forwardRef(function TabButton(
       ref={ref}
       aria-selected={ariaSelected}
       className={clsx(
+        className,
         "inline-grid rounded-xs text-base [&>*]:col-start-1 [&>*]:row-start-1",
         selected
           ? "font-semibold text-interactive-primary"
           : "text-content-secondary",
-        className,
       )}
       {...restProps}
     >

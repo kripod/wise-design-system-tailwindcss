@@ -21,16 +21,12 @@ export const PrimaryButton = React.forwardRef(function PrimaryButton(
     <Button
       ref={ref}
       size={size}
-      className={clsx(
-        "rounded-full px-4",
-        {
-          "bg-interactive-accent text-interactive-control hover:bg-interactive-accent-hover active:bg-interactive-accent-active":
-            sentiment === "neutral",
-          "bg-sentiment-negative text-contrast-overlay hover:bg-sentiment-negative-hover focus-visible:outline-sentiment-negative active:bg-sentiment-negative-active":
-            sentiment === "negative",
-        },
-        className,
-      )}
+      className={clsx(className, "rounded-full px-4", {
+        "bg-interactive-accent text-interactive-control hover:bg-interactive-accent-hover active:bg-interactive-accent-active":
+          sentiment === "neutral",
+        "bg-sentiment-negative text-contrast-overlay hover:bg-sentiment-negative-hover focus-visible:outline-sentiment-negative active:bg-sentiment-negative-active":
+          sentiment === "negative",
+      })}
       {...restProps}
     />
   );
@@ -48,8 +44,8 @@ export const CriticalBannerPrimaryButton = React.forwardRef(
         ref={ref}
         size="sm"
         className={clsx(
-          "rounded-full bg-contrast-overlay px-4 text-sentiment-negative hover:bg-sentiment-negative-hover hover:text-contrast-overlay focus-visible:outline-contrast-overlay active:bg-sentiment-negative-active active:text-contrast-overlay",
           className,
+          "rounded-full bg-contrast-overlay px-4 text-sentiment-negative hover:bg-sentiment-negative-hover hover:text-contrast-overlay focus-visible:outline-contrast-overlay active:bg-sentiment-negative-active active:text-contrast-overlay",
         )}
         {...restProps}
       />

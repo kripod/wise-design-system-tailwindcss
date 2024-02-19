@@ -16,8 +16,8 @@ export const CircularButton = React.forwardRef(function CircularButton(
   return (
     <span
       className={clsx(
-        "relative inline-flex flex-col items-center gap-y-2",
         className,
+        "relative inline-flex flex-col items-center gap-y-2",
       )}
     >
       <Button

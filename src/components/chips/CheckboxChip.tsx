@@ -17,7 +17,7 @@ export function CheckboxChipGroup({
   children,
 }: CheckboxChipGroupProps) {
   return (
-    <div className={clsx("flex flex-wrap gap-2", className)}>{children}</div>
+    <div className={clsx(className, "flex flex-wrap gap-2")}>{children}</div>
   );
 }
 

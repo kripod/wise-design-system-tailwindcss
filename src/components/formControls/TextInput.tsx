@@ -56,8 +56,8 @@ export function TextInputGroup({
         <fieldset
           disabled={disabled}
           className={clsx(
-            "group/input inline-grid auto-cols-fr [&>*]:col-start-1 [&>*]:row-start-1",
             className,
+            "group/input inline-grid auto-cols-fr [&>*]:col-start-1 [&>*]:row-start-1",
           )}
         >
           {children}
@@ -106,13 +106,13 @@ export const TextInput = React.forwardRef(function TextInput(
       ref={ref}
       {...formControlAriaAttributes}
       className={clsx(
+        className,
         formControlClassNameBase({ size }),
         "placeholder:text-content-tertiary enabled:group-hover/input:ring-2 enabled:group-hover/input:ring-interactive-secondary-hover",
         {
           rounded: shape === "rectangle",
           "rounded-full": shape === "pill",
         },
-        className,
       )}
       style={{
         paddingInlineStart: paddingStart,

@@ -22,6 +22,7 @@ export const SecondaryButton = React.forwardRef(function SecondaryButton(
       ref={ref}
       size={size}
       className={clsx(
+        className,
         "rounded-full px-4 ring-1 ring-inset ring-current",
         {
           "text-interactive-primary hover:bg-interactive-accent-hover hover:text-interactive-control hover:ring-interactive-accent-hover active:bg-interactive-accent-active active:text-interactive-control active:ring-interactive-accent-active":
@@ -29,7 +30,6 @@ export const SecondaryButton = React.forwardRef(function SecondaryButton(
           "text-sentiment-negative hover:bg-sentiment-negative-hover hover:text-contrast-overlay hover:ring-sentiment-negative-hover focus-visible:outline-sentiment-negative active:bg-sentiment-negative-active active:text-contrast-overlay active:ring-sentiment-negative-active":
             sentiment === "negative",
         },
-        className,
       )}
       {...restProps}
     />

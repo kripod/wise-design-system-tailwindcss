@@ -56,7 +56,7 @@ export function Field({ label, hint, error, className, children }: FieldProps) {
       value={description ? descriptionId : undefined}
     >
       <FormControlInvalidProvider value={Boolean(error)}>
-        <span className={clsx("inline-flex flex-col gap-y-2", className)}>
+        <span className={clsx(className, "inline-flex flex-col gap-y-2")}>
           <Label>
             {label}
             {children}

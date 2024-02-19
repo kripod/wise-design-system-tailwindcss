@@ -45,6 +45,7 @@ export const Button = React.forwardRef(function Button(
       {(render ?? ((props) => <button ref={ref} type="button" {...props} />))({
         disabled: Boolean(disabled),
         className: clsx(
+          className,
           "transition focus-visible:outline-offset focus-visible:outline disabled:pointer-events-none disabled:opacity-45 disabled:mix-blend-luminosity aria-disabled:pointer-events-none aria-disabled:opacity-45 aria-disabled:mix-blend-luminosity",
           size !== "auto" &&
             "inline-flex items-center justify-center text-center",
@@ -56,7 +57,6 @@ export const Button = React.forwardRef(function Button(
             [clsx("h-14 text-base font-semibold", equilateral && "w-14")]:
               size === "lg",
           },
-          className,
         ),
         children:
           disabled !== "loading" ? (

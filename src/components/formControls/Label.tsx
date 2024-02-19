@@ -9,8 +9,8 @@ export function Label({ className, children }: LabelProps) {
   return (
     <label
       className={clsx(
-        "inline-flex flex-col gap-y-1 text-sm text-content-secondary",
         className,
+        "inline-flex flex-col gap-y-1 text-sm text-content-secondary",
       )}
     >
       {children}

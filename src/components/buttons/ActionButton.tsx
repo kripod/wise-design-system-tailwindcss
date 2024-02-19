@@ -24,8 +24,8 @@ export const ActionButton = React.forwardRef(function ActionButton(
       ref={ref}
       size="sm"
       className={clsx(
-        "rounded-full bg-interactive-accent px-3 text-interactive-control hover:bg-interactive-accent-hover active:bg-interactive-accent-active",
         className,
+        "rounded-full bg-interactive-accent px-3 text-interactive-control hover:bg-interactive-accent-hover active:bg-interactive-accent-active",
       )}
       {...restProps}
     >
