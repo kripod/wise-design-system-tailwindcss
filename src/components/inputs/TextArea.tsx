@@ -19,7 +19,7 @@ export const TextArea = React.forwardRef(function TextArea(
       aria-describedby={fieldDescribedBy}
       aria-invalid={fieldInvalid}
       className={clsx(
-        "h-18 min-h-18 scroll-py-2 overscroll-none rounded px-4 py-3 text-base text-content-primary ring-1 ring-inset ring-interactive-secondary transition-shadow invalid:ring invalid:!ring-sentiment-negative enabled:hover:ring enabled:hover:ring-interactive-secondary-hover enabled:focus:outline-none enabled:focus:ring-3 enabled:focus:ring-interactive-primary disabled:opacity-45 disabled:mix-blend-luminosity",
+        "min-h-18 scroll-py-2 overscroll-none rounded px-4 py-3 text-base text-content-primary ring-1 ring-inset ring-interactive-secondary transition-shadow invalid:ring invalid:!ring-sentiment-negative enabled:hover:ring enabled:hover:ring-interactive-secondary-hover enabled:focus:outline-none enabled:focus:ring-3 enabled:focus:ring-interactive-primary disabled:opacity-45 disabled:mix-blend-luminosity",
         className,
       )}
       {...restProps}
