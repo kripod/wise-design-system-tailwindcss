@@ -1,4 +1,5 @@
 import { Tab as TabBase } from "@headlessui/react";
+import { clsx } from "clsx";
 
 import { Button } from "./buttons/_Button";
 import {
@@ -33,12 +34,18 @@ export function TabGroup({
 }
 
 export type TabListProps = {
+  stretch?: boolean;
   children: React.ReactNode;
 };
 
-export function TabList({ children }: TabListProps) {
+export function TabList({ stretch = false, children }: TabListProps) {
   return (
-    <TabBase.List className="relative overflow-x-auto whitespace-nowrap">
+    <TabBase.List
+      className={clsx(
+        "relative grid grid-flow-col overflow-x-auto whitespace-nowrap",
+        !stretch && "justify-start",
+      )}
+    >
       <div className="absolute inset-0 border-b" />
       {children}
     </TabBase.List>

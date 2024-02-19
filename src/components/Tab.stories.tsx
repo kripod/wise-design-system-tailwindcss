@@ -1,9 +1,16 @@
-import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "./Tab";
+import {
+  Tab,
+  TabGroup,
+  TabList,
+  TabListProps,
+  TabPanel,
+  TabPanels,
+} from "./Tab";
 
-export const Basic = function () {
+export const Basic = function ({ stretch }: Pick<TabListProps, "stretch">) {
   return (
     <TabGroup>
-      <TabList>
+      <TabList stretch={stretch}>
         <Tab>Tab 1</Tab>
         <Tab>Tab 2</Tab>
         <Tab>Tab 3</Tab>
@@ -16,4 +23,8 @@ export const Basic = function () {
       </TabPanels>
     </TabGroup>
   );
+};
+
+Basic.args = {
+  stretch: false,
 };
