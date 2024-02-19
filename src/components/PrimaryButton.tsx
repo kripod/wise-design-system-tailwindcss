@@ -30,7 +30,7 @@ export const PrimaryButton = React.forwardRef(function PrimaryButton(
         {
           "bg-interactive-accent text-interactive-primary ring-interactive-accent-active":
             sentiment === "neutral",
-          "bg-sentiment-negative text-interactive-tertiary ring-sentiment-negative-active":
+          "bg-sentiment-negative text-base-contrast ring-sentiment-negative-active":
             sentiment === "negative",
         },
         !disabled
