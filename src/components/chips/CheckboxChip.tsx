@@ -74,18 +74,20 @@ export function CheckboxChip({
         role="checkbox"
         aria-checked={checked}
         disabled={disabled}
-        className="group/button inline-flex items-center justify-center gap-x-2"
+        className="group/button"
         onClick={() => {
           setChecked((prev) => !prev);
         }}
       >
-        <span className="flex-1">{children}</span>
-        {checked ? (
-          <CrossCircleFill
-            size={16}
-            className="-me-2 group-hover/button:text-interactive-control-hover group-active/button:text-interactive-control-active"
-          />
-        ) : null}
+        <span className="inline-flex items-center justify-center gap-x-2">
+          <span className="flex-1">{children}</span>
+          {checked ? (
+            <CrossCircleFill
+              size={16}
+              className="-me-2 group-hover/button:text-interactive-control-hover group-active/button:text-interactive-control-active"
+            />
+          ) : null}
+        </span>
       </Chip>
     </>
   );

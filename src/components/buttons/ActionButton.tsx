@@ -24,14 +24,20 @@ export const ActionButton = React.forwardRef(function ActionButton(
       ref={ref}
       size="sm"
       className={clsx(
-        "inline-flex items-center justify-center gap-x-2 rounded-full bg-interactive-accent px-3 text-interactive-control hover:bg-interactive-accent-hover active:bg-interactive-accent-active",
-        iconPlacement === "end" && "flex-row-reverse",
+        "rounded-full bg-interactive-accent px-3 text-interactive-control hover:bg-interactive-accent-hover active:bg-interactive-accent-active",
         className,
       )}
       {...restProps}
     >
-      {icon}
-      <span className="flex-1">{children}</span>
+      <span
+        className={clsx(
+          "inline-flex items-center justify-center gap-x-2",
+          iconPlacement === "end" && "flex-row-reverse",
+        )}
+      >
+        {icon}
+        <span className="flex-1">{children}</span>
+      </span>
     </Button>
   );
 });
