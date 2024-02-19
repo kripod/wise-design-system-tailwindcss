@@ -80,17 +80,17 @@ export function BottomSheet({
             <div className="fixed inset-0 bg-content-primary opacity-40" />
           </Transition.Child>
 
-          <FloatingFocusManager
-            context={context}
-            initialFocus={initialFocusRef}
-          >
-            <div className="fixed inset-0 flex flex-col justify-end px-2 pt-16">
-              <Transition.Child
-                className="max-h-full"
-                enter="motion-safe:transition-transform motion-safe:duration-300 motion-reduce:transition-opacity motion-reduce:duration-300"
-                enterFrom="motion-safe:translate-y-full motion-reduce:opacity-0"
-                leave="motion-safe:transition-transform motion-safe:duration-300 motion-reduce:transition-opacity motion-reduce:duration-300"
-                leaveTo="motion-safe:translate-y-full motion-reduce:opacity-0"
+          <div className="fixed inset-0 flex flex-col justify-end px-2 pt-16">
+            <Transition.Child
+              className="max-h-full"
+              enter="motion-safe:transition-transform motion-safe:duration-300 motion-reduce:transition-opacity motion-reduce:duration-300"
+              enterFrom="motion-safe:translate-y-full motion-reduce:opacity-0"
+              leave="motion-safe:transition-transform motion-safe:duration-300 motion-reduce:transition-opacity motion-reduce:duration-300"
+              leaveTo="motion-safe:translate-y-full motion-reduce:opacity-0"
+            >
+              <FloatingFocusManager
+                context={context}
+                initialFocus={initialFocusRef}
               >
                 <div
                   key={floatingKey} // Force inner state invalidation on open
@@ -123,9 +123,9 @@ export function BottomSheet({
                     </div>
                   </div>
                 </div>
-              </Transition.Child>
-            </div>
-          </FloatingFocusManager>
+              </FloatingFocusManager>
+            </Transition.Child>
+          </div>
         </Transition>
       </FloatingPortal>
     </>
