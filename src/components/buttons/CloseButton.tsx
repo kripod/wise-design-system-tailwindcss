@@ -4,9 +4,9 @@ import { clsx } from "clsx";
 import { CloseButtonLabel } from "../../i18nTexts";
 import { Button, type ButtonPropsBase } from "./_Button";
 
-export type CloseButtonProps = Omit<
+export type CloseButtonProps = Pick<
   ButtonPropsBase,
-  "ref" | "type" | "loading" | "disabled" | "render" | "children"
+  "className" | "onClick"
 > & {
   size?: "sm" | "md";
 };
