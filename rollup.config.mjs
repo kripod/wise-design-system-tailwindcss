@@ -4,15 +4,17 @@ import pkg from "./package.json" assert { type: "json" };
 
 /** @type {import('rollup').RollupOptions} */
 export default {
-  input: "src/index.ts",
+  input: {
+    index: "src/index.ts",
+  },
   output: [
     {
-      file: pkg.exports["."].import,
       format: "es",
+      dir: "dist/es",
     },
     {
-      file: pkg.exports["."].require,
       format: "cjs",
+      dir: "dist/cjs",
       interop: "esModule",
     },
   ],
