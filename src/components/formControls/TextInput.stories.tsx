@@ -19,9 +19,9 @@ export const Basic: Story<{
 
   return (
     <Field
-      label={<>Label</>}
-      hint={<>Information message.</>}
-      error={value.length === 0 ? <>Error message.</> : undefined}
+      label="Label"
+      hint="Information message."
+      error={value.length === 0 ? "Error message." : undefined}
     >
       <TextInput
         size={size}

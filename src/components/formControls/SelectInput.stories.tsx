@@ -24,9 +24,9 @@ export const Basic: Story<{
   return (
     <div className="flex flex-col">
       <Field
-        label={<>Label</>}
-        hint={<>Information message.</>}
-        error={invalid ? <>Error message.</> : undefined}
+        label="Label"
+        hint="Information message."
+        error={invalid ? "Error message." : undefined}
       >
         <SelectInput<Month>
           placeholder="Month"
