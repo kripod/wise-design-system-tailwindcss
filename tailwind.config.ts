@@ -80,6 +80,7 @@ export default {
           hover: `var(--color-interactive-control-hover, ${lightTheme["--color-interactive-control-hover"]})`,
           active: `var(--color-interactive-control-active, ${lightTheme["--color-interactive-control-active"]})`,
         },
+        contrast: `var(--color-interactive-contrast, ${lightTheme["--color-interactive-contrast"]})`,
       },
       background: {
         screen: {
