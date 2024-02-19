@@ -1,16 +1,27 @@
 import { clsx } from "clsx";
-import { atom, Provider, useAtomValue, useSetAtom } from "jotai";
 import * as React from "react";
 import type { Merge } from "ts-essentials";
 
 import { useResizeObserver } from "../../hooks/useResizeObserver";
-import { HydrateAtoms } from "../../jotai-utils";
 import { fieldControlClassNameBase, useFieldDescribedBy } from "./Field";
 
-const inputPaddingStartAtom =
-  atom<React.CSSProperties["paddingInlineStart"]>(undefined);
-const inputPaddingEndAtom =
-  atom<React.CSSProperties["paddingInlineEnd"]>(undefined);
+const InputPaddingStartContext = React.createContext<
+  [
+    React.CSSProperties["paddingInlineStart"],
+    React.Dispatch<
+      React.SetStateAction<React.CSSProperties["paddingInlineStart"]>
+    >,
+  ]
+>([undefined, () => {}]);
+
+const InputPaddingEndContext = React.createContext<
+  [
+    React.CSSProperties["paddingInlineEnd"],
+    React.Dispatch<
+      React.SetStateAction<React.CSSProperties["paddingInlineEnd"]>
+    >,
+  ]
+>([undefined, () => {}]);
 
 export type InputProps = Merge<
   Pick<
@@ -46,8 +57,8 @@ export const Input = React.forwardRef(function Input(
 ) {
   const fieldDescribedBy = useFieldDescribedBy();
 
-  const inputPaddingStart = useAtomValue(inputPaddingStartAtom);
-  const inputPaddingEnd = useAtomValue(inputPaddingEndAtom);
+  const [inputPaddingStart] = React.useContext(InputPaddingStartContext);
+  const [inputPaddingEnd] = React.useContext(InputPaddingEndContext);
 
   return (
     <input
@@ -85,12 +96,11 @@ export function InputGroup({
   children,
 }: InputGroupProps) {
   return (
-    <Provider>
-      <HydrateAtoms
-        initialValues={[
-          [inputPaddingStartAtom, initialPaddingStart],
-          [inputPaddingEndAtom, initialPaddingEnd],
-        ]}
+    <InputPaddingStartContext.Provider
+      value={React.useState(initialPaddingStart)}
+    >
+      <InputPaddingEndContext.Provider
+        value={React.useState(initialPaddingEnd)}
       >
         <fieldset
           disabled={disabled}
@@ -98,8 +108,8 @@ export function InputGroup({
         >
           {children}
         </fieldset>
-      </HydrateAtoms>
-    </Provider>
+      </InputPaddingEndContext.Provider>
+    </InputPaddingStartContext.Provider>
   );
 }
 
@@ -116,10 +126,9 @@ export function InputAddon({
   padding = "md",
   children,
 }: InputAddonProps) {
-  const setInputPaddingStart = useSetAtom(inputPaddingStartAtom);
-  const setInputPaddingEnd = useSetAtom(inputPaddingEndAtom);
-  const setInputPadding =
-    placement === "start" ? setInputPaddingStart : setInputPaddingEnd;
+  const [, setInputPadding] = React.useContext(
+    placement === "start" ? InputPaddingStartContext : InputPaddingEndContext,
+  );
 
   const ref = React.useRef<HTMLSpanElement>(null);
   useResizeObserver(ref, (entry) => {
