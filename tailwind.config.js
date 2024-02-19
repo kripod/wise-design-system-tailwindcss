@@ -235,7 +235,7 @@ module.exports = {
     ringWidth: {
       0: "0px",
       1: "1px",
-      DEFAULT: "2px",
+      2: "2px",
       3: "3px",
     },
     screens: {
