@@ -1,4 +1,3 @@
-const headlessuiPlugin = require("@headlessui/tailwindcss");
 const { transparentize } = require("color2k");
 const defaultTheme = require("tailwindcss/defaultTheme");
 
@@ -280,5 +279,4 @@ module.exports = {
       3: "3px",
     },
   },
-  plugins: [headlessuiPlugin],
 };
