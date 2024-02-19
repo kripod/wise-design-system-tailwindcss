@@ -39,7 +39,7 @@
   "dependencies": {
     "@babel/runtime": "^7.21.0",
     "@fontsource/inter": "^4.5.15",
-    "@headlessui/react": "^1.7.12",
+    "@headlessui/react": "^1.7.13",
     "@radix-ui/react-id": "^1.0.0",
     "clsx": "^1.2.1",
     "jotai": "^2.0.3",
@@ -54,9 +54,9 @@
     "@babel/preset-typescript": "7.21.0",
     "@ladle/react": "2.9.0",
     "@tailwindcss/container-queries": "0.1.0",
-    "@transferwise/icons": "3.5.0",
+    "@transferwise/icons": "3.5.1",
     "@tsconfig/next": "1.0.5",
-    "@types/node": "18.14.5",
+    "@types/node": "18.14.6",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
     "@types/use-sync-external-store": "0.0.3",
@@ -67,7 +67,7 @@
     "eslint": "8.35.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-airbnb-typescript": "17.0.0",
-    "eslint-config-prettier": "8.6.0",
+    "eslint-config-prettier": "8.7.0",
     "eslint-plugin-eslint-comments": "3.2.0",
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-jsx-a11y": "6.7.1",
@@ -104,5 +104,5 @@
       "optional": true
     }
   },
-  "packageManager": "pnpm@7.28.0"
+  "packageManager": "pnpm@7.29.0"
 }
