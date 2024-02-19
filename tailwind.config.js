@@ -270,7 +270,4 @@ module.exports = {
       100: "1",
     },
   },
-  corePlugins: {
-    animation: false,
-  },
 };

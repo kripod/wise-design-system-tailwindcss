@@ -5,13 +5,14 @@ import { PrimaryButton, PrimaryButtonProps } from "./PrimaryButton";
 export const Basic: Story<
   Pick<
     PrimaryButtonProps,
-    "size" | "sentiment" | "disabled" | "children" | "onClick"
+    "size" | "sentiment" | "loading" | "disabled" | "children" | "onClick"
   >
-> = function ({ size, sentiment, disabled, children, onClick }) {
+> = function ({ size, sentiment, loading, disabled, children, onClick }) {
   return (
     <PrimaryButton
       size={size}
       sentiment={sentiment}
+      loading={loading}
       disabled={disabled}
       onClick={onClick}
     >
@@ -21,6 +22,7 @@ export const Basic: Story<
 };
 
 Basic.args = {
+  loading: false,
   disabled: false,
   children: "Click me",
 };
