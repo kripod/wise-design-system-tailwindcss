@@ -3,24 +3,33 @@ import type { Story } from "@ladle/react";
 import { Alert } from "./Alert";
 
 export const Basic: Story<{
-  text: string;
   sentiment: "neutral" | "negative" | "positive" | "warning";
+  description: string;
+  action: string;
   unclosable: boolean;
   onClose: () => void;
-}> = function ({ text, sentiment, unclosable, onClose }) {
+}> = function ({ sentiment, description, action, unclosable, onClose }) {
   return (
-    <Alert sentiment={sentiment} onClose={!unclosable ? onClose : undefined}>
-      {text}
-      {/* TODO: Consider creating an `Alert.Link` component */}
-      <a href="#_" className="font-semibold underline underline-offset-3">
-        Learn more
-      </a>
-    </Alert>
+    <Alert
+      sentiment={sentiment}
+      description={description}
+      action={
+        action ? (
+          /* TODO: Consider creating an `Alert.Link` component */
+          <a href="#_" className="font-semibold underline underline-offset-3">
+            {action}
+          </a>
+        ) : null
+      }
+      onClose={!unclosable ? onClose : undefined}
+    />
   );
 };
 
 Basic.args = {
-  text: "Payments sent to your bank details today might not arrive in time for the holidays.",
+  description:
+    "Payments sent to your bank details today might not arrive in time for the holidays.",
+  action: "Learn more",
   unclosable: false,
 };
 

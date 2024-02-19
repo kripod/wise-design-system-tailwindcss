@@ -5,7 +5,7 @@ import { clsx } from "clsx";
 import { Button } from "./buttons/_Button";
 
 export type DisclosureProps = {
-  summary: React.ReactNode;
+  summary: string;
   icon?: React.ReactNode;
   defaultOpen?: boolean;
   children?: React.ReactNode;

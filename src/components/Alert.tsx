@@ -3,13 +3,15 @@ import { StatusIcon } from "./StatusIcon";
 
 export type AlertProps = {
   sentiment?: "neutral" | "negative" | "positive" | "warning";
-  children?: React.ReactNode;
+  description: string;
+  action?: React.ReactNode;
   onClose?: () => void;
 };
 
 export function Alert({
   sentiment = "neutral",
-  children,
+  description,
+  action,
   onClose,
 }: AlertProps) {
   return (
@@ -23,11 +25,9 @@ export function Alert({
             onClick={onClose}
           />
         ) : null}
-        <div
-          role="alert"
-          className="col-span-full flex flex-col gap-y-2 @lg:col-span-1 @lg:col-start-2 @lg:row-start-1"
-        >
-          {children}
+        <div className="col-span-full flex flex-col items-start gap-y-2 @lg:col-span-1 @lg:col-start-2 @lg:row-start-1">
+          <div role="alert">{description}</div>
+          {action}
         </div>
       </div>
     </div>
