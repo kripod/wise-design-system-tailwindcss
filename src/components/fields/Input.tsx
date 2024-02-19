@@ -138,7 +138,7 @@ export function InputAddon({
     <span
       ref={ref}
       className={clsx(
-        "pointer-events-none z-10 self-center text-interactive-secondary transition group-disabled/input:mix-blend-luminosity group-[:has(>input:focus:enabled:enabled)]/input:text-interactive-primary group-[:has(>input:hover:enabled)]/input:text-interactive-secondary-hover",
+        "pointer-events-none relative self-center text-interactive-secondary transition group-[:has(>input:focus:enabled:enabled)]/input:text-interactive-primary group-[:has(>input:hover:enabled)]/input:text-interactive-secondary-hover",
         {
           "justify-self-start": placement === "start",
           "justify-self-end": placement === "end",
