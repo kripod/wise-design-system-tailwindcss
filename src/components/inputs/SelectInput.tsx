@@ -484,7 +484,7 @@ function SelectInputOptions<T = string>({
       }}
     >
       {filterable ? (
-        <div className="flex flex-col p-2 pt-0 sm:pt-2">
+        <div className="flex flex-col p-2">
           <SearchInput
             ref={searchInputRef}
             shape="rectangle"
@@ -525,8 +525,8 @@ function SelectInputOptions<T = string>({
           id={listboxId}
           role="listbox"
           aria-orientation="vertical"
-          tabIndex={!filterable ? 0 : undefined}
-          className="p-2 focus:outline-none"
+          tabIndex={0}
+          className="rounded p-2 focus-visible:outline focus-visible:-outline-offset"
         >
           {(needle != null ? dedupeSelectInputItems(items) : items).map(
             (item, index) => (
