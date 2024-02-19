@@ -4,7 +4,6 @@ import * as React from "react";
 
 import { parseBooleanish } from "../parseBooleanish";
 import { Button } from "./buttons/_Button";
-import { PrimaryButton } from "./buttons/PrimaryButton";
 import {
   AnimatedLayout,
   AnimatedLayoutGroup,
