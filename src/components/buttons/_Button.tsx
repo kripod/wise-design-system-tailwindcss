@@ -2,7 +2,7 @@ import { clsx } from "clsx";
 import * as React from "react";
 import type { Merge } from "ts-essentials";
 
-import { Spinner } from "../Spinner";
+import { Spinner } from "../_Spinner";
 
 export type ButtonPropsBase = Pick<
   React.ComponentPropsWithRef<"button">,
