@@ -4,6 +4,22 @@ Web implementation of Wise Design System.
 
 ## Usage
 
+### With `@transferwise/components`
+
+1. Install the package:
+
+   ```sh
+   pnpm add @wise/design-system
+   ```
+
+2. Import styles from your app’s root:
+
+   ```ts
+   import "@wise/design-system/styles-legacy.css";
+   ```
+
+### Without `@transferwise/components`
+
 1. Install the package, optionally with its referenced fonts:
 
    ```sh
