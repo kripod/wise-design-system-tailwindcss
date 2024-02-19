@@ -24,7 +24,7 @@
     "use-sync-external-store": "^1.2.0"
   },
   "devDependencies": {
-    "@ladle/react": "2.4.3",
+    "@ladle/react": "2.4.4",
     "@transferwise/icons": "3.1.2",
     "@tsconfig/next": "1.0.3",
     "@types/node": "16.11.64",

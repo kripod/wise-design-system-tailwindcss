@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@headlessui/react': ^1.7.3
   '@headlessui/tailwindcss': ^0.1.1
-  '@ladle/react': 2.4.3
+  '@ladle/react': 2.4.4
   '@radix-ui/react-id': ^1.0.0
   '@transferwise/icons': 3.1.2
   '@tsconfig/next': 1.0.3
@@ -51,7 +51,7 @@ dependencies:
   use-sync-external-store: 1.2.0_react@18.2.0
 
 devDependencies:
-  '@ladle/react': 2.4.3_biqbaboplfbrettd7655fr4n2y
+  '@ladle/react': 2.4.4_biqbaboplfbrettd7655fr4n2y
   '@transferwise/icons': 3.1.2_react@18.2.0
   '@tsconfig/next': 1.0.3
   '@types/node': 16.11.64
@@ -1653,8 +1653,8 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: true
 
-  /@ladle/react/2.4.3_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-dKUO1u9hOUsiLjUPLJO2LfJiCqNTbLql4UuBJQurzIbBvdKzHRdgA6C6LKicftRucSZuUQJ8qgHak68hKn3LGw==}
+  /@ladle/react/2.4.4_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-kec5IL7z6g8HBygK9zL9EQt1seHBXOQhzHpMO0AD6AqSP0DCBIOmLve2GXFtd/Ryn2aw+c9xLfxtEohIrWEKKQ==}
     engines: {node: '>=16.0.0'}
     hasBin: true
     peerDependencies:
