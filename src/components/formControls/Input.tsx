@@ -109,7 +109,7 @@ export const Input = React.forwardRef(function Input(
       {...formControlAriaAttributes}
       className={clsx(
         formControlClassNameBase({ size }),
-        "placeholder:text-content-tertiary enabled:group-hover/input:[&:not(:focus)]:ring-2 enabled:group-hover/input:[&:not(:focus)]:ring-interactive-secondary-hover",
+        "placeholder:text-content-tertiary enabled:group-hover/input:ring-2 enabled:group-hover/input:ring-interactive-secondary-hover",
         {
           rounded: shape === "rectangle",
           "rounded-full": shape === "pill",
@@ -155,7 +155,7 @@ export function InputAddon({
     <span
       ref={ref}
       className={clsx(
-        "pointer-events-none relative self-center text-interactive-secondary transition group-[:has(>input:focus:enabled:enabled)]/input:text-interactive-primary group-[:has(>input:hover:enabled)]/input:text-interactive-secondary-hover",
+        "pointer-events-none self-center text-interactive-secondary transition group-[:has(>input:focus)]/input:!text-interactive-primary group-[:has(>input:hover)]/input:text-interactive-secondary-hover",
         {
           "justify-self-start": placement === "start",
           "justify-self-end": placement === "end",
