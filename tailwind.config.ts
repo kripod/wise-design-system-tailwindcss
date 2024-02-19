@@ -12,7 +12,6 @@ function pxToRem(value: number) {
   return `${roundTo(value / 16, 4)}rem`;
 }
 
-/** @type {import("tailwindcss").Config} */
 export default {
   content: ["./src/**/*.{js,jsx,mjs,ts,tsx,mts}"],
   future: {
