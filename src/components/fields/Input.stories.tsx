@@ -64,7 +64,7 @@ export const WithPrefix: Story<{
   return (
     <Label>
       Label
-      <InputGroup>
+      <InputGroup initialPaddingStart="3rem">
         <InputAddon>
           <Search size={24} />
         </InputAddon>

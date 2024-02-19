@@ -4,14 +4,17 @@ import * as React from "react";
 import type { Merge } from "ts-essentials";
 
 import { useResizeObserver } from "../../hooks/useResizeObserver";
+import { HydrateAtoms } from "../../jotai-utils";
 import {
   fieldControlClassNameBase,
   fieldDescribedByAtom,
   fieldInvalidAtom,
 } from "./Field";
 
-export const inputPaddingStartAtom = atom<number | undefined>(undefined);
-export const inputPaddingEndAtom = atom<number | undefined>(undefined);
+const inputPaddingStartAtom =
+  atom<React.CSSProperties["paddingInlineStart"]>(undefined);
+const inputPaddingEndAtom =
+  atom<React.CSSProperties["paddingInlineEnd"]>(undefined);
 
 export type InputProps = Merge<
   Pick<
@@ -73,15 +76,28 @@ export const Input = React.forwardRef(function Input(
 });
 
 export type InputGroupProps = {
+  initialPaddingStart?: React.CSSProperties["paddingInlineStart"];
+  initialPaddingEnd?: React.CSSProperties["paddingInlineEnd"];
   children?: React.ReactNode;
 };
 
-export function InputGroup({ children }: InputGroupProps) {
+export function InputGroup({
+  initialPaddingStart,
+  initialPaddingEnd,
+  children,
+}: InputGroupProps) {
   return (
     <Provider>
-      <span className="group/input inline-grid [&>*]:col-start-1 [&>*]:row-start-1">
-        {children}
-      </span>
+      <HydrateAtoms
+        initialValues={[
+          [inputPaddingStartAtom, initialPaddingStart],
+          [inputPaddingEndAtom, initialPaddingEnd],
+        ]}
+      >
+        <span className="group/input inline-grid [&>*]:col-start-1 [&>*]:row-start-1">
+          {children}
+        </span>
+      </HydrateAtoms>
     </Provider>
   );
 }
