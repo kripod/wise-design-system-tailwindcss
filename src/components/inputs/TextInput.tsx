@@ -42,7 +42,7 @@ export const TextInput = React.forwardRef(function TextInput(
       className={clsx(
         className,
         inputClassNameBase({ size }),
-        "placeholder:text-content-tertiary enabled:group-hover/input:ring-2 enabled:group-hover/input:ring-interactive-secondary-hover",
+        "placeholder:text-content-tertiary",
         {
           rounded: shape === "rectangle",
           "rounded-full": shape === "pill",
