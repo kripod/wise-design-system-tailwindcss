@@ -17,10 +17,11 @@ import { formControlClassNameBase } from "./_FormControl";
 
 export interface SelectInputProps<T = string> {
   name?: string;
+  placeholder?: string;
   // TODO: multiple?: boolean;
   defaultValue?: T;
   value?: T;
-  renderValue?: (value: T | undefined) => React.ReactNode;
+  renderValue?: (value: T) => React.ReactNode;
   compareValues?: (keyof T & string) | ((a: T, b: T) => boolean);
   disabled?: boolean;
   className?: string;
@@ -28,8 +29,11 @@ export interface SelectInputProps<T = string> {
   onChange?: (value: T) => void;
 }
 
+const placeholderValue = ""; // See: https://html.spec.whatwg.org/multipage/form-elements.html#placeholder-label-option
+
 export function SelectInput<T = string>({
   name,
+  placeholder,
   defaultValue,
   value: controlledValue,
   renderValue = identity,
@@ -61,7 +65,11 @@ export function SelectInput<T = string>({
   return (
     <ListboxBase
       name={name}
-      defaultValue={defaultValue}
+      defaultValue={
+        controlledValue === undefined && defaultValue === undefined
+          ? placeholderValue
+          : defaultValue
+      }
       value={controlledValue}
       by={compareValues}
       disabled={disabled}
@@ -76,9 +84,15 @@ export function SelectInput<T = string>({
           "inline-flex items-center gap-x-2 rounded text-start",
         )}
       >
-        {({ value }: { value: T | undefined }) => (
+        {({ value }: { value: T | typeof placeholderValue }) => (
           <>
-            <span className="flex-1 truncate">{renderValue(value)}</span>
+            <span className="flex-1 truncate">
+              {value === placeholderValue
+                ? placeholder && (
+                    <span className="text-content-tertiary">{placeholder}</span>
+                  )
+                : renderValue(value)}
+            </span>
             <ChevronDown size={16} />
           </>
         )}
