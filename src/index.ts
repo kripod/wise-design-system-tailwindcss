@@ -19,4 +19,4 @@ export type { TextInputProps } from "./components/formControls/TextInput";
 export { TextInput } from "./components/formControls/TextInput";
 export * from "./components/InstructionList";
 // TODO: export * from "./components/Modal";
-// TODO: export * from "./components/Tab";
+// TODO: export * from "./components/Tabs";

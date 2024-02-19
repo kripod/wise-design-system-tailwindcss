@@ -1,4 +1,4 @@
-import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "./Tab";
+import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "./Tabs";
 
 export const Basic = function ({
   defaultIndex,
