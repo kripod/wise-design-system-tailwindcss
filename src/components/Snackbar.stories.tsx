@@ -8,9 +8,10 @@ export const Basic: Story<{
   action: string;
 }> = function ({ text, action }) {
   return (
-    <Snackbar action={action ? <ActionButton>{action}</ActionButton> : null}>
-      {text}
-    </Snackbar>
+    <Snackbar
+      text={text}
+      action={action ? <ActionButton>{action}</ActionButton> : null}
+    />
   );
 };
 
