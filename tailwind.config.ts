@@ -298,13 +298,8 @@ export default {
     containerQueriesPlugin,
     plugin(({ addComponents }) => {
       addComponents({
-        ".theme-light": lightTheme,
-        ".theme-dark": darkTheme,
-        ".theme-invert": {
-          ...darkTheme,
-          ".theme-light &": darkTheme,
-          ".theme-dark &": lightTheme,
-        },
+        ".theme-light,\n.theme-dark .theme-invert": lightTheme,
+        ".theme-dark,\n.theme-light .theme-invert,\n.theme-invert": darkTheme,
       });
     }),
   ],
