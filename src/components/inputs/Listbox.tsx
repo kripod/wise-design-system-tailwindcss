@@ -2,6 +2,7 @@ import {
   autoUpdate,
   flip,
   limitShift,
+  offset,
   shift,
   useFloating,
 } from "@floating-ui/react-dom";
@@ -29,7 +30,11 @@ function roundByDPR(value: number) {
 export function Listbox() {
   const [selectedPerson, setSelectedPerson] = useState(people[0]);
   const { x, y, strategy, refs } = useFloating<HTMLButtonElement>({
-    middleware: [flip(), shift({ limiter: limitShift(), padding: 16 })],
+    middleware: [
+      offset(8),
+      flip(),
+      shift({ limiter: limitShift(), padding: 16 }),
+    ],
     whileElementsMounted: autoUpdate,
   });
 
