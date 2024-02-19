@@ -276,9 +276,6 @@ module.exports = {
       ringOffsetWidth: {
         DEFAULT: defaultTheme.ringOffsetWidth[2],
       },
-      ringOpacity: {
-        DEFAULT: "1",
-      },
       transitionTimingFunction: {
         DEFAULT: defaultTheme.transitionTimingFunction.out,
       },
