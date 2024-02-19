@@ -7,11 +7,11 @@ export default {
   input: "src/index.ts",
   output: [
     {
-      file: pkg.exports.import,
+      file: pkg.exports["."].import,
       format: "es",
     },
     {
-      file: pkg.exports.require,
+      file: pkg.exports["."].require,
       format: "cjs",
       interop: "esModule",
     },
