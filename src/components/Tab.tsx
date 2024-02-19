@@ -98,7 +98,7 @@ export function Tab({ disabled, children }: TabProps) {
         className="after:absolute after:inset-0"
         /* TODO: Remove this once focus management is improved in Headless UI */
         onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
-          requestAnimationFrame(() => {
+          queueMicrotask(() => {
             if (event.target instanceof HTMLElement) {
               event.target.blur();
             }
