@@ -17,6 +17,7 @@ export type PrimaryButtonProps = Merge<
 
 export const PrimaryButton = React.forwardRef(function PrimaryButton(
   {
+    size = "md",
     sentiment = "neutral",
     loading = false,
     disabled = false,
@@ -29,10 +30,11 @@ export const PrimaryButton = React.forwardRef(function PrimaryButton(
   return (
     <Button
       ref={ref}
+      size={size}
       loading={loading}
       disabled={disabled}
       className={clsx(
-        "px-4",
+        "rounded-full px-4 font-semibold",
         {
           "bg-interactive-accent text-interactive-control":
             sentiment === "neutral",

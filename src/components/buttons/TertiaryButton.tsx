@@ -16,6 +16,7 @@ export type TertiaryButtonProps = Merge<
 
 export const TertiaryButton = React.forwardRef(function TertiaryButton(
   {
+    size = "md",
     loading = false,
     disabled = false,
     className,
@@ -27,10 +28,11 @@ export const TertiaryButton = React.forwardRef(function TertiaryButton(
   return (
     <Button
       ref={ref}
+      size={size}
       loading={loading}
       disabled={disabled}
       className={clsx(
-        "px-4 text-interactive-primary underline underline-offset-3",
+        "rounded-full px-4 font-semibold text-interactive-primary underline underline-offset-3",
         !disabled &&
           !loading &&
           "hover:text-interactive-primary-hover active:bg-background-screen-active active:text-interactive-primary-active",

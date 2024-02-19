@@ -24,7 +24,7 @@ export type ButtonProps = Merge<
   > &
     ButtonAriaAttributes,
   {
-    size?: "sm" | "md" | "lg";
+    size?: "auto" | "sm" | "md" | "lg";
     equilateral?: boolean;
     loading?: boolean;
     children: React.ReactNode;
@@ -34,7 +34,7 @@ export type ButtonProps = Merge<
 export const Button = React.forwardRef(function Button(
   {
     type = "button",
-    size = "md",
+    size = "auto",
     equilateral = false,
     loading = false,
     disabled = false,
@@ -53,7 +53,7 @@ export const Button = React.forwardRef(function Button(
       }
       disabled={disabled || loading}
       className={clsx(
-        "inline-flex items-center justify-center rounded-full font-semibold transition focus:outline-none focus-visible:ring",
+        "inline-flex items-center justify-center transition focus:outline-none focus-visible:ring",
         {
           [clsx("h-8 text-sm tracking-2.5", equilateral && "w-8")]:
             size === "sm",
@@ -62,7 +62,6 @@ export const Button = React.forwardRef(function Button(
           [clsx("h-14 text-base tracking-1", equilateral && "w-14")]:
             size === "lg",
         },
-        !equilateral && "gap-x-2",
         (disabled || loading) && "opacity-45 mix-blend-luminosity",
         disabled ? "cursor-not-allowed" : loading && "cursor-wait",
         className,

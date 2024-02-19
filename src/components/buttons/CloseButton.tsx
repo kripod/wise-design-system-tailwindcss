@@ -39,7 +39,7 @@ export function CloseButton({
       size={size}
       equilateral
       className={clsx(
-        "text-interactive-primary hover:bg-background-screen-hover",
+        "rounded-full text-interactive-primary hover:bg-background-screen-hover",
         {
           "-m-2": size === "sm",
           "-m-3": size === "md",

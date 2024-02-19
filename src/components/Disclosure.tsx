@@ -2,6 +2,8 @@ import { Disclosure as DisclosureBase } from "@headlessui/react";
 import { ChevronDown } from "@transferwise/icons";
 import { clsx } from "clsx";
 
+import { Button } from "./buttons/_Button";
+
 export type DisclosureProps = {
   summary: React.ReactNode;
   icon?: React.ReactNode;
@@ -22,7 +24,8 @@ export function Disclosure({
       className="relative flex flex-col gap-y-4 p-4 text-content-primary"
     >
       <DisclosureBase.Button
-        className="flex gap-x-4 text-lg font-semibold after:absolute after:inset-0 focus:outline-none focus-visible:ring"
+        as={Button}
+        className="gap-x-4 text-lg font-semibold after:absolute after:inset-0"
         style={{
           textAlign: "start", // TODO: Replace with `text-start`
         }}

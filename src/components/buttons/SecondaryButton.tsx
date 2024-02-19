@@ -17,6 +17,7 @@ export type SecondaryButtonProps = Merge<
 
 export const SecondaryButton = React.forwardRef(function SecondaryButton(
   {
+    size = "md",
     sentiment = "neutral",
     loading = false,
     disabled = false,
@@ -29,10 +30,11 @@ export const SecondaryButton = React.forwardRef(function SecondaryButton(
   return (
     <Button
       ref={ref}
+      size={size}
       loading={loading}
       disabled={disabled}
       className={clsx(
-        "border border-current px-4",
+        "rounded-full border border-current px-4 font-semibold",
         {
           "text-interactive-primary": sentiment === "neutral",
           "text-sentiment-negative ring-sentiment-negative-active":
