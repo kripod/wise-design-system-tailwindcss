@@ -3,14 +3,34 @@ import * as React from "react";
 
 import { Spinner } from "../Spinner";
 
+type ButtonAriaAttributes = Pick<
+  React.AriaAttributes,
+  | "aria-controls"
+  | "aria-describedby"
+  | "aria-details"
+  | "aria-expanded"
+  | "aria-haspopup"
+  | "aria-keyshortcuts"
+  | "aria-label"
+  | "aria-labelledby"
+  | "aria-pressed"
+>;
+
+export type ButtonInheritedProps = Pick<
+  React.ComponentPropsWithRef<"button">,
+  "ref" | "type" | "className" | "style" | "onClick"
+> &
+  ButtonAriaAttributes;
+
 export type ButtonOwnProps = {
   size?: "sm" | "md" | "lg";
   equilateral?: boolean;
   loading?: boolean;
+  disabled?: boolean;
+  children: React.ReactNode;
 };
 
-export type ButtonProps = React.ComponentPropsWithRef<"button"> &
-  ButtonOwnProps;
+export type ButtonProps = ButtonInheritedProps & ButtonOwnProps;
 
 export const Button = React.forwardRef(function Button(
   {
