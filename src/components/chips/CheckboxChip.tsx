@@ -74,7 +74,7 @@ export function CheckboxChip({
         role="checkbox"
         aria-checked={checked}
         disabled={disabled}
-        className="group/button"
+        className="group/button inline-flex items-center justify-center gap-x-2"
         onClick={() => {
           setChecked((prev) => !prev);
         }}

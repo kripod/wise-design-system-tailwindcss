@@ -25,7 +25,7 @@ export const CircularButton = React.forwardRef(function CircularButton(
         aria-labelledby={labelId}
         size="lg"
         equilateral
-        className="peer rounded-full bg-interactive-accent text-interactive-control after:absolute after:inset-0 hover:bg-interactive-accent-hover active:bg-interactive-accent-active"
+        className="peer inline-flex items-center justify-center rounded-full bg-interactive-accent text-interactive-control after:absolute after:inset-0 hover:bg-interactive-accent-hover active:bg-interactive-accent-active"
         {...restProps}
       >
         {icon}

@@ -46,7 +46,6 @@ export const Button = React.forwardRef(function Button(
         disabled: Boolean(disabled),
         className: clsx(
           "transition focus-visible:outline-offset focus-visible:outline disabled:pointer-events-none disabled:opacity-45 disabled:mix-blend-luminosity aria-disabled:pointer-events-none aria-disabled:opacity-45 aria-disabled:mix-blend-luminosity",
-          size !== "auto" && "inline-flex items-center justify-center gap-x-2",
           {
             [clsx("h-8 text-sm font-semibold", equilateral && "w-8")]:
               size === "sm",
@@ -57,11 +56,16 @@ export const Button = React.forwardRef(function Button(
           },
           className,
         ),
-        children: (
-          <>
-            {children} {disabled === "loading" ? <Spinner /> : null}
-          </>
-        ),
+        children:
+          disabled !== "loading" ? (
+            // eslint-disable-next-line react/jsx-no-useless-fragment
+            <>{children}</>
+          ) : (
+            <span className="inline-flex items-center justify-center gap-x-2">
+              <span className="flex-1">{children}</span>
+              <Spinner />
+            </span>
+          ),
         ...restProps,
       })}
     </>
