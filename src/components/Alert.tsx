@@ -40,7 +40,8 @@ export function Alert({
         <Icon />
         {onClose != null ? <CloseButton onClick={onClose} /> : null}
       </div>
-      <div className="text-sm">{children}</div>
+
+      <div className="text-sm text-content-secondary">{children}</div>
     </div>
   );
 }
