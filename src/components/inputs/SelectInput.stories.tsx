@@ -241,7 +241,7 @@ export const Currencies: Story<{
           <SelectInputOptionContent
             title={currency.code}
             note={currency.name}
-            icon={<Flag code={currency.code} size={24} />}
+            icon={<Flag code={currency.code} intrinsicSize={24} />}
           />
         )}
         filterable
