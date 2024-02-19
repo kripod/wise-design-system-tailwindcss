@@ -38,8 +38,7 @@ jobs:
           npm-token: ${{ secrets.NPM_TOKEN_AUTOMATION }}
       - name: Publish on npm
         run: |
-          commit_hash=${{ github.event.pull_request.head.sha }}
-          pnpm exec changeset version --snapshot experimental --snapshot-prerelease-template {tag}-${commit_hash:0:7}
+          pnpm exec changeset version --snapshot experimental --snapshot-prerelease-template {tag}-${GITHUB_SHA:0:7}
           pnpm exec changeset publish --tag experimental --no-git-tag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
