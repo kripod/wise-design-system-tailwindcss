@@ -3,10 +3,11 @@ import type { Story } from "@ladle/react";
 import { RadioChip, RadioChipGroup } from "./RadioChip";
 
 export const Basic: Story<{
+  disabled: boolean;
   onChange: () => void;
-}> = function ({ onChange }) {
+}> = function ({ disabled, onChange }) {
   return (
-    <RadioChipGroup onChange={onChange}>
+    <RadioChipGroup disabled={disabled} onChange={onChange}>
       <RadioChip value="100">100 GBP</RadioChip>
       <RadioChip value="200">200 GBP</RadioChip>
       <RadioChip value="300">300 GBP</RadioChip>
@@ -15,6 +16,10 @@ export const Basic: Story<{
       </RadioChip>
     </RadioChipGroup>
   );
+};
+
+Basic.args = {
+  disabled: false,
 };
 
 Basic.argTypes = {
