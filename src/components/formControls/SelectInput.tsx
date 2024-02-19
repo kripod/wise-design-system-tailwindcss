@@ -22,6 +22,7 @@ export interface SelectInputProps<T = string> {
   value?: T;
   renderValue?: (value: T) => React.ReactNode;
   compareValues?: (keyof T & string) | ((a: T, b: T) => boolean);
+  "aria-invalid"?: React.AriaAttributes["aria-invalid"];
   disabled?: boolean;
   className?: string;
   children?: React.ReactNode;
@@ -36,6 +37,7 @@ export function SelectInput<T = string>({
   value: controlledValue,
   renderValue = identity,
   compareValues,
+  "aria-invalid": ariaInvalid,
   disabled,
   className,
   children,
@@ -75,6 +77,7 @@ export function SelectInput<T = string>({
     >
       <ListboxBase.Button
         ref={refs.setReference}
+        aria-invalid={ariaInvalid}
         className={clsx(
           getResetClassName("button"),
           className,
