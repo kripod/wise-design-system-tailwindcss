@@ -1,7 +1,6 @@
 import type { Story } from "@ladle/react";
 import * as React from "react";
 
-import { Field, Label } from "./Field";
 import { Listbox } from "./Listbox";
 
 export const Basic: Story<{
