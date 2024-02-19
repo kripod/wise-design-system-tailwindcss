@@ -106,7 +106,7 @@ export function Popover({
               key={floatingKey} // Force inner state invalidation on open
               ref={refs.setFloating}
               className={clsx(
-                "z-10 flex max-h-[--max-height] w-[--width] flex-col overflow-hidden rounded bg-background-elevated shadow-xl focus:outline-none",
+                "theme-overlay z-10 flex max-h-[--max-height] w-[--width] flex-col overflow-hidden rounded bg-background-elevated shadow-xl focus:outline-none",
                 {
                   "min-w-[20rem]": size === "md",
                   "min-w-[24rem]": size === "lg",

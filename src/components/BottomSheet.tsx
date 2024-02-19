@@ -66,7 +66,7 @@ export function BottomSheet({
       <FloatingPortal>
         <Transition
           show={open}
-          className="relative z-50"
+          className="theme-overlay relative z-50"
           beforeEnter={() => {
             setFloatingKey((prev) => prev + 1);
           }}

@@ -285,10 +285,12 @@ export default {
     containerQueriesPlugin,
     plugin(({ addComponents }) => {
       addComponents({
-        ".theme-light,\n.theme-dark .theme-invert": lightTheme,
-        ".theme-dark,\n.theme-light .theme-invert,\n.theme-invert": darkTheme,
-        ".theme-light-green,\n.theme-dark-green .theme-invert": lightGreenTheme,
-        ".theme-dark-green,\n.theme-light-green .theme-invert": darkGreenTheme,
+        ".theme-light,\n.theme-overlay,\n.theme-dark .theme-contrast,\n.theme-dark-green .theme-contrast":
+          lightTheme,
+        ".theme-dark,\n.theme-dark .theme-overlay,\n.theme-light .theme-contrast,\n.theme-light-green .theme-contrast,\n.theme-contrast":
+          darkTheme,
+        ".theme-light-green": lightGreenTheme,
+        ".theme-dark-green": darkGreenTheme,
       });
     }),
   ],
