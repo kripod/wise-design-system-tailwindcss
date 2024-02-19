@@ -56,12 +56,6 @@
 
   "overrides": [
     {
-      "files": ["*.js"],
-      "rules": {
-        "@typescript-eslint/no-var-requires": "off" // Allow CommonJS imports
-      }
-    },
-    {
       "files": ["*.config.*", "*.stories.*"],
       "rules": {
         "import/no-default-export": "off",
@@ -72,7 +66,13 @@
       }
     },
     {
-      "files": ["src/env.ts"],
+      "files": "*.js",
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off" // Allow CommonJS imports
+      }
+    },
+    {
+      "files": "src/env.ts",
       "rules": {
         "@typescript-eslint/naming-convention": [
           "error",
