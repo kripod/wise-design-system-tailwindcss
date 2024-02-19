@@ -1,4 +1,5 @@
 @import "tailwindcss/base";
+@import "@fontsource/inter/variable.css";
 
 @import "tailwindcss/components";
 @import "@transferwise/icons/lib/styles/main.min.css";

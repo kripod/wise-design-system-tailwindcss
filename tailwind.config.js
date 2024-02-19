@@ -146,7 +146,7 @@ module.exports = {
       none: "none",
     },
     fontFamily: {
-      sans: ['"Inter"', "ui-sans-serif", "system-ui"],
+      sans: ['"InterVariable"', '"Inter"', "ui-sans-serif", "system-ui"],
     },
     fontSize: {
       xs: [
