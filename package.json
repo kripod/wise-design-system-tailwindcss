@@ -20,7 +20,7 @@
     "./styles.css": "./dist/styles.css"
   },
   "main": "./dist/cjs/index.js",
-  "types": "./dist/cjs/index.d.ts",
+  "types": "./dist/es/index.d.mts",
   "files": [
     "dist/",
     "src/"
