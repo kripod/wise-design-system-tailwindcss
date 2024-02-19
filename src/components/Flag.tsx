@@ -4,8 +4,7 @@ export interface FlagProps {
   /**
    * Two-letter country code (ISO 3166-1 alpha-2) or three-letter currency code (ISO 4217).
    */
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  code: "unknown" | (string & {});
+  code: string;
 
   /**
    * Width and height to reserve for the underlying image, in pixels. A detailed variant is shown from 150px and above.
