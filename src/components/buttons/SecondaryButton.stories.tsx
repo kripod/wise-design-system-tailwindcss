@@ -1,13 +1,15 @@
 import type { Story } from "@ladle/react";
 
-import { SecondaryButton, SecondaryButtonProps } from "./SecondaryButton";
+import { SecondaryButton } from "./SecondaryButton";
 
-export const Basic: Story<
-  Pick<
-    SecondaryButtonProps,
-    "size" | "sentiment" | "loading" | "disabled" | "children" | "onClick"
-  >
-> = function ({ size, sentiment, loading, disabled, children, onClick }) {
+export const Basic: Story<{
+  contents: string;
+  size: "sm" | "md";
+  sentiment: "neutral" | "negative";
+  loading: boolean;
+  disabled: boolean;
+  onClick: () => void;
+}> = function ({ contents, size, sentiment, loading, disabled, onClick }) {
   return (
     <SecondaryButton
       size={size}
@@ -16,15 +18,15 @@ export const Basic: Story<
       disabled={disabled}
       onClick={onClick}
     >
-      {children}
+      {contents}
     </SecondaryButton>
   );
 };
 
 Basic.args = {
+  contents: "Click me",
   loading: false,
   disabled: false,
-  children: "Click me",
 };
 
 Basic.argTypes = {

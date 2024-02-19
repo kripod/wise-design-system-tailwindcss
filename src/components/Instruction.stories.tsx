@@ -1,14 +1,16 @@
 import type { Story } from "@ladle/react";
 
-import { Instruction, InstructionList, InstructionProps } from "./Instruction";
+import { Instruction, InstructionList } from "./Instruction";
 
-export const Basic: Story<Pick<InstructionProps, "sentiment" | "children">> =
-  function ({ sentiment, children }) {
-    return <Instruction sentiment={sentiment}>{children}</Instruction>;
-  };
+export const Basic: Story<{
+  contents: string;
+  sentiment: "positive" | "negative";
+}> = function ({ contents, sentiment }) {
+  return <Instruction sentiment={sentiment}>{contents}</Instruction>;
+};
 
 Basic.args = {
-  children: "Do an initial money transfer",
+  contents: "Do an initial money transfer",
 };
 
 Basic.argTypes = {

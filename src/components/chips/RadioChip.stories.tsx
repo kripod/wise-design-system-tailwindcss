@@ -1,10 +1,10 @@
 import type { Story } from "@ladle/react";
 
-import { RadioChip, RadioChipGroup, RadioChipGroupProps } from "./RadioChip";
+import { RadioChip, RadioChipGroup } from "./RadioChip";
 
-export const Basic: Story<Pick<RadioChipGroupProps, "onChange">> = function ({
-  onChange,
-}) {
+export const Basic: Story<{
+  onChange: () => void;
+}> = function ({ onChange }) {
   return (
     <RadioChipGroup onChange={onChange}>
       <RadioChip value="100">100 GBP</RadioChip>

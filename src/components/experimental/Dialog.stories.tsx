@@ -2,17 +2,20 @@ import type { Story } from "@ladle/react";
 import * as React from "react";
 
 import { PrimaryButton } from "../buttons/PrimaryButton";
-import { Dialog, DialogProps } from "./Dialog";
+import { Dialog } from "./Dialog";
 
-export const Basic: Story<
-  Pick<DialogProps, "title" | "size" | "onClose" | "children">
-> = function ({ title, size, onClose, children }) {
+export const Basic: Story<{
+  title: string;
+  contents: string;
+  size: "sm" | "md" | "lg";
+  onClose: () => void;
+}> = function ({ title, contents, size, onClose }) {
   const [open, setOpen] = React.useState(false);
   return (
     <>
       <PrimaryButton onClick={() => setOpen(true)}>Open dialog</PrimaryButton>
       <Dialog title={title} open={open} size={size} onClose={onClose}>
-        {children}
+        {contents}
       </Dialog>
     </>
   );
@@ -20,7 +23,7 @@ export const Basic: Story<
 
 Basic.args = {
   title: "Change this user’s role?",
-  children: "Content goes here",
+  contents: "Content goes here",
 };
 
 Basic.argTypes = {

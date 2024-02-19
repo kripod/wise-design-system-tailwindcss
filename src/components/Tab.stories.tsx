@@ -1,17 +1,12 @@
-import {
-  Tab,
-  TabGroup,
-  TabGroupProps,
-  TabList,
-  TabListProps,
-  TabPanel,
-  TabPanels,
-} from "./Tab";
+import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "./Tab";
 
 export const Basic = function ({
   defaultIndex,
   stretch,
-}: Pick<TabGroupProps, "defaultIndex"> & Pick<TabListProps, "stretch">) {
+}: {
+  defaultIndex: number;
+  stretch: boolean;
+}) {
   return (
     <TabGroup defaultIndex={defaultIndex}>
       <TabList stretch={stretch}>
