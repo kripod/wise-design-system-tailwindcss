@@ -2,6 +2,7 @@ import type { Story } from "@ladle/react";
 import { Search } from "@transferwise/icons";
 import * as React from "react";
 
+import { ActionButton } from "../buttons/ActionButton";
 import { Field, FieldDescription, Label } from "./Field";
 import { Input, InputAddon, InputGroup } from "./Input";
 
@@ -64,13 +65,12 @@ export const WithPrefix: Story<{
   return (
     <Label>
       Label
-      <InputGroup initialPaddingStart="3rem">
+      <InputGroup initialPaddingStart="3rem" disabled={disabled}>
         <InputAddon>
           <Search size={24} />
         </InputAddon>
         <Input
           value={value}
-          disabled={disabled}
           onChange={(event) => setValue(event.currentTarget.value)}
         />
       </InputGroup>
