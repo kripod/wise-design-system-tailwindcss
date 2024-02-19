@@ -19,7 +19,7 @@ Basic.argTypes = {
   },
 };
 
-export function List() {
+export const List = function () {
   return (
     <InstructionList>
       <Instruction sentiment="positive">
@@ -35,4 +35,4 @@ export function List() {
       <Instruction sentiment="negative">Use bad exchange rate</Instruction>
     </InstructionList>
   );
-}
+};
