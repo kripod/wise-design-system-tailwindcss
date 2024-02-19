@@ -596,7 +596,7 @@ function SelectInputOption<T = string>({
       disabled={disabled}
       className={({ active, disabled: uiDisabled }) =>
         clsx(
-          "flex items-center gap-x-2 rounded px-4 py-3 text-base text-content-primary",
+          "flex cursor-default select-none items-center gap-x-2 rounded px-4 py-3 text-base text-content-primary",
           active && "bg-background-screen-hover",
           uiDisabled && "opacity-45",
         )
