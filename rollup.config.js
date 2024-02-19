@@ -24,8 +24,8 @@ module.exports = defineConfig({
     },
   ],
   external: [
-    ...Object.keys(pkg.dependencies),
-    ...Object.keys(pkg.peerDependencies),
+    ...Object.keys(pkg.dependencies ?? {}),
+    ...Object.keys(pkg.peerDependencies ?? {}),
   ].map((packageName) => new RegExp(`^${packageName}($|/)`, "u")),
   plugins: [
     typescript({

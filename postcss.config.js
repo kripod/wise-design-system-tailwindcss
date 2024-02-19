@@ -1,8 +1,8 @@
 const pkg = require("./package.json");
 
 const external = [
-  ...Object.keys(pkg.dependencies),
-  ...Object.keys(pkg.peerDependencies),
+  ...Object.keys(pkg.dependencies ?? {}),
+  ...Object.keys(pkg.peerDependencies ?? {}),
 ].map((packageName) => new RegExp(`^${packageName}($|/)`, "u"));
 
 module.exports = {
