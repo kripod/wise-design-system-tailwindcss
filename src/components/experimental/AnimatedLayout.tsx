@@ -37,6 +37,8 @@ const defaultAnimationOptions: KeyframeAnimationOptions = {
   easing: "cubic-bezier(0, 0, 0.2, 1)",
 };
 
+const windowResizeDebounceWaitMs = 150;
+
 export function AnimatedLayout({ id, children }: AnimatedLayoutProps) {
   // TODO: Warn about IDs being used twice
   const element = React.useRef<HTMLElement>(null);
@@ -57,7 +59,7 @@ export function AnimatedLayout({ id, children }: AnimatedLayoutProps) {
       window.clearTimeout(timeoutHandle);
       timeoutHandle = window.setTimeout(() => {
         windowResizing.current = false;
-      }, 150);
+      }, windowResizeDebounceWaitMs);
     };
     window.addEventListener("resize", handleResize);
     return () => {
