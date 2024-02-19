@@ -47,7 +47,7 @@ export function Modal({
               },
             )}
           >
-            <div className="flex items-start justify-between gap-x-6 p-6">
+            <div className="flex items-center justify-between gap-x-6 p-6">
               <DialogBase.Title
                 className={clsx(
                   getResetClassName("h2"),

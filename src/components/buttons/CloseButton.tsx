@@ -29,10 +29,11 @@ export function CloseButton({
       aria-label={CloseButtonLabel}
       equilateral
       className={clsx(
-        "rounded-full bg-background-neutral text-interactive-primary hover:bg-background-neutral-hover active:bg-background-neutral-active",
+        "inline-flex items-center justify-center rounded-full bg-background-neutral text-interactive-primary hover:bg-background-neutral-hover active:bg-background-neutral-active",
         {
-          "p-1": size === "sm",
-          "p-2": size === "md" || size === "lg",
+          "h-6 w-6": size === "sm",
+          "h-8 w-8": size === "md",
+          "h-10 w-10": size === "lg",
         },
         className,
       )}
