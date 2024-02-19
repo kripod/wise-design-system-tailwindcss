@@ -37,6 +37,7 @@ export const Basic: Story<{
   clearable: boolean;
   invalid: boolean;
   disabled: boolean;
+  size: "md" | "xl";
   onChange: (value: TestMonth | null) => void;
   onClear: () => void;
 }> = function ({
@@ -44,6 +45,7 @@ export const Basic: Story<{
   filterPlaceholder,
   clearable,
   disabled,
+  size,
   onChange,
   onClear,
 }) {
@@ -89,6 +91,7 @@ export const Basic: Story<{
         filterable={filterable}
         filterPlaceholder={filterPlaceholder}
         disabled={disabled}
+        size={size}
         onChange={(month) => {
           setSelectedMonth(month);
           onChange(month);
@@ -112,9 +115,14 @@ Basic.args = {
   clearable: true,
   invalid: false,
   disabled: false,
+  size: "md",
 };
 
 Basic.argTypes = {
+  size: {
+    control: { type: "radio" },
+    options: ["md", "xl"],
+  },
   onChange: {
     action: "changed",
   },
@@ -257,6 +265,7 @@ export const Currencies: Story<{
       )}
       filterable
       filterPlaceholder="Type a currency / country"
+      size="xl"
       onChange={(currency) => {
         setSelectedCurrency(currency);
         onChange(currency);

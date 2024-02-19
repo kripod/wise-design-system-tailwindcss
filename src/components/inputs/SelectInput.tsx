@@ -123,11 +123,13 @@ export interface SelectInputProps<T = string> {
     placeholderShown: boolean;
     clear: (() => void) | undefined;
     disabled: boolean;
+    size: "md" | "xl";
     className: string | undefined;
   }) => React.ReactNode;
   filterable?: boolean;
   filterPlaceholder?: string;
   disabled?: boolean;
+  size?: "md" | "xl";
   className?: string;
   onChange?: (value: T) => void;
   onClear?: () => void;
@@ -138,6 +140,7 @@ const defaultRenderTrigger = (({
   placeholderShown,
   clear,
   disabled,
+  size,
   className,
 }) => (
   <InputGroup
@@ -167,7 +170,7 @@ const defaultRenderTrigger = (({
     disabled={disabled}
     className={className}
   >
-    <SelectInputTriggerButton as={ButtonInput}>
+    <SelectInputTriggerButton as={ButtonInput} size={size}>
       {placeholderShown ? (
         <span className="truncate text-content-tertiary">{content}</span>
       ) : (
@@ -214,6 +217,7 @@ export function SelectInput<T = string>({
   filterable,
   filterPlaceholder,
   disabled,
+  size = "md",
   className,
   onChange,
   onClear,
@@ -280,6 +284,7 @@ export function SelectInput<T = string>({
                         }
                       : undefined,
                   disabled: uiDisabled,
+                  size,
                   className,
                 })}
               </SelectInputTriggerButtonPropsContext.Provider>
