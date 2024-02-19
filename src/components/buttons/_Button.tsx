@@ -23,7 +23,7 @@ export type ButtonPropsBase = Pick<
 export type ButtonProps = Merge<
   React.ComponentPropsWithRef<"button">,
   ButtonPropsBase & {
-    size?: "auto" | "sm" | "md" | "lg";
+    size?: "auto" | "sm" | "md";
   }
 >;
 
@@ -50,7 +50,6 @@ export const Button = React.forwardRef(function Button(
           {
             "h-8 text-sm font-semibold": size === "sm",
             "h-12 text-base font-semibold": size === "md",
-            "h-14 text-base font-semibold": size === "lg",
           },
         ),
         children:
