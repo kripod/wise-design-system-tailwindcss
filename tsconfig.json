@@ -7,12 +7,12 @@
     "declarationMap": true
   },
   "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.mts",
     "**/*.js",
     "**/*.jsx",
-    "**/*.mjs"
+    "**/*.mjs",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.mts"
   ],
   "exclude": ["node_modules/", "build/", "dist/"]
 }

@@ -23,7 +23,7 @@ function pxToRem(value) {
 
 /** @type {import("tailwindcss").Config} */
 module.exports = {
-  content: ["./src/**/*.{ts,tsx,mts,js,jsx,mjs}"],
+  content: ["./src/**/*.{js,jsx,mjs,ts,tsx,mts}"],
   future: {
     hoverOnlyWhenSupported: true,
     respectDefaultRingColorOpacity: true,
