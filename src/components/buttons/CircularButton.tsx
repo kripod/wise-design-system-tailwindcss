@@ -12,7 +12,6 @@ export const CircularButton = React.forwardRef(function CircularButton(
   {
     icon,
     disabled = false,
-    style,
     className,
     children,
     ...restProps
@@ -26,7 +25,6 @@ export const CircularButton = React.forwardRef(function CircularButton(
         "relative inline-flex flex-col items-center gap-y-2",
         className,
       )}
-      style={style}
     >
       <Button
         ref={ref}
