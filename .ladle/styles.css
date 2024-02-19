@@ -1,5 +1,8 @@
-@import "@fontsource-variable/inter";
+/* TODO: Remove when built into the package */
 @import "modern-normalize/modern-normalize.css";
+@import "css-homogenizer/base.css";
+
+@import "@fontsource-variable/inter";
 @import "../src/styles.css";
 
 @layer base {
