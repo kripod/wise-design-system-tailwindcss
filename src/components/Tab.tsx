@@ -53,7 +53,7 @@ export function TabList({ stretch = false, children }: TabListProps) {
   );
 }
 
-type TabButtonProps = ButtonProps;
+type TabButtonProps = React.ComponentPropsWithRef<"button">;
 
 const TabButton = React.forwardRef(function TabButton(
   {
