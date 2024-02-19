@@ -1,4 +1,5 @@
 import type { Story } from "@ladle/react";
+import * as React from "react";
 
 import { getMonthNames } from "../../date";
 import { Field } from "./Field";
@@ -17,11 +18,14 @@ const months: Month[] = getMonthNames("en-US").map((name, index) => ({
 }));
 
 export const Basic: Story<{
-  required: boolean;
+  clearable: boolean;
   invalid: boolean;
   disabled: boolean;
-  onChange: (value: Month | undefined) => void;
-}> = function ({ required, invalid, disabled, onChange }) {
+  onChange: (value: Month | null) => void;
+  onClear: () => void;
+}> = function ({ clearable, invalid, disabled, onChange, onClear }) {
+  const [selectedMonth, setSelectedMonth] = React.useState<Month | null>(null);
+
   return (
     <div className="flex flex-col">
       <Field
@@ -31,10 +35,21 @@ export const Basic: Story<{
       >
         <SelectInput
           placeholder="Month"
+          value={selectedMonth}
           renderValue={(value) => value.name}
-          required={required}
           disabled={disabled}
-          onChange={onChange}
+          onChange={(value) => {
+            setSelectedMonth(value);
+            onChange(value);
+          }}
+          onClear={
+            clearable
+              ? () => {
+                  setSelectedMonth(null);
+                  onClear();
+                }
+              : undefined
+          }
         >
           {months.map((month) => (
             <SelectInputOption
@@ -52,7 +67,7 @@ export const Basic: Story<{
 };
 
 Basic.args = {
-  required: false,
+  clearable: true,
   invalid: false,
   disabled: false,
 };
@@ -60,5 +75,8 @@ Basic.args = {
 Basic.argTypes = {
   onChange: {
     action: "changed",
+  },
+  onClear: {
+    action: "cleared",
   },
 };

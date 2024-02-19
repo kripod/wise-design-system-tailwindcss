@@ -15,6 +15,7 @@ import { identity } from "../../identity";
 import { PreventScroll } from "../PreventScroll";
 import { inputClassNameBase } from "./_Input";
 import { useInputAriaAttributes } from "./Field";
+import { InputGroup } from "./InputGroup";
 
 export interface SelectInputProps<T = string> {
   name?: string;
@@ -22,16 +23,16 @@ export interface SelectInputProps<T = string> {
   // TODO: multiple?: boolean;
   defaultValue?: T;
   value?: T;
-  renderValue?: (value: T) => React.ReactNode;
+  renderValue?: (value: NonNullable<T>) => React.ReactNode;
   compareValues?:
     | (keyof NonNullable<T> & string)
     | ((a: T | undefined, b: T | undefined) => boolean);
-  required?: boolean;
   "aria-invalid"?: React.AriaAttributes["aria-invalid"];
   disabled?: boolean;
   className?: string;
   children?: React.ReactNode;
-  onChange?: (value: T | undefined) => void;
+  onChange?: (value: T) => void;
+  onClear?: () => void;
 }
 
 export function SelectInput<T = string>({
@@ -41,11 +42,11 @@ export function SelectInput<T = string>({
   value: controlledValue,
   renderValue = identity,
   compareValues,
-  required,
   disabled,
   className,
   children,
   onChange,
+  onClear,
   ...restProps
 }: SelectInputProps<T>) {
   const inputAriaAttributes = useInputAriaAttributes();
@@ -82,34 +83,55 @@ export function SelectInput<T = string>({
     >
       {({ value, open }) => (
         <>
-          <ListboxBase.Button
-            ref={refs.setReference}
-            className={clsx(
-              getResetClassName("button"),
-              className,
-              inputClassNameBase({ size: "md" }),
-              "inline-flex items-center gap-x-2 rounded text-start",
-            )}
-            {...inputAriaAttributes}
-            {...restProps}
+          <InputGroup
+            addonEnd={{
+              content: (
+                <span className="!pointer-events-none inline-flex items-center">
+                  {onClear != null && value != null ? (
+                    <>
+                      <button
+                        type="button"
+                        className="pointer-events-auto inline-flex h-8 w-8 items-center justify-center rounded-xs text-interactive-secondary hover:text-interactive-secondary-hover focus-visible:outline"
+                        onClick={(event) => {
+                          event.preventDefault();
+                          onClear();
+                        }}
+                      >
+                        <Cross size={16} />
+                      </button>
+                      <span className="h-6 border-s" />
+                    </>
+                  ) : null}
+
+                  <span className="inline-flex h-8 w-8 items-center justify-center">
+                    <ChevronDown size={16} />
+                  </span>
+                </span>
+              ),
+              interactive: true,
+              padding: "sm",
+            }}
+            className={className}
           >
-            <span className="flex-1 truncate">
-              {value !== undefined ? (
-                renderValue(value)
-              ) : (
-                <span className="text-content-tertiary">{placeholder}</span>
+            <ListboxBase.Button
+              ref={refs.setReference}
+              className={clsx(
+                getResetClassName("button"),
+                inputClassNameBase({ size: "md" }),
+                "rounded text-start",
               )}
-            </span>
-
-            {!required && value !== undefined ? (
-              <>
-                <Cross size={16} />
-                <span className="inline-block h-6 border-s" />
-              </>
-            ) : null}
-
-            <ChevronDown size={16} />
-          </ListboxBase.Button>
+              {...inputAriaAttributes}
+              {...restProps}
+            >
+              <span className="flex-1 truncate">
+                {value != null ? (
+                  renderValue(value)
+                ) : (
+                  <span className="text-content-tertiary">{placeholder}</span>
+                )}
+              </span>
+            </ListboxBase.Button>
+          </InputGroup>
 
           {open ? (
             <FloatingPortal>
