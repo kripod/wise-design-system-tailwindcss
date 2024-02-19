@@ -15,6 +15,10 @@
     "prepare": "husky install",
     "start": "ladle preview"
   },
+  "dependencies": {
+    "clsx": "^1.2.1",
+    "use-sync-external-store": "^1.2.0"
+  },
   "devDependencies": {
     "@headlessui/react": "1.7.3",
     "@ladle/react": "2.4.3",
@@ -23,9 +27,9 @@
     "@types/node": "16.11.64",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
+    "@types/use-sync-external-store": "^0.0.3",
     "@typescript-eslint/eslint-plugin": "5.39.0",
     "@typescript-eslint/parser": "5.39.0",
-    "clsx": "1.2.1",
     "color2k": "2.0.0",
     "eslint": "8.24.0",
     "eslint-config-airbnb": "19.0.4",
@@ -54,7 +58,6 @@
   "peerDependencies": {
     "@headlessui/react": "^1.6",
     "@transferwise/icons": "^3.1",
-    "clsx": "^1.2",
     "react": "16.14 - 18"
   },
   "packageManager": "pnpm@7.13.2",

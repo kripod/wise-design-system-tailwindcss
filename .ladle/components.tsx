@@ -3,19 +3,16 @@ import "../src/styles.css";
 import { GlobalProvider, ThemeState } from "@ladle/react";
 import * as React from "react";
 
+import { useMedia } from "../src/hooks/useMedia";
+
 export const Provider: GlobalProvider = function ({ globalState, children }) {
-  const [theme, setTheme] = React.useState<"light" | "dark">();
-  React.useEffect(() => {
+  const prefersDarkTheme = useMedia("(prefers-color-scheme: dark)");
+  const theme = React.useMemo<"light" | "dark">(() => {
     if (globalState.theme !== ThemeState.Auto) {
-      setTheme(globalState.theme);
-    } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
-      setTheme("light");
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setTheme("dark");
-    } else {
-      setTheme(undefined);
+      return globalState.theme;
     }
-  }, [globalState.theme]);
+    return prefersDarkTheme ? "dark" : "light";
+  }, [globalState.theme, prefersDarkTheme]);
 
   return (
     <div className={theme === "dark" ? "dark" : undefined}>{children}</div>
