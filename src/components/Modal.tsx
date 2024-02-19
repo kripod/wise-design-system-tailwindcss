@@ -2,7 +2,7 @@ import { Dialog as DialogBase } from "@headlessui/react";
 import { clsx } from "clsx";
 import { getResetClassName } from "css-homogenizer/reset-scoped";
 
-import { CloseButton } from "../buttons/CloseButton";
+import { CloseButton } from "./buttons/CloseButton";
 
 export type ModalProps = {
   title: string;

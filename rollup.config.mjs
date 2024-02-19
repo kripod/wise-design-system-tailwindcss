@@ -6,6 +6,7 @@ import pkg from "./package.json" assert { type: "json" };
 export default {
   input: {
     index: "src/index.ts",
+    _canary: "src/index-canary.ts",
   },
   output: [
     {

@@ -1,8 +1,8 @@
 import * as React from "react";
 
-import { useConstant } from "../../hooks/useConstant";
-import { useReducedMotionPreference } from "../../hooks/useReducedMotionPreference";
-import { useResizeObserver } from "../../hooks/useResizeObserver";
+import { useConstant } from "../hooks/useConstant";
+import { useReducedMotionPreference } from "../hooks/useReducedMotionPreference";
+import { useResizeObserver } from "../hooks/useResizeObserver";
 
 type LayoutId = string;
 

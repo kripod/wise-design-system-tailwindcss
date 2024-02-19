@@ -1,7 +1,7 @@
 import type { Story } from "@ladle/react";
 import * as React from "react";
 
-import { PrimaryButton } from "../buttons/PrimaryButton";
+import { PrimaryButton } from "./buttons/PrimaryButton";
 import { Modal } from "./Modal";
 
 export const Basic: Story<{

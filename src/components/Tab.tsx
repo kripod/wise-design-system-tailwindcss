@@ -3,11 +3,8 @@ import { clsx } from "clsx";
 import * as React from "react";
 
 import { parseBooleanish } from "../parseBooleanish";
+import { AnimatedLayout, AnimatedLayoutGroup } from "./AnimatedLayout";
 import { Button } from "./buttons/_Button";
-import {
-  AnimatedLayout,
-  AnimatedLayoutGroup,
-} from "./experimental/AnimatedLayout";
 
 export type TabGroupProps = {
   defaultIndex?: number;
