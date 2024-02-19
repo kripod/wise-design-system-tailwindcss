@@ -39,16 +39,16 @@ Basic.argTypes = {
   },
 };
 
-function ButtonLink({
+const ButtonLink: NonNullable<TertiaryButtonProps["as"]> = function ({
   className,
   children,
-}: React.ComponentPropsWithoutRef<NonNullable<TertiaryButtonProps["as"]>>) {
+}) {
   return (
     <a href="#_" className={className}>
       {children}
     </a>
   );
-}
+};
 
 export const Link: Story<{
   contents: string;
