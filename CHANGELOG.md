@@ -1,5 +1,21 @@
 # @wise/design-system-tailwindcss
 
+## 0.2.0
+
+### Minor Changes
+
+- [`cd0db57`](https://github.com/transferwise/design-system-web-tailwindcss/commit/cd0db5764955e6ba8c366dabdb90cfacf9786a04) Thanks [@kripod-wise](https://github.com/kripod-wise)! - build(browserslist): remove Node.js targets
+
+- [`cd0db57`](https://github.com/transferwise/design-system-web-tailwindcss/commit/cd0db5764955e6ba8c366dabdb90cfacf9786a04) Thanks [@kripod-wise](https://github.com/kripod-wise)! - refactor(Flag): rename `size` prop to `intrinsicSize`
+
+### Patch Changes
+
+- [`cd0db57`](https://github.com/transferwise/design-system-web-tailwindcss/commit/cd0db5764955e6ba8c366dabdb90cfacf9786a04) Thanks [@kripod-wise](https://github.com/kripod-wise)! - feat(Flag): specify default size as in the SVG
+
+- [`cd0db57`](https://github.com/transferwise/design-system-web-tailwindcss/commit/cd0db5764955e6ba8c366dabdb90cfacf9786a04) Thanks [@kripod-wise](https://github.com/kripod-wise)! - build: fix CommonJS interop
+
+- [`cd0db57`](https://github.com/transferwise/design-system-web-tailwindcss/commit/cd0db5764955e6ba8c366dabdb90cfacf9786a04) Thanks [@kripod-wise](https://github.com/kripod-wise)! - fix(Flag): handle lack of detailed variant
+
 ## 0.1.5
 
 ### Patch Changes

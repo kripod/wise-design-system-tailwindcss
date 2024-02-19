@@ -1,6 +1,6 @@
 {
   "name": "@wise/design-system-tailwindcss",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "Experimental web implementation of Wise Design System, based upon Tailwind CSS.",
   "keywords": [
     "design-system",
