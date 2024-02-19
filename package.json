@@ -48,6 +48,7 @@
     "@types/use-sync-external-store": "0.0.3",
     "@typescript-eslint/eslint-plugin": "5.40.1",
     "@typescript-eslint/parser": "5.40.1",
+    "babel-plugin-optimize-clsx": "2.6.2",
     "color2k": "2.0.0",
     "eslint": "8.25.0",
     "eslint-config-airbnb": "19.0.4",
