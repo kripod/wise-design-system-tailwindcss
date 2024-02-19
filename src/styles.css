@@ -7,7 +7,10 @@
 
 @layer base {
   :root {
-    @apply bg-background-screen text-content-primary;
     -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background-screen text-content-primary;
   }
 }
