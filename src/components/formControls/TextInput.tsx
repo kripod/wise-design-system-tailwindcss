@@ -154,11 +154,13 @@ export function TextInputAddon({
     <span
       ref={ref}
       className={clsx(
-        "pointer-events-none self-center text-interactive-secondary transition group-[:has(>input:focus)]/input:!text-interactive-primary group-[:has(>input:hover)]/input:text-interactive-secondary-hover",
+        "pointer-events-none self-center text-interactive-secondary",
         {
           "justify-self-start": placement === "start",
           "justify-self-end": placement === "end",
         },
+        !interactive &&
+          "transition group-[:has(>:is(input,button,select,textarea):focus)]/input:!text-interactive-primary group-[:has(>:is(input,button,select,textarea):hover)]/input:text-interactive-secondary-hover",
         {
           "px-2": padding === "sm",
           [clsx("px-4", {
