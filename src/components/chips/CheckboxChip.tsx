@@ -4,6 +4,7 @@ import * as React from "react";
 
 import { __DEV__ } from "../../env";
 import { useControllableState } from "../../hooks/useControllableState";
+import { Offscreen } from "../Offscreen";
 import { Chip } from "./_Chip";
 
 export type CheckboxChipGroupProps = {
@@ -42,14 +43,16 @@ export function CheckboxChip({
   return (
     <>
       {__DEV__ ? (
-        /* Warn when mixing controlled and uncontrolled attributes */
-        <input
-          type="checkbox"
-          defaultChecked={defaultChecked}
-          checked={controlledChecked}
-          readOnly
-          hidden
-        />
+        <Offscreen>
+          {/* Warn when mixing controlled and uncontrolled attributes */}
+          <input
+            type="checkbox"
+            defaultChecked={defaultChecked}
+            checked={controlledChecked}
+            readOnly
+            hidden
+          />
+        </Offscreen>
       ) : null}
 
       {name != null && checked ? (
