@@ -260,6 +260,7 @@ export function SelectInput<T = string>({
           value={Boolean(filterable) || value != null}
         >
           <OptionsOverlay
+            placement="bottom-start"
             open={open}
             renderTrigger={({ ref, getInteractionProps }) => (
               <SelectInputTriggerButtonPropsContext.Provider

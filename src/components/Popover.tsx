@@ -4,8 +4,8 @@ import {
   FloatingFocusManager,
   FloatingPortal,
   offset,
+  type Placement,
   shift,
-  type Side,
   size,
   useDismiss,
   useFloating,
@@ -19,7 +19,7 @@ import * as React from "react";
 import { PreventScroll } from "./PreventScroll";
 
 export interface PopoverProps {
-  placement?: Side;
+  placement?: Placement;
   open: boolean;
   renderTrigger: (args: {
     ref: React.RefCallback<Element>;
