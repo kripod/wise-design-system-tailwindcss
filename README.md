@@ -20,7 +20,7 @@ Fonts shall be loaded separately through `@transferwise/neptune-css`, by importi
 1. Add build-time dependencies:
 
    ```sh
-   pnpm add -D tailwindcss @tailwindcss/container-queries postcss postcss-import postcss-url postcss-preset-env
+   pnpm add -D tailwindcss @tailwindcss/container-queries postcss postcss-import @csstools/postcss-rebase-url postcss-preset-env
    ```
 
 2. Add `.postcssrc.json` to your project root:
@@ -29,7 +29,7 @@ Fonts shall be loaded separately through `@transferwise/neptune-css`, by importi
    {
      "plugins": {
        "postcss-import": {},
-       "postcss-url": {},
+       "@csstools/postcss-rebase-url": {},
        "tailwindcss/nesting": "postcss-nesting",
        "tailwindcss": {},
        "postcss-preset-env": {
