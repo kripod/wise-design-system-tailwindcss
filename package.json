@@ -17,10 +17,6 @@
       "import": "./dist/es/index.mjs",
       "require": "./dist/cjs/index.js"
     },
-    "./_canary": {
-      "import": "./dist/es/_canary.mjs",
-      "require": "./dist/cjs/_canary.js"
-    },
     "./styles.css": "./dist/styles.css"
   },
   "main": "./dist/cjs/index.js",

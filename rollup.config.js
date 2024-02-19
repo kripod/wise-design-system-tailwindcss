@@ -6,7 +6,6 @@ const pkg = require("./package.json");
 module.exports = {
   input: {
     index: "src/index.ts",
-    _canary: "src/index-canary.ts",
   },
   output: [
     {
