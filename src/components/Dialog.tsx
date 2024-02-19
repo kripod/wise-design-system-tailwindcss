@@ -8,8 +8,8 @@ export type DialogProps = {
   open: boolean;
   footer?: React.ReactNode;
   size?: "sm" | "md" | "lg";
-  children: React.ReactNode;
   onClose: () => void;
+  children: React.ReactNode;
 };
 
 export function Dialog({
@@ -17,8 +17,8 @@ export function Dialog({
   open,
   footer,
   size = "md",
-  children,
   onClose,
+  children,
 }: DialogProps) {
   return (
     <DialogBase
