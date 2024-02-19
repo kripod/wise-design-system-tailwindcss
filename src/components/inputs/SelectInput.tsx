@@ -40,6 +40,7 @@ function inferSearchableStrings(value: unknown) {
 const SelectInputHasValueContext = React.createContext(false);
 const SelectInputTriggerButtonPropsContext = React.createContext<{
   ref?: React.ForwardedRef<HTMLButtonElement>;
+  onClick?: () => void;
   [key: string]: unknown;
 }>({});
 const SelectInputOptionContentCompactContext = React.createContext(false);
@@ -225,10 +226,14 @@ export function SelectInput<T = string>({
                 // eslint-disable-next-line react/jsx-no-constructed-context-values
                 value={{
                   ref: mergeRefs([ref, triggerRef]),
-                  ...getInteractionProps(),
-                  onClick: () => {
-                    setOpen((prev) => !prev);
-                  },
+                  ...mergeProps(
+                    {
+                      onClick: () => {
+                        setOpen((prev) => !prev);
+                      },
+                    },
+                    getInteractionProps(),
+                  ),
                 }}
               >
                 {renderTrigger({
@@ -286,7 +291,7 @@ export function SelectInputTriggerButton<
   as = ButtonInput as unknown as T,
   ...restProps
 }: SelectInputTriggerButtonProps<T>) {
-  const { ref, ...providedProps } = React.useContext(
+  const { ref, onClick, ...interactionProps } = React.useContext(
     SelectInputTriggerButtonPropsContext,
   );
 
@@ -294,10 +299,8 @@ export function SelectInputTriggerButton<
     <ListboxBase.Button
       ref={ref}
       as={PolymorphicWithOverrides}
-      __overrides={{
-        as,
-        ...mergeProps(providedProps, restProps),
-      }}
+      __overrides={{ as, ...interactionProps }}
+      {...mergeProps({ onClick }, restProps)}
     />
   );
 }
