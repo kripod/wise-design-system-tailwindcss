@@ -2,11 +2,17 @@ import type { Story } from "@ladle/react";
 
 import { Alert, AlertProps } from "./Alert";
 
-export const Basic: Story<AlertProps> = ({ sentiment, onClose, children }) => (
-  <Alert sentiment={sentiment} onClose={onClose}>
-    {children}
-  </Alert>
-);
+export const Basic: Story<AlertProps> = function ({
+  sentiment,
+  onClose,
+  children,
+}) {
+  return (
+    <Alert sentiment={sentiment} onClose={onClose}>
+      {children}
+    </Alert>
+  );
+};
 
 Basic.args = {
   disabled: false,

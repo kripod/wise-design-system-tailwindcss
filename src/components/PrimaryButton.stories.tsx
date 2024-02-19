@@ -7,16 +7,18 @@ export const Basic: Story<
     PrimaryButtonProps,
     "size" | "sentiment" | "disabled" | "children" | "onClick"
   >
-> = ({ size, sentiment, disabled, children, onClick }) => (
-  <PrimaryButton
-    size={size}
-    sentiment={sentiment}
-    disabled={disabled}
-    onClick={onClick}
-  >
-    {children}
-  </PrimaryButton>
-);
+> = function ({ size, sentiment, disabled, children, onClick }) {
+  return (
+    <PrimaryButton
+      size={size}
+      sentiment={sentiment}
+      disabled={disabled}
+      onClick={onClick}
+    >
+      {children}
+    </PrimaryButton>
+  );
+};
 
 Basic.args = {
   disabled: false,

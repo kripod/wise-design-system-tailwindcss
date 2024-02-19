@@ -6,7 +6,7 @@ import { PrimaryButton } from "./PrimaryButton";
 
 export const Basic: Story<
   Pick<DialogProps, "title" | "size" | "onClose" | "children">
-> = ({ title, size, onClose, children }) => {
+> = function ({ title, size, onClose, children }) {
   const [open, setOpen] = React.useState(false);
   return (
     <>
