@@ -84,7 +84,7 @@ export function Listbox() {
             className={({ active, selected, disabled }) =>
               clsx(
                 "rounded px-4 py-3 text-base text-content-primary",
-                disabled && "opacity-45 mix-blend-luminosity",
+                disabled && "opacity-45",
                 selected
                   ? "bg-background-screen-active"
                   : active && "bg-background-screen-hover",
