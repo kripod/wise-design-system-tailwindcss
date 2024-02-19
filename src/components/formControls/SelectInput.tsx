@@ -13,7 +13,10 @@ import { getResetClassName } from "css-homogenizer/reset-scoped";
 import * as React from "react";
 
 import { identity } from "../../identity";
-import { formControlClassNameBase } from "./_FormControl";
+import {
+  formControlClassNameBase,
+  useFormControlAriaAttributes,
+} from "./_FormControl";
 
 export interface SelectInputProps<T = string> {
   name?: string;
@@ -39,12 +42,14 @@ export function SelectInput<T = string>({
   value: controlledValue,
   renderValue = identity,
   compareValues,
-  "aria-invalid": ariaInvalid,
   disabled,
   className,
   children,
   onChange,
+  ...restProps
 }: SelectInputProps<T>) {
+  const formControlAriaAttributes = useFormControlAriaAttributes();
+
   const [maxHeight, setMaxHeight] = React.useState<number>();
   const [width, setWidth] = React.useState<number>();
   const { refs, floatingStyles } = useFloating<HTMLButtonElement>({
@@ -79,13 +84,14 @@ export function SelectInput<T = string>({
     >
       <ListboxBase.Button
         ref={refs.setReference}
-        aria-invalid={ariaInvalid}
+        {...formControlAriaAttributes}
         className={clsx(
           getResetClassName("button"),
           className,
           formControlClassNameBase({ size: "md" }),
           "inline-flex items-center gap-x-2 rounded text-start",
         )}
+        {...restProps}
       >
         {({ value }: { value: T | typeof placeholderValue }) => (
           <>

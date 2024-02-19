@@ -1,6 +1,7 @@
 import type { Story } from "@ladle/react";
 
 import { getMonthNames } from "../../date";
+import { Field } from "./Field";
 import { SelectInput, SelectInputOption } from "./SelectInput";
 
 interface Month {
@@ -22,23 +23,27 @@ export const Basic: Story<{
 }> = function ({ invalid, disabled, onChange }) {
   return (
     <div className="flex flex-col">
-      <SelectInput<Month>
-        placeholder="Month"
-        renderValue={(value) => value.name}
-        aria-invalid={invalid}
-        disabled={disabled}
-        onChange={onChange}
+      <Field
+        label="Date"
+        error={invalid ? <>Please select a valid date.</> : undefined}
       >
-        {months.map((month) => (
-          <SelectInputOption
-            key={month.id}
-            value={month}
-            disabled={month.unavailable}
-          >
-            {month.name}
-          </SelectInputOption>
-        ))}
-      </SelectInput>
+        <SelectInput<Month>
+          placeholder="Month"
+          renderValue={(value) => value.name}
+          disabled={disabled}
+          onChange={onChange}
+        >
+          {months.map((month) => (
+            <SelectInputOption
+              key={month.id}
+              value={month}
+              disabled={month.unavailable}
+            >
+              {month.name}
+            </SelectInputOption>
+          ))}
+        </SelectInput>
+      </Field>
     </div>
   );
 };
