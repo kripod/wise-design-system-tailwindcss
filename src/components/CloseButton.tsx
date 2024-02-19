@@ -17,10 +17,13 @@ export function CloseButton({ size = "md", onClick }: CloseButtonProps) {
   return (
     <button
       type="button"
-      className={clsx({
-        "-m-4 p-4": size === "md",
-        "-m-3 p-3": size === "lg",
-      })}
+      className={clsx(
+        "rounded-full transition hover:bg-background-neutral focus:outline-none focus-visible:ring",
+        {
+          "-m-2 p-2": size === "md",
+          "-m-3 p-3": size === "lg",
+        },
+      )}
       onClick={() => {
         onClick?.();
       }}
