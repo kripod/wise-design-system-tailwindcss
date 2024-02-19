@@ -39,12 +39,6 @@ export function Alert({
   return (
     <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 rounded-lg bg-background-neutral p-6 text-content-secondary">
       <Icon />
-      <div
-        role="alert"
-        className="col-span-full row-start-2 space-y-2 text-sm desktop:col-span-1 desktop:row-start-auto"
-      >
-        {children}
-      </div>
       {onClose != null ? (
         <CloseButton
           size="sm"
@@ -52,6 +46,12 @@ export function Alert({
           onClick={onClose}
         />
       ) : null}
+      <div
+        role="alert"
+        className="col-span-full space-y-2 text-sm desktop:col-span-1 desktop:col-start-2 desktop:row-start-1"
+      >
+        {children}
+      </div>
     </div>
   );
 }
