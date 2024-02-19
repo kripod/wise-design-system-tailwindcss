@@ -7,9 +7,9 @@ import * as React from "react";
 import { mergeRefs } from "react-merge-refs";
 import type { Merge } from "ts-essentials";
 
+import { ClearButtonLabel, NoResultsFound } from "../../config/i18nTexts";
 import { useEffectEvent } from "../../hooks/useEffectEvent";
 import { useScreenSize } from "../../hooks/useScreenSize";
-import { ClearButtonLabel, NoResultsFound } from "../../i18nTexts";
 import { wrapInFragment } from "../../utils/wrapInFragment";
 import { BottomSheet } from "../BottomSheet";
 import { PolymorphicWithOverrides } from "../PolymorphicWithOverrides";
