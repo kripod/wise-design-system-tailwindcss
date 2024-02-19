@@ -35,7 +35,7 @@ function FieldDescription({ children }: FieldDescriptionProps) {
       )}
     >
       {invalid ? (
-        <span className="inline-flex items-center">
+        <span className="inline-flex items-center" aria-hidden>
           {/* TODO: Use `h-1lh` on container and remove zero-width space */}
           &#8203; {/* Mimics `height: 1lh` on container */}
           <AlertCircle size={16} />
