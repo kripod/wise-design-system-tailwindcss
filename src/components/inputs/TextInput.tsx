@@ -2,7 +2,7 @@ import { clsx } from "clsx";
 import * as React from "react";
 
 import { inputClassNameBase, useInputAriaAttributes } from "./_Input";
-import { useInputPaddings } from "./InputGroup";
+import { useInputPaddings } from "./InputAddon";
 
 export interface TextInputProps
   extends Pick<

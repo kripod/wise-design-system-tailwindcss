@@ -4,7 +4,7 @@ import * as React from "react";
 
 import { ActionButton } from "../buttons/ActionButton";
 import { Field } from "./Field";
-import { InputAddon, InputGroup } from "./InputGroup";
+import { InputAddon, InputGroup } from "./InputAddon";
 import { Label } from "./Label";
 import { TextInput } from "./TextInput";
 
