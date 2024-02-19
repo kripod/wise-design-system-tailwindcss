@@ -25,7 +25,7 @@ export interface SelectInputProps<T = string> {
   // TODO: multiple?: boolean;
   defaultValue?: T;
   value?: T;
-  renderValue?: (value: NonNullable<T>) => React.ReactNode;
+  renderValue?: (value: T) => React.ReactNode;
   compareValues?: (keyof NonNullable<T> & string) | ((a: T, b: T) => boolean);
   "aria-invalid"?: React.AriaAttributes["aria-invalid"];
   disabled?: boolean;
@@ -91,7 +91,7 @@ export function SelectInput<T = string>({
             {({ value }: { value: T | undefined }) => (
               <>
                 <span className="flex-1 truncate">
-                  {value != null ? (
+                  {value !== undefined ? (
                     renderValue(value)
                   ) : (
                     <span className="text-content-tertiary">{placeholder}</span>
