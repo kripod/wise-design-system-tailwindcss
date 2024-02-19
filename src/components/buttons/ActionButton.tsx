@@ -3,10 +3,7 @@ import * as React from "react";
 
 import { Button, ButtonPropsBase } from "./_Button";
 
-export type ActionButtonProps = Omit<
-  ButtonPropsBase,
-  "size" | "equilateral" | "loading"
->;
+export type ActionButtonProps = Omit<ButtonPropsBase, "loading">;
 
 export const ActionButton = React.forwardRef(function ActionButton(
   { disabled = false, className, children, ...restProps }: ActionButtonProps,

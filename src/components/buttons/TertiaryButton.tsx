@@ -1,15 +1,11 @@
 import { clsx } from "clsx";
 import * as React from "react";
-import type { Merge } from "ts-essentials";
 
 import { Button, ButtonPropsBase } from "./_Button";
 
-export type TertiaryButtonProps = Merge<
-  Omit<ButtonPropsBase, "equilateral">,
-  {
-    size?: "sm" | "md";
-  }
->;
+export type TertiaryButtonProps = ButtonPropsBase & {
+  size?: "sm" | "md";
+};
 
 export const TertiaryButton = React.forwardRef(function TertiaryButton(
   {

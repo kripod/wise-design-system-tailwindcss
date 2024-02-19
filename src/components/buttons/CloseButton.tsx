@@ -1,16 +1,15 @@
 import { Cross, CrossIconProps } from "@transferwise/icons";
 import { clsx } from "clsx";
-import type { Merge } from "ts-essentials";
 
 import { CloseButtonLabel } from "../../i18nTexts";
 import { Button, ButtonPropsBase } from "./_Button";
 
-export type CloseButtonProps = Merge<
-  Omit<ButtonPropsBase, "equilateral" | "loading" | "disabled" | "children">,
-  {
-    size?: "sm" | "md";
-  }
->;
+export type CloseButtonProps = Omit<
+  ButtonPropsBase,
+  "loading" | "disabled" | "children"
+> & {
+  size?: "sm" | "md";
+};
 
 const iconSizeByComponentSize: {
   [key in NonNullable<CloseButtonProps["size"]>]: CrossIconProps["size"];

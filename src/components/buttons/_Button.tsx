@@ -4,22 +4,21 @@ import type { Merge } from "ts-essentials";
 
 import { Spinner } from "../Spinner";
 
-export type ButtonPropsBase = Merge<
-  Pick<
-    React.ComponentPropsWithRef<"button">,
-    "ref" | "type" | "disabled" | "className" | "style" | "onClick"
-  >,
-  {
-    size?: "auto" | "sm" | "md" | "lg";
-    equilateral?: boolean;
+export type ButtonPropsBase = Pick<
+  React.ComponentPropsWithRef<"button">,
+  "ref" | "type" | "disabled" | "className" | "style" | "onClick"
+> &
+  Pick<React.AriaAttributes, "aria-describedby"> & {
     loading?: boolean;
     children: React.ReactNode;
-  } & Pick<React.AriaAttributes, "aria-describedby">
->;
+  };
 
 export type ButtonProps = Merge<
   React.ComponentPropsWithRef<"button">,
-  ButtonPropsBase
+  ButtonPropsBase & {
+    size?: "auto" | "sm" | "md" | "lg";
+    equilateral?: boolean;
+  }
 >;
 
 export const Button = React.forwardRef(function Button(
