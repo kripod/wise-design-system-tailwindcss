@@ -44,7 +44,9 @@ Fonts shall be loaded separately through `@transferwise/neptune-css`, by importi
    - Uses [official CSS Nesting syntax](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting) over the [Sass-like one](https://github.com/postcss/postcss-nested)
    - Provides extensive browser support via [Browserslist](https://github.com/browserslist/browserslist)
 
-3. Add `tailwind.config.ts` to your project root, following [this Next.js framework guide](https://tailwindcss.com/docs/guides/nextjs):
+3. Within your TSConfig, use `"moduleResolution": "Bundler"` or `"moduleResolution": "NodeNext"`. Package entry points may fail to resolve otherwise.
+
+4. Add `tailwind.config.ts` to your project root, following [this Next.js framework guide](https://tailwindcss.com/docs/guides/nextjs):
 
    ```ts
    import * as path from "node:path";
@@ -67,7 +69,7 @@ Fonts shall be loaded separately through `@transferwise/neptune-css`, by importi
 
    The [Preflight](https://tailwindcss.com/docs/preflight) core plugin is disabled, as base styles are provided by [modern-normalize](https://github.com/sindresorhus/modern-normalize) and [css-homogenizer](https://github.com/kripod/css-homogenizer).
 
-4. Add `src/globals.css` and import it from your app’s root:
+5. Add `src/globals.css` and import it from your app’s root:
 
    ```css
    @import "@wise/design-system-tailwindcss/preflight.css";
