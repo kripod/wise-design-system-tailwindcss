@@ -177,7 +177,7 @@ const defaultRenderTrigger = (({
   </InputGroup>
 )) satisfies SelectInputProps["renderTrigger"];
 
-export function SelectInput<T>({
+export function SelectInput<T = string>({
   name,
   placeholder,
   items,
@@ -354,7 +354,7 @@ interface SelectInputOptionsProps<T = string>
   listboxRef: React.RefObject<HTMLDivElement>;
 }
 
-function SelectInputOptions<T>({
+function SelectInputOptions<T = string>({
   items,
   renderValue = wrapInFragment,
   filterable,
@@ -461,7 +461,7 @@ interface SelectInputItemViewProps<
   needle: string | null;
 }
 
-function SelectInputItemView<T>({
+function SelectInputItemView<T = string>({
   item,
   renderValue,
   needle,
@@ -505,7 +505,7 @@ function SelectInputItemView<T>({
 interface SelectInputGroupItemViewProps<T = string>
   extends SelectInputItemViewProps<T, SelectInputGroupItem<T | undefined>> {}
 
-function SelectInputGroupItemView<T>({
+function SelectInputGroupItemView<T = string>({
   item,
   renderValue,
   needle,
@@ -548,7 +548,7 @@ interface SelectInputOptionProps<T = string> {
   children?: React.ReactNode;
 }
 
-function SelectInputOption<T>({
+function SelectInputOption<T = string>({
   value,
   disabled,
   children,

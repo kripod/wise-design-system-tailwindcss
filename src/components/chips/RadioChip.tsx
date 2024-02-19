@@ -14,7 +14,7 @@ export interface RadioChipGroupProps<T = string> {
   onChange?: (value: T) => void;
 }
 
-export function RadioChipGroup<T>({
+export function RadioChipGroup<T = string>({
   name,
   defaultValue,
   value,
@@ -45,7 +45,11 @@ export interface RadioChipProps<T = string> {
   children?: React.ReactNode;
 }
 
-export function RadioChip<T>({ value, disabled, children }: RadioChipProps<T>) {
+export function RadioChip<T = string>({
+  value,
+  disabled,
+  children,
+}: RadioChipProps<T>) {
   return (
     <RadioGroupBase.Option as={Chip} value={value} disabled={disabled}>
       {children}
