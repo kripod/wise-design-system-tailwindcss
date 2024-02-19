@@ -29,7 +29,7 @@ module.exports = defineConfig({
   ].map((packageName) => new RegExp(`^${packageName}($|/)`, "u")),
   plugins: [
     typescript({
-      exclude: ["**/*.stories.*"],
+      exclude: ["**/*.stories.*", "**/*.test.*"],
       filterRoot: rootDir,
       compilerOptions: {
         outDir,
