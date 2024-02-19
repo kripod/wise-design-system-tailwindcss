@@ -1,4 +1,4 @@
-@import "modern-normalize";
+@import "modern-normalize/modern-normalize.css";
 @import "@fontsource-variable/inter";
 @import "../src/styles.css";
 
