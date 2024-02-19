@@ -391,9 +391,9 @@ const SelectInputOptionsContainer = React.forwardRef(
     }, [ariaActiveDescendant, handleAriaActiveDescendantChange]);
 
     return (
-      // eslint-disable-next-line jsx-a11y/no-static-element-interactions
       <div
         ref={ref}
+        role="none"
         onKeyDown={(event) => {
           // Prevent confirmation close without an active item
           if (event.key === "Enter" && ariaActiveDescendant == null) {
@@ -544,7 +544,7 @@ function SelectInputOptions<T = string>({
         {renderFooter != null ? (
           <footer className="px-6 pb-4 pt-1">
             <div
-              role="presentation"
+              role="none"
               onKeyDown={(event) => {
                 // Prevent interfering with Headless UI
                 if (event.key !== "Escape") {
@@ -628,7 +628,7 @@ function SelectInputGroupItemView<T = string>({
       {needle == null ? (
         <header
           id={headerId}
-          role="presentation"
+          role="none"
           className="sticky top-0 z-10 bg-background-elevated px-4 pb-1 pt-2 text-sm font-medium leading-5 text-content-secondary"
         >
           {item.label}
