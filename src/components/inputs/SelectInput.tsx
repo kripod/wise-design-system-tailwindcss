@@ -508,7 +508,7 @@ function SelectInputOptions<T = string>({
       >
         {empty ? (
           <div id={statusId} className="flex items-center gap-x-2 px-6 pt-2">
-            <CrossCircle size={16} className="px-1" />
+            <CrossCircle size={16} className="px-1 text-content-tertiary" />
             {NoResultsFound}
           </div>
         ) : null}
