@@ -22,9 +22,9 @@ const IconBySentiment: {
 export function Instruction({ sentiment, children }: InstructionProps) {
   const Icon = IconBySentiment[sentiment];
   return (
-    <div className="flex items-center gap-x-2">
+    <div className="flex gap-x-2 text-content-secondary">
       <Icon />
-      <div className="flex-1 text-base text-content-secondary">{children}</div>
+      <div className="flex-1 text-base">{children}</div>
     </div>
   );
 }
