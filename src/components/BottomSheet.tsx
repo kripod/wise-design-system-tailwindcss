@@ -80,7 +80,7 @@ export function BottomSheet({
             <div className="fixed inset-0 bg-content-primary opacity-40" />
           </Transition.Child>
 
-          <div className="fixed inset-0 bottom-[env(keyboard-inset-height,0px)] flex flex-col justify-end px-2 pt-16">
+          <div className="fixed inset-0 flex flex-col justify-end px-2 pt-16">
             <Transition.Child
               className="max-h-full"
               enter="motion-safe:transition-transform motion-safe:duration-300 motion-reduce:transition-opacity motion-reduce:duration-300"
