@@ -56,7 +56,7 @@ export function SelectInput() {
           "inline-flex items-center justify-between gap-x-2 rounded text-start",
         )}
       >
-        <span className="truncate">{selectedPerson.name}</span>
+        <span className="flex-1 truncate">{selectedPerson.name}</span>
         <ChevronDown size={16} />
       </ListboxBase.Button>
 
