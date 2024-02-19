@@ -97,8 +97,11 @@ export default {
         positive: "rgb(var(--color-sentiment-positive, 47 87 17))",
         warning: "rgb(var(--color-sentiment-warning, 237 200 67))",
       },
+      contrast: {
+        theme: "rgb(var(--color-contrast-theme, 18 21 17))",
+        overlay: "rgb(var(--color-contrast-overlay, 255 255 255))",
+      },
       base: {
-        contrast: "rgb(var(--color-base-contrast, 255 255 255))",
         light: "rgb(var(--color-base-light, 255 255 255))",
         dark: "rgb(var(--color-base-dark, 18 21 17))",
       },

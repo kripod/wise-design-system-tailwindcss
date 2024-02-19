@@ -36,7 +36,7 @@ export const SecondaryButton = React.forwardRef(function SecondaryButton(
         {
           "enabled:hover:bg-interactive-accent-hover enabled:hover:text-interactive-control enabled:hover:ring-interactive-accent-hover enabled:active:bg-interactive-accent-active enabled:active:text-interactive-control enabled:active:ring-interactive-accent-active":
             sentiment === "neutral",
-          "enabled:hover:bg-sentiment-negative-hover enabled:hover:text-base-contrast enabled:hover:ring-sentiment-negative-hover enabled:active:bg-sentiment-negative-active enabled:active:text-base-contrast enabled:active:ring-sentiment-negative-active":
+          "enabled:hover:bg-sentiment-negative-hover enabled:hover:text-contrast-overlay enabled:hover:ring-sentiment-negative-hover enabled:active:bg-sentiment-negative-active enabled:active:text-contrast-overlay enabled:active:ring-sentiment-negative-active":
             sentiment === "negative",
         },
         className,
