@@ -2,6 +2,7 @@
   "root": true,
   "extends": [
     "airbnb",
+    "airbnb/hooks",
     "airbnb-typescript",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/strict",
@@ -40,6 +41,7 @@
     ],
     "@typescript-eslint/consistent-type-definitions": ["warn", "type"],
     "@typescript-eslint/method-signature-style": "warn", // Force type safety
+    "curly": ["error", "all"],
     "func-names": ["warn", "as-needed"],
     "import/no-default-export": "warn", // Default exports are confusing
     "import/prefer-default-export": "off",
