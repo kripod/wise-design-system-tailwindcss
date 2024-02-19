@@ -1,5 +1,11 @@
 # @wise/design-system-tailwindcss
 
+## 0.5.5
+
+### Patch Changes
+
+- [`03cd82b`](https://github.com/transferwise/design-system-web-tailwindcss/commit/03cd82bbad8b66d9575ff445c7690004700d7fce) Thanks [@kripod-wise](https://github.com/kripod-wise)! - refactor(codemod): improve class attribute matching heuristics
+
 ## 0.5.4
 
 ### Patch Changes
