@@ -171,12 +171,12 @@ export const Currencies: Story<Currency> = {
         icon={<Flag code={currency.code} intrinsicSize={24} />}
       />
     ),
-    renderFooter: ({ resultsEmpty, normalizedQuery }) =>
+    renderFooter: ({ resultsEmpty, queryNormalized }) =>
       resultsEmpty &&
-      normalizedQuery != null &&
-      /^[a-z]{3}$/u.test(normalizedQuery) ? (
+      queryNormalized != null &&
+      /^[a-z]{3}$/u.test(queryNormalized) ? (
         <>
-          It’s not possible use {normalizedQuery.toUpperCase()} yet.{" "}
+          It’s not possible use {queryNormalized.toUpperCase()} yet.{" "}
           <InlineLink href="#_" onClick={(event) => event.preventDefault()}>
             Email me when it’s available.
           </InlineLink>

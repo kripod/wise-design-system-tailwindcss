@@ -147,7 +147,7 @@ export interface SelectInputProps<T = string> {
   ) => React.ReactNode;
   renderFooter?: (args: {
     resultsEmpty: boolean;
-    normalizedQuery: string | null | undefined;
+    queryNormalized: string | null | undefined;
   }) => React.ReactNode;
   renderTrigger?: (args: {
     content: React.ReactNode;
@@ -567,7 +567,7 @@ function SelectInputOptions<T = string>({
             >
               {renderFooter({
                 resultsEmpty,
-                normalizedQuery: needle,
+                queryNormalized: needle,
               })}
             </div>
           </footer>
