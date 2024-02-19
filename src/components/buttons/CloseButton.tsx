@@ -18,11 +18,7 @@ const iconSizeByComponentSize: {
   md: 24,
 };
 
-export function CloseButton({
-  size = "md",
-  className,
-  ...restProps
-}: CloseButtonProps) {
+export function CloseButton({ size = "md", ...restProps }: CloseButtonProps) {
   return (
     <Button
       aria-label={CloseButtonLabel}
@@ -34,7 +30,6 @@ export function CloseButton({
           "-m-2": size === "sm",
           "-m-3": size === "md",
         },
-        className,
       )}
       {...restProps}
     >

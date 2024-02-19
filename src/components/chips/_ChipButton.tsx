@@ -11,7 +11,6 @@ export const ChipButton = React.forwardRef(function ChipButton(
     "aria-checked": ariaChecked = false,
     "aria-disabled": ariaDisabled,
     disabled = ariaDisabled != null ? parseBooleanish(ariaDisabled) : false,
-    className,
     children,
     ...restProps
   }: ChipButtonProps,
@@ -39,7 +38,6 @@ export const ChipButton = React.forwardRef(function ChipButton(
               !disabled &&
                 "hover:bg-background-screen-hover hover:text-interactive-primary-hover hover:inner-border-interactive-secondary-hover active:bg-background-screen-active active:text-interactive-primary-active active:inner-border-interactive-secondary-active",
             ],
-        className,
       )}
       {...restProps}
     >

@@ -55,10 +55,9 @@ export function TabList({ stretch = false, children }: TabListProps) {
 
 type TabButtonProps = ButtonProps;
 
-export const TabButton = React.forwardRef(function TabButton(
+const TabButton = React.forwardRef(function TabButton(
   {
     "aria-selected": ariaSelected = false,
-    className,
     children,
     ...restProps
   }: TabButtonProps,
@@ -72,7 +71,6 @@ export const TabButton = React.forwardRef(function TabButton(
       className={clsx(
         "inline-grid text-base",
         selected && "font-semibold tracking-1",
-        className,
       )}
       {...restProps}
     >

@@ -6,7 +6,7 @@ import { Spinner } from "../Spinner";
 
 export type ButtonPropsBase = Pick<
   React.ComponentPropsWithRef<"button">,
-  "ref" | "type" | "aria-describedby" | "disabled" | "className" | "onClick"
+  "ref" | "type" | "aria-describedby" | "disabled" | "onClick"
 > & {
   loading?: boolean;
   render?: (

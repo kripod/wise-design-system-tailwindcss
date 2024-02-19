@@ -1,4 +1,3 @@
-import { clsx } from "clsx";
 import * as React from "react";
 
 export type InputProps = React.ComponentPropsWithRef<"input"> & {
@@ -6,7 +5,7 @@ export type InputProps = React.ComponentPropsWithRef<"input"> & {
 };
 
 export const Input = React.forwardRef(function Input(
-  { label, required, className, ...restProps }: InputProps,
+  { label, required, ...restProps }: InputProps,
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {
   return (
@@ -22,10 +21,7 @@ export const Input = React.forwardRef(function Input(
         <input
           ref={ref}
           required={required}
-          className={clsx(
-            "h-12 rounded border border-interactive-secondary px-4 text-base text-content-primary",
-            className,
-          )}
+          className="h-12 rounded border border-interactive-secondary px-4 text-base text-content-primary"
           {...restProps}
         />
       </label>
