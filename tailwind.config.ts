@@ -2,6 +2,8 @@ import containerQueriesPlugin from "@tailwindcss/container-queries";
 import type { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
 
+import { resetClassNameByElementType } from "./jsx-scoped-css-reset/resetClassNameByElementType";
+
 function roundTo(value: number, fractionDigits: number) {
   return Number(
     `${Math.round(Number(`${value}e+${fractionDigits}`))}e-${fractionDigits}`,
@@ -14,6 +16,7 @@ function pxToRem(value: number) {
 
 export default {
   content: ["./src/**/*.{js,jsx,mjs,ts,tsx,mts}"],
+  safelist: [...new Set(resetClassNameByElementType.values())],
   future: {
     hoverOnlyWhenSupported: true,
     respectDefaultRingColorOpacity: true,
@@ -288,6 +291,9 @@ export default {
         DEFAULT: defaultTheme.transitionTimingFunction.out,
       },
     },
+  },
+  corePlugins: {
+    preflight: false,
   },
   plugins: [containerQueriesPlugin],
 } satisfies Config;

@@ -5,7 +5,8 @@
     "verbatimModuleSyntax": true,
     "isolatedModules": false,
     "declaration": true,
-    "declarationMap": true
+    "declarationMap": true,
+    "downlevelIteration": true
   },
   "include": [
     "**/*.js",

@@ -1,3 +1,4 @@
+@import "../jsx-scoped-css-reset/reset-scoped.css";
 @import "tailwindcss/base";
 @import "@fontsource-variable/inter";
 
@@ -7,13 +8,9 @@
 @import "tailwindcss/utilities";
 
 @layer base {
-  :root {
-    @apply break-words;
+  html {
+    @apply break-words bg-background-screen font-sans text-content-primary;
     scrollbar-gutter: stable;
     -webkit-tap-highlight-color: transparent;
-  }
-
-  body {
-    @apply bg-background-screen text-content-primary;
   }
 }

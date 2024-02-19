@@ -1,0 +1,86 @@
+/**
+ * Based on HTML rendering suggestions and the differences across UA sheets:
+ * https://html.spec.whatwg.org/multipage/rendering.html
+ *
+ * Selectors sorted as they appear in the HTML Standard for better compression.
+ */
+
+/* Only for Safari: button, select, input, textarea */
+:where(
+    ._h1,
+    ._h2,
+    ._h3,
+    ._h4,
+    ._h5,
+    ._h6,
+    ._p,
+    ._hr,
+    ._pre,
+    ._blockquote,
+    ._ol,
+    ._ul,
+    ._menu,
+    ._dl,
+    ._dd,
+    ._figure,
+    ._input,
+    ._button,
+    ._select,
+    ._textarea,
+    ._fieldset
+  ) {
+  margin: 0;
+}
+
+:where(._hr, ._iframe, ._input, ._button, ._select, ._textarea, ._fieldset) {
+  border: 0;
+}
+
+:where(
+    ._ol,
+    ._ul,
+    ._menu,
+    ._td,
+    ._th,
+    ._input,
+    ._button,
+    ._select,
+    ._textarea,
+    ._fieldset,
+    ._legend
+  ) {
+  padding: 0;
+}
+
+:where(._h1, ._h2, ._h3, ._h4, ._h5, ._h6, ._address, ._th) {
+  font: inherit; /* font-size, font-weight, font-style */
+}
+
+:where(._ol, ._ul, ._menu) {
+  list-style: none; /* list-style-type */
+}
+
+:where(._a) {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+:where(._table) {
+  border-spacing: 0;
+}
+
+:where(._th) {
+  text-align: inherit;
+}
+
+:where(._input, ._button, ._select, ._textarea) {
+  background: none;
+  font: inherit;
+  color: inherit;
+}
+
+/* Only for Firefox */
+:where(._input::placeholder, ._textarea::placeholder) {
+  color: gray;
+  opacity: 1;
+}

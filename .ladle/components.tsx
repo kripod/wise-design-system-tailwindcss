@@ -1,4 +1,4 @@
-import "../src/styles.css";
+import "./styles.css";
 import "focus-visible";
 
 import { GlobalProvider, ThemeState } from "@ladle/react";
