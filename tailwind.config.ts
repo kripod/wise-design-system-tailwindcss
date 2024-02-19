@@ -27,6 +27,7 @@ export default {
   theme: {
     borderRadius: {
       none: "0px",
+      xs: pxToRem(2),
       DEFAULT: pxToRem(10),
       md: pxToRem(16),
       lg: pxToRem(24),

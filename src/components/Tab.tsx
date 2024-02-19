@@ -4,6 +4,7 @@ import * as React from "react";
 
 import { parseBooleanish } from "../parseBooleanish";
 import { Button } from "./buttons/_Button";
+import { PrimaryButton } from "./buttons/PrimaryButton";
 import {
   AnimatedLayout,
   AnimatedLayoutGroup,
@@ -70,16 +71,16 @@ const TabButton = React.forwardRef(function TabButton(
       ref={ref}
       aria-selected={ariaSelected}
       className={clsx(
-        "inline-grid text-base",
-        selected && "font-semibold",
+        "inline-grid rounded-xs text-base [&>*]:col-start-1 [&>*]:row-start-1",
+        selected
+          ? "font-semibold text-interactive-primary"
+          : "text-content-secondary",
         className,
       )}
       {...restProps}
     >
-      <span className="col-start-1 row-start-1">{children}</span>
-      <span className="invisible col-start-1 row-start-1 font-semibold">
-        {children}
-      </span>
+      <span>{children}</span>
+      <span className="invisible font-semibold">{children}</span>
     </Button>
   );
 });
@@ -139,6 +140,8 @@ export type TabPanelProps = {
 
 export function TabPanel({ children }: TabPanelProps) {
   return (
-    <TabBase.Panel className="focus-visible:outline">{children}</TabBase.Panel>
+    <TabBase.Panel className="rounded-xs focus-visible:outline">
+      {children}
+    </TabBase.Panel>
   );
 }
