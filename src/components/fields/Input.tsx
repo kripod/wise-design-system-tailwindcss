@@ -77,7 +77,6 @@ export type InputProps = Merge<
     | "autoComplete"
     | "readOnly"
     | "disabled"
-    | "className"
     | "onChange"
     | "onInvalid"
     | "onSelect"
@@ -91,7 +90,7 @@ export type InputProps = Merge<
 >;
 
 export const Input = React.forwardRef(function Input(
-  { size = "md", shape = "rectangle", className, ...restProps }: InputProps,
+  { size = "md", shape = "rectangle", ...restProps }: InputProps,
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {
   const fieldDescribedBy = useFieldDescribedBy();
@@ -110,7 +109,6 @@ export const Input = React.forwardRef(function Input(
           rounded: shape === "rectangle",
           "rounded-full": shape === "pill",
         },
-        className,
       )}
       style={{
         paddingInlineStart: inputPaddingStart,

@@ -18,7 +18,6 @@ export type TextAreaProps = Merge<
     | "readOnly"
     | "disabled"
     | "rows"
-    | "className"
     | "onChange"
     | "onInvalid"
     | "onSelect"
@@ -29,7 +28,7 @@ export type TextAreaProps = Merge<
 >;
 
 export const TextArea = React.forwardRef(function TextArea(
-  { className, ...restProps }: TextAreaProps,
+  { ...restProps }: TextAreaProps,
   ref: React.ForwardedRef<HTMLTextAreaElement>,
 ) {
   const fieldDescribedBy = useFieldDescribedBy();
@@ -41,7 +40,6 @@ export const TextArea = React.forwardRef(function TextArea(
       className={clsx(
         fieldControlClassNameBase(),
         "min-h-18 scroll-py-2 overscroll-none rounded",
-        className,
       )}
       {...restProps}
     />
