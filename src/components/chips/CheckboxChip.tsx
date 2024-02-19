@@ -68,7 +68,14 @@ export function CheckboxChip({
       ) : null}
 
       {name != null && checked ? (
-        <input type="hidden" name={name} value={value} />
+        <input
+          type="checkbox"
+          name={name}
+          value={value}
+          checked
+          readOnly
+          hidden
+        />
       ) : null}
       <Chip
         role="checkbox"
