@@ -33,7 +33,7 @@ type Theme = {
   "--color-sentiment-positive": string;
   "--color-sentiment-warning": string;
   "--color-contrast-theme": string; // TODO: Remove
-  "--color-contrast-overlay": string; // TODO: Rename to '--color-contrast'
+  "--color-contrast-overlay": string;
   "--color-base-light": string;
   "--color-base-dark": string;
 };
