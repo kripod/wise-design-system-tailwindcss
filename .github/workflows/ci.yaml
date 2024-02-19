@@ -52,12 +52,8 @@ jobs:
       - uses: transferwise/actions-bootstrap-node@v1
         with:
           package-manager: pnpm
-          npm-token: ${{ secrets.NPM_TOKEN_AUTOMATION }}
+          npm-token: ${{ secrets.NPM_TOKEN_READONLY }}
       - run: pnpm run build
-      - name: Set up SSH host keys
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
       - name: Set up commit signing
         uses: crazy-max/ghaction-import-gpg@v5
         with:
