@@ -13,7 +13,7 @@ export const PrimaryButton = React.forwardRef(function PrimaryButton(
   {
     size = "md",
     sentiment = "neutral",
-    disabled,
+    disabled = false,
     className,
     children,
     ...restProps
@@ -28,22 +28,22 @@ export const PrimaryButton = React.forwardRef(function PrimaryButton(
       className={clsx(
         "rounded-full px-4 font-semibold transition focus:outline-none focus-visible:ring",
         {
-          "bg-interactive-accent text-interactive-primary ring-interactive-accent-active":
+          "bg-interactive-accent text-interactive-control":
             sentiment === "neutral",
           "bg-sentiment-negative text-base-contrast ring-sentiment-negative-active":
             sentiment === "negative",
         },
         !disabled
           ? {
-              "hover:bg-interactive-accent-hover hover:text-interactive-primary-hover active:bg-interactive-accent-active active:text-interactive-primary-active":
+              "hover:bg-interactive-accent-hover active:bg-interactive-accent-active":
                 sentiment === "neutral",
               "hover:bg-sentiment-negative-hover active:bg-sentiment-negative-active":
                 sentiment === "negative",
             }
           : "cursor-not-allowed opacity-45 mix-blend-luminosity",
         {
-          "h-8 text-sm": size === "sm",
-          "h-12 text-base": size === "md",
+          "h-8 text-sm tracking-2.5": size === "sm",
+          "h-12 text-base tracking-1": size === "md",
         },
         className,
       )}
