@@ -3,7 +3,8 @@ import * as React from "react";
 
 import { Button, ButtonOwnProps } from "./_Button";
 
-export type PrimaryButtonOwnProps = Pick<ButtonOwnProps, "size" | "loading"> & {
+export type PrimaryButtonOwnProps = Pick<ButtonOwnProps, "loading"> & {
+  size?: Extract<ButtonOwnProps["size"], "sm" | "md">;
   sentiment?: "neutral" | "negative";
 };
 

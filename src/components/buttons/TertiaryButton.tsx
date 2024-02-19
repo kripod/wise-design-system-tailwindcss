@@ -3,7 +3,9 @@ import * as React from "react";
 
 import { Button, ButtonOwnProps } from "./_Button";
 
-export type TertiaryButtonOwnProps = Pick<ButtonOwnProps, "size" | "loading">;
+export type TertiaryButtonOwnProps = Pick<ButtonOwnProps, "loading"> & {
+  size?: Extract<ButtonOwnProps["size"], "sm" | "md">;
+};
 
 export type TertiaryButtonProps = React.ComponentPropsWithRef<"button"> &
   TertiaryButtonOwnProps;

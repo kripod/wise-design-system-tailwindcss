@@ -4,7 +4,11 @@ import { clsx } from "clsx";
 import { CloseButtonLabel } from "../../i18nTexts";
 import { Button, ButtonOwnProps } from "./_Button";
 
-export type CloseButtonProps = Pick<ButtonOwnProps, "size"> &
+export type CloseButtonOwnProps = {
+  size?: Extract<ButtonOwnProps["size"], "sm" | "md">;
+};
+
+export type CloseButtonProps = CloseButtonOwnProps &
   React.ComponentPropsWithoutRef<"button">;
 
 const iconSizeByComponentSize: {

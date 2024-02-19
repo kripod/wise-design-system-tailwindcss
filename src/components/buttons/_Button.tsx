@@ -4,7 +4,7 @@ import * as React from "react";
 import { Spinner } from "../Spinner";
 
 export type ButtonOwnProps = {
-  size?: "sm" | "md";
+  size?: "sm" | "md" | "lg";
   equilateral?: boolean;
   loading?: boolean;
 };
@@ -36,6 +36,8 @@ export const Button = React.forwardRef(function Button(
             size === "sm",
           [clsx("h-12 text-base tracking-1", equilateral && "w-12")]:
             size === "md",
+          [clsx("h-14 text-base tracking-1", equilateral && "w-14")]:
+            size === "lg",
         },
         !equilateral && "gap-x-2",
         (disabled || loading) && "opacity-45 mix-blend-luminosity",
