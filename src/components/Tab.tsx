@@ -3,7 +3,7 @@ import { clsx } from "clsx";
 import * as React from "react";
 
 import { parseBooleanish } from "../parseBooleanish";
-import { Button, ButtonProps } from "./buttons/_Button";
+import { Button } from "./buttons/_Button";
 import {
   AnimatedLayout,
   AnimatedLayoutGroup,
@@ -58,6 +58,7 @@ type TabButtonProps = React.ComponentPropsWithRef<"button">;
 const TabButton = React.forwardRef(function TabButton(
   {
     "aria-selected": ariaSelected = false,
+    className,
     children,
     ...restProps
   }: TabButtonProps,
@@ -71,6 +72,7 @@ const TabButton = React.forwardRef(function TabButton(
       className={clsx(
         "inline-grid text-base",
         selected && "font-semibold tracking-1",
+        className,
       )}
       {...restProps}
     >
