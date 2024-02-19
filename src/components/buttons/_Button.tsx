@@ -51,7 +51,7 @@ export const Button = React.forwardRef(function Button(
 ) {
   return (
     <Element
-      ref={ref}
+      ref={Element === "button" ? ref : undefined}
       type={type}
       disabled={disabled || loading}
       className={clsx(
