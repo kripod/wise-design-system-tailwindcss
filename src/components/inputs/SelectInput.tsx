@@ -259,6 +259,7 @@ const SelectInputOptionsContainer = React.forwardRef(
       role,
       tabIndex,
       onAriaActiveDescendantChange,
+      onKeyDown, // Prevent absorbing escape key presses
       ...restProps
     }: SelectInputOptionsContainerProps,
     ref: React.ForwardedRef<HTMLDivElement>,
