@@ -1,4 +1,6 @@
-# Neptune Web – Tailwind Proof of Concept
+# @wise/design-system
+
+Web implementation of Wise Design System.
 
 ## Contributing
 

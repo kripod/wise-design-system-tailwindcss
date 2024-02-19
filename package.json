@@ -1,6 +1,17 @@
 {
-  "name": "neptune-web-tailwind-poc",
-  "private": true,
+  "name": "@wise/design-system",
+  "version": "0.0.0",
+  "description": "Web implementation of Wise Design System.",
+  "keywords": [
+    "design-system",
+    "tailwindcss"
+  ],
+  "homepage": "https://github.com/transferwise/design-system-web-tailwind#readme",
+  "bugs": "https://github.com/transferwise/design-system-web-tailwind/issues",
+  "repository": "transferwise/design-system-web-tailwind",
+  "license": "MIT",
+  "author": "Wise Payments Limited",
+  "sideEffects": false,
   "exports": {
     ".": {
       "import": "./dist/es/index.js",
