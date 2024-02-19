@@ -41,7 +41,7 @@ export function Dialog({
             },
           )}
         >
-          <div className="flex items-start justify-between p-6">
+          <div className="flex items-start justify-between gap-6 p-6">
             <DialogBase.Title className="text-lg font-semibold">
               {title}
             </DialogBase.Title>
