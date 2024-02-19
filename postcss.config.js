@@ -15,7 +15,15 @@ module.exports = {
     "tailwindcss/nesting": "postcss-nesting",
     tailwindcss: {},
     "postcss-preset-env": {
-      features: { "nesting-rules": false },
+      features: {
+        "float-clear-logical-values": false,
+        "logical-overflow": false,
+        "logical-overscroll-behavior": false,
+        "logical-properties-and-values": false,
+        "logical-resize": false,
+        "logical-viewport-units": false,
+        "nesting-rules": false,
+      },
     },
   },
 };
