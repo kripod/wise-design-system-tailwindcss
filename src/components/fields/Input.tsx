@@ -44,21 +44,34 @@ export function InputGroup({ prefix, prefixWidth, children }: InputGroupProps) {
 }
 
 export type InputProps = Merge<
-  React.ComponentPropsWithRef<"input">,
+  Pick<
+    React.ComponentPropsWithRef<"input">,
+    | "ref"
+    | "inputMode"
+    | "name"
+    | "defaultValue"
+    | "value"
+    | "required"
+    | "minLength"
+    | "maxLength"
+    | "pattern"
+    | "autoComplete"
+    | "readOnly"
+    | "disabled"
+    | "className"
+    | "onChange"
+    | "onInvalid"
+    | "onSelect"
+  >,
   {
+    type?: "email" | "password" | "tel" | "text" | "url";
     size?: "sm" | "md" | "lg" | "xl";
     shape?: "rectangle" | "pill";
   }
 >;
 
 export const Input = React.forwardRef(function Input(
-  {
-    size = "md",
-    shape = "rectangle",
-    className,
-    style,
-    ...restProps
-  }: InputProps,
+  { size = "md", shape = "rectangle", className, ...restProps }: InputProps,
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {
   const fieldDescribedBy = useAtomValue(fieldDescribedByAtom);
@@ -80,7 +93,6 @@ export const Input = React.forwardRef(function Input(
         className,
       )}
       style={{
-        ...style,
         paddingInlineStart:
           typeof prefixWidth === "number" ? `${prefixWidth}px` : prefixWidth,
       }}
