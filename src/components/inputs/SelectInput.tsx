@@ -394,10 +394,12 @@ function SelectInputOptions<T = string>({
   listboxRef,
 }: SelectInputOptionsProps<T>) {
   const [query, setQuery] = React.useState("");
-  const needle = React.useMemo(
-    () => (query ? searchableString(query) : null),
-    [query],
-  );
+  const needle = React.useMemo(() => {
+    if (filterable) {
+      return query ? searchableString(query) : null;
+    }
+    return undefined;
+  }, [filterable, query]);
 
   const listboxContainerRef = React.useRef<HTMLDivElement>(null);
   React.useEffect(() => {
@@ -489,7 +491,7 @@ interface SelectInputItemViewProps<
   I extends SelectInputItem<T | undefined> = SelectInputItem<T | undefined>,
 > extends Required<Pick<SelectInputProps<T>, "renderValue">> {
   item: I;
-  needle: string | null;
+  needle: string | null | undefined;
 }
 
 function SelectInputItemView<T = string>({
@@ -549,7 +551,7 @@ function SelectInputGroupItemView<T = string>({
     <section
       role="group"
       aria-labelledby={headerId}
-      className={clsx(needle == null && "first:-mt-2")}
+      className={clsx(needle === null && "first:-mt-2")}
     >
       {needle == null ? (
         <header
