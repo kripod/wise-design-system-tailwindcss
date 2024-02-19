@@ -30,13 +30,16 @@ module.exports = defineConfig({
       filterRoot: "src",
     }),
     getBabelOutputPlugin({
-      presets: [["@babel/preset-env", { bugfixes: true }]],
+      presets: [
+        ["@babel/preset-env", { bugfixes: true }],
+        "@babel/preset-react", // Marks React methods as pure for tree shaking
+      ],
       plugins: [
+        ["babel-plugin-optimize-clsx", { functionNames: ["clsx"] }],
         [
           "@babel/plugin-transform-runtime",
           { version: pkg.dependencies["@babel/runtime"] },
         ],
-        ["babel-plugin-optimize-clsx", { functionNames: ["clsx"] }],
       ],
     }),
   ],
