@@ -492,6 +492,12 @@ function SelectInputOptions<T = string>({
             controllerRef.current.setAttribute("aria-activedescendant", value);
           } else {
             controllerRef.current.removeAttribute("aria-activedescendant");
+            if (query) {
+              // Ensure having an active option while filtering
+              controllerRef.current.dispatchEvent(
+                new KeyboardEvent("keydown", { key: "Home", bubbles: true }),
+              );
+            }
           }
         }
       }}
