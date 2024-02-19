@@ -2,6 +2,7 @@ import { CrossCircleFill } from "@transferwise/icons";
 import { clsx } from "clsx";
 import * as React from "react";
 
+import { __DEV__ } from "../../env";
 import { useControllableState } from "../../hooks/useControllableState";
 import { Chip } from "./_Chip";
 
@@ -55,14 +56,16 @@ export function CheckboxChip({
 
   return (
     <>
-      {/* Warn when mixing controlled and uncontrolled attributes */}
-      <input
-        type="checkbox"
-        defaultChecked={defaultChecked}
-        checked={controlledChecked}
-        readOnly
-        hidden
-      />
+      {__DEV__ ? (
+        /* Warn when mixing controlled and uncontrolled attributes */
+        <input
+          type="checkbox"
+          defaultChecked={defaultChecked}
+          checked={controlledChecked}
+          readOnly
+          hidden
+        />
+      ) : null}
 
       {name != null && checked ? (
         <input type="hidden" name={name} value={value} />

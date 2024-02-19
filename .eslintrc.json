@@ -70,6 +70,21 @@
           { "optionalDependencies": false }
         ]
       }
+    },
+    {
+      "files": ["src/env.ts"],
+      "rules": {
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "variable",
+            "format": ["UPPER_CASE"],
+            "leadingUnderscore": "allowDouble",
+            "trailingUnderscore": "allowDouble"
+          }
+        ],
+        "no-underscore-dangle": "off"
+      }
     }
   ]
 }
