@@ -81,3 +81,34 @@ export const WithPrefix: Story<{
 WithPrefix.args = {
   disabled: false,
 };
+
+export const WithSuffix: Story<{
+  disabled: boolean;
+  onClick: () => void;
+}> = function ({ disabled }) {
+  const [value, setValue] = React.useState("Text value");
+  return (
+    <Label>
+      Label
+      <InputGroup disabled={disabled}>
+        <Input
+          value={value}
+          onChange={(event) => setValue(event.currentTarget.value)}
+        />
+        <InputAddon interactive margin="sm">
+          <ActionButton
+            onClick={() => {
+              navigator.clipboard.writeText(value);
+            }}
+          >
+            Copy
+          </ActionButton>
+        </InputAddon>
+      </InputGroup>
+    </Label>
+  );
+};
+
+WithSuffix.args = {
+  disabled: false,
+};
