@@ -44,9 +44,16 @@ export function AnimatedLayout({ id, children }: AnimatedLayoutProps) {
   );
 
   const animation = React.useRef<Animation | null>(null);
+  const windowResizing = React.useRef(false);
   React.useEffect(() => {
+    let timeoutHandle: number | undefined;
     const handleResize = () => {
       animation.current?.finish();
+      windowResizing.current = true;
+      window.clearTimeout(timeoutHandle);
+      timeoutHandle = window.setTimeout(() => {
+        windowResizing.current = false;
+      }, 150);
     };
     window.addEventListener("resize", handleResize);
     return () => {
@@ -62,7 +69,12 @@ export function AnimatedLayout({ id, children }: AnimatedLayoutProps) {
       const first = boundingClientRectById.get(id);
       boundingClientRectById.set(id, last);
 
-      if (animation.current == null && !reduceMotion && first != null) {
+      if (
+        animation.current == null &&
+        !windowResizing.current &&
+        !reduceMotion &&
+        first != null
+      ) {
         const dX = first.left - last.left;
         const dY = first.top - last.top;
         const dW = first.width / last.width;
