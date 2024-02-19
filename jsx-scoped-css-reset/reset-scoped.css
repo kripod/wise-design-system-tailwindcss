@@ -37,7 +37,7 @@
 ._select,
 ._textarea,
 ._fieldset {
-  border: 0;
+  border-width: 0;
 }
 
 ._ol,
