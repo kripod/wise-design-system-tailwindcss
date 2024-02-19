@@ -1,5 +1,11 @@
 # @wise/design-system-tailwindcss
 
+## 0.1.3
+
+### Patch Changes
+
+- [#79](https://github.com/transferwise/design-system-web-tailwindcss/pull/79) [`9ce7a4c`](https://github.com/transferwise/design-system-web-tailwindcss/commit/9ce7a4c271946ff99695c5685a2f09b9ad8242fe) Thanks [@kripod-wise](https://github.com/kripod-wise)! - ci: fix SSH host key setup
+
 ## 0.1.2
 
 ### Patch Changes
