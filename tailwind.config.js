@@ -258,6 +258,19 @@ module.exports = {
       45: "0.45", // TODO: Remove if needed
       100: "1",
     },
+    outlineOffset: {
+      DEFAULT: "2px",
+    },
+    outlineWidth: {
+      0: "0px",
+      DEFAULT: "2px",
+    },
+    ringWidth: {
+      0: "0px",
+      1: "1px",
+      DEFAULT: "2px",
+      3: "3px",
+    },
     textUnderlineOffset: {
       auto: "auto",
       3: "3px",
@@ -268,12 +281,6 @@ module.exports = {
       }),
       outlineColor: ({ theme }) => ({
         DEFAULT: theme("colors.interactive.primary.DEFAULT"),
-      }),
-      outlineOffset: ({ theme }) => ({
-        DEFAULT: defaultTheme.outlineOffset[2],
-      }),
-      outlineWidth: ({ theme }) => ({
-        DEFAULT: defaultTheme.outlineWidth[2],
       }),
       transitionTimingFunction: {
         DEFAULT: defaultTheme.transitionTimingFunction.out,
