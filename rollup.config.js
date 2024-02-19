@@ -35,6 +35,7 @@ module.exports = defineConfig({
       compilerOptions: {
         outDir,
       },
+      noForceEmit: true,
     }),
     babel({
       extensions: [".js", ".jsx", ".mjs", ".ts", ".tsx"],
