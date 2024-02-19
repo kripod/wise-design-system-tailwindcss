@@ -45,6 +45,7 @@
     "eslint-plugin-react-etc": "2.0.0",
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-simple-import-sort": "8.0.0",
+    "focus-visible": "5.2.0",
     "husky": "8.0.1",
     "nano-staged": "0.8.0",
     "npm-run-all": "4.1.5",
@@ -60,7 +61,13 @@
   },
   "peerDependencies": {
     "@transferwise/icons": "^3.1",
+    "focus-visible": ">=5",
     "react": "16.14 - 18"
+  },
+  "peerDependenciesMeta": {
+    "focus-visible": {
+      "optional": true
+    }
   },
   "packageManager": "pnpm@7.13.2",
   "nano-staged": {
