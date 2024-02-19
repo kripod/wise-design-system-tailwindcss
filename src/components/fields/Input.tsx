@@ -25,6 +25,37 @@ const InputPaddingEndContext = React.createContext<InputPaddingEndContextType>([
   () => {},
 ]);
 
+export type InputGroupProps = {
+  initialPaddingStart?: InputPaddingStartContextType[0];
+  initialPaddingEnd?: InputPaddingEndContextType[0];
+  disabled?: boolean;
+  children?: React.ReactNode;
+};
+
+export function InputGroup({
+  initialPaddingStart,
+  initialPaddingEnd,
+  disabled = false,
+  children,
+}: InputGroupProps) {
+  return (
+    <InputPaddingStartContext.Provider
+      value={React.useState(initialPaddingStart)}
+    >
+      <InputPaddingEndContext.Provider
+        value={React.useState(initialPaddingEnd)}
+      >
+        <fieldset
+          disabled={disabled}
+          className="group/input inline-grid [&>*]:col-start-1 [&>*]:row-start-1"
+        >
+          {children}
+        </fieldset>
+      </InputPaddingEndContext.Provider>
+    </InputPaddingStartContext.Provider>
+  );
+}
+
 export type InputProps = Merge<
   Pick<
     React.ComponentPropsWithRef<"input">,
@@ -83,37 +114,6 @@ export const Input = React.forwardRef(function Input(
     />
   );
 });
-
-export type InputGroupProps = {
-  initialPaddingStart?: InputPaddingStartContextType[0];
-  initialPaddingEnd?: InputPaddingEndContextType[0];
-  disabled?: boolean;
-  children?: React.ReactNode;
-};
-
-export function InputGroup({
-  initialPaddingStart,
-  initialPaddingEnd,
-  disabled = false,
-  children,
-}: InputGroupProps) {
-  return (
-    <InputPaddingStartContext.Provider
-      value={React.useState(initialPaddingStart)}
-    >
-      <InputPaddingEndContext.Provider
-        value={React.useState(initialPaddingEnd)}
-      >
-        <fieldset
-          disabled={disabled}
-          className="group/input inline-grid [&>*]:col-start-1 [&>*]:row-start-1"
-        >
-          {children}
-        </fieldset>
-      </InputPaddingEndContext.Provider>
-    </InputPaddingStartContext.Provider>
-  );
-}
 
 export type InputAddonProps = {
   placement: "start" | "end";
