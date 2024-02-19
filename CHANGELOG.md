@@ -1,5 +1,23 @@
 # @wise/design-system-tailwindcss
 
+## 0.5.1
+
+### Patch Changes
+
+- [`b2184c8`](https://github.com/transferwise/design-system-web-tailwindcss/commit/b2184c8915e3f78cc34c9a14bbaf788bd6fb7391) Thanks [@kripod-wise](https://github.com/kripod-wise)! - docs: disable logical property transforms via PostCSS
+
+- [`60cf71c`](https://github.com/transferwise/design-system-web-tailwindcss/commit/60cf71c0e302047211de54dc8dacaccb6419a65b) Thanks [@kripod-wise](https://github.com/kripod-wise)! - refactor(Popover): increase min-width
+
+- [`67d8094`](https://github.com/transferwise/design-system-web-tailwindcss/commit/67d8094bb4b80bc3ec9b062aac850d9ee6491524) Thanks [@kripod-wise](https://github.com/kripod-wise)! - build(css): use newer plugin for rebasing URLs
+
+- [`19a18a8`](https://github.com/transferwise/design-system-web-tailwindcss/commit/19a18a82a3ac5e6d7ffeda46f91ad28c33c1a1f6) Thanks [@kripod-wise](https://github.com/kripod-wise)! - feat(Popover): multiple sizes
+
+- [`c4b9b5f`](https://github.com/transferwise/design-system-web-tailwindcss/commit/c4b9b5ff6091422101d0d69c4b4c0eca616e5b61) Thanks [@kripod-wise](https://github.com/kripod-wise)! - docs: guidance for rebasing asset URLs
+
+- [`ca23dd2`](https://github.com/transferwise/design-system-web-tailwindcss/commit/ca23dd28e34beb16283e3655202aa5de2fb311ab) Thanks [@kripod-wise](https://github.com/kripod-wise)! - fix(theming): safelist legacy classes
+
+- [`d5137ef`](https://github.com/transferwise/design-system-web-tailwindcss/commit/d5137ef1d320e652a1907d3c0ce747523c9b2c59) Thanks [@kripod-wise](https://github.com/kripod-wise)! - feat: customize active text selection background
+
 ## 0.5.0
 
 ### Minor Changes
