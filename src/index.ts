@@ -17,6 +17,6 @@ export * from "./components/formControls/TextAreaInput";
 // TODO: export * from "./components/formControls/TextInput";
 export type { TextInputProps } from "./components/formControls/TextInput";
 export { TextInput } from "./components/formControls/TextInput";
-export * from "./components/Instruction";
+export * from "./components/InstructionList";
 // TODO: export * from "./components/Modal";
 // TODO: export * from "./components/Tab";

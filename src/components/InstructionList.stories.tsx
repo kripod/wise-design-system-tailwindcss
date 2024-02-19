@@ -1,27 +1,8 @@
 import type { Story } from "@ladle/react";
 
-import { Instruction, InstructionList } from "./Instruction";
+import { Instruction, InstructionList } from "./InstructionList";
 
-export const Basic: Story<{
-  text: string;
-  sentiment: "negative" | "positive";
-}> = function ({ text, sentiment }) {
-  return <Instruction sentiment={sentiment}>{text}</Instruction>;
-};
-
-Basic.args = {
-  text: "Do an initial money transfer",
-};
-
-Basic.argTypes = {
-  sentiment: {
-    options: ["negative", "positive"],
-    defaultValue: "positive",
-    control: { type: "radio" },
-  },
-};
-
-export const List = function () {
+export const Basic = function () {
   return (
     <InstructionList>
       <Instruction sentiment="positive">
@@ -41,4 +22,23 @@ export const List = function () {
       <Instruction sentiment="negative">Use bad exchange rate</Instruction>
     </InstructionList>
   );
+};
+
+export const ListItem: Story<{
+  text: string;
+  sentiment: "negative" | "positive";
+}> = function ({ text, sentiment }) {
+  return <Instruction sentiment={sentiment}>{text}</Instruction>;
+};
+
+ListItem.args = {
+  text: "Do an initial money transfer",
+};
+
+ListItem.argTypes = {
+  sentiment: {
+    options: ["negative", "positive"],
+    defaultValue: "positive",
+    control: { type: "radio" },
+  },
 };

@@ -1,6 +1,20 @@
 import { CheckCircleFill, CrossCircleFill } from "@transferwise/icons";
 import * as React from "react";
 
+export type InstructionListProps = {
+  children?: React.ReactNode;
+};
+
+export function InstructionList({ children }: InstructionListProps) {
+  return (
+    <ul className="space-y-4">
+      {React.Children.map(children, (child) => (
+        <li>{child}</li>
+      ))}
+    </ul>
+  );
+}
+
 export type InstructionProps = {
   sentiment: "negative" | "positive";
   children?: React.ReactNode;
@@ -24,19 +38,5 @@ export function Instruction({ sentiment, children }: InstructionProps) {
       <Icon />
       <div className="flex-1">{children}</div>
     </div>
-  );
-}
-
-export type InstructionListProps = {
-  children?: React.ReactNode;
-};
-
-export function InstructionList({ children }: InstructionListProps) {
-  return (
-    <ul className="space-y-4">
-      {React.Children.map(children, (child) => (
-        <li>{child}</li>
-      ))}
-    </ul>
   );
 }
