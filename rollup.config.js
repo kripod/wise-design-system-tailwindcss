@@ -1,24 +1,25 @@
 const { babel } = require("@rollup/plugin-babel");
-const typescript = require("@rollup/plugin-typescript");
+const { default: typescript } = require("@rollup/plugin-typescript");
 const { defineConfig } = require("rollup");
 
 const pkg = require("./package.json");
 
-const outputDir = "dist";
+const rootDir = "src";
+const outDir = "dist";
 
 module.exports = defineConfig({
   input: {
-    index: "src/index.ts",
+    index: `${rootDir}/index.ts`,
   },
   output: [
     {
       format: "es",
-      dir: outputDir,
+      dir: outDir,
       entryFileNames: "[name].mjs",
     },
     {
       format: "cjs",
-      dir: outputDir,
+      dir: outDir,
       interop: "esModule",
     },
   ],
@@ -29,10 +30,10 @@ module.exports = defineConfig({
   plugins: [
     typescript({
       exclude: ["**/*.stories.*"],
-      filterRoot: "src",
+      filterRoot: rootDir,
       outputToFilesystem: true, // Let `tsconfig.tsbuildinfo` be in the root
       compilerOptions: {
-        declarationDir: outputDir,
+        declarationDir: outDir,
       },
     }),
     babel({

@@ -8,7 +8,8 @@ const external = [
 module.exports = {
   plugins: {
     "postcss-import": {
-      filter: (url) => !external.some((name) => name.test(url)),
+      filter: (/** @type {string} */ url) =>
+        !external.some((name) => name.test(url)),
     },
     "tailwindcss/nesting": "postcss-nesting",
     tailwindcss: {},

@@ -73,9 +73,12 @@ devDependencies:
   '@transferwise/icons':
     specifier: 3.6.0
     version: 3.6.0(react@16.14.0)
-  '@tsconfig/next':
-    specifier: 1.0.5
-    version: 1.0.5
+  '@tsconfig/esm':
+    specifier: 1.0.3
+    version: 1.0.3
+  '@tsconfig/recommended':
+    specifier: 1.0.2
+    version: 1.0.2
   '@types/babel__core':
     specifier: 7.20.1
     version: 7.20.1
@@ -2822,8 +2825,12 @@ packages:
       react: 16.14.0
     dev: true
 
-  /@tsconfig/next@1.0.5:
-    resolution: {integrity: sha512-ZpAlWqSGE3ZWFqKmI3FiQEu8WcBF3uii1z1ovedMcALflsRoJnExp3YzWQ/fU7lzGmYtfX1CWFpf1Gl8aEC6GQ==}
+  /@tsconfig/esm@1.0.3:
+    resolution: {integrity: sha512-Gp56rIc3R8ab032nXMUitmc7YIb4nAi8DQ6Qt47tuL0Ssn9LIOm+o2FQmqPu3jX4z0TsqgzWwkmVygxcq+yHYg==}
+    dev: true
+
+  /@tsconfig/recommended@1.0.2:
+    resolution: {integrity: sha512-dbHBtbWBOjq0/otpopAE02NT2Cm05Qe2JsEKeCf/wjSYbI2hz8nCqnpnOJWHATgjDz4fd3dchs3Wy1gQGjfN6w==}
     dev: true
 
   /@types/acorn@4.0.6:

@@ -1,11 +1,16 @@
 {
-  "extends": "@tsconfig/next/tsconfig.json",
+  "extends": [
+    "@tsconfig/recommended/tsconfig.json",
+    "@tsconfig/esm/tsconfig.json"
+  ],
   "compilerOptions": {
+    "noEmit": true,
     "target": "ESNext",
-    "strict": true,
-    "verbatimModuleSyntax": true,
+    "moduleResolution": "bundler",
+    "jsx": "preserve",
     "declaration": true,
-    "declarationMap": true
+    "declarationMap": true,
+    "incremental": true
   },
   "include": ["**/*.js", "**/*.jsx", "**/*.mjs", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules/", "build/", "dist/"]
