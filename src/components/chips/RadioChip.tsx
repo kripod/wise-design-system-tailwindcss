@@ -1,4 +1,5 @@
 import { RadioGroup as RadioGroupBase } from "@headlessui/react";
+import { clsx } from "clsx";
 
 import { Chip } from "./_Chip";
 
@@ -8,6 +9,7 @@ export type RadioChipGroupProps<T = string> = {
   selectedValue?: T;
   disabled?: boolean;
   compareValues?: (keyof T & string) | ((a: T, b: T) => boolean);
+  className?: string;
   children?: React.ReactNode;
   onChange?: (value: T) => void;
 };
@@ -18,6 +20,7 @@ export function RadioChipGroup<T = string>({
   selectedValue,
   disabled,
   compareValues,
+  className,
   children,
   onChange,
 }: RadioChipGroupProps<T>) {
@@ -28,7 +31,7 @@ export function RadioChipGroup<T = string>({
       value={selectedValue}
       disabled={disabled}
       by={compareValues}
-      className="flex flex-wrap gap-2"
+      className={clsx("flex flex-wrap gap-2", className)}
       onChange={onChange}
     >
       {children}

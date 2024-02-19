@@ -1,4 +1,5 @@
 import { CrossCircleFill } from "@transferwise/icons";
+import { clsx } from "clsx";
 import * as React from "react";
 
 import { __DEV__ } from "../../env";
@@ -7,11 +8,17 @@ import { Offscreen } from "../Offscreen";
 import { Chip } from "./_Chip";
 
 export type CheckboxChipGroupProps = {
+  className?: string;
   children?: React.ReactNode;
 };
 
-export function CheckboxChipGroup({ children }: CheckboxChipGroupProps) {
-  return <div className="flex flex-wrap gap-2">{children}</div>;
+export function CheckboxChipGroup({
+  className,
+  children,
+}: CheckboxChipGroupProps) {
+  return (
+    <div className={clsx("flex flex-wrap gap-2", className)}>{children}</div>
+  );
 }
 
 export type CheckboxChipProps = {

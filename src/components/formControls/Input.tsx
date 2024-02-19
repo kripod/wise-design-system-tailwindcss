@@ -31,6 +31,7 @@ export type InputGroupProps = {
   initialPaddingStart?: InputPaddingStartContextType[0];
   initialPaddingEnd?: InputPaddingEndContextType[0];
   disabled?: boolean;
+  className?: string;
   children?: React.ReactNode;
 };
 
@@ -38,6 +39,7 @@ export function InputGroup({
   initialPaddingStart,
   initialPaddingEnd,
   disabled,
+  className,
   children,
 }: InputGroupProps) {
   const [paddingStart, setPaddingStart] = React.useState(initialPaddingStart);
@@ -55,7 +57,10 @@ export function InputGroup({
       >
         <fieldset
           disabled={disabled}
-          className="group/input inline-grid [&>*]:col-start-1 [&>*]:row-start-1"
+          className={clsx(
+            "group/input inline-grid [&>*]:col-start-1 [&>*]:row-start-1",
+            className,
+          )}
         >
           {children}
         </fieldset>
@@ -79,6 +84,7 @@ export type InputProps = Pick<
   | "aria-invalid"
   | "readOnly"
   | "disabled"
+  | "className"
   | "onChange"
   | "onInvalid"
   | "onSelect"
@@ -89,7 +95,7 @@ export type InputProps = Pick<
 };
 
 export const Input = React.forwardRef(function Input(
-  { size = "md", shape = "rectangle", ...restProps }: InputProps,
+  { size = "md", shape = "rectangle", className, ...restProps }: InputProps,
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {
   const formControlAriaAttributes = useFormControlAriaAttributes();
@@ -108,6 +114,7 @@ export const Input = React.forwardRef(function Input(
           rounded: shape === "rectangle",
           "rounded-full": shape === "pill",
         },
+        className,
       )}
       style={{
         paddingInlineStart: inputPaddingStart,
