@@ -20,10 +20,15 @@
   "settings": {
     "jsx-a11y": {
       "components": {
+        "ActionButton": "button",
+        "CircularButton": "button",
         "Input": "input",
+        "Label": "label",
         "Link": "a",
         "PrimaryButton": "button",
-        "SecondaryButton": "button"
+        "SecondaryButton": "button",
+        "TertiaryButton": "button",
+        "TextArea": "textarea"
       }
     }
   },
