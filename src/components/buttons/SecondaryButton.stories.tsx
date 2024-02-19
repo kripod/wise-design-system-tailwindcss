@@ -6,15 +6,13 @@ export const Basic: Story<{
   text: string;
   size: "sm" | "md";
   sentiment: "neutral" | "negative";
-  loading: boolean;
   disabled: boolean;
   onClick: () => void;
-}> = function ({ text, size, sentiment, loading, disabled, onClick }) {
+}> = function ({ text, size, sentiment, disabled, onClick }) {
   return (
     <SecondaryButton
       size={size}
       sentiment={sentiment}
-      loading={loading}
       disabled={disabled}
       onClick={onClick}
     >
@@ -25,7 +23,6 @@ export const Basic: Story<{
 
 Basic.args = {
   text: "Click me",
-  loading: false,
   disabled: false,
 };
 

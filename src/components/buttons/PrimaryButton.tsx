@@ -12,7 +12,6 @@ export const PrimaryButton = React.forwardRef(function PrimaryButton(
   {
     size = "md",
     sentiment = "neutral",
-    loading = false,
     disabled = false,
     className,
     children,
@@ -24,7 +23,6 @@ export const PrimaryButton = React.forwardRef(function PrimaryButton(
     <Button
       ref={ref}
       size={size}
-      loading={loading}
       disabled={disabled}
       className={clsx(
         "rounded-full px-4",

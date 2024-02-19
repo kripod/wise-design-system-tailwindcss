@@ -10,7 +10,6 @@ export type TertiaryButtonProps = ButtonPropsBase & {
 export const TertiaryButton = React.forwardRef(function TertiaryButton(
   {
     size = "md",
-    loading = false,
     disabled = false,
     className,
     children,
@@ -22,7 +21,6 @@ export const TertiaryButton = React.forwardRef(function TertiaryButton(
     <Button
       ref={ref}
       size={size}
-      loading={loading}
       disabled={disabled}
       className={clsx(
         "rounded-full px-4 text-interactive-primary underline underline-offset-3 hover:text-interactive-primary-hover active:bg-background-screen-active active:text-interactive-primary-active",
