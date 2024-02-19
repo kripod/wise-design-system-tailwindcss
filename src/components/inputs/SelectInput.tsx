@@ -5,6 +5,7 @@ import { clsx } from "clsx";
 import mergeProps from "merge-props";
 import * as React from "react";
 import { mergeRefs } from "react-merge-refs";
+import type { Merge } from "ts-essentials";
 
 import { useEffectEvent } from "../../hooks/useEffectEvent";
 import { useScreenSize } from "../../hooks/useScreenSize";
@@ -323,14 +324,14 @@ export function SelectInput<T = string>({
   );
 }
 
+type SelectInputTriggerButtonElementType = "button" | React.ComponentType;
+
 export type SelectInputTriggerButtonProps<
-  T extends React.ComponentType | "button" = "button",
-> = {
-  as?: T;
-} & React.ComponentPropsWithoutRef<T>;
+  T extends SelectInputTriggerButtonElementType = "button",
+> = Merge<React.ComponentPropsWithoutRef<T>, { as?: T }>;
 
 export function SelectInputTriggerButton<
-  T extends React.ComponentType | "button" = "button",
+  T extends SelectInputTriggerButtonElementType = "button",
 >({ as = "button" as T, ...restProps }: SelectInputTriggerButtonProps<T>) {
   const { ref, onClick, ...interactionProps } = React.useContext(
     SelectInputTriggerButtonPropsContext,
