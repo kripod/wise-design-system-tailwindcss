@@ -4,8 +4,10 @@ import { useConstant } from "../../hooks/useConstant";
 import { useReducedMotionPreference } from "../../hooks/useReducedMotionPreference";
 import { useResizeObserver } from "../../hooks/useResizeObserver";
 
+type LayoutId = string;
+
 const AnimatedLayoutGroupContext = React.createContext(
-  new Map<string, DOMRect>(),
+  new Map<LayoutId, DOMRect>(),
 );
 
 export type AnimatedLayoutGroupProps = {
@@ -15,7 +17,7 @@ export type AnimatedLayoutGroupProps = {
 export function AnimatedLayoutGroup({ children }: AnimatedLayoutGroupProps) {
   return (
     <AnimatedLayoutGroupContext.Provider
-      value={useConstant(() => new Map<string, DOMRect>())}
+      value={useConstant(() => new Map<LayoutId, DOMRect>())}
     >
       {children}
     </AnimatedLayoutGroupContext.Provider>
@@ -23,7 +25,7 @@ export function AnimatedLayoutGroup({ children }: AnimatedLayoutGroupProps) {
 }
 
 export type AnimatedLayoutProps = {
-  id: string;
+  id: LayoutId;
   children: ({ ref }: { ref: React.RefObject<HTMLElement> }) => React.ReactNode;
 };
 
