@@ -43,6 +43,10 @@
     "@typescript-eslint/method-signature-style": "warn", // Force type safety
     "import/no-default-export": "warn", // Default exports are confusing
     "import/prefer-default-export": "off",
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      { "assert": "either" } // Allow nesting
+    ],
     "react/prop-types": "off", // TypeScript makes this safe
     "react/require-default-props": "off" // React `defaultProps` are deprecated
   },

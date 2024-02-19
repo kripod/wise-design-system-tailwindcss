@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ActionButton } from "@/components/ActionButton";
 import { Alert } from "@/components/Alert";
 import { Dialog } from "@/components/Dialog";
+import { Input } from "@/components/Input";
 
 export default function Page() {
   const [hideAlert, setHideAlert] = useState(false);
@@ -28,6 +29,8 @@ export default function Page() {
           the holidays.
         </Alert>
       ) : null}
+
+      <Input label="Label" />
 
       <Dialog
         title="Change this user’s role?"
