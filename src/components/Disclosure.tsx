@@ -25,10 +25,7 @@ export function Disclosure({
     >
       <DisclosureBase.Button
         as={Button}
-        className="relative flex gap-x-4 text-lg font-semibold text-content-primary after:absolute after:inset-0 after:-m-4"
-        style={{
-          textAlign: "start", // TODO: Replace with `text-start`
-        }}
+        className="relative flex gap-x-4 text-start text-lg font-semibold text-content-primary after:absolute after:inset-0 after:-m-4"
       >
         {({ open }) => (
           <>
