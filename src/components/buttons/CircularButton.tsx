@@ -24,6 +24,7 @@ export const CircularButton = React.forwardRef(function CircularButton(
   {
     icon,
     disabled = false,
+    style,
     className,
     children,
     ...restProps
@@ -32,8 +33,13 @@ export const CircularButton = React.forwardRef(function CircularButton(
 ) {
   const labelId = useId(); // TODO: Replace with the built-in hook in React 18
   return (
-    /* TODO: Make outer element a button and the inner one just a span */
-    <span className="relative inline-flex flex-col items-center gap-y-2">
+    <span
+      className={clsx(
+        "relative inline-flex flex-col items-center gap-y-2",
+        className,
+      )}
+      style={style}
+    >
       <Button
         ref={ref}
         aria-labelledby={labelId}
@@ -44,7 +50,6 @@ export const CircularButton = React.forwardRef(function CircularButton(
           "peer bg-interactive-accent px-4 text-interactive-control after:absolute after:inset-0",
           !disabled &&
             "hover:bg-interactive-accent-hover active:bg-interactive-accent-active",
-          className,
         )}
         {...restProps}
       >
