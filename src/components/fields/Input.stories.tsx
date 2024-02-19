@@ -88,6 +88,7 @@ export const WithSuffix: Story<{
   disabled: boolean;
   onClick: () => void;
 }> = function ({ disabled }) {
+  const ref = React.useRef<HTMLInputElement>(null);
   const [value, setValue] = React.useState("Text value");
 
   return (
@@ -95,6 +96,7 @@ export const WithSuffix: Story<{
       Label
       <InputGroup initialPaddingEnd="4.75rem" disabled={disabled}>
         <Input
+          ref={ref}
           value={value}
           onChange={(event) => setValue(event.currentTarget.value)}
         />
@@ -102,6 +104,10 @@ export const WithSuffix: Story<{
           <ActionButton
             onClick={() => {
               navigator.clipboard.writeText(value);
+              if (ref.current != null) {
+                ref.current.focus({ preventScroll: true });
+                ref.current.select();
+              }
             }}
           >
             Copy
