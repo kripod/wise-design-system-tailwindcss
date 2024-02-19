@@ -7,29 +7,16 @@ import {
 } from "@transferwise/icons";
 import { clsx } from "clsx";
 
-export type StatusIconProps = {
+type StatusIconPropsBase = {
   size: 16 | 40 | 48;
-  sentiment: "neutral" | "negative" | "positive" | "warning";
   className?: string;
 };
 
-const IconBySentiment = {
-  neutral: ({ size }) => <Info size={size} className="text-contrast-overlay" />,
-  negative: ({ size }) => (
-    <Cross size={size} className="text-contrast-overlay" />
-  ),
-  positive: ({ size }) => (
-    <Check size={size} className="text-contrast-overlay" />
-  ),
-  warning: ({ size }) => <Alert size={size} className="text-content-primary" />,
-} satisfies {
-  [key in NonNullable<StatusIconProps["sentiment"]>]: React.ComponentType<{
-    size: NonNullable<InfoIconProps["size"]>;
-  }>;
+type StatusIconBaseProps = StatusIconPropsBase & {
+  Icon: React.ComponentType<Pick<InfoIconProps, "size">>;
 };
 
-export function StatusIcon({ size, sentiment, className }: StatusIconProps) {
-  const Icon = IconBySentiment[sentiment];
+function StatusIconBase({ size, className, Icon }: StatusIconBaseProps) {
   return (
     <span
       className={clsx(
@@ -39,16 +26,62 @@ export function StatusIcon({ size, sentiment, className }: StatusIconProps) {
           "h-10 w-10": size === 40,
           "h-12 w-12": size === 48,
         },
-        {
-          "bg-content-secondary": sentiment === "neutral",
-          "bg-sentiment-negative": sentiment === "negative",
-          "bg-sentiment-positive": sentiment === "positive",
-          "bg-sentiment-warning": sentiment === "warning",
-        },
         className,
       )}
     >
       <Icon size={size === 16 ? 16 : 32} />
     </span>
+  );
+}
+
+export type StatusIconProps = StatusIconPropsBase & {
+  sentiment: "neutral" | "negative" | "positive" | "warning";
+};
+
+const IconBySentiment = {
+  neutral: Info,
+  negative: Cross,
+  positive: Check,
+  warning: Alert,
+} satisfies {
+  [key in StatusIconProps["sentiment"]]: StatusIconBaseProps["Icon"];
+};
+
+export function StatusIcon({
+  sentiment,
+  className,
+  ...restProps
+}: StatusIconProps) {
+  return (
+    <StatusIconBase
+      Icon={IconBySentiment[sentiment]}
+      className={clsx(
+        {
+          "bg-content-secondary text-contrast-overlay": sentiment === "neutral",
+          "bg-sentiment-negative text-contrast-overlay":
+            sentiment === "negative",
+          "bg-sentiment-positive text-contrast-overlay":
+            sentiment === "positive",
+          "bg-sentiment-warning text-content-primary": sentiment === "warning",
+        },
+        className,
+      )}
+      {...restProps}
+    />
+  );
+}
+
+export type CriticalBannerStatusIconProps = StatusIconPropsBase;
+
+export function CriticalBannerStatusIcon({
+  className,
+  ...restProps
+}: CriticalBannerStatusIconProps) {
+  return (
+    <StatusIconBase
+      Icon={Alert}
+      className={clsx("bg-contrast-overlay text-sentiment-negative", className)}
+      {...restProps}
+    />
   );
 }
