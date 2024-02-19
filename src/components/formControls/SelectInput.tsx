@@ -55,7 +55,7 @@ export function SelectInput<T = string>({
   const { refs, floatingStyles } = useFloating<HTMLButtonElement>({
     middleware: [
       offset(8),
-      flip({ padding: 16 }),
+      flip({ padding: 16, crossAxis: false }),
       size({
         padding: 16,
         apply: ({ rects, availableHeight }) => {
@@ -80,47 +80,56 @@ export function SelectInput<T = string>({
       disabled={disabled}
       onChange={onChange}
     >
-      <ListboxBase.Button
-        ref={refs.setReference}
-        className={clsx(
-          getResetClassName("button"),
-          className,
-          formControlClassNameBase({ size: "md" }),
-          "inline-flex items-center gap-x-2 rounded text-start",
-        )}
-        {...formControlAriaAttributes}
-        {...restProps}
-      >
-        {({ value }: { value: T | typeof placeholderValue }) => (
-          <>
-            <span className="flex-1 truncate">
-              {value === placeholderValue
-                ? placeholder && (
-                    <span className="text-content-tertiary">{placeholder}</span>
-                  )
-                : renderValue(value)}
-            </span>
-            <ChevronDown size={16} />
-          </>
-        )}
-      </ListboxBase.Button>
+      {({ open }) => (
+        <>
+          <ListboxBase.Button
+            ref={refs.setReference}
+            className={clsx(
+              getResetClassName("button"),
+              className,
+              formControlClassNameBase({ size: "md" }),
+              "inline-flex items-center gap-x-2 rounded text-start",
+            )}
+            {...formControlAriaAttributes}
+            {...restProps}
+          >
+            {({ value }: { value: T | typeof placeholderValue }) => (
+              <>
+                <span className="flex-1 truncate">
+                  {value === placeholderValue
+                    ? placeholder && (
+                        <span className="text-content-tertiary">
+                          {placeholder}
+                        </span>
+                      )
+                    : renderValue(value)}
+                </span>
+                <ChevronDown size={16} />
+              </>
+            )}
+          </ListboxBase.Button>
 
-      <FloatingPortal>
-        <ListboxBase.Options
-          ref={refs.setFloating}
-          className={clsx(
-            getResetClassName("ul"),
-            "z-10 overflow-auto rounded bg-background-elevated p-2 shadow-xl focus:outline-none",
-          )}
-          style={{
-            ...floatingStyles,
-            maxHeight,
-            width,
-          }}
-        >
-          {children}
-        </ListboxBase.Options>
-      </FloatingPortal>
+          {open ? (
+            <FloatingPortal>
+              {/* TODO: Scroll lock for document */}
+              <ListboxBase.Options
+                ref={refs.setFloating}
+                className={clsx(
+                  getResetClassName("ul"),
+                  "z-10 overflow-auto rounded bg-background-elevated p-2 shadow-xl focus:outline-none",
+                )}
+                style={{
+                  ...floatingStyles,
+                  maxHeight,
+                  width,
+                }}
+              >
+                {children}
+              </ListboxBase.Options>
+            </FloatingPortal>
+          ) : null}
+        </>
+      )}
     </ListboxBase>
   );
 }
