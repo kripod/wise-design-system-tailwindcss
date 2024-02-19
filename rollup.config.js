@@ -4,6 +4,8 @@ const { defineConfig } = require("rollup");
 
 const pkg = require("./package.json");
 
+const outputDir = "dist";
+
 module.exports = defineConfig({
   input: {
     index: "src/index.ts",
@@ -11,12 +13,12 @@ module.exports = defineConfig({
   output: [
     {
       format: "es",
-      dir: "dist",
+      dir: outputDir,
       entryFileNames: "[name].mjs",
     },
     {
       format: "cjs",
-      dir: "dist",
+      dir: outputDir,
       interop: "esModule",
     },
   ],
@@ -29,6 +31,9 @@ module.exports = defineConfig({
       exclude: ["**/*.stories.*"],
       filterRoot: "src",
       outputToFilesystem: true, // Let `tsconfig.tsbuildinfo` be in the root
+      compilerOptions: {
+        declarationDir: outputDir,
+      },
     }),
     babel({
       extensions: [".js", ".jsx", ".mjs", ".ts", ".tsx"],
