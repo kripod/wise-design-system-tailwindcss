@@ -1,10 +1,11 @@
 import {
   autoUpdate,
   flip,
+  FloatingPortal,
   offset,
   size,
   useFloating,
-} from "@floating-ui/react-dom";
+} from "@floating-ui/react";
 import { Listbox as ListboxBase } from "@headlessui/react";
 import { ChevronDown } from "@transferwise/icons";
 import { clsx } from "clsx";
@@ -64,38 +65,40 @@ export function Listbox() {
         <ChevronDown />
       </ListboxBase.Button>
 
-      <ListboxBase.Options
-        ref={refs.setFloating}
-        className="left-0 top-0 z-10 overflow-auto rounded bg-background-elevated p-2 shadow-xl focus:outline-none"
-        style={{
-          position: strategy,
-          maxHeight,
-          width,
-          transform: `translate(${roundByDPR(x ?? 0)}px, ${roundByDPR(
-            y ?? 0,
-          )}px)`,
-        }}
-      >
-        {people.map((person) => (
-          <ListboxBase.Option
-            key={person.id}
-            value={person}
-            disabled={person.unavailable}
-            className={({ active, selected, disabled }) =>
-              clsx(
-                "rounded px-4 py-3 text-base text-content-primary",
-                disabled && "opacity-45",
-                selected
-                  ? "bg-background-screen-active"
-                  : active && "bg-background-screen-hover",
-                active && "-outline-offset outline",
-              )
-            }
-          >
-            {person.name}
-          </ListboxBase.Option>
-        ))}
-      </ListboxBase.Options>
+      <FloatingPortal>
+        <ListboxBase.Options
+          ref={refs.setFloating}
+          className="left-0 top-0 z-10 overflow-auto rounded bg-background-elevated p-2 shadow-xl focus:outline-none"
+          style={{
+            position: strategy,
+            maxHeight,
+            width,
+            transform: `translate(${roundByDPR(x ?? 0)}px, ${roundByDPR(
+              y ?? 0,
+            )}px)`,
+          }}
+        >
+          {people.map((person) => (
+            <ListboxBase.Option
+              key={person.id}
+              value={person}
+              disabled={person.unavailable}
+              className={({ active, selected, disabled }) =>
+                clsx(
+                  "rounded px-4 py-3 text-base text-content-primary",
+                  disabled && "opacity-45",
+                  selected
+                    ? "bg-background-screen-active"
+                    : active && "bg-background-screen-hover",
+                  active && "-outline-offset outline",
+                )
+              }
+            >
+              {person.name}
+            </ListboxBase.Option>
+          ))}
+        </ListboxBase.Options>
+      </FloatingPortal>
     </ListboxBase>
   );
 }
