@@ -32,7 +32,11 @@ export const List = function () {
         Convince them to use this amazing product
       </Instruction>
       <Instruction sentiment="negative">
-        Paying extra <a href="#_">hidden fees</a> for transfers
+        Paying extra{" "}
+        <a href="#_" className="font-semibold underline underline-offset-3">
+          hidden fees
+        </a>{" "}
+        for transfers
       </Instruction>
       <Instruction sentiment="negative">Use bad exchange rate</Instruction>
     </InstructionList>
