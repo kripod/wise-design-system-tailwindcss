@@ -43,7 +43,12 @@ export function Dialog({
         >
           <DialogBase.Title className="flex items-start justify-between p-6 text-lg font-semibold">
             <span>{title}</span>
-            <CloseButton size="lg" />
+            <CloseButton
+              size="lg"
+              onClick={() => {
+                onClose();
+              }}
+            />
           </DialogBase.Title>
 
           <DialogBase.Description className="p-6">
