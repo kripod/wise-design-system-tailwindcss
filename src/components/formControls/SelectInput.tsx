@@ -32,6 +32,7 @@ export interface SelectInputProps<T = string> {
   className?: string;
   children?: React.ReactNode;
   onChange?: (value: T) => void;
+  // TODO: onClear?: () => void;
 }
 
 export function SelectInput<T = string>({
