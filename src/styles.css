@@ -2,8 +2,8 @@
 @import "tailwindcss/base";
 
 @import "../jsx-scoped-css-reset/reset-scoped.css";
-@import "tailwindcss/components";
 @import "@transferwise/icons/lib/styles/main.min.css";
+@import "tailwindcss/components";
 
 @import "tailwindcss/utilities";
 
