@@ -519,7 +519,7 @@ function SelectInputOptions<T = string>({
           role="listbox"
           aria-orientation="vertical"
           tabIndex={0}
-          className={clsx("focus:outline-none", "p-2")}
+          className="p-2 focus:outline-none"
         >
           {(needle != null ? dedupeSelectInputItems(items) : items).map(
             (item, index) => (
