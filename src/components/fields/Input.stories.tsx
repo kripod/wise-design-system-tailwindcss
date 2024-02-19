@@ -66,7 +66,7 @@ export const WithPrefix: Story<{
     <Label>
       Label
       <InputGroup initialPaddingStart="3rem" disabled={disabled}>
-        <InputAddon>
+        <InputAddon placement="start">
           <Search size={24} />
         </InputAddon>
         <Input
@@ -95,7 +95,7 @@ export const WithSuffix: Story<{
           value={value}
           onChange={(event) => setValue(event.currentTarget.value)}
         />
-        <InputAddon interactive margin="sm">
+        <InputAddon placement="end" interactive margin="sm">
           <ActionButton
             onClick={() => {
               navigator.clipboard.writeText(value);

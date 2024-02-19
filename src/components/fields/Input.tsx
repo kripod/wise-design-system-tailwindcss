@@ -108,21 +108,22 @@ export function InputGroup({
 }
 
 export type InputAddonProps = {
+  placement: "start" | "end";
   interactive?: boolean;
   margin?: "none" | "sm" | "md";
   children?: React.ReactNode;
 };
 
 export function InputAddon({
+  placement,
   interactive = false,
   margin = "md",
   children,
 }: InputAddonProps) {
   const setInputPaddingStart = useSetAtom(inputPaddingStartAtom);
   const setInputPaddingEnd = useSetAtom(inputPaddingEndAtom);
-  const setInputPadding = !interactive
-    ? setInputPaddingStart
-    : setInputPaddingEnd;
+  const setInputPadding =
+    placement === "start" ? setInputPaddingStart : setInputPaddingEnd;
 
   const ref = React.useRef<HTMLSpanElement>(null);
   useResizeObserver(ref, (entry) => {
@@ -138,12 +139,17 @@ export function InputAddon({
       ref={ref}
       className={clsx(
         "pointer-events-none z-10 self-center text-interactive-secondary transition group-disabled/input:mix-blend-luminosity group-[:has(>input:focus:enabled:enabled)]/input:text-interactive-primary group-[:has(>input:hover:enabled)]/input:text-interactive-secondary-hover",
-        !interactive
-          ? "justify-self-start"
-          : "justify-self-end [&>*]:pointer-events-auto",
+        {
+          "justify-self-start": placement === "start",
+          "justify-self-end": placement === "end",
+        },
+        interactive && "[&>*]:pointer-events-auto",
         {
           "px-2": margin === "sm",
-          [clsx("px-4", !interactive ? "pe-2" : "ps-2")]: margin === "md",
+          [clsx("px-4", {
+            "pe-2": placement === "start",
+            "ps-2": placement === "end",
+          })]: margin === "md",
         },
       )}
     >
