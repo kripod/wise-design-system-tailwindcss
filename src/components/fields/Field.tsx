@@ -1,3 +1,4 @@
+import { AlertCircle } from "@transferwise/icons";
 import { clsx } from "clsx";
 import * as React from "react";
 
@@ -24,11 +25,20 @@ export function Field({ description, children }: FieldProps) {
         {description != null ? (
           <span
             id={descriptionId}
-            className={clsx(
-              'text-sm text-content-secondary transition-colors group-[:has([aria-invalid="true"])]/field:text-sentiment-negative',
-            )}
+            className={
+              'inline-flex gap-x-1 text-sm text-content-secondary transition-colors group-[:has([aria-invalid="true"])]/field:text-sentiment-negative'
+            }
           >
-            {description}
+            <span
+              className={
+                'hidden items-center self-start group-[:has([aria-invalid="true"])]/field:inline-flex'
+              }
+            >
+              {/* TODO: Use `h-1lh` on container and remove zero-width space */}
+              &#8203; {/* Mimics `height: 1lh` on container */}
+              <AlertCircle />
+            </span>
+            <span>{description}</span>
           </span>
         ) : null}
       </span>
