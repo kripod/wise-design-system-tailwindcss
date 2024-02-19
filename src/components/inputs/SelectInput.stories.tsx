@@ -236,7 +236,9 @@ export const Currencies: Story<{
           {
             type: "group",
             label: "Popular currencies",
-            options: allCurrencies.map((currency) => currencyOption(currency)),
+            options: popularCurrencies.map((currency) =>
+              currencyOption(currency),
+            ),
           },
           {
             type: "group",
