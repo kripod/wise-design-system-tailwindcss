@@ -12,7 +12,7 @@ export const ActionButton = React.forwardRef<
       ref={ref}
       type="button"
       className={clsx(
-        "h-8 rounded-full bg-interactive-accent px-3 text-sm font-semibold text-interactive-primary transition-colors hover:bg-interactive-accent-hover active:bg-interactive-accent-active",
+        "h-8 rounded-full bg-interactive-accent px-3 text-sm font-semibold text-interactive-primary transition hover:bg-interactive-accent-hover focus:outline-none focus-visible:ring active:bg-interactive-accent-active",
         className,
       )}
       {...restProps}
