@@ -29,8 +29,10 @@ export const Button = React.forwardRef(function Button(
     size = "auto",
     equilateral = false,
     loading = false,
-    "aria-disabled": ariaDisabledRaw = false,
-    disabled = parseBooleanish(ariaDisabledRaw),
+    "aria-disabled": ariaDisabledRaw,
+    disabled = ariaDisabledRaw != null
+      ? parseBooleanish(ariaDisabledRaw)
+      : false,
     className,
     children,
     ...restProps
