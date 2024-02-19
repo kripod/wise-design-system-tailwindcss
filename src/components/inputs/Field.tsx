@@ -52,7 +52,7 @@ export function Field({ label, hint, error, className, children }: FieldProps) {
 
   return (
     <InputDescribedByProvider value={description ? descriptionId : undefined}>
-      <InputInvalidProvider value={Boolean(error)}>
+      <InputInvalidProvider value={error != null}>
         <span className={clsx(className, "inline-flex flex-col gap-y-2")}>
           <Label>
             {label}
