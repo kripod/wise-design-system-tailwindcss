@@ -32,14 +32,21 @@ export const Button = React.forwardRef(function Button(
     disabled,
     className,
     children,
-    render,
+    render = (props) => (
+      <button
+        // eslint-disable-next-line @typescript-eslint/no-use-before-define
+        ref={ref}
+        type="button"
+        {...props}
+      />
+    ),
     ...restProps
   }: ButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement>,
 ) {
   return (
     <>
-      {(render ?? ((props) => <button ref={ref} type="button" {...props} />))({
+      {render({
         disabled: Boolean(disabled),
         className: clsx(
           className,
