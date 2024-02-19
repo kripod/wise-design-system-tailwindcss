@@ -26,6 +26,9 @@ module.exports = {
   content: ["./src/**/*.{ts,tsx,mts,js,jsx,mjs}"],
   future: {
     hoverOnlyWhenSupported: true,
+    respectDefaultRingColorOpacity: true,
+    disableColorOpacityUtilitiesByDefault: true,
+    relativeContentPathsByDefault: true,
   },
   darkMode: "class",
   theme: {
