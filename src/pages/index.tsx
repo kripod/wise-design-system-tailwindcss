@@ -22,6 +22,9 @@ export default function Page() {
 
       <div className="flex gap-4">
         <PrimaryButton size="sm">Button label</PrimaryButton>
+        <PrimaryButton size="sm" sentiment="negative">
+          Button label
+        </PrimaryButton>
         <PrimaryButton size="sm" disabled>
           Button label
         </PrimaryButton>
@@ -29,6 +32,7 @@ export default function Page() {
 
       <div className="flex gap-4">
         <PrimaryButton>Button label</PrimaryButton>
+        <PrimaryButton sentiment="negative">Button label</PrimaryButton>
         <PrimaryButton disabled>Button label</PrimaryButton>
       </div>
 
