@@ -3,7 +3,7 @@ import * as React from "react";
 import { ActionButton } from "@/components/ActionButton";
 import { Alert } from "@/components/Alert";
 import { Dialog } from "@/components/Dialog";
-import { Input } from "@/components/Input";
+import { Input } from "@/components/experimental/Input";
 import { PrimaryButton } from "@/components/PrimaryButton";
 
 export default function Page() {
