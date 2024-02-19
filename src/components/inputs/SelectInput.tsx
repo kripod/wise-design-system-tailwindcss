@@ -259,7 +259,7 @@ const SelectInputOptionsContainer = React.forwardRef(
       role,
       tabIndex,
       onAriaActiveDescendantChange,
-      onKeyDown, // Prevent absorbing escape key presses
+      onKeyDown,
       ...restProps
     }: SelectInputOptionsContainerProps,
     ref: React.ForwardedRef<HTMLDivElement>,
@@ -271,7 +271,19 @@ const SelectInputOptionsContainer = React.forwardRef(
       handleAriaActiveDescendantChange(ariaActiveDescendant);
     }, [ariaActiveDescendant, handleAriaActiveDescendantChange]);
 
-    return <div ref={ref} {...restProps} />;
+    return (
+      // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+      <div
+        ref={ref}
+        onKeyDown={(event) => {
+          // Prevent absorbing dismissal requests too early
+          if (event.key !== "Escape") {
+            onKeyDown?.(event);
+          }
+        }}
+        {...restProps}
+      />
+    );
   },
 );
 
