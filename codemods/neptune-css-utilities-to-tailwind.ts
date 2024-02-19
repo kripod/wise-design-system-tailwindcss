@@ -97,6 +97,7 @@ const tailwindUtilityByNeptuneUtility = new Map([
   ["font-weight-normal", "font-normal"],
   ["font-weight-semi-bold", "font-semibold"],
   ["gap-y-1", "gap-y-2"],
+  ["hidden", "hidden"],
   ["hidden-xs", "max-sm:hidden"],
   ["hidden-sm", "sm:max-md:hidden"],
   ["hidden-md", "md:max-lg:hidden"],
@@ -105,6 +106,7 @@ const tailwindUtilityByNeptuneUtility = new Map([
   ["hide", "hidden"],
   ["img-circle", "rounded-full"],
   ["img-rounded", "rounded"],
+  ["invisible", "invisible"],
   ["justify-content-around", "justify-around"],
   ["justify-content-around--sm", "sm:justify-around"],
   ["justify-content-around--md", "md:justify-around"],
@@ -264,8 +266,8 @@ const tailwindUtilityByNeptuneUtility = new Map([
   ["text-accent", "text-interactive-primary"],
   ["text-capitalize", "capitalize"],
   ["text-danger", "text-sentiment-negative"],
-  ["text-ellipses", "text-ellipsis"], // TODO: Transform to `truncate`
-  ["text-ellipsis", "text-ellipsis"], // TODO: Transform to `truncate`
+  ["text-ellipses", "truncate"],
+  ["text-ellipsis", "truncate"],
   ["text-info", "text-interactive-primary"],
   ["text-xs-center", "text-center"],
   ["text-sm-center", "sm:text-center"],
