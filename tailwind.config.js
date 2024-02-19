@@ -61,6 +61,7 @@ module.exports = {
           active: "#525251",
         },
         tertiary: "#ffffff",
+        control: "#163300",
       },
       background: {
         screen: {
