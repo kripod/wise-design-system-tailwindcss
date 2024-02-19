@@ -54,7 +54,7 @@ export function Listbox() {
 
       <ListboxBase.Options
         ref={refs.setFloating}
-        className="top-0 left-0 w-max rounded-md bg-background-elevated shadow-xl"
+        className="top-0 left-0 w-max overflow-hidden rounded-md bg-background-elevated shadow-xl"
         style={{
           position: strategy,
           transform: `translate(${roundByDPR(x ?? 0)}px, ${roundByDPR(
@@ -67,6 +67,7 @@ export function Listbox() {
             key={person.id}
             value={person}
             disabled={person.unavailable}
+            className="p-4 hover:bg-background-screen-hover active:bg-background-screen-active"
           >
             {person.name}
           </ListboxBase.Option>
