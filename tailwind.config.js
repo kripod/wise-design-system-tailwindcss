@@ -1,7 +1,6 @@
 const containerQueriesPlugin = require("@tailwindcss/container-queries");
 const { transparentize } = require("color2k");
 const defaultTheme = require("tailwindcss/defaultTheme");
-const innerBorderPlugin = require("tailwindcss-inner-border");
 
 /**
  * @param {number} value
@@ -276,22 +275,10 @@ module.exports = {
       outlineWidth: ({ theme }) => ({
         DEFAULT: defaultTheme.outlineWidth[2],
       }),
-      ringColor: ({ theme }) => ({
-        DEFAULT: theme("colors.interactive.primary.DEFAULT"),
-      }),
-      ringOffsetColor: ({ theme }) => ({
-        DEFAULT: theme("colors.background.screen.DEFAULT"),
-      }),
-      ringOffsetWidth: {
-        DEFAULT: defaultTheme.ringOffsetWidth[2],
-      },
-      ringWidth: {
-        DEFAULT: defaultTheme.ringWidth[2],
-      },
       transitionTimingFunction: {
         DEFAULT: defaultTheme.transitionTimingFunction.out,
       },
     },
   },
-  plugins: [containerQueriesPlugin, innerBorderPlugin],
+  plugins: [containerQueriesPlugin],
 };

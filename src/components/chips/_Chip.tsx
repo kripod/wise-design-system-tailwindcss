@@ -29,17 +29,17 @@ export const Chip = React.forwardRef(function Chip(
       aria-disabled={!disabled ? ariaDisabled : undefined}
       disabled={disabled}
       className={clsx(
-        "rounded-full px-4 font-semibold inner-border",
+        "rounded-full px-4 font-semibold ring-1 ring-inset",
         checked
           ? [
-              "bg-interactive-accent text-interactive-control inner-border-transparent",
+              "bg-interactive-accent text-interactive-control ring-interactive-accent",
               !disabled &&
-                "hover:bg-interactive-accent-hover active:bg-interactive-accent-active",
+                "hover:bg-interactive-accent-hover hover:ring-interactive-accent-hover active:bg-interactive-accent-active active:ring-interactive-accent-active",
             ]
           : [
-              "text-interactive-primary inner-border-interactive-secondary",
+              "text-interactive-primary ring-interactive-secondary",
               !disabled &&
-                "hover:bg-background-screen-hover hover:text-interactive-primary-hover hover:inner-border-interactive-secondary-hover active:bg-background-screen-active active:text-interactive-primary-active active:inner-border-interactive-secondary-active",
+                "hover:bg-background-screen-hover hover:text-interactive-primary-hover hover:ring-interactive-secondary-hover active:bg-background-screen-active active:text-interactive-primary-active active:ring-interactive-secondary-active",
             ],
         className,
       )}
