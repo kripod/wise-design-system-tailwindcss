@@ -13,6 +13,7 @@ const iconSizeByComponentSize: {
 
 export function Spinner({ size = "md" }: SpinnerProps) {
   return (
+    // TODO: Change icon
     <Refresh
       size={iconSizeByComponentSize[size]}
       className="inline-block animate-spin motion-reduce:animate-none"
