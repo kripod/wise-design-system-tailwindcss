@@ -60,7 +60,7 @@ export function Listbox() {
           "inline-flex items-center justify-between gap-x-2 text-start",
         )}
       >
-        {selectedPerson.name}
+        <span className="truncate">{selectedPerson.name}</span>
         <ChevronDown />
       </ListboxBase.Button>
 
