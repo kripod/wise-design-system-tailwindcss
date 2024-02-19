@@ -324,13 +324,11 @@ const transform: Transform = (fileInfo, api) => {
 
   let didTransform = false;
 
-  root.find(j.Literal).forEach((path) => {
-    if (typeof path.node.value === "string") {
-      const replaced = replaceUtilities(path.node.value);
-      if (replaced != null) {
-        didTransform = true;
-        j(path).replaceWith(j.literal(replaced));
-      }
+  root.find(j.StringLiteral).forEach((path) => {
+    const replaced = replaceUtilities(path.node.value);
+    if (replaced != null) {
+      didTransform = true;
+      j(path).replaceWith(j.stringLiteral(replaced));
     }
   });
 
@@ -354,5 +352,7 @@ const transform: Transform = (fileInfo, api) => {
 
   return didTransform ? root.toSource() : null;
 };
+
+export const parser = "tsx";
 
 export default transform;
