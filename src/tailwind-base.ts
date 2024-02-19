@@ -201,15 +201,6 @@ export default {
         {
           lineHeight: pxToRem(24),
           letterSpacing: "-0.011em",
-          fontWeight: "400",
-        },
-      ],
-      "body-lg-bold": [
-        pxToRem(16),
-        {
-          lineHeight: pxToRem(24),
-          letterSpacing: "-0.011em",
-          fontWeight: "600",
         },
       ],
       body: [
@@ -217,31 +208,6 @@ export default {
         {
           lineHeight: pxToRem(22),
           letterSpacing: "-0.006em",
-          fontWeight: "400",
-        },
-      ],
-      "body-bold": [
-        pxToRem(14),
-        {
-          lineHeight: pxToRem(22),
-          letterSpacing: "-0.006em",
-          fontWeight: "600",
-        },
-      ],
-      "link-lg": [
-        pxToRem(16),
-        {
-          lineHeight: pxToRem(24),
-          letterSpacing: "-0.011em",
-          fontWeight: "600",
-        },
-      ],
-      link: [
-        pxToRem(14),
-        {
-          lineHeight: pxToRem(22),
-          letterSpacing: "-0.006em",
-          fontWeight: "600",
         },
       ],
     },

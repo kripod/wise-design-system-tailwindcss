@@ -240,7 +240,7 @@ export const CustomTrigger: Story<Month> = {
       <SelectInputTriggerButton
         className={clsx(
           className,
-          "inline-flex items-center gap-x-1 text-link-lg text-content-link underline hover:text-content-link-hover active:text-content-link-active",
+          "inline-flex items-center gap-x-1 text-body-lg font-semibold text-content-link underline hover:text-content-link-hover active:text-content-link-active",
         )}
       >
         {content}

@@ -29,7 +29,7 @@ export const CircularButton = React.forwardRef(function CircularButton(
       >
         {icon}
       </Button>
-      <span className="pointer-events-none text-body-bold text-interactive-primary transition peer-hover:text-interactive-primary-hover peer-active:text-interactive-primary-active peer-disabled:opacity-45 peer-disabled:mix-blend-luminosity peer-aria-disabled:opacity-45 peer-aria-disabled:mix-blend-luminosity">
+      <span className="pointer-events-none text-body font-semibold text-interactive-primary transition peer-hover:text-interactive-primary-hover peer-active:text-interactive-primary-active peer-disabled:opacity-45 peer-disabled:mix-blend-luminosity peer-aria-disabled:opacity-45 peer-aria-disabled:mix-blend-luminosity">
         {children}
       </span>
     </span>
