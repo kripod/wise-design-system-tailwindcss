@@ -44,7 +44,7 @@ export function TabList({ stretch = false, children }: TabListProps) {
   return (
     <TabBase.List
       className={clsx(
-        "grid h-12 grid-flow-col overflow-x-auto whitespace-nowrap border-0 border-b border-solid border-border-neutral",
+        "grid h-12 grid-flow-col overflow-x-auto whitespace-nowrap border-b",
         !stretch && "justify-start",
       )}
     >
@@ -113,7 +113,7 @@ export function Tab({ disabled = false, children }: TabProps) {
                 {({ ref }) => (
                   <span
                     ref={ref}
-                    className="absolute inset-0 border-0 border-b-2 border-solid border-interactive-primary"
+                    className="absolute inset-0 border-b-2 border-interactive-primary"
                   />
                 )}
               </AnimatedLayout>

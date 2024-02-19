@@ -1,12 +1,29 @@
-@import "../jsx-scoped-css-reset/reset-scoped.css";
 @import "tailwindcss/base";
 
+@import "../jsx-scoped-css-reset/reset-scoped.css";
 @import "tailwindcss/components";
 @import "@transferwise/icons/lib/styles/main.min.css";
 
 @import "tailwindcss/utilities";
 
 @layer base {
+  *,
+  ::before,
+  ::after {
+    /* Prevent padding and border from affecting element width (mozdevs/cssremedy#4) */
+    box-sizing: border-box;
+
+    /* Allow adding a border with just a border-width (tailwindcss/tailwindcss#116) */
+    border-width: 0;
+    border-style: solid;
+    border-color: theme("borderColor.DEFAULT", currentColor);
+  }
+
+  ::before,
+  ::after {
+    --tw-content: "";
+  }
+
   html {
     @apply break-words bg-background-screen font-sans text-content-primary;
     -webkit-tap-highlight-color: transparent;
