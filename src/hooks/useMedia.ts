@@ -1,4 +1,4 @@
-import { useSyncExternalStore } from "use-sync-external-store/shim";
+import { useSyncExternalStore } from "use-sync-external-store";
 
 export function useMedia(query: string) {
   return useSyncExternalStore(

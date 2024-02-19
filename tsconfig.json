@@ -2,8 +2,17 @@
   "extends": "@tsconfig/next/tsconfig.json",
   "compilerOptions": {
     "strict": true,
-    "importsNotUsedAsValues": "error"
+    "importsNotUsedAsValues": "error",
+    "declaration": true,
+    "declarationMap": true
   },
-  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
-  "exclude": ["node_modules/", "/build/"]
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.mts",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.mjs"
+  ],
+  "exclude": ["node_modules/", "build/", "dist/"]
 }
