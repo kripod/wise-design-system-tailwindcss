@@ -1,5 +1,13 @@
 # @wise/design-system-tailwindcss
 
+## 0.5.6
+
+### Patch Changes
+
+- [`dc134a1`](https://github.com/transferwise/design-system-web-tailwindcss/commit/dc134a109a3e2723008189c91747e54217fec3e5) Thanks [@kripod-wise](https://github.com/kripod-wise)! - fix(codemod): mappings for text truncation
+
+- [`1abdea9`](https://github.com/transferwise/design-system-web-tailwindcss/commit/1abdea99bc8e41151cc4791c753b51e32f8cbdfd) Thanks [@kripod-wise](https://github.com/kripod-wise)! - refactor(codemod): improve text truncation
+
 ## 0.5.5
 
 ### Patch Changes
