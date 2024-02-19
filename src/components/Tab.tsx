@@ -139,8 +139,6 @@ export type TabPanelProps = {
 
 export function TabPanel({ children }: TabPanelProps) {
   return (
-    <TabBase.Panel className="transition-shadow focus-visible:outline">
-      {children}
-    </TabBase.Panel>
+    <TabBase.Panel className="focus-visible:outline">{children}</TabBase.Panel>
   );
 }
