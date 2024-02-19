@@ -38,17 +38,6 @@ function inferSearchableStrings(value: unknown) {
   return [];
 }
 
-const SelectInputItemCheckPaddingContext = React.createContext(false);
-
-function useSelectInputItemCheckPadding() {
-  const checkPadding = React.useContext(SelectInputItemCheckPaddingContext);
-
-  // Avoid layout shifts during transitions via caching
-  const [initialCheckPadding] = React.useState(checkPadding);
-
-  return initialCheckPadding;
-}
-
 const SelectInputTriggerButtonPropsContext = React.createContext<{
   ref?: React.ForwardedRef<HTMLButtonElement>;
   onClick?: () => void;
@@ -283,68 +272,64 @@ export function SelectInput<T = string>({
       }}
     >
       {({ disabled: uiDisabled, value }) => (
-        <SelectInputItemCheckPaddingContext.Provider
-          value={Boolean(filterable) || value != null}
-        >
-          <OptionsOverlay
-            placement="bottom-start"
-            open={open}
-            renderTrigger={({ ref, getInteractionProps }) => (
-              <SelectInputTriggerButtonPropsContext.Provider
-                // eslint-disable-next-line react/jsx-no-constructed-context-values
-                value={{
-                  ref: mergeRefs([ref, triggerRef]),
-                  ...mergeProps(
-                    {
-                      onClick: () => {
-                        setOpen((prev) => !prev);
-                      },
+        <OptionsOverlay
+          placement="bottom-start"
+          open={open}
+          renderTrigger={({ ref, getInteractionProps }) => (
+            <SelectInputTriggerButtonPropsContext.Provider
+              // eslint-disable-next-line react/jsx-no-constructed-context-values
+              value={{
+                ref: mergeRefs([ref, triggerRef]),
+                ...mergeProps(
+                  {
+                    onClick: () => {
+                      setOpen((prev) => !prev);
                     },
-                    getInteractionProps(),
+                  },
+                  getInteractionProps(),
+                ),
+              }}
+            >
+              {renderTrigger({
+                content:
+                  value != null ? (
+                    <SelectInputOptionContentWithinTriggerContext.Provider
+                      value
+                    >
+                      {renderValue(value, true)}
+                    </SelectInputOptionContentWithinTriggerContext.Provider>
+                  ) : (
+                    placeholder
                   ),
-                }}
-              >
-                {renderTrigger({
-                  content:
-                    value != null ? (
-                      <SelectInputOptionContentWithinTriggerContext.Provider
-                        value
-                      >
-                        {renderValue(value, true)}
-                      </SelectInputOptionContentWithinTriggerContext.Provider>
-                    ) : (
-                      placeholder
-                    ),
-                  placeholderShown: value == null,
-                  clear:
-                    onClear != null
-                      ? () => {
-                          onClear();
-                          triggerRef.current?.focus({ preventScroll: true });
-                        }
-                      : undefined,
-                  disabled: uiDisabled,
-                  size,
-                  className,
-                })}
-              </SelectInputTriggerButtonPropsContext.Provider>
-            )}
-            initialFocusRef={controllerRef}
-            padding="none"
-            onClose={() => {
-              setOpen(false);
-            }}
-          >
-            <SelectInputOptions
-              items={items}
-              renderValue={renderValue}
-              filterable={filterable}
-              filterPlaceholder={filterPlaceholder}
-              searchInputRef={searchInputRef}
-              listboxRef={listboxRef}
-            />
-          </OptionsOverlay>
-        </SelectInputItemCheckPaddingContext.Provider>
+                placeholderShown: value == null,
+                clear:
+                  onClear != null
+                    ? () => {
+                        onClear();
+                        triggerRef.current?.focus({ preventScroll: true });
+                      }
+                    : undefined,
+                disabled: uiDisabled,
+                size,
+                className,
+              })}
+            </SelectInputTriggerButtonPropsContext.Provider>
+          )}
+          initialFocusRef={controllerRef}
+          padding="none"
+          onClose={() => {
+            setOpen(false);
+          }}
+        >
+          <SelectInputOptions
+            items={items}
+            renderValue={renderValue}
+            filterable={filterable}
+            filterPlaceholder={filterPlaceholder}
+            searchInputRef={searchInputRef}
+            listboxRef={listboxRef}
+          />
+        </OptionsOverlay>
       )}
     </ListboxBase>
   );
@@ -600,7 +585,6 @@ function SelectInputGroupItemView<T = string>({
   needle,
 }: SelectInputGroupItemViewProps<T>) {
   const headerId = useId();
-  const checkPadding = useSelectInputItemCheckPadding();
 
   return (
     // An empty container may be rendered when no options match `needle`
@@ -616,10 +600,6 @@ function SelectInputGroupItemView<T = string>({
           role="presentation"
           className="sticky top-0 z-10 bg-background-elevated px-4 pb-1 pt-2 text-sm font-medium leading-5 text-content-secondary"
         >
-          {checkPadding ? (
-            /* Icon placeholder */
-            <span className="ms-4 inline-block w-[16px]" />
-          ) : null}
           {item.label}
         </header>
       ) : null}
@@ -647,8 +627,6 @@ function SelectInputOption<T = string>({
   disabled,
   children,
 }: SelectInputOptionProps<T>) {
-  const checkPadding = useSelectInputItemCheckPadding();
-
   return (
     <ListboxBase.Option
       as="div"
@@ -657,20 +635,21 @@ function SelectInputOption<T = string>({
       className={({ active, disabled: uiDisabled }) =>
         clsx(
           "flex cursor-default select-none items-center gap-x-2 rounded px-4 py-3 text-base text-interactive-primary",
-          active && "bg-interactive-primary [&_*]:text-interactive-contrast",
+          active && "ring-1 ring-inset ring-interactive-secondary",
           uiDisabled && "opacity-45",
         )
       }
     >
       {({ selected }) => (
         <>
-          {checkPadding ? (
-            <Check
-              size={16}
-              className={clsx("px-1", !selected && "invisible")}
-            />
-          ) : null}
           <div className="flex-1">{children}</div>
+          <Check
+            size={16}
+            className={clsx(
+              // Prevent layout shifts by pre-allocating space
+              !selected && "invisible",
+            )}
+          />
         </>
       )}
     </ListboxBase.Option>
