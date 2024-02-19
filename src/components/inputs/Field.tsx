@@ -1,4 +1,3 @@
-import { useId } from "@radix-ui/react-id";
 import { clsx } from "clsx";
 import { atom, Provider, useSetAtom } from "jotai";
 import * as React from "react";
@@ -39,7 +38,7 @@ export function FieldDescription({
   sentiment = "neutral",
   children,
 }: FieldDescriptionProps) {
-  const id = useId(); // TODO: Replace with the built-in hook in React 18
+  const id = React.useId();
   const setFieldDescribedBy = useSetAtom(fieldDescribedByAtom);
   React.useEffect(() => {
     setFieldDescribedBy(id);

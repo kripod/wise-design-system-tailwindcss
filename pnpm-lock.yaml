@@ -10,14 +10,12 @@ specifiers:
   '@fontsource/inter': ^4.5.15
   '@headlessui/react': ^1.7.13
   '@ladle/react': 2.9.0
-  '@radix-ui/react-id': ^1.0.0
   '@tailwindcss/container-queries': 0.1.0
   '@transferwise/icons': 3.5.1
   '@tsconfig/next': 1.0.5
   '@types/node': 18.14.6
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
-  '@types/use-sync-external-store': 0.0.3
   '@typescript-eslint/eslint-plugin': 5.54.0
   '@typescript-eslint/parser': 5.54.0
   babel-plugin-optimize-clsx: 2.6.2
@@ -53,17 +51,14 @@ specifiers:
   tailwindcss: 3.2.7
   ts-essentials: ^9.3.1
   typescript: 4.9.5
-  use-sync-external-store: ^1.2.0
 
 dependencies:
   '@babel/runtime': 7.21.0
   '@fontsource/inter': 4.5.15
   '@headlessui/react': 1.7.13_biqbaboplfbrettd7655fr4n2y
-  '@radix-ui/react-id': 1.0.0_react@18.2.0
   clsx: 1.2.1
   jotai: 2.0.3_react@18.2.0
   ts-essentials: 9.3.1_typescript@4.9.5
-  use-sync-external-store: 1.2.0_react@18.2.0
 
 devDependencies:
   '@babel/core': 7.21.0
@@ -78,7 +73,6 @@ devDependencies:
   '@types/node': 18.14.6
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
-  '@types/use-sync-external-store': 0.0.3
   '@typescript-eslint/eslint-plugin': 5.54.0_6mj2wypvdnknez7kws2nfdgupi
   '@typescript-eslint/parser': 5.54.0_ycpbpc6yetojsgtrx3mwntkhsu
   babel-plugin-optimize-clsx: 2.6.2
@@ -2097,25 +2091,6 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@radix-ui/react-id/1.0.0_react@18.2.0:
-    resolution: {integrity: sha512-Q6iAB/U7Tq3NTolBBQbHTgclPmGWE3OlktGGqrClPozSw4vkQ1DfQAOtzgRPecKsMdJINE05iaoDUG8tRzCBjw==}
-    peerDependencies:
-      react: ^16.8 || ^17.0 || ^18.0
-    dependencies:
-      '@babel/runtime': 7.21.0
-      '@radix-ui/react-use-layout-effect': 1.0.0_react@18.2.0
-      react: 18.2.0
-    dev: false
-
-  /@radix-ui/react-use-layout-effect/1.0.0_react@18.2.0:
-    resolution: {integrity: sha512-6Tpkq+R6LOlmQb1R5NNETLG0B4YP0wc+klfXafpUCj6JGyaUc8il7/kUZ7m59rGbXGczE9Bs+iz2qloqsZBduQ==}
-    peerDependencies:
-      react: ^16.8 || ^17.0 || ^18.0
-    dependencies:
-      '@babel/runtime': 7.21.0
-      react: 18.2.0
-    dev: false
-
   /@rollup/pluginutils/5.0.2_rollup@3.18.0:
     resolution: {integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==}
     engines: {node: '>=14.0.0'}
@@ -2360,10 +2335,6 @@ packages:
 
   /@types/unist/2.0.6:
     resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
-    dev: true
-
-  /@types/use-sync-external-store/0.0.3:
-    resolution: {integrity: sha512-EwmlvuaxPNej9+T4v5AuBPJa2x2UOJVdjCtDHgcDqitUeOtjnJKJ+apYjVcAoBEMjKW1VVFGZLUb5+qqa09XFA==}
     dev: true
 
   /@types/yargs-parser/21.0.0:
@@ -7160,14 +7131,6 @@ packages:
     dependencies:
       punycode: 2.3.0
     dev: true
-
-  /use-sync-external-store/1.2.0_react@18.2.0:
-    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    dependencies:
-      react: 18.2.0
-    dev: false
 
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
