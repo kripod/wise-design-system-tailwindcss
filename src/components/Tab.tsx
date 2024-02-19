@@ -1,6 +1,9 @@
 import { Tab as TabBase } from "@headlessui/react";
+import { useId } from "@radix-ui/react-id";
+import { LayoutGroup, m } from "framer-motion";
 
 import { Button } from "./buttons/_Button";
+import { MotionProvider } from "./MotionProvider";
 
 export type TabGroupProps = {
   initialIndex?: number;
@@ -15,14 +18,19 @@ export function TabGroup({
   onChange,
   children,
 }: TabGroupProps) {
+  const layoutGroupId = useId();
   return (
-    <TabBase.Group
-      defaultIndex={initialIndex}
-      selectedIndex={selectedIndex}
-      onChange={onChange}
-    >
-      {children}
-    </TabBase.Group>
+    <MotionProvider>
+      <LayoutGroup id={layoutGroupId}>
+        <TabBase.Group
+          defaultIndex={initialIndex}
+          selectedIndex={selectedIndex}
+          onChange={onChange}
+        >
+          {children}
+        </TabBase.Group>
+      </LayoutGroup>
+    </MotionProvider>
   );
 }
 
@@ -32,7 +40,8 @@ export type TabListProps = {
 
 export function TabList({ children }: TabListProps) {
   return (
-    <TabBase.List className="overflow-x-auto whitespace-nowrap border-b">
+    <TabBase.List className="relative overflow-x-auto whitespace-nowrap">
+      <div className="absolute inset-0 border-b" />
       {children}
     </TabBase.List>
   );
@@ -51,7 +60,17 @@ export function Tab({ disabled = false, children }: TabProps) {
         disabled={disabled}
         className="col-start-1 row-start-1 after:absolute after:inset-0 ui-selected:font-semibold ui-selected:tracking-1"
       >
-        {children}
+        {({ selected }) => (
+          <>
+            {children}
+            {selected ? (
+              <m.span
+                layoutId="underline"
+                className="absolute inset-0 border-b-2 border-interactive-primary"
+              />
+            ) : null}
+          </>
+        )}
       </TabBase>
       <span className="invisible col-start-1 row-start-1 font-semibold tracking-1">
         {children}
