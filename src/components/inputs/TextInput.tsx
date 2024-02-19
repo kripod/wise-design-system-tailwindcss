@@ -3,7 +3,7 @@ import * as React from "react";
 
 import { inputClassNameBase } from "./_Input";
 import { useInputAriaAttributes } from "./Field";
-import { useInputPaddings } from "./InputAddon";
+import { useInputPaddings } from "./InputGroup";
 
 export interface TextInputProps
   extends Pick<

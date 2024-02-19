@@ -36,7 +36,7 @@ export {
 // TODO: export * from "./components/CriticalBanner";
 // TODO: export * from "./components/Disclosure";
 export { Field, type FieldProps } from "./components/inputs/Field";
-// TODO: export * from "./components/inputs/InputAddon";
+// TODO: export * from "./components/inputs/InputGroup";
 // TODO: export * from "./components/inputs/SelectInput";
 export {
   TextAreaInput,
