@@ -59,6 +59,7 @@
     "@react-aria/overlays": "^3.16.0",
     "clsx": "^2.0.0",
     "css-homogenizer": "^3.2.1",
+    "merge-props": "^6.0.0",
     "modern-normalize": "^2.0.0",
     "react-merge-refs": "^2.0.2",
     "ts-essentials": "^9.4.0",

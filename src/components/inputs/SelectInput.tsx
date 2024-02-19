@@ -2,6 +2,7 @@ import { Listbox as ListboxBase } from "@headlessui/react";
 import { useId } from "@radix-ui/react-id";
 import { Check, ChevronDown, Cross } from "@transferwise/icons";
 import { clsx } from "clsx";
+import mergeProps from "merge-props";
 import * as React from "react";
 import { mergeRefs } from "react-merge-refs";
 
@@ -281,7 +282,7 @@ export function SelectInputTriggerButton<T extends React.ElementType>({
   as = ButtonInput as unknown as T,
   ...restProps
 }: SelectInputTriggerButtonProps<T>) {
-  const { ref, ...overrides } = React.useContext(
+  const { ref, ...providedProps } = React.useContext(
     SelectInputTriggerButtonPropsContext,
   );
 
@@ -291,8 +292,7 @@ export function SelectInputTriggerButton<T extends React.ElementType>({
       as={PolymorphicWithOverrides}
       __overrides={{
         as,
-        ...restProps,
-        ...overrides,
+        ...mergeProps(providedProps, restProps),
       }}
     />
   );
