@@ -24,22 +24,24 @@ export function useInputPaddings() {
 }
 
 export interface InputGroupProps {
-  initialPaddingStart?: number;
-  initialPaddingEnd?: number;
+  addonStart?: React.ReactNode;
+  addonEnd?: React.ReactNode;
+  addonPadding?: InputAddonProps["padding"];
   disabled?: boolean;
   className?: string;
   children?: React.ReactNode;
 }
 
 export function InputGroup({
-  initialPaddingStart,
-  initialPaddingEnd,
+  addonStart,
+  addonEnd,
+  addonPadding = "md",
   disabled,
   className,
   children,
 }: InputGroupProps) {
-  const [paddingStart, setPaddingStart] = React.useState(initialPaddingStart);
-  const [paddingEnd, setPaddingEnd] = React.useState(initialPaddingEnd);
+  const [paddingStart, setPaddingStart] = React.useState<number>();
+  const [paddingEnd, setPaddingEnd] = React.useState<number>();
 
   return (
     <InputPaddingStartContext.Provider
@@ -58,34 +60,47 @@ export function InputGroup({
             "group/input inline-grid auto-cols-fr [&>*]:col-start-1 [&>*]:row-start-1",
           )}
         >
+          {addonStart != null ? (
+            <InputAddon placement="start" padding={addonPadding}>
+              {addonStart}
+            </InputAddon>
+          ) : null}
           {children}
+          {addonEnd != null ? (
+            <InputAddon placement="end" padding={addonPadding}>
+              {addonEnd}
+            </InputAddon>
+          ) : null}
         </fieldset>
       </InputPaddingEndContext.Provider>
     </InputPaddingStartContext.Provider>
   );
 }
 
-export interface InputAddonProps {
+interface InputAddonProps {
   placement: "start" | "end";
-  padding?: "none" | "sm" | "md";
+  padding: "none" | "sm" | "md";
   children?: React.ReactNode;
 }
 
-export function InputAddon({
-  placement,
-  padding = "md",
-  children,
-}: InputAddonProps) {
+function InputAddon({ placement, padding, children }: InputAddonProps) {
   const [, setInputPadding] = React.useContext(
     placement === "start" ? InputPaddingStartContext : InputPaddingEndContext,
   );
 
   const ref = React.useRef<HTMLSpanElement>(null);
   useResizeObserver(ref, (entry) => {
-    // TODO: Remove condition once most browsers support `borderBoxSize`
+    // TODO: Remove fallback once most browsers support `borderBoxSize`
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (entry.borderBoxSize != null) {
       setInputPadding(entry.borderBoxSize[0].inlineSize);
+    } else {
+      const targetStyle = getComputedStyle(entry.target);
+      setInputPadding(
+        entry.contentRect.width +
+          Number.parseFloat(targetStyle.paddingInlineStart) +
+          Number.parseFloat(targetStyle.paddingInlineEnd),
+      );
     }
   });
 

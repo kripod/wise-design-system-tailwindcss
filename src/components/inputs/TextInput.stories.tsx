@@ -4,7 +4,7 @@ import * as React from "react";
 
 import { ActionButton } from "../buttons/ActionButton";
 import { Field } from "./Field";
-import { InputAddon, InputGroup } from "./InputAddon";
+import { InputGroup } from "./InputAddon";
 import { Label } from "./Label";
 import { TextInput } from "./TextInput";
 
@@ -70,10 +70,7 @@ export const WithPrefix: Story<{
   return (
     <Label>
       Label
-      <InputGroup initialPaddingStart={48} disabled={disabled}>
-        <InputAddon placement="start">
-          <Search size={24} />
-        </InputAddon>
+      <InputGroup addonStart={<Search size={24} />} disabled={disabled}>
         <TextInput
           value={value}
           onChange={(event) => setValue(event.currentTarget.value)}
@@ -96,13 +93,8 @@ export const WithSuffix: Story<{
   return (
     <Label>
       Label
-      <InputGroup initialPaddingEnd={76} disabled={disabled}>
-        <TextInput
-          ref={ref}
-          value={value}
-          onChange={(event) => setValue(event.currentTarget.value)}
-        />
-        <InputAddon placement="end" padding="sm">
+      <InputGroup
+        addonEnd={
           <ActionButton
             onClick={async () => {
               await navigator.clipboard.writeText(value);
@@ -114,7 +106,15 @@ export const WithSuffix: Story<{
           >
             Copy
           </ActionButton>
-        </InputAddon>
+        }
+        addonPadding="sm"
+        disabled={disabled}
+      >
+        <TextInput
+          ref={ref}
+          value={value}
+          onChange={(event) => setValue(event.currentTarget.value)}
+        />
       </InputGroup>
     </Label>
   );
