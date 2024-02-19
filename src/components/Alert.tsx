@@ -13,7 +13,7 @@ export type AlertProps = {
   children?: React.ReactNode;
 };
 
-const iconBySentiment: {
+const IconBySentiment: {
   [key in NonNullable<AlertProps["sentiment"]>]: React.ComponentType<{
     [key: string]: never;
   }>;
@@ -35,7 +35,7 @@ export function Alert({
   onClose,
   children,
 }: AlertProps) {
-  const Icon = iconBySentiment[sentiment];
+  const Icon = IconBySentiment[sentiment];
   return (
     <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 rounded-lg bg-background-neutral p-6 text-content-secondary">
       <Icon />

@@ -6,7 +6,7 @@ export type InstructionProps = {
   children: React.ReactNode;
 };
 
-const iconBySentiment: {
+const IconBySentiment: {
   [key in InstructionProps["sentiment"]]: React.ComponentType<{
     [key: string]: never;
   }>;
@@ -20,7 +20,7 @@ const iconBySentiment: {
 };
 
 export function Instruction({ sentiment, children }: InstructionProps) {
-  const Icon = iconBySentiment[sentiment];
+  const Icon = IconBySentiment[sentiment];
   return (
     <div className="flex items-center gap-x-2">
       <Icon />
