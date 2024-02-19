@@ -25,7 +25,12 @@
   }
 
   html {
-    @apply break-words bg-background-screen font-sans text-content-primary;
+    @apply break-words bg-background-screen font-sans text-base text-content-primary;
     -webkit-tap-highlight-color: transparent;
+  }
+
+  hr {
+    /* Ensure visibility by default */
+    border-top-width: 1px;
   }
 }
