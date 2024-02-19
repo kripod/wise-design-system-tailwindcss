@@ -60,8 +60,8 @@ export function CheckboxChip({
         type="checkbox"
         defaultChecked={defaultChecked}
         checked={controlledChecked}
+        readOnly
         hidden
-        onChange={() => {}} // Suppress read-only field warning
       />
 
       {name != null && checked ? (
