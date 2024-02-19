@@ -1,6 +1,6 @@
 # @wise/design-system-tailwindcss
 
-Web implementation of Wise Design System.
+Experimental web implementation of Wise Design System, based upon Tailwind CSS.
 
 ## Usage
 
