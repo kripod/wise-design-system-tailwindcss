@@ -5,8 +5,8 @@ import { clsx } from "clsx";
 import * as React from "react";
 import { mergeRefs } from "react-merge-refs";
 
+import { useEffectEvent } from "../../hooks/useEffectEvent";
 import { useScreenSize } from "../../hooks/useScreenSize";
-import { useWrappedCallback } from "../../hooks/useWrappedCallback";
 import { ClearButtonLabel } from "../../i18nTexts";
 import { wrapInFragment } from "../../wrapInFragment";
 import { BottomSheet } from "../BottomSheet";
@@ -263,7 +263,7 @@ const SelectInputOptionsWrapper = React.forwardRef(
     }: SelectInputOptionsWrapperProps,
     ref: React.ForwardedRef<HTMLDivElement>,
   ) {
-    const handleAriaActiveDescendantChange = useWrappedCallback(
+    const handleAriaActiveDescendantChange = useEffectEvent(
       onAriaActiveDescendantChange,
     );
     React.useEffect(() => {

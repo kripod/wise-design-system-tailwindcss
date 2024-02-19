@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { useWrappedCallback } from "./useWrappedCallback";
+import { useEffectEvent } from "./useEffectEvent";
 
 export function useControllableState<T>(
   controlledValue: T | undefined,
@@ -28,7 +28,7 @@ export function useControllableState<T>(
 
   return [
     controlledValue !== undefined ? controlledValue : fallbackValue,
-    useWrappedCallback((action) => {
+    useEffectEvent((action) => {
       if (controlledValue !== undefined) {
         onChange?.(
           typeof action === "function"

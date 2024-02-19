@@ -1,16 +1,16 @@
 import * as React from "react";
 
-import { useWrappedCallback } from "./useWrappedCallback";
+import { useEffectEvent } from "./useEffectEvent";
 
 export function useResizeObserver(
   ref: React.RefObject<Element>,
   callback: (entry: ResizeObserverEntry) => void,
 ) {
-  const wrappedCallback = useWrappedCallback(callback);
+  const handleCallback = useEffectEvent(callback);
   React.useEffect(() => {
     if (ref.current != null) {
       const resizeObserver = new ResizeObserver(([entry]) => {
-        wrappedCallback(entry);
+        handleCallback(entry);
       });
       resizeObserver.observe(ref.current, { box: "border-box" });
       return () => {
@@ -18,5 +18,5 @@ export function useResizeObserver(
       };
     }
     return () => {};
-  }, [ref, wrappedCallback]);
+  }, [handleCallback, ref]);
 }

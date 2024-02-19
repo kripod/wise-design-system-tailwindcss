@@ -7,7 +7,7 @@ import * as React from "react";
  * - https://legacy.reactjs.org/docs/hooks-faq.html#how-to-read-an-often-changing-value-from-usecallback
  */
 
-export function useWrappedCallback<A extends unknown[], R>(
+export function useEffectEvent<A extends unknown[], R>(
   callback: (...args: A) => R,
 ): typeof callback {
   const ref = React.useRef<typeof callback>(() => {
