@@ -96,7 +96,7 @@ Fonts shall be loaded separately through `@transferwise/neptune-css`, by importi
 Legacy utility class names can be converted to their Tailwind counterparts with a codemod:
 
 ```sh
-pnpm dlx jscodeshift --extensions js,jsx,ts,tsx,mdx --transform @wise/design-system-tailwindcss/codemods/neptune-css-utilities-to-tailwind.ts ./src/
+pnpm dlx jscodeshift --extensions js,jsx,ts,tsx,mdx --transform ./node_modules/@wise/design-system-tailwindcss/codemods/neptune-css-utilities-to-tailwind.ts ./src/
 ```
 
 ### Without Tailwind CSS (not recommended)
