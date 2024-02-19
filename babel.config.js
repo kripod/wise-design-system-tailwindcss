@@ -14,10 +14,10 @@ module.exports = {
     "@babel/preset-typescript",
   ],
   plugins: [
+    ["babel-plugin-optimize-clsx", { functionNames: ["clsx"] }],
     [
       "@babel/plugin-transform-runtime",
       { version: pkg.dependencies["@babel/runtime"] },
     ],
-    ["babel-plugin-optimize-clsx", { functionNames: ["clsx"] }],
   ],
 };
