@@ -143,7 +143,6 @@ export function InputAddon({
           "justify-self-start": placement === "start",
           "justify-self-end": placement === "end",
         },
-        interactive && "[&>*]:pointer-events-auto",
         {
           "px-2": padding === "sm",
           [clsx("px-4", {
@@ -153,7 +152,11 @@ export function InputAddon({
         },
       )}
     >
-      {children}
+      {interactive ? (
+        <span className="pointer-events-auto">{children}</span>
+      ) : (
+        children
+      )}
     </span>
   );
 }
