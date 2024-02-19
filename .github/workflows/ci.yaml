@@ -33,7 +33,7 @@ jobs:
       - uses: transferwise/actions-bootstrap-node@v1
         with:
           package-manager: pnpm
-          npm-token: ${{ secrets.NPM_TOKEN_AUTOMATION }}
+          npm-token: ${{ secrets.NPM_TOKEN_READONLY }}
       - run: pnpm run build
       - name: Set up commit signing
         uses: crazy-max/ghaction-import-gpg@v6
@@ -49,4 +49,5 @@ jobs:
           title: "chore: release new version and update changelog"
           setupGitUser: false
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN_AUTOMATION }}
