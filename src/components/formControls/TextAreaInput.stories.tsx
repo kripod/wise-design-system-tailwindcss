@@ -2,7 +2,7 @@ import type { Story } from "@ladle/react";
 import * as React from "react";
 
 import { Field } from "./Field";
-import { TextArea } from "./TextArea";
+import { TextAreaInput } from "./TextAreaInput";
 
 export const Basic: Story<{
   required: boolean;
@@ -18,7 +18,7 @@ export const Basic: Story<{
       hint={<>Information message.</>}
       error={value.length === 0 ? <>Error message.</> : undefined}
     >
-      <TextArea
+      <TextAreaInput
         value={value}
         required={required}
         readOnly={readOnly}

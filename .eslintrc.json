@@ -27,8 +27,8 @@
         "PrimaryButton": "button",
         "SecondaryButton": "button",
         "TertiaryButton": "button",
-        "TextInput": "input",
-        "TextArea": "textarea"
+        "TextAreaInput": "textarea",
+        "TextInput": "input"
       }
     }
   },

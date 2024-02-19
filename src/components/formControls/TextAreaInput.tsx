@@ -6,7 +6,7 @@ import {
   useFormControlAriaAttributes,
 } from "./_FormControl";
 
-export type TextAreaProps = Pick<
+export type TextAreaInputProps = Pick<
   React.ComponentPropsWithRef<"textarea">,
   | "ref"
   | "name"
@@ -26,8 +26,8 @@ export type TextAreaProps = Pick<
   | "onSelect"
 >;
 
-export const TextArea = React.forwardRef(function TextArea(
-  { className, ...restProps }: TextAreaProps,
+export const TextAreaInput = React.forwardRef(function TextAreaInput(
+  { className, ...restProps }: TextAreaInputProps,
   ref: React.ForwardedRef<HTMLTextAreaElement>,
 ) {
   const formControlAriaAttributes = useFormControlAriaAttributes();
