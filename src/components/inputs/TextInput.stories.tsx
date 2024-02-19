@@ -117,6 +117,7 @@ export const WithSuffix: Story<{
                 Copy
               </ActionButton>
             ),
+            interactive: true,
             padding: "sm",
           }}
           disabled={disabled}

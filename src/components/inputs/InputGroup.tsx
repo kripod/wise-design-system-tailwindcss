@@ -32,6 +32,7 @@ export function useInputPaddings() {
 interface InputGroupAddon {
   content: React.ReactNode;
   initialContentWidth?: number | string;
+  interactive?: boolean;
   padding?: "none" | "sm" | "md";
 }
 
@@ -119,6 +120,7 @@ const inputAddonDefaultPadding = "md" satisfies InputAddonProps["padding"];
 function InputAddon({
   placement,
   content,
+  interactive,
   padding = inputAddonDefaultPadding,
 }: InputAddonProps) {
   const [, setInputPadding] = React.useContext(
@@ -145,11 +147,14 @@ function InputAddon({
     <span
       ref={ref}
       className={clsx(
-        "z-10 inline-flex items-center text-interactive-secondary transition group-[:has(>:is(input,select):focus)]/input:!text-interactive-primary group-[:has(>:is(input,select):hover)]/input:text-interactive-secondary-hover",
+        "pointer-events-none z-10 inline-flex items-center text-interactive-secondary",
         {
           "justify-self-start": placement === "start",
           "justify-self-end": placement === "end",
         },
+        interactive
+          ? "[&>*]:pointer-events-auto"
+          : "transition group-[:has(>:is(input,button,select):focus)]/input:!text-interactive-primary group-[:has(>:is(input,button,select):hover)]/input:text-interactive-secondary-hover",
         {
           "px-2": padding === "sm",
           [clsx("px-4", {
