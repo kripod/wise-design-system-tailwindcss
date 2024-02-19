@@ -1,22 +1,16 @@
 import "./styles.css";
 
 import { GlobalProvider, ThemeState } from "@ladle/react";
+import { clsx } from "clsx";
 import * as React from "react";
 
-import { useColorSchemePreference } from "../src/hooks/useColorSchemePreference";
-
 export const Provider: GlobalProvider = function ({ globalState, children }) {
-  const colorSchemePreference = useColorSchemePreference();
   const theme: "light" | "dark" =
-    globalState.theme !== ThemeState.Auto
-      ? globalState.theme
-      : colorSchemePreference;
+    globalState.theme !== ThemeState.Auto ? globalState.theme : "light";
 
   return (
     <React.StrictMode>
-      <div className={theme === "dark" ? "theme-dark" : undefined}>
-        {children}
-      </div>
+      <div className={clsx(theme === "dark" && "theme-dark")}>{children}</div>
     </React.StrictMode>
   );
 };
