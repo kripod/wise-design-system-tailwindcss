@@ -547,7 +547,9 @@ function SelectInputOptions<T = string>({
               role="presentation"
               onKeyDown={(event) => {
                 // Prevent interfering with Headless UI
-                event.stopPropagation();
+                if (event.key !== "Escape") {
+                  event.stopPropagation();
+                }
               }}
             >
               {renderFooter(needle)}
