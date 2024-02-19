@@ -66,7 +66,7 @@ export function Listbox() {
 
       <ListboxBase.Options
         ref={refs.setFloating}
-        className="top-0 left-0 z-10 overflow-auto rounded bg-background-elevated p-2 shadow-xl focus:outline-none"
+        className="left-0 top-0 z-10 overflow-auto rounded bg-background-elevated p-2 shadow-xl focus:outline-none"
         style={{
           position: strategy,
           maxHeight,
