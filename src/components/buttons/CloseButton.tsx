@@ -3,20 +3,10 @@ import { clsx } from "clsx";
 import type { Merge } from "ts-essentials";
 
 import { CloseButtonLabel } from "../../i18nTexts";
-import { Button, ButtonProps } from "./_Button";
+import { Button, ButtonPropsBase } from "./_Button";
 
 export type CloseButtonProps = Merge<
-  Omit<
-    ButtonProps,
-    | "equilateral"
-    | "loading"
-    | "disabled"
-    | "children"
-    | "aria-disabled"
-    | "aria-label"
-    | "aria-labelledby"
-    | "aria-pressed"
-  >,
+  Omit<ButtonPropsBase, "equilateral" | "loading" | "disabled" | "children">,
   {
     size?: "sm" | "md";
   }

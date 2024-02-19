@@ -2,17 +2,10 @@ import { clsx } from "clsx";
 import * as React from "react";
 import type { Merge } from "ts-essentials";
 
-import { Button, ButtonProps } from "./_Button";
+import { Button, ButtonPropsBase } from "./_Button";
 
 export type SecondaryButtonProps = Merge<
-  Omit<
-    ButtonProps,
-    | "equilateral"
-    | "aria-disabled"
-    | "aria-label"
-    | "aria-labelledby"
-    | "aria-pressed"
-  >,
+  Omit<ButtonPropsBase, "equilateral">,
   {
     size?: "sm" | "md";
     sentiment?: "neutral" | "negative";

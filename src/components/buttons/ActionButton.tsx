@@ -1,17 +1,11 @@
 import { clsx } from "clsx";
 import * as React from "react";
 
-import { Button, ButtonProps } from "./_Button";
+import { Button, ButtonPropsBase } from "./_Button";
 
 export type ActionButtonProps = Omit<
-  ButtonProps,
-  | "size"
-  | "equilateral"
-  | "loading"
-  | "aria-disabled"
-  | "aria-label"
-  | "aria-labelledby"
-  | "aria-pressed"
+  ButtonPropsBase,
+  "size" | "equilateral" | "loading"
 >;
 
 export const ActionButton = React.forwardRef(function ActionButton(

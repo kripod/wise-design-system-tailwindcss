@@ -3,19 +3,10 @@ import { clsx } from "clsx";
 import * as React from "react";
 import type { Merge } from "ts-essentials";
 
-import { Button, ButtonProps } from "./_Button";
+import { Button, ButtonPropsBase } from "./_Button";
 
 export type CircularButtonProps = Merge<
-  Omit<
-    ButtonProps,
-    | "size"
-    | "equilateral"
-    | "loading"
-    | "aria-disabled"
-    | "aria-label"
-    | "aria-labelledby"
-    | "aria-pressed"
-  >,
+  Omit<ButtonPropsBase, "size" | "equilateral" | "loading">,
   {
     icon: React.ReactNode;
   }

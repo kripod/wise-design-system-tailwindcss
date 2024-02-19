@@ -5,32 +5,22 @@ import type { Merge } from "ts-essentials";
 import { parseBooleanish } from "../../parseBooleanish";
 import { Spinner } from "../Spinner";
 
-type ButtonAriaAttributes = Pick<
-  React.AriaAttributes,
-  | "aria-controls"
-  | "aria-describedby"
-  | "aria-details"
-  | "aria-disabled"
-  | "aria-expanded"
-  | "aria-haspopup"
-  | "aria-keyshortcuts"
-  | "aria-label"
-  | "aria-labelledby"
-  | "aria-pressed"
->;
-
-export type ButtonProps = Merge<
+export type ButtonPropsBase = Merge<
   Pick<
     React.ComponentPropsWithRef<"button">,
     "ref" | "type" | "disabled" | "className" | "style" | "onClick"
-  > &
-    ButtonAriaAttributes,
+  >,
   {
     size?: "auto" | "sm" | "md" | "lg";
     equilateral?: boolean;
     loading?: boolean;
     children: React.ReactNode;
-  }
+  } & Pick<React.AriaAttributes, "aria-describedby">
+>;
+
+export type ButtonProps = Merge<
+  React.ComponentPropsWithRef<"button">,
+  ButtonPropsBase
 >;
 
 export const Button = React.forwardRef(function Button(
