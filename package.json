@@ -16,6 +16,7 @@
     "start": "ladle preview"
   },
   "dependencies": {
+    "@headlessui/tailwindcss": "^0.1.1",
     "@radix-ui/react-id": "^1.0.0",
     "clsx": "^1.2.1",
     "ts-essentials": "^9.3.0",
