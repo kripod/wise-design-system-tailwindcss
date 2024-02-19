@@ -4,7 +4,7 @@ import * as React from "react";
 import { Button, type ButtonPropsBase } from "./_Button";
 
 export type ActionButtonProps = ButtonPropsBase & {
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
   iconPlacement?: "start" | "end";
   disabled?: boolean;
 };
