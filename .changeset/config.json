@@ -2,7 +2,7 @@
   "$schema": "https://unpkg.com/@changesets/config@2.3.0/schema.json",
   "changelog": [
     "@changesets/changelog-github",
-    { "repo": "transferwise/design-system-web-tailwindcss" }
+    { "repo": "kripod/wise-design-system-tailwindcss" }
   ],
   "commit": false,
   "fixed": [],

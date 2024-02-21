@@ -1,4 +1,4 @@
-# @wise/design-system-tailwindcss
+# @kripod/wise-design-system-tailwindcss
 
 Experimental web implementation of Wise Design System, based upon Tailwind CSS.
 
@@ -7,7 +7,7 @@ Experimental web implementation of Wise Design System, based upon Tailwind CSS.
 Firstly, install the package and its peer dependencies (besides React):
 
 ```sh
-pnpm add @wise/design-system-tailwindcss @transferwise/icons css-homogenizer
+pnpm add @kripod/wise-design-system-tailwindcss @transferwise/icons css-homogenizer
 ```
 
 Fonts shall be loaded separately through `@transferwise/neptune-css`, by importing either of these styles:
@@ -62,13 +62,15 @@ Fonts shall be loaded separately through `@transferwise/neptune-css`, by importi
 
    import type { Config } from "tailwindcss";
 
-   import tailwindBase from "@wise/design-system-tailwindcss/tailwind-base";
+   import tailwindBase from "@kripod/wise-design-system-tailwindcss/tailwind-base";
 
    export default {
      content: [
        "./src/**/*.{js,jsx,ts,tsx,mdx}",
        path.join(
-         path.dirname(require.resolve("@wise/design-system-tailwindcss")),
+         path.dirname(
+           require.resolve("@kripod/wise-design-system-tailwindcss"),
+         ),
          "**/*.js",
        ),
      ],
@@ -82,7 +84,7 @@ Fonts shall be loaded separately through `@transferwise/neptune-css`, by importi
 
    ```css
    @import "tailwindcss/base";
-   @import "@wise/design-system-tailwindcss/dist/preflight.css";
+   @import "@kripod/wise-design-system-tailwindcss/dist/preflight.css";
    /* TODO: Use global reset to simplify styling once the app is ready for it */
    /* @import "css-homogenizer/reset.css"; */
 
@@ -96,7 +98,7 @@ Fonts shall be loaded separately through `@transferwise/neptune-css`, by importi
 Legacy utility class names can be converted to their Tailwind counterparts with a codemod:
 
 ```sh
-pnpm dlx jscodeshift --extensions js,jsx,ts,tsx --transform ./node_modules/@wise/design-system-tailwindcss/codemods/neptune-css-utilities-to-tailwind.ts ./src/
+pnpm dlx jscodeshift --extensions js,jsx,ts,tsx --transform ./node_modules/@kripod/wise-design-system-tailwindcss/codemods/neptune-css-utilities-to-tailwind.ts ./src/
 ```
 
 ### Without Tailwind CSS (not recommended)
@@ -104,8 +106,8 @@ pnpm dlx jscodeshift --extensions js,jsx,ts,tsx --transform ./node_modules/@wise
 Import these styles from your app’s root:
 
 ```ts
-import "@wise/design-system-tailwindcss/dist/preflight.css";
-import "@wise/design-system-tailwindcss/dist/pregenerated.css";
+import "@kripod/wise-design-system-tailwindcss/dist/preflight.css";
+import "@kripod/wise-design-system-tailwindcss/dist/pregenerated.css";
 ```
 
 ## Contributing

@@ -1,0 +1,45 @@
+name: "Bootstrap Node.js project"
+description: "Setup Node.js environment and then install dependencies"
+
+inputs:
+  package-manager:
+    description: "Package manager to be used. Supported values: npm, pnpm, yarn."
+    required: true
+  npm-token:
+    description: "Read-only npm token for accessing restricted packages."
+
+runs:
+  using: composite
+  steps:
+    - name: Mark repo directory as safe for git # https://github.blog/2022-04-12-git-security-vulnerability-announced/
+      run: git config --global --add safe.directory $GITHUB_WORKSPACE
+      shell: bash
+
+    - if: ${{ inputs.package-manager == 'pnpm' }}
+      name: Setup pnpm
+      uses: pnpm/action-setup@v2
+
+    - name: Setup cache for dependencies
+      uses: actions/setup-node@v3
+      with:
+        node-version-file: .nvmrc
+        cache: ${{ inputs.package-manager }}
+
+    - name: Setup npm token
+      run: echo "//registry.npmjs.org/:_authToken=${{ inputs.npm-token || env.NPM_TOKEN_READONLY }}" >> ~/.npmrc
+      shell: bash
+
+    - if: ${{ inputs.package-manager == 'npm' }}
+      name: Install dependencies
+      run: npm ci
+      shell: bash
+
+    - if: ${{ inputs.package-manager == 'pnpm' }}
+      name: Install dependencies
+      run: pnpm install
+      shell: bash
+
+    - if: ${{ inputs.package-manager == 'yarn' }}
+      name: Install dependencies
+      run: yarn install --frozen-lockfile
+      shell: bash

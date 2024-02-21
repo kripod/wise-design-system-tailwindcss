@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: transferwise/actions-bootstrap-node@v1
+      - uses: ./.github/actions/bootstrap-node
         with:
           package-manager: pnpm
           npm-token: ${{ secrets.NPM_TOKEN_READONLY }}
@@ -30,17 +30,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: transferwise/actions-bootstrap-node@v1
+      - uses: ./.github/actions/bootstrap-node
         with:
           package-manager: pnpm
           npm-token: ${{ secrets.NPM_TOKEN_AUTOMATION }}
       - run: pnpm run build
-      - name: Set up commit signing
-        uses: crazy-max/ghaction-import-gpg@v6
-        with:
-          gpg_private_key: ${{ secrets.GPG_SIGN_KEY }}
-          git_user_signingkey: true
-          git_commit_gpgsign: true
+      # - name: Set up commit signing
+      #   uses: crazy-max/ghaction-import-gpg@v6
+      #   with:
+      #     gpg_private_key: ${{ secrets.GPG_SIGN_KEY }}
+      #     git_user_signingkey: true
+      #     git_commit_gpgsign: true
       - name: Create release PR or publish on npm
         uses: changesets/action@v1
         with:

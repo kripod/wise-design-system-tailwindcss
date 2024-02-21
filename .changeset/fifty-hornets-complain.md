@@ -1,5 +1,5 @@
 ---
-"@wise/design-system-tailwindcss": minor
+"@kripod/wise-design-system-tailwindcss": minor
 ---
 
 feat: overlay theme
