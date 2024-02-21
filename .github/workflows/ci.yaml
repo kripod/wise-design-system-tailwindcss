@@ -28,6 +28,11 @@ jobs:
     needs: [build-lint-test]
     if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: read
+      packages: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/bootstrap-node
