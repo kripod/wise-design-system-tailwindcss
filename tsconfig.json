@@ -12,13 +12,6 @@
     "declarationMap": true,
     "incremental": true
   },
-  "include": [
-    "**/*.js",
-    "**/*.jsx",
-    "**/*.mjs",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.mts"
-  ],
+  "include": ["**/*.js", "**/*.jsx", "**/*.mjs", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules/", "dist/", "storybook-static/"]
 }
