@@ -10,7 +10,6 @@ import type { Merge } from "ts-essentials";
 import { ClearButtonLabel, NoResultsFound } from "../../config/i18nTexts";
 import { useEffectEvent } from "../../hooks/useEffectEvent";
 import { useScreenSize } from "../../hooks/useScreenSize";
-import { wrapInFragment } from "../../utils/wrapInFragment";
 import { BottomSheet } from "../BottomSheet";
 import { PolymorphicWithOverrides } from "../PolymorphicWithOverrides";
 import { Popover } from "../Popover";
@@ -131,13 +130,13 @@ function filterSelectInputItems<T>(
   });
 }
 
-export interface SelectInputProps<T = string> {
+export interface SelectInputProps<T = string, M extends boolean = false> {
   name?: string;
+  multiple?: M;
   placeholder?: string;
-  // TODO: multiple?: boolean;
   items: readonly SelectInputItem<NonNullable<T>>[];
-  defaultValue?: T;
-  value?: T;
+  defaultValue?: M extends true ? readonly T[] : T;
+  value?: M extends true ? readonly T[] : T;
   compareValues?:
     | (keyof NonNullable<T> & string)
     | ((a: T | undefined, b: T | undefined) => boolean);
@@ -162,7 +161,7 @@ export interface SelectInputProps<T = string> {
   disabled?: boolean;
   size?: "sm" | "md" | "xl";
   className?: string;
-  onChange?: (value: T) => void;
+  onChange?: (value: M extends true ? T[] : T) => void;
   onClear?: () => void;
 }
 
@@ -202,11 +201,14 @@ const defaultRenderTrigger = (({
     className={className}
   >
     <SelectInputTriggerButton as={ButtonInput} size={size}>
-      {placeholderShown ? (
-        <span className="truncate text-content-tertiary">{content}</span>
-      ) : (
-        content
-      )}
+      <span
+        className={clsx(
+          "truncate",
+          placeholderShown && "text-content-tertiary",
+        )}
+      >
+        {content}
+      </span>
     </SelectInputTriggerButton>
   </InputGroup>
 )) satisfies SelectInputProps["renderTrigger"];
@@ -236,14 +238,15 @@ function SelectInputClearButton({
   );
 }
 
-export function SelectInput<T = string>({
+export function SelectInput<T = string, M extends boolean = false>({
   name,
+  multiple,
   placeholder,
   items,
   defaultValue,
   value: controlledValue,
   compareValues,
-  renderValue = wrapInFragment,
+  renderValue = String,
   renderFooter,
   renderTrigger = defaultRenderTrigger,
   filterable,
@@ -253,7 +256,7 @@ export function SelectInput<T = string>({
   className,
   onChange,
   onClear,
-}: SelectInputProps<T>) {
+}: SelectInputProps<T, M>) {
   const [open, setOpen] = React.useState(false);
 
   const triggerRef = React.useRef<HTMLButtonElement>(null);
@@ -268,87 +271,101 @@ export function SelectInput<T = string>({
   return (
     <ListboxBase
       name={name}
+      multiple={multiple}
       defaultValue={defaultValue}
       value={controlledValue}
       by={compareValues}
       disabled={disabled}
-      onChange={(value) => {
-        setOpen(false);
-        onChange?.(value);
-      }}
+      onChange={
+        ((value) => {
+          if (!multiple) {
+            setOpen(false);
+          }
+          onChange?.(value);
+        }) satisfies SelectInputProps<T, M>["onChange"]
+      }
     >
-      {({ disabled: uiDisabled, value }) => (
-        <OptionsOverlay
-          placement="bottom-start"
-          open={open}
-          renderTrigger={({ ref, getInteractionProps }) => (
-            <SelectInputTriggerButtonPropsContext.Provider
-              // eslint-disable-next-line react/jsx-no-constructed-context-values
-              value={{
-                ref: mergeRefs([ref, triggerRef]),
-                ...mergeProps(
-                  {
-                    onClick: () => {
-                      setOpen((prev) => !prev);
-                    },
-                    onKeyDown: (event: React.KeyboardEvent) => {
-                      if (
-                        event.key === " " ||
-                        event.key === "Enter" ||
-                        event.key === "ArrowDown" ||
-                        event.key === "ArrowUp"
-                      ) {
+      {({ disabled: uiDisabled, value }) => {
+        const placeholderShown =
+          multiple && Array.isArray(value) ? value.length === 0 : value == null;
+        return (
+          <OptionsOverlay
+            placement="bottom-start"
+            open={open}
+            renderTrigger={({ ref, getInteractionProps }) => (
+              <SelectInputTriggerButtonPropsContext.Provider
+                // eslint-disable-next-line react/jsx-no-constructed-context-values
+                value={{
+                  ref: mergeRefs([ref, triggerRef]),
+                  ...mergeProps(
+                    {
+                      onClick: () => {
                         setOpen((prev) => !prev);
-                      }
+                      },
+                      onKeyDown: (event: React.KeyboardEvent) => {
+                        if (
+                          event.key === " " ||
+                          event.key === "Enter" ||
+                          event.key === "ArrowDown" ||
+                          event.key === "ArrowUp"
+                        ) {
+                          setOpen((prev) => !prev);
+                        }
+                      },
                     },
-                  },
-                  getInteractionProps(),
-                ),
-              }}
-            >
-              {renderTrigger({
-                content:
-                  value != null ? (
+                    getInteractionProps(),
+                  ),
+                }}
+              >
+                {renderTrigger({
+                  content: !placeholderShown ? (
                     <SelectInputOptionContentWithinTriggerContext.Provider
                       value
                     >
-                      {renderValue(value, true)}
+                      {multiple && Array.isArray(value)
+                        ? value
+                            .map((option: NonNullable<T>) =>
+                              renderValue(option, true),
+                            )
+                            .join(", ")
+                        : renderValue(value as NonNullable<T>, true)}
                     </SelectInputOptionContentWithinTriggerContext.Provider>
                   ) : (
                     placeholder
                   ),
-                placeholderShown: value == null,
-                clear:
-                  onClear != null
-                    ? () => {
-                        onClear();
-                        triggerRef.current?.focus({ preventScroll: true });
-                      }
-                    : undefined,
-                disabled: uiDisabled,
-                size,
-                className,
-              })}
-            </SelectInputTriggerButtonPropsContext.Provider>
-          )}
-          initialFocusRef={controllerRef}
-          size={filterable ? "lg" : "md"}
-          padding="none"
-          onClose={() => {
-            setOpen(false);
-          }}
-        >
-          <SelectInputOptions
-            items={items}
-            renderValue={renderValue}
-            renderFooter={renderFooter}
-            filterable={filterable}
-            filterPlaceholder={filterPlaceholder}
-            searchInputRef={searchInputRef}
-            listboxRef={listboxRef}
-          />
-        </OptionsOverlay>
-      )}
+                  placeholderShown,
+                  clear:
+                    onClear != null
+                      ? () => {
+                          onClear();
+                          triggerRef.current?.focus({ preventScroll: true });
+                        }
+                      : undefined,
+                  disabled: uiDisabled,
+                  size,
+                  className,
+                })}
+              </SelectInputTriggerButtonPropsContext.Provider>
+            )}
+            initialFocusRef={controllerRef}
+            size={filterable ? "lg" : "md"}
+            padding="none"
+            onClose={() => {
+              setOpen(false);
+            }}
+          >
+            <SelectInputOptions
+              items={items}
+              renderValue={renderValue}
+              renderFooter={renderFooter}
+              filterable={filterable}
+              filterPlaceholder={filterPlaceholder}
+              searchInputRef={searchInputRef}
+              listboxRef={listboxRef}
+            />
+          </OptionsOverlay>
+        );
+      }}
     </ListboxBase>
   );
 }
@@ -446,7 +463,7 @@ interface SelectInputOptionsProps<T = string>
 
 function SelectInputOptions<T = string>({
   items,
-  renderValue = wrapInFragment,
+  renderValue = String,
   renderFooter,
   filterable = false,
   filterPlaceholder,
