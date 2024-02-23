@@ -201,11 +201,14 @@ const defaultRenderTrigger = (({
     className={className}
   >
     <SelectInputTriggerButton as={ButtonInput} size={size}>
-      {placeholderShown ? (
-        <span className="truncate text-content-tertiary">{content}</span>
-      ) : (
-        content
-      )}
+      <span
+        className={clsx(
+          "truncate",
+          placeholderShown && "text-content-tertiary",
+        )}
+      >
+        {content}
+      </span>
     </SelectInputTriggerButton>
   </InputGroup>
 )) satisfies SelectInputProps["renderTrigger"];
