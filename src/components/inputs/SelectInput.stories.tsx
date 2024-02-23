@@ -29,7 +29,7 @@ const meta = {
 } satisfies Meta<typeof SelectInput>;
 export default meta;
 
-type Story<T> = StoryObj<SelectInputProps<T>>;
+type Story<T, M extends boolean = false> = StoryObj<SelectInputProps<T, M>>;
 
 interface Month {
   id: number;
@@ -149,52 +149,54 @@ function currencyOption(currency: Currency) {
   } satisfies SelectInputItem<Currency>;
 }
 
-export const Currencies: Story<Currency> = {
-  args: {
-    items: [
-      {
-        type: "group",
-        label: "Popular currencies",
-        options: popularCurrencies.map((currency) => currencyOption(currency)),
-      },
-      {
-        type: "group",
-        label: "All currencies",
-        options: allCurrencies.map((currency) => currencyOption(currency)),
-      },
-    ],
-    defaultValue: popularCurrencies[0],
-    renderValue: (currency, withinTrigger) => (
-      <SelectInputOptionContent
-        title={currency.code}
-        note={withinTrigger ? undefined : currency.name}
-        icon={<Flag code={currency.code} intrinsicSize={24} />}
-      />
+const CurrenciesArgs = {
+  items: [
+    {
+      type: "group",
+      label: "Popular currencies",
+      options: popularCurrencies.map((currency) => currencyOption(currency)),
+    },
+    {
+      type: "group",
+      label: "All currencies",
+      options: allCurrencies.map((currency) => currencyOption(currency)),
+    },
+  ],
+  defaultValue: popularCurrencies[0],
+  renderValue: (currency, withinTrigger) => (
+    <SelectInputOptionContent
+      title={currency.code}
+      note={withinTrigger ? undefined : currency.name}
+      icon={<Flag code={currency.code} intrinsicSize={24} />}
+    />
+  ),
+  renderFooter: ({ resultsEmpty, queryNormalized }) =>
+    resultsEmpty &&
+    queryNormalized != null &&
+    /^[a-z]{3}$/u.test(queryNormalized) ? (
+      <>
+        It’s not possible use {queryNormalized.toUpperCase()} yet.{" "}
+        <InlineLink href="#_" onClick={(event) => event.preventDefault()}>
+          Email me when it’s available.
+        </InlineLink>
+      </>
+    ) : (
+      <>
+        Can’t find it?{" "}
+        <InlineLink href="#_" onClick={(event) => event.preventDefault()}>
+          Request the currency you need,
+        </InlineLink>{" "}
+        and we’ll notify you once it’s available.
+      </>
     ),
-    renderFooter: ({ resultsEmpty, queryNormalized }) =>
-      resultsEmpty &&
-      queryNormalized != null &&
-      /^[a-z]{3}$/u.test(queryNormalized) ? (
-        <>
-          It’s not possible use {queryNormalized.toUpperCase()} yet.{" "}
-          <InlineLink href="#_" onClick={(event) => event.preventDefault()}>
-            Email me when it’s available.
-          </InlineLink>
-        </>
-      ) : (
-        <>
-          Can’t find it?{" "}
-          <InlineLink href="#_" onClick={(event) => event.preventDefault()}>
-            Request the currency you need,
-          </InlineLink>{" "}
-          and we’ll notify you once it’s available.
-        </>
-      ),
-    filterable: true,
-    filterPlaceholder: "Type a currency / country",
-    size: "xl",
-    onChange: fn() satisfies Mock,
-  },
+  filterable: true,
+  filterPlaceholder: "Type a currency / country",
+  size: "xl",
+  onChange: fn() satisfies Mock,
+} satisfies Story<Currency>["args"];
+
+export const Currencies: Story<Currency> = {
+  args: CurrenciesArgs,
   play: async ({ step }) => {
     await step("filters items via keyboard", async () => {
       await userEvent.tab();
@@ -222,6 +224,43 @@ export const Currencies: Story<Currency> = {
 
       await userEvent.type(input, "{Backspace}eu");
       await expect(input).toHaveAttribute("aria-activedescendant");
+    });
+  },
+};
+
+export const MultipleCurrencies: Story<Currency, true> = {
+  args: {
+    ...CurrenciesArgs,
+    multiple: true,
+    placeholder: "Choose currencies…",
+    defaultValue: [popularCurrencies[0]],
+    renderValue: (currency, withinTrigger) =>
+      withinTrigger ? (
+        currency.code
+      ) : (
+        <SelectInputOptionContent
+          title={currency.code}
+          note={currency.name}
+          icon={<Flag code={currency.code} intrinsicSize={24} />}
+        />
+      ),
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step("selects multiple items via mouse", async () => {
+      const triggerButton = canvas.getByRole("button");
+
+      await userEvent.click(triggerButton);
+      await userEvent.unhover(triggerButton);
+
+      const option = within(screen.getByRole("listbox")).getAllByRole(
+        "option",
+        { name: /^EUR/u },
+      )[0];
+      await userEvent.click(option);
+
+      await expect(triggerButton).toHaveTextContent("USD, EUR");
     });
   },
 };

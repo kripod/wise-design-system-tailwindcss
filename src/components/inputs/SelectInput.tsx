@@ -130,13 +130,13 @@ function filterSelectInputItems<T>(
   });
 }
 
-export interface SelectInputProps<T = string> {
+export interface SelectInputProps<T = string, M extends boolean = false> {
   name?: string;
+  multiple?: M;
   placeholder?: string;
-  // TODO: multiple?: boolean;
   items: readonly SelectInputItem<NonNullable<T>>[];
-  defaultValue?: T;
-  value?: T;
+  defaultValue?: M extends true ? readonly T[] : T;
+  value?: M extends true ? readonly T[] : T;
   compareValues?:
     | (keyof NonNullable<T> & string)
     | ((a: T | undefined, b: T | undefined) => boolean);
@@ -161,7 +161,7 @@ export interface SelectInputProps<T = string> {
   disabled?: boolean;
   size?: "sm" | "md" | "xl";
   className?: string;
-  onChange?: (value: T) => void;
+  onChange?: (value: M extends true ? T[] : T) => void;
   onClear?: () => void;
 }
 
@@ -238,8 +238,9 @@ function SelectInputClearButton({
   );
 }
 
-export function SelectInput<T = string>({
+export function SelectInput<T = string, M extends boolean = false>({
   name,
+  multiple,
   placeholder,
   items,
   defaultValue,
@@ -255,7 +256,7 @@ export function SelectInput<T = string>({
   className,
   onChange,
   onClear,
-}: SelectInputProps<T>) {
+}: SelectInputProps<T, M>) {
   const [open, setOpen] = React.useState(false);
 
   const triggerRef = React.useRef<HTMLButtonElement>(null);
@@ -270,17 +271,23 @@ export function SelectInput<T = string>({
   return (
     <ListboxBase
       name={name}
+      multiple={multiple}
       defaultValue={defaultValue}
       value={controlledValue}
       by={compareValues}
       disabled={disabled}
-      onChange={(value) => {
-        setOpen(false);
-        onChange?.(value);
-      }}
+      onChange={
+        ((value) => {
+          if (!multiple) {
+            setOpen(false);
+          }
+          onChange?.(value);
+        }) satisfies SelectInputProps<T, M>["onChange"]
+      }
     >
       {({ disabled: uiDisabled, value }) => {
-        const placeholderShown = value == null;
+        const placeholderShown =
+          multiple && Array.isArray(value) ? value.length === 0 : value == null;
         return (
           <OptionsOverlay
             placement="bottom-start"
@@ -315,7 +322,13 @@ export function SelectInput<T = string>({
                     <SelectInputOptionContentWithinTriggerContext.Provider
                       value
                     >
-                      {renderValue(value, true)}
+                      {multiple && Array.isArray(value)
+                        ? value
+                            .map((option: NonNullable<T>) =>
+                              renderValue(option, true),
+                            )
+                            .join(", ")
+                        : renderValue(value as NonNullable<T>, true)}
                     </SelectInputOptionContentWithinTriggerContext.Provider>
                   ) : (
                     placeholder
