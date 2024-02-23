@@ -80,7 +80,7 @@ export const Months: Story<Month | null> = {
       await expect(triggerButton).toHaveTextContent("Month");
     });
 
-    await step("selects item via mouse", async () => {
+    await step("selects option via mouse", async () => {
       const triggerButton = canvas.getByRole("button");
 
       await userEvent.click(triggerButton);
@@ -198,7 +198,7 @@ const CurrenciesArgs = {
 export const Currencies: Story<Currency> = {
   args: CurrenciesArgs,
   play: async ({ step }) => {
-    await step("filters items via keyboard", async () => {
+    await step("filters options via keyboard", async () => {
       await userEvent.tab();
       await userEvent.keyboard(" ");
 
@@ -248,7 +248,7 @@ export const MultipleCurrencies: Story<Currency, true> = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await step("selects multiple items via mouse", async () => {
+    await step("selects multiple options via mouse", async () => {
       const triggerButton = canvas.getByRole("button");
 
       await userEvent.click(triggerButton);
