@@ -11,6 +11,7 @@
     "jsx-a11y": {
       "components": {
         "ActionButton": "button",
+        "Button": "button",
         "CircularButton": "button",
         "InlineLink": "a",
         "Label": "label",

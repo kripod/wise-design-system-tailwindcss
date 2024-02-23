@@ -24,6 +24,7 @@ export const Chip = React.forwardRef(function Chip(
     <Button
       ref={ref}
       size="sm"
+      role="checkbox"
       aria-checked={checked}
       disabled={disabled}
       className={clsx(

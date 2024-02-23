@@ -65,6 +65,7 @@ const TabButton = React.forwardRef(function TabButton(
   return (
     <Button
       ref={ref}
+      role="tab"
       aria-selected={ariaSelected}
       className={clsx(
         className,
