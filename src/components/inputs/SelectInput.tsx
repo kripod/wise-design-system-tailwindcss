@@ -10,7 +10,6 @@ import type { Merge } from "ts-essentials";
 import { ClearButtonLabel, NoResultsFound } from "../../config/i18nTexts";
 import { useEffectEvent } from "../../hooks/useEffectEvent";
 import { useScreenSize } from "../../hooks/useScreenSize";
-import { wrapInFragment } from "../../utils/wrapInFragment";
 import { BottomSheet } from "../BottomSheet";
 import { PolymorphicWithOverrides } from "../PolymorphicWithOverrides";
 import { Popover } from "../Popover";
@@ -243,7 +242,7 @@ export function SelectInput<T = string>({
   defaultValue,
   value: controlledValue,
   compareValues,
-  renderValue = wrapInFragment,
+  renderValue = String,
   renderFooter,
   renderTrigger = defaultRenderTrigger,
   filterable,
@@ -446,7 +445,7 @@ interface SelectInputOptionsProps<T = string>
 
 function SelectInputOptions<T = string>({
   items,
-  renderValue = wrapInFragment,
+  renderValue = String,
   renderFooter,
   filterable = false,
   filterPlaceholder,
