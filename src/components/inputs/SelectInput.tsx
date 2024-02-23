@@ -279,38 +279,39 @@ export function SelectInput<T = string>({
         onChange?.(value);
       }}
     >
-      {({ disabled: uiDisabled, value }) => (
-        <OptionsOverlay
-          placement="bottom-start"
-          open={open}
-          renderTrigger={({ ref, getInteractionProps }) => (
-            <SelectInputTriggerButtonPropsContext.Provider
-              // eslint-disable-next-line react/jsx-no-constructed-context-values
-              value={{
-                ref: mergeRefs([ref, triggerRef]),
-                ...mergeProps(
-                  {
-                    onClick: () => {
-                      setOpen((prev) => !prev);
-                    },
-                    onKeyDown: (event: React.KeyboardEvent) => {
-                      if (
-                        event.key === " " ||
-                        event.key === "Enter" ||
-                        event.key === "ArrowDown" ||
-                        event.key === "ArrowUp"
-                      ) {
+      {({ disabled: uiDisabled, value }) => {
+        const placeholderShown = value == null;
+        return (
+          <OptionsOverlay
+            placement="bottom-start"
+            open={open}
+            renderTrigger={({ ref, getInteractionProps }) => (
+              <SelectInputTriggerButtonPropsContext.Provider
+                // eslint-disable-next-line react/jsx-no-constructed-context-values
+                value={{
+                  ref: mergeRefs([ref, triggerRef]),
+                  ...mergeProps(
+                    {
+                      onClick: () => {
                         setOpen((prev) => !prev);
-                      }
+                      },
+                      onKeyDown: (event: React.KeyboardEvent) => {
+                        if (
+                          event.key === " " ||
+                          event.key === "Enter" ||
+                          event.key === "ArrowDown" ||
+                          event.key === "ArrowUp"
+                        ) {
+                          setOpen((prev) => !prev);
+                        }
+                      },
                     },
-                  },
-                  getInteractionProps(),
-                ),
-              }}
-            >
-              {renderTrigger({
-                content:
-                  value != null ? (
+                    getInteractionProps(),
+                  ),
+                }}
+              >
+                {renderTrigger({
+                  content: !placeholderShown ? (
                     <SelectInputOptionContentWithinTriggerContext.Provider
                       value
                     >
@@ -319,38 +320,39 @@ export function SelectInput<T = string>({
                   ) : (
                     placeholder
                   ),
-                placeholderShown: value == null,
-                clear:
-                  onClear != null
-                    ? () => {
-                        onClear();
-                        triggerRef.current?.focus({ preventScroll: true });
-                      }
-                    : undefined,
-                disabled: uiDisabled,
-                size,
-                className,
-              })}
-            </SelectInputTriggerButtonPropsContext.Provider>
-          )}
-          initialFocusRef={controllerRef}
-          size={filterable ? "lg" : "md"}
-          padding="none"
-          onClose={() => {
-            setOpen(false);
-          }}
-        >
-          <SelectInputOptions
-            items={items}
-            renderValue={renderValue}
-            renderFooter={renderFooter}
-            filterable={filterable}
-            filterPlaceholder={filterPlaceholder}
-            searchInputRef={searchInputRef}
-            listboxRef={listboxRef}
-          />
-        </OptionsOverlay>
-      )}
+                  placeholderShown,
+                  clear:
+                    onClear != null
+                      ? () => {
+                          onClear();
+                          triggerRef.current?.focus({ preventScroll: true });
+                        }
+                      : undefined,
+                  disabled: uiDisabled,
+                  size,
+                  className,
+                })}
+              </SelectInputTriggerButtonPropsContext.Provider>
+            )}
+            initialFocusRef={controllerRef}
+            size={filterable ? "lg" : "md"}
+            padding="none"
+            onClose={() => {
+              setOpen(false);
+            }}
+          >
+            <SelectInputOptions
+              items={items}
+              renderValue={renderValue}
+              renderFooter={renderFooter}
+              filterable={filterable}
+              filterPlaceholder={filterPlaceholder}
+              searchInputRef={searchInputRef}
+              listboxRef={listboxRef}
+            />
+          </OptionsOverlay>
+        );
+      }}
     </ListboxBase>
   );
 }
