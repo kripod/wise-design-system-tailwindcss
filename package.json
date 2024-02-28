@@ -58,8 +58,8 @@
     "@tailwindcss/container-queries": "^0.1",
     "@transferwise/icons": "^3.1",
     "css-homogenizer": "^3.2.1",
-    "react": "16.14 - 18",
-    "react-dom": "16.14 - 18",
+    "react": "18",
+    "react-dom": "18",
     "tailwindcss": "^3.4",
     "typescript": ">=4.5"
   },
@@ -78,14 +78,12 @@
     "@babel/runtime": "^7.23.9",
     "@floating-ui/react": "^0.26.9",
     "@headlessui/react": "^1.7.18",
-    "@radix-ui/react-id": "^1.0.1",
     "@react-aria/overlays": "^3.21.1",
     "clsx": "^2.1.0",
     "merge-props": "^6.0.0",
     "modern-normalize": "^2.0.0",
     "react-merge-refs": "^2.1.1",
-    "ts-essentials": "^9.4.1",
-    "use-sync-external-store": "^1.2.0"
+    "ts-essentials": "^9.4.1"
   },
   "devDependencies": {
     "@babel/core": "7.23.9",
@@ -116,7 +114,6 @@
     "@types/node": "20.11.20",
     "@types/react": "18.2.57",
     "@types/react-dom": "18.2.19",
-    "@types/use-sync-external-store": "0.0.6",
     "@vitejs/plugin-react": "4.2.1",
     "@wise/eslint-config": "9.7.2",
     "babel-plugin-optimize-clsx": "2.6.2",

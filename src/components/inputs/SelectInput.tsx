@@ -1,5 +1,4 @@
 import { Listbox as ListboxBase } from "@headlessui/react";
-import { useId } from "@radix-ui/react-id";
 import { Check, ChevronDown, Cross, CrossCircle } from "@transferwise/icons";
 import { clsx } from "clsx";
 import mergeProps from "merge-props";
@@ -493,8 +492,8 @@ function SelectInputOptions<T = string>({
   }, []);
 
   const showStatus = resultsEmpty;
-  const statusId = useId();
-  const listboxId = useId();
+  const statusId = React.useId();
+  const listboxId = React.useId();
 
   return (
     <ListboxBase.Options
@@ -654,7 +653,7 @@ function SelectInputGroupItemView<T = string>({
   renderValue,
   needle,
 }: SelectInputGroupItemViewProps<T>) {
-  const headerId = useId();
+  const headerId = React.useId();
 
   return (
     // An empty container may be rendered when no options match `needle`

@@ -1,4 +1,3 @@
-import { useId } from "@radix-ui/react-id";
 import { AlertCircle } from "@transferwise/icons";
 import { clsx } from "clsx";
 import * as React from "react";
@@ -67,11 +66,11 @@ export function Field({
   className,
   children,
 }: FieldProps) {
-  const fallbackInputId = useId();
+  const fallbackInputId = React.useId();
   const inputId = id ?? fallbackInputId;
 
   const description = error || hint;
-  const descriptionId = useId();
+  const descriptionId = React.useId();
 
   return (
     <InputIdContext.Provider value={inputId}>

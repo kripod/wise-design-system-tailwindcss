@@ -1,7 +1,7 @@
-import { useSyncExternalStore } from "use-sync-external-store/shim";
+import * as React from "react";
 
 export function useMedia(query: string) {
-  return useSyncExternalStore(
+  return React.useSyncExternalStore(
     (onStoreChange) => {
       const mediaQueryList = window.matchMedia(query);
       mediaQueryList.addEventListener("change", onStoreChange);
@@ -9,10 +9,7 @@ export function useMedia(query: string) {
         mediaQueryList.removeEventListener("change", onStoreChange);
       };
     },
-    () =>
-      typeof window !== "undefined"
-        ? window.matchMedia(query).matches
-        : undefined,
+    () => window.matchMedia(query).matches,
     () => undefined,
   );
 }
