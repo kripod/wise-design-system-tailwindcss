@@ -31,16 +31,19 @@ export function Flag({ code, intrinsicSize = 64 }: FlagProps) {
       : unknownFlagName;
 
   return (
-    <img
-      src={`https://wise.com/web-art/assets/flags/${name}.svg`}
-      alt=""
-      width={intrinsicSize}
-      height={intrinsicSize}
-      onError={() => {
-        setFallback((prev) =>
-          prev == null && detailed ? "simple" : "unknown",
-        );
-      }}
-    />
+    <span className="inline-grid *:col-start-1 *:row-start-1">
+      <img
+        src={`https://wise.com/web-art/assets/flags/${name}.svg`}
+        alt=""
+        width={intrinsicSize}
+        height={intrinsicSize}
+        onError={() => {
+          setFallback((prev) =>
+            prev == null && detailed ? "simple" : "unknown",
+          );
+        }}
+      />
+      <span className="rounded-full ring-1 ring-inset ring-border-neutral" />
+    </span>
   );
 }
