@@ -237,7 +237,7 @@ function SelectInputClearButton({
   );
 }
 
-export function SelectInput<T = string, M extends boolean = false>({
+export function SelectInput<const T = string, M extends boolean = false>({
   name,
   multiple,
   placeholder,

@@ -2,9 +2,9 @@ import * as React from "react";
 
 import { useEffectEvent } from "./useEffectEvent";
 
-export function useControllableState<T>(
+export function useControllableState<const T>(
   controlledValue: T | undefined,
-  defaultValue: T,
+  defaultValue: NoInfer<T>,
   onChange: ((value: T) => void) | undefined,
 ): [T, React.Dispatch<React.SetStateAction<T>>] {
   const [uncontrolledValue, setUncontrolledValue] =
