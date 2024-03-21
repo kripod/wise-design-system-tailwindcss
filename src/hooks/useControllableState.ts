@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { useEffectEvent } from "./useEffectEvent";
 
-export function useControllableState<const T>(
+export function useControllableState<T>(
   controlledValue: T | undefined,
   defaultValue: NoInfer<T>,
   onChange: ((value: T) => void) | undefined,
