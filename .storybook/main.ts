@@ -8,6 +8,9 @@ export default {
       strictMode: true,
     },
   },
+  typescript: {
+    reactDocgen: "react-docgen-typescript",
+  },
   addons: [
     "@storybook/addon-a11y",
     "@storybook/addon-essentials",
