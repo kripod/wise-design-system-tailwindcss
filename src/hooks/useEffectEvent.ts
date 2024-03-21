@@ -7,8 +7,8 @@ import * as React from "react";
  * - https://legacy.reactjs.org/docs/hooks-faq.html#how-to-read-an-often-changing-value-from-usecallback
  */
 
-export function useEffectEvent<A extends unknown[], R>(
-  callback: (...args: A) => R,
+export function useEffectEvent<T, A extends unknown[]>(
+  callback: (...args: A) => T,
 ): typeof callback {
   const ref = React.useRef<typeof callback>(() => {
     throw new Error("Cannot call an event handler while rendering.");
