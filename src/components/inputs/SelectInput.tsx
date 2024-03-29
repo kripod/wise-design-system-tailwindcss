@@ -326,6 +326,7 @@ export function SelectInput<const T = string, M extends boolean = false>({
                             .map((option: NonNullable<T>) =>
                               renderValue(option, true),
                             )
+                            .filter((node) => node != null)
                             .join(", ")
                         : renderValue(value as NonNullable<T>, true)}
                     </SelectInputOptionContentWithinTriggerContext.Provider>
