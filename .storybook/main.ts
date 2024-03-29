@@ -12,8 +12,8 @@ export default {
     reactDocgen: "react-docgen-typescript",
   },
   addons: [
-    "@storybook/addon-a11y",
     "@storybook/addon-essentials",
+    "@storybook/addon-a11y",
     "@storybook/addon-interactions",
     "@storybook/addon-links",
     "@storybook/addon-themes",
