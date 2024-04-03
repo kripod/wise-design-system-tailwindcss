@@ -82,7 +82,6 @@
     "clsx": "^2.1.0",
     "merge-props": "^6.0.0",
     "modern-normalize": "^2.0.0",
-    "react-merge-refs": "^2.1.1",
     "ts-essentials": "^9.4.1"
   },
   "devDependencies": {

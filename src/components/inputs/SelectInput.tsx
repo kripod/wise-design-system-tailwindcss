@@ -3,7 +3,6 @@ import { Check, ChevronDown, Cross, CrossCircle } from "@transferwise/icons";
 import { clsx } from "clsx";
 import mergeProps from "merge-props";
 import * as React from "react";
-import { mergeRefs } from "react-merge-refs";
 import type { Merge } from "ts-essentials";
 
 import { ClearButtonLabel, NoResultsFound } from "../../config/i18nTexts";
@@ -258,7 +257,7 @@ export function SelectInput<const T = string, M extends boolean = false>({
 }: SelectInputProps<T, M>) {
   const [open, setOpen] = React.useState(false);
 
-  const triggerRef = React.useRef<HTMLButtonElement>(null);
+  const triggerRef = React.useRef<HTMLButtonElement | null>(null);
 
   const screenSm = useScreenSize("sm");
   const OptionsOverlay = screenSm ? Popover : BottomSheet;
@@ -295,7 +294,10 @@ export function SelectInput<const T = string, M extends boolean = false>({
               <SelectInputTriggerButtonPropsContext.Provider
                 // eslint-disable-next-line react/jsx-no-constructed-context-values
                 value={{
-                  ref: mergeRefs([ref, triggerRef]),
+                  ref: (node) => {
+                    ref(node);
+                    triggerRef.current = node;
+                  },
                   ...mergeProps(
                     {
                       onClick: () => {
