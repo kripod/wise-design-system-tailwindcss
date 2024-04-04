@@ -11,7 +11,7 @@ export function useEffectEvent<T, A extends unknown[]>(
   callback: (...args: A) => T,
 ): typeof callback {
   const ref = React.useRef<typeof callback>(() => {
-    throw new Error("Cannot call an event handler while rendering.");
+    throw new Error("Cannot call an event handler while rendering");
   });
 
   React.useEffect(() => {
