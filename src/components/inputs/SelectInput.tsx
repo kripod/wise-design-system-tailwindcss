@@ -151,13 +151,13 @@ export interface SelectInputProps<T = string, M extends boolean = false> {
     placeholderShown: boolean;
     clear: (() => void) | undefined;
     disabled: boolean;
-    size: "sm" | "md" | "xl";
+    size: "sm" | "md" | "lg";
     className: string | undefined;
   }) => React.ReactNode;
   filterable?: boolean;
   filterPlaceholder?: string;
   disabled?: boolean;
-  size?: "sm" | "md" | "xl";
+  size?: "sm" | "md" | "lg";
   className?: string;
   onChange?: (value: M extends true ? T[] : T) => void;
   onClear?: () => void;

@@ -191,7 +191,7 @@ const CurrenciesArgs = {
     ),
   filterable: true,
   filterPlaceholder: "Type a currency / country",
-  size: "xl",
+  size: "lg",
   onChange: fn() satisfies Mock,
 } satisfies Story<Currency>["args"];
 

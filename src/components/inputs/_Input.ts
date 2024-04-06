@@ -1,7 +1,7 @@
 import { clsx } from "clsx/lite";
 
 interface InputProps {
-  size?: "auto" | "sm" | "md" | "xl";
+  size?: "auto" | "sm" | "md" | "lg";
 }
 
 export function inputClassNameBase({ size = "auto" }: InputProps = {}) {
@@ -10,6 +10,6 @@ export function inputClassNameBase({ size = "auto" }: InputProps = {}) {
     "enabled:group-hover/input:ring-2 enabled:group-hover/input:ring-interactive-secondary-hover", // TODO: Remove when Chrome and Safari are fixed
     size === "sm" && "h-8 text-body",
     size === "md" && "h-12 text-body-lg",
-    size === "xl" && "h-18 text-title-subsection", // TODO: Reconsider text style
+    size === "lg" && "h-18 text-title-subsection", // TODO: Reconsider text style
   );
 }

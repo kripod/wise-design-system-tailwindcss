@@ -26,7 +26,7 @@ export interface TextInputProps
     | "onBlur"
   > {
   type?: "email" | "password" | "tel" | "text" | "url";
-  size?: "sm" | "md" | "xl";
+  size?: "sm" | "md" | "lg";
   shape?: "rectangle" | "pill";
 }
 

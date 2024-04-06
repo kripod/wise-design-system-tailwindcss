@@ -7,7 +7,7 @@ import { useInputPaddings } from "./InputGroup";
 
 export interface ButtonInputProps
   extends React.ComponentPropsWithRef<"button"> {
-  size?: "sm" | "md" | "xl";
+  size?: "sm" | "md" | "lg";
 }
 
 export const ButtonInput = React.forwardRef(function ButtonInput(
