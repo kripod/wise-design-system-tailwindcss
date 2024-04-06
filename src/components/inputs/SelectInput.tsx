@@ -1,6 +1,6 @@
 import { Listbox as ListboxBase } from "@headlessui/react";
 import { Check, ChevronDown, Cross, CrossCircle } from "@transferwise/icons";
-import { clsx } from "clsx";
+import { clsx } from "clsx/lite";
 import mergeProps from "merge-props";
 import * as React from "react";
 import type { Merge } from "ts-essentials";

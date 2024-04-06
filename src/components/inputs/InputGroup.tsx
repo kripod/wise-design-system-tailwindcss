@@ -1,4 +1,4 @@
-import { clsx } from "clsx";
+import { clsx } from "clsx/lite";
 import * as React from "react";
 
 import { useResizeObserver } from "../../hooks/useResizeObserver";
@@ -149,20 +149,18 @@ function InputAddon({
       ref={ref}
       className={clsx(
         "pointer-events-none z-10 inline-flex items-center text-interactive-secondary transition group-has-[>:is(input,button,select):focus-visible]/input:!text-interactive-primary group-has-[>:is(input,button,select):hover]/input:text-interactive-secondary-hover",
-        {
-          "justify-self-start": placement === "start",
-          "justify-self-end": placement === "end",
-        },
+        placement === "start" && "justify-self-start",
+        placement === "end" && "justify-self-end",
         interactive
           ? "*:pointer-events-auto"
           : "group-disabled/input:opacity-45 group-disabled/input:mix-blend-luminosity",
-        {
-          "px-2": padding === "sm",
-          [clsx("px-4", {
-            "pe-2": placement === "start",
-            "ps-2": placement === "end",
-          })]: padding === "md",
-        },
+        padding === "sm" && "px-2",
+        padding === "md" &&
+          clsx(
+            "px-4",
+            placement === "start" && "pe-2",
+            placement === "end" && "ps-2",
+          ),
       )}
     >
       {content}

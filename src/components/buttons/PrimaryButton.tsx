@@ -1,4 +1,4 @@
-import { clsx } from "clsx";
+import { clsx } from "clsx/lite";
 import * as React from "react";
 
 import { Button, type ButtonPropsBase } from "./_Button";
@@ -21,12 +21,14 @@ export const PrimaryButton = React.forwardRef(function PrimaryButton(
     <Button
       ref={ref}
       size={size}
-      className={clsx(className, "rounded-full px-4", {
-        "bg-interactive-accent text-interactive-control hover:bg-interactive-accent-hover active:bg-interactive-accent-active":
-          sentiment === "neutral",
-        "bg-sentiment-negative text-contrast-overlay hover:bg-sentiment-negative-hover focus-visible:outline-sentiment-negative active:bg-sentiment-negative-active":
-          sentiment === "negative",
-      })}
+      className={clsx(
+        className,
+        "rounded-full px-4",
+        sentiment === "neutral" &&
+          "bg-interactive-accent text-interactive-control hover:bg-interactive-accent-hover active:bg-interactive-accent-active",
+        sentiment === "negative" &&
+          "bg-sentiment-negative text-contrast-overlay hover:bg-sentiment-negative-hover focus-visible:outline-sentiment-negative active:bg-sentiment-negative-active",
+      )}
       {...restProps}
     />
   );

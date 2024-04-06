@@ -1,5 +1,5 @@
 import { CrossCircleFill } from "@transferwise/icons";
-import { clsx } from "clsx";
+import { clsx } from "clsx/lite";
 
 import { useControllableState } from "../../hooks/useControllableState";
 import { __DEV__ } from "../../utils/env";

@@ -1,4 +1,4 @@
-import { clsx } from "clsx";
+import { clsx } from "clsx/lite";
 import * as React from "react";
 import type { Merge } from "ts-essentials";
 
@@ -53,10 +53,8 @@ export const Button = React.forwardRef(function Button(
           "transition focus-visible:outline focus-visible:outline-offset disabled:pointer-events-none disabled:opacity-45 disabled:mix-blend-luminosity aria-disabled:pointer-events-none aria-disabled:opacity-45 aria-disabled:mix-blend-luminosity",
           size !== "auto" &&
             "inline-flex items-center justify-center text-center font-semibold",
-          {
-            "h-8 text-body": size === "sm",
-            "h-12 text-body-lg": size === "md",
-          },
+          size === "sm" && "h-8 text-body",
+          size === "md" && "h-12 text-body-lg",
         ),
         children:
           disabled !== "loading" ? (

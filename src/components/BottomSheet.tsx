@@ -7,7 +7,7 @@ import {
   useRole,
 } from "@floating-ui/react";
 import { Transition } from "@headlessui/react";
-import { clsx } from "clsx";
+import { clsx } from "clsx/lite";
 import * as React from "react";
 
 import { CloseButton } from "./buttons/CloseButton";
@@ -110,9 +110,7 @@ export function BottomSheet({
                       "pt-0",
                       "grid gap-y-2 overflow-y-auto",
                       title ? "grid-rows-[auto_1fr]" : "grid-rows-1",
-                      {
-                        "p-4": padding === "md",
-                      },
+                      padding === "md" && "p-4",
                     )}
                   >
                     {title ? (

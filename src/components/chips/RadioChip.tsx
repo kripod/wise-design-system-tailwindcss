@@ -1,5 +1,5 @@
 import { RadioGroup as RadioGroupBase } from "@headlessui/react";
-import { clsx } from "clsx";
+import { clsx } from "clsx/lite";
 
 import { Chip } from "./_Chip";
 

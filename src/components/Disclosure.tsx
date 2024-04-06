@@ -1,6 +1,6 @@
 import { Disclosure as DisclosureBase } from "@headlessui/react";
 import { ChevronDown } from "@transferwise/icons";
-import { clsx } from "clsx";
+import { clsx } from "clsx/lite";
 
 import { Button } from "./buttons/_Button";
 

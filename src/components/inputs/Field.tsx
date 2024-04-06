@@ -1,5 +1,5 @@
 import { AlertCircle } from "@transferwise/icons";
-import { clsx } from "clsx";
+import { clsx } from "clsx/lite";
 import * as React from "react";
 
 import { Label } from "./Label";

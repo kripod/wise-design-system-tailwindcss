@@ -1,4 +1,4 @@
-import { clsx } from "clsx";
+import { clsx } from "clsx/lite";
 import * as React from "react";
 
 import { inputClassNameBase } from "./_Input";
@@ -44,10 +44,8 @@ export const TextInput = React.forwardRef(function TextInput(
         className,
         inputClassNameBase({ size }),
         "placeholder:text-content-tertiary",
-        {
-          rounded: shape === "rectangle",
-          "rounded-full": shape === "pill",
-        },
+        shape === "rectangle" && "rounded",
+        shape === "pill" && "rounded-full",
       )}
       style={inputPaddings}
       {...inputAttributes}

@@ -13,7 +13,7 @@ import {
   useRole,
 } from "@floating-ui/react";
 import { Transition } from "@headlessui/react";
-import { clsx } from "clsx";
+import { clsx } from "clsx/lite";
 import * as React from "react";
 
 import { PreventScroll } from "./PreventScroll";
@@ -107,10 +107,8 @@ export function Popover({
               ref={refs.setFloating}
               className={clsx(
                 "theme-overlay z-10 flex max-h-[--max-height] w-[--width] flex-col overflow-hidden rounded bg-background-elevated shadow-xl focus:outline-none",
-                {
-                  "min-w-[20rem]": size === "md",
-                  "min-w-[24rem]": size === "lg",
-                },
+                size === "md" && "min-w-[20rem]",
+                size === "lg" && "min-w-[24rem]",
               )}
               style={floatingStyles}
               {...getFloatingProps()}
@@ -119,9 +117,7 @@ export function Popover({
                 className={clsx(
                   "grid gap-y-2 overflow-y-auto",
                   title ? "grid-rows-[auto_1fr]" : "grid-rows-1",
-                  {
-                    "p-4": padding === "md",
-                  },
+                  padding === "md" && "p-4",
                 )}
               >
                 {title ? (

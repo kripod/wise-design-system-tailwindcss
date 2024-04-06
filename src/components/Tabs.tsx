@@ -1,5 +1,5 @@
 import { Tab as TabBase } from "@headlessui/react";
-import { clsx } from "clsx";
+import { clsx } from "clsx/lite";
 import * as React from "react";
 
 import { parseBooleanish } from "../utils/parseBooleanish";

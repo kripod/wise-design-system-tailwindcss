@@ -1,5 +1,5 @@
 import { Dialog as DialogBase } from "@headlessui/react";
-import { clsx } from "clsx";
+import { clsx } from "clsx/lite";
 import { getResetClassName } from "css-homogenizer/reset-scoped";
 
 import { CloseButton } from "./buttons/CloseButton";
@@ -39,12 +39,10 @@ export function Modal({
           <DialogBase.Panel
             className={clsx(
               "w-full divide-y rounded-lg bg-background-screen shadow-xl",
-              {
-                /* TODO: Assess sizing */
-                "max-w-xl": size === "sm",
-                "max-w-3xl": size === "md",
-                "max-w-5xl": size === "lg",
-              },
+              /* TODO: Assess sizing */
+              size === "sm" && "max-w-xl",
+              size === "md" && "max-w-3xl",
+              size === "lg" && "max-w-5xl",
             )}
           >
             <div className="flex items-center gap-x-6 p-6">

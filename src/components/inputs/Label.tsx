@@ -1,4 +1,4 @@
-import { clsx } from "clsx";
+import { clsx } from "clsx/lite";
 
 export interface LabelProps {
   htmlFor: string;

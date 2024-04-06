@@ -8,7 +8,7 @@ import {
   within,
 } from "@storybook/test";
 import { Calendar, ChevronDown } from "@transferwise/icons";
-import { clsx } from "clsx";
+import { clsx } from "clsx/lite";
 import * as React from "react";
 
 import { getMonthNames } from "../../utils/date";
