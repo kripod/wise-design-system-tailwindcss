@@ -131,8 +131,9 @@ function InputAddon({
   const ref = React.useRef<HTMLSpanElement>(null);
   useResizeObserver(ref, (entry) => {
     // TODO: Remove fallback once most browsers support `borderBoxSize`
-    if (entry.borderBoxSize != null) {
-      setInputPadding(entry.borderBoxSize[0].inlineSize);
+    const inlineSize = entry.borderBoxSize?.[0]?.inlineSize;
+    if (inlineSize != null) {
+      setInputPadding(inlineSize);
     } else {
       const targetStyle = getComputedStyle(entry.target);
       setInputPadding(

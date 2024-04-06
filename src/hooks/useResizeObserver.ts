@@ -10,7 +10,9 @@ export function useResizeObserver(
   React.useEffect(() => {
     if (ref.current != null) {
       const resizeObserver = new ResizeObserver(([entry]) => {
-        handleCallback(entry);
+        if (entry != null) {
+          handleCallback(entry);
+        }
       });
       resizeObserver.observe(ref.current, { box: "border-box" });
       return () => {

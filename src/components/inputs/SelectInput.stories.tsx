@@ -233,7 +233,7 @@ export const MultipleCurrencies: Story<Currency, true> = {
     ...CurrenciesArgs,
     multiple: true,
     placeholder: "Choose currencies…",
-    defaultValue: [popularCurrencies[0]],
+    defaultValue: popularCurrencies.slice(0, 1),
     renderValue: (currency, withinTrigger) =>
       withinTrigger ? (
         currency.code
@@ -254,10 +254,11 @@ export const MultipleCurrencies: Story<Currency, true> = {
       await userEvent.click(triggerButton);
       await userEvent.unhover(triggerButton);
 
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const option = within(screen.getByRole("listbox")).getAllByRole(
         "option",
         { name: /^EUR/u },
-      )[0];
+      )[0]!;
       await userEvent.click(option);
 
       await expect(triggerButton).toHaveTextContent("USD, EUR");

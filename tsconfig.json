@@ -1,8 +1,12 @@
 {
-  "extends": "@tsconfig/recommended/tsconfig.json",
   "compilerOptions": {
     "noEmit": true,
+    "checkJs": true,
+    "skipLibCheck": true,
     "isolatedModules": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
     "target": "ESNext",
     "module": "Preserve",
     "verbatimModuleSyntax": true,

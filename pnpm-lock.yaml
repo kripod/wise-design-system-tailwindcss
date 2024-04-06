@@ -97,9 +97,6 @@ devDependencies:
   '@transferwise/icons':
     specifier: 3.13.0
     version: 3.13.0(react@18.2.0)
-  '@tsconfig/recommended':
-    specifier: 1.0.3
-    version: 1.0.3
   '@types/babel__core':
     specifier: 7.20.5
     version: 7.20.5
@@ -4060,10 +4057,6 @@ packages:
     dependencies:
       '@babel/runtime': 7.24.1
       react: 18.2.0
-    dev: true
-
-  /@tsconfig/recommended@1.0.3:
-    resolution: {integrity: sha512-+jby/Guq9H8O7NWgCv6X8VAiQE8Dr/nccsCtL74xyHKhu2Knu5EAKmOZj3nLCnLm1KooUzKY+5DsnGVqhM8/wQ==}
     dev: true
 
   /@types/aria-query@5.0.4:
