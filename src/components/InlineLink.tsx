@@ -1,18 +1,12 @@
 import { clsx } from "clsx/lite";
 
-import type { Assign } from "../utils/types";
+import type { Merge } from "../utils/types";
 
-interface InlineLinkElementProps {
-  className?: string;
-}
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type InlineLinkElementType = React.ElementType<any, "a" | "button" | "span">;
 
-type InlineLinkElementType = React.ElementType<
-  InlineLinkElementProps,
-  "a" | "button" | "span"
->;
-
-export type InlineLinkProps<T extends InlineLinkElementType = "a"> = Assign<
-  React.ComponentPropsWithoutRef<T>,
+export type InlineLinkProps<T extends InlineLinkElementType = "a"> = Merge<
+  React.ComponentPropsWithoutRef<T> & { as?: never },
   { as?: T }
 >;
 
@@ -25,7 +19,7 @@ export function InlineLink<T extends InlineLinkElementType = "a">({
   return (
     <Element
       className={clsx(
-        className,
+        typeof className === "string" ? className : undefined,
         "font-semibold text-content-link underline underline-offset-2 hover:text-content-link-hover active:text-content-link-active",
       )}
       {...restProps}
