@@ -8,7 +8,6 @@ import {
   within,
 } from "@storybook/test";
 import { Calendar, ChevronDown } from "@transferwise/icons";
-import { clsx } from "clsx/lite";
 import * as React from "react";
 
 import { getMonthNames } from "../../utils/date";
@@ -176,17 +175,13 @@ const CurrenciesArgs = {
     /^[a-z]{3}$/u.test(queryNormalized) ? (
       <>
         It’s not possible use {queryNormalized.toUpperCase()} yet.{" "}
-        <InlineLink href="#_" onClick={(event) => event.preventDefault()}>
-          Email me when it’s available.
-        </InlineLink>
+        <InlineLink as="button">Email me when it’s available.</InlineLink>
       </>
     ) : (
       <>
         Can’t find it?{" "}
-        <InlineLink href="#_" onClick={(event) => event.preventDefault()}>
-          Request the currency you need,
-        </InlineLink>{" "}
-        and we’ll notify you once it’s available.
+        <InlineLink as="button">Request the currency you need,</InlineLink> and
+        we’ll notify you once it’s available.
       </>
     ),
   filterable: true,
@@ -280,14 +275,14 @@ export const CustomTrigger: Story<Month> = {
         <SelectInputOptionContent title={month.name} />
       ),
     renderTrigger: ({ content, className }) => (
-      <SelectInputTriggerButton
-        className={clsx(
-          className,
-          "inline-flex items-center gap-x-1 text-body-lg font-semibold text-content-link underline underline-offset-2 hover:text-content-link-hover active:text-content-link-active",
-        )}
-      >
-        {content}
-        <ChevronDown size={16} />
+      <SelectInputTriggerButton className={className}>
+        <InlineLink
+          as="span"
+          className="inline-flex items-center gap-x-1 text-body-lg"
+        >
+          {content}
+          <ChevronDown size={16} />
+        </InlineLink>
       </SelectInputTriggerButton>
     ),
     onChange: fn() satisfies Mock,

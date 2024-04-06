@@ -49,11 +49,8 @@ export const Basic = {
         sentiment: "negative",
         children: (
           <>
-            Paying extra{" "}
-            <InlineLink href="#_" onClick={(event) => event.preventDefault()}>
-              hidden fees
-            </InlineLink>{" "}
-            for transfers
+            Paying extra <InlineLink as="button">hidden fees</InlineLink> for
+            transfers
           </>
         ),
       },

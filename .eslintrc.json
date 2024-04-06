@@ -9,6 +9,7 @@
   ],
   "settings": {
     "jsx-a11y": {
+      "polymorphicPropName": "as",
       "components": {
         "ActionButton": "button",
         "Button": "button",
