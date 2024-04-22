@@ -10,15 +10,10 @@ import {
   lightGreenTheme,
   lightTheme,
 } from "./config/themes";
-
-function roundTo(value: number, fractionDigits: number) {
-  return Number(
-    `${Math.round(Number(`${value}e+${fractionDigits}`))}e-${fractionDigits}`,
-  );
-}
+import { closestSafeFloat } from "./utils/number";
 
 function pxToRem(value: number) {
-  return `${roundTo(value / 16, 4)}rem`;
+  return `${closestSafeFloat(value / 16)}rem`;
 }
 
 export default {
