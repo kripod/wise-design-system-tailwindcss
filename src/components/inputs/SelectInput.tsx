@@ -546,6 +546,7 @@ function SelectInputOptions<T = string>({
 
       <section
         ref={listboxContainerRef}
+        tabIndex={-1}
         className={clsx(
           "relative h-[--initial-height] scroll-py-2 overflow-y-auto sm:h-auto",
           items.some((item) => item.type === "group") && "scroll-pt-8",
