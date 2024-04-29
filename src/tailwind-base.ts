@@ -10,10 +10,10 @@ import {
   lightGreenTheme,
   lightTheme,
 } from "./config/themes";
-import { closestSafeFloat } from "./utils/number";
+import { roundToSafePrecision } from "./utils/number";
 
 function pxToRem(value: number) {
-  return `${closestSafeFloat(value / 16)}rem`;
+  return `${roundToSafePrecision(value / 16)}rem`;
 }
 
 export default {
