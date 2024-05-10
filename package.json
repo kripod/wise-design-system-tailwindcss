@@ -1,6 +1,6 @@
 {
   "name": "@kripod/wise-design-system-tailwindcss",
-  "version": "0.5.6",
+  "version": "0.6.0",
   "description": "Experimental web implementation of Wise Design System, based upon Tailwind CSS.",
   "repository": "kripod/wise-design-system-tailwindcss",
   "homepage": "https://github.com/kripod/wise-design-system-tailwindcss#readme",
