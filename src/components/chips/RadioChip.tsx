@@ -1,4 +1,4 @@
-import { RadioGroup as RadioGroupBase } from "@headlessui/react";
+import { Radio, RadioGroup as RadioGroupBase } from "@headlessui/react";
 import { clsx } from "clsx/lite";
 
 import { Chip } from "./_Chip";
@@ -51,8 +51,8 @@ export function RadioChip<T = string>({
   children,
 }: RadioChipProps<T>) {
   return (
-    <RadioGroupBase.Option as={Chip} value={value} disabled={disabled}>
+    <Radio as={Chip} value={value} disabled={disabled}>
       {children}
-    </RadioGroupBase.Option>
+    </Radio>
   );
 }

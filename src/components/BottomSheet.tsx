@@ -6,7 +6,7 @@ import {
   useInteractions,
   useRole,
 } from "@floating-ui/react";
-import { Transition } from "@headlessui/react";
+import { Transition, TransitionChild } from "@headlessui/react";
 import { clsx } from "clsx/lite";
 import { useState } from "react";
 
@@ -65,23 +65,25 @@ export function BottomSheet({
 
       <FloatingPortal>
         <Transition
+          as="div"
           show={open}
           className="theme-overlay relative z-50"
           beforeEnter={() => {
             setFloatingKey((prev) => prev + 1);
           }}
         >
-          <Transition.Child
+          <TransitionChild
+            as="div"
+            className="fixed inset-0 bg-content-primary opacity-40"
             enter="transition-opacity duration-300"
             enterFrom="opacity-0"
             leave="transition-opacity duration-300"
             leaveTo="opacity-0"
-          >
-            <div className="fixed inset-0 bg-content-primary opacity-40" />
-          </Transition.Child>
+          />
 
           <div className="fixed inset-0 flex flex-col justify-end px-2 pt-16">
-            <Transition.Child
+            <TransitionChild
+              as="div"
               className="max-h-full"
               enter="motion-safe:transition-transform motion-safe:duration-300 motion-reduce:transition-opacity motion-reduce:duration-300"
               enterFrom="motion-safe:translate-y-full motion-reduce:opacity-0"
@@ -124,7 +126,7 @@ export function BottomSheet({
                   </div>
                 </div>
               </FloatingFocusManager>
-            </Transition.Child>
+            </TransitionChild>
           </div>
         </Transition>
       </FloatingPortal>

@@ -1,4 +1,10 @@
-import { Tab as TabBase } from "@headlessui/react";
+import {
+  Tab as TabBase,
+  TabGroup as TabGroupBase,
+  TabList as TabListBase,
+  TabPanel as TabPanelBase,
+  TabPanels as TabPanelsBase,
+} from "@headlessui/react";
 import { clsx } from "clsx/lite";
 import { forwardRef } from "react";
 
@@ -21,13 +27,13 @@ export function TabGroup({
 }: TabGroupProps) {
   return (
     <AnimatedLayoutGroup>
-      <TabBase.Group
+      <TabGroupBase
         defaultIndex={defaultIndex}
         selectedIndex={selectedIndex}
         onChange={onChange}
       >
         {children}
-      </TabBase.Group>
+      </TabGroupBase>
     </AnimatedLayoutGroup>
   );
 }
@@ -39,14 +45,14 @@ export interface TabListProps {
 
 export function TabList({ stretch, children }: TabListProps) {
   return (
-    <TabBase.List
+    <TabListBase
       className={clsx(
         "grid min-h-12 grid-flow-col overflow-x-auto border-b",
         stretch ? "auto-cols-fr" : "auto-cols-max",
       )}
     >
       {children}
-    </TabBase.List>
+    </TabListBase>
   );
 }
 
@@ -128,7 +134,7 @@ export interface TabPanelsProps {
 }
 
 export function TabPanels({ children }: TabPanelsProps) {
-  return <TabBase.Panels>{children}</TabBase.Panels>;
+  return <TabPanelsBase>{children}</TabPanelsBase>;
 }
 
 export interface TabPanelProps {
@@ -137,8 +143,8 @@ export interface TabPanelProps {
 
 export function TabPanel({ children }: TabPanelProps) {
   return (
-    <TabBase.Panel className="rounded-xs focus-visible:outline">
+    <TabPanelBase className="rounded-xs focus-visible:outline">
       {children}
-    </TabBase.Panel>
+    </TabPanelBase>
   );
 }

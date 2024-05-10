@@ -1,4 +1,8 @@
-import { Dialog as DialogBase } from "@headlessui/react";
+import {
+  Dialog as DialogBase,
+  DialogPanel,
+  DialogTitle,
+} from "@headlessui/react";
 import { clsx } from "clsx/lite";
 import { getResetClassName } from "css-homogenizer/reset-scoped";
 
@@ -36,7 +40,7 @@ export function Modal({
 
       <div className="fixed inset-0 overflow-y-auto">
         <div className="flex min-h-full items-center justify-center p-4">
-          <DialogBase.Panel
+          <DialogPanel
             className={clsx(
               "w-full divide-y rounded-lg bg-background-screen shadow-xl",
               /* TODO: Assess sizing */
@@ -46,21 +50,21 @@ export function Modal({
             )}
           >
             <div className="flex items-center gap-x-6 p-6">
-              <DialogBase.Title
+              <DialogTitle
                 className={clsx(
                   getResetClassName("h2"),
                   "flex-1 text-title-body",
                 )}
               >
                 {title}
-              </DialogBase.Title>
+              </DialogTitle>
               <CloseButton size="lg" onClick={onClose} />
             </div>
 
             <div className="p-6">{children}</div>
 
             {footer ? <div className="p-6">{footer}</div> : null}
-          </DialogBase.Panel>
+          </DialogPanel>
         </div>
       </div>
     </DialogBase>

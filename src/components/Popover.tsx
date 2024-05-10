@@ -94,6 +94,7 @@ export function Popover({
 
       <FloatingPortal>
         <Transition
+          as="div"
           show={open}
           leave="transition-opacity"
           leaveTo="opacity-0"

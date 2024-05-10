@@ -1,4 +1,9 @@
-import { Listbox as ListboxBase } from "@headlessui/react";
+import {
+  Listbox as ListboxBase,
+  ListboxButton,
+  ListboxOption,
+  ListboxOptions,
+} from "@headlessui/react";
 import { Check, ChevronDown, Cross, CrossCircle } from "@transferwise/icons";
 import { clsx } from "clsx/lite";
 import mergeProps from "merge-props";
@@ -395,7 +400,7 @@ export function SelectInputTriggerButton<
   );
 
   return (
-    <ListboxBase.Button
+    <ListboxButton
       ref={ref}
       as={PolymorphicWithOverrides}
       __overrides={{ as, ...interactionProps }}
@@ -508,9 +513,10 @@ function SelectInputOptions<T = string>({
   const listboxId = useId();
 
   return (
-    <ListboxBase.Options
+    <ListboxOptions
       as={SelectInputOptionsContainer}
       static
+      modal={false}
       className="flex h-full flex-col focus:outline-none sm:max-h-[28rem]"
       onAriaActiveDescendantChange={(
         value: React.AriaAttributes["aria-activedescendant"],
@@ -608,7 +614,7 @@ function SelectInputOptions<T = string>({
           </footer>
         ) : null}
       </section>
-    </ListboxBase.Options>
+    </ListboxOptions>
   );
 }
 
@@ -710,8 +716,7 @@ function SelectInputOption<T = string>({
   children,
 }: SelectInputOptionProps<T>) {
   return (
-    <ListboxBase.Option
-      as="div"
+    <ListboxOption
       value={value}
       disabled={disabled}
       className={({ active, disabled: uiDisabled }) =>
@@ -734,7 +739,7 @@ function SelectInputOption<T = string>({
           />
         </>
       )}
-    </ListboxBase.Option>
+    </ListboxOption>
   );
 }
 

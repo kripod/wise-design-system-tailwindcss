@@ -1,4 +1,8 @@
-import { Disclosure as DisclosureBase } from "@headlessui/react";
+import {
+  Disclosure as DisclosureBase,
+  DisclosureButton,
+  DisclosurePanel,
+} from "@headlessui/react";
 import { ChevronDown } from "@transferwise/icons";
 import { clsx } from "clsx/lite";
 
@@ -23,7 +27,7 @@ export function Disclosure({
       defaultOpen={defaultOpen}
       className="flex flex-col gap-y-4 py-4"
     >
-      <DisclosureBase.Button
+      <DisclosureButton
         as={Button}
         className="relative flex gap-x-4 rounded-xs text-start text-title-body text-content-primary after:absolute after:inset-0 after:-my-4"
       >
@@ -40,11 +44,11 @@ export function Disclosure({
             />
           </>
         )}
-      </DisclosureBase.Button>
-      <DisclosureBase.Panel className="flex gap-x-4 text-body-lg text-content-secondary">
+      </DisclosureButton>
+      <DisclosurePanel className="flex gap-x-4 text-body-lg text-content-secondary">
         {icon ? <span className="invisible">{icon}</span> : null}
         <div className="flex-1">{children}</div>
-      </DisclosureBase.Panel>
+      </DisclosurePanel>
     </DisclosureBase>
   );
 }
