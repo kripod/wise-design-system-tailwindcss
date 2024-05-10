@@ -1,5 +1,15 @@
 # @kripod/wise-design-system-tailwindcss
 
+## 0.6.1
+
+### Patch Changes
+
+- [`c930171`](https://github.com/kripod/wise-design-system-tailwindcss/commit/c930171048b1e663e62b382226315930d44c5fe6) Thanks [@kripod](https://github.com/kripod)! - fix(SelectInput): remove triggering via enter key
+
+- [`8a9327e`](https://github.com/kripod/wise-design-system-tailwindcss/commit/8a9327e040d21b4572b0a6195070fc1946458401) Thanks [@kripod](https://github.com/kripod)! - build: preserve modules to cater for React Server Components
+
+- [`4626a1e`](https://github.com/kripod/wise-design-system-tailwindcss/commit/4626a1ecbdeaf02a3c9afc3cfeb7b57e7b5a149a) Thanks [@kripod](https://github.com/kripod)! - chore(deps): update Headless UI to v2
+
 ## 0.6.0
 
 ### Minor Changes
