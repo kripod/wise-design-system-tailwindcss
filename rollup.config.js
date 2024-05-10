@@ -16,12 +16,14 @@ module.exports = defineConfig({
     {
       format: "es",
       dir: outDir,
+      preserveModules: true,
       entryFileNames: "[name].mjs",
       chunkFileNames: "[name]-[hash].mjs",
     },
     {
       format: "cjs",
       dir: outDir,
+      preserveModules: true,
       interop: "auto",
     },
   ],
