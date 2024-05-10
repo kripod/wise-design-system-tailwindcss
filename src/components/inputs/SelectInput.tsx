@@ -320,7 +320,6 @@ export function SelectInput<const T = string, M extends boolean = false>({
                       onKeyDown: (event: React.KeyboardEvent) => {
                         if (
                           event.key === " " ||
-                          event.key === "Enter" ||
                           event.key === "ArrowDown" ||
                           event.key === "ArrowUp"
                         ) {
