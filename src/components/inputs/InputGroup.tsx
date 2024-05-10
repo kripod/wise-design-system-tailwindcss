@@ -20,8 +20,8 @@ const InputPaddingEndContext = createContext<InputPaddingContextType>([
 ]);
 
 export function useInputPaddings() {
-  const [paddingStart] = React.useContext(InputPaddingStartContext);
-  const [paddingEnd] = React.useContext(InputPaddingEndContext);
+  const [paddingStart] = useContext(InputPaddingStartContext);
+  const [paddingEnd] = useContext(InputPaddingEndContext);
 
   return {
     paddingInlineStart: paddingStart,
