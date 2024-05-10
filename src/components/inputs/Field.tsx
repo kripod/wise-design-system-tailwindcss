@@ -1,22 +1,20 @@
 import { AlertCircle } from "@transferwise/icons";
 import { clsx } from "clsx/lite";
-import * as React from "react";
+import { createContext, useContext, useId } from "react";
 
 import { Label } from "./Label";
 
-const InputIdContext = React.createContext<string | undefined>(undefined);
+const InputIdContext = createContext<string | undefined>(undefined);
 
-const InputDescribedByContext = React.createContext<string | undefined>(
-  undefined,
-);
+const InputDescribedByContext = createContext<string | undefined>(undefined);
 
-const InputInvalidContext = React.createContext<boolean | undefined>(undefined);
+const InputInvalidContext = createContext<boolean | undefined>(undefined);
 
 export function useInputAttributes() {
   return {
-    id: React.useContext(InputIdContext),
-    "aria-describedby": React.useContext(InputDescribedByContext),
-    "aria-invalid": React.useContext(InputInvalidContext),
+    id: useContext(InputIdContext),
+    "aria-describedby": useContext(InputDescribedByContext),
+    "aria-invalid": useContext(InputInvalidContext),
   } satisfies React.HTMLAttributes<HTMLElement>;
 }
 
@@ -25,8 +23,8 @@ interface FieldDescriptionProps {
 }
 
 function FieldDescription({ children }: FieldDescriptionProps) {
-  const descriptionId = React.useContext(InputDescribedByContext);
-  const invalid = React.useContext(InputInvalidContext);
+  const descriptionId = useContext(InputDescribedByContext);
+  const invalid = useContext(InputInvalidContext);
 
   return (
     /* Align icon with first line: https://twitter.com/adamwathan/status/1217864323466432516 */
@@ -66,11 +64,11 @@ export function Field({
   className,
   children,
 }: FieldProps) {
-  const fallbackInputId = React.useId();
+  const fallbackInputId = useId();
   const inputId = id ?? fallbackInputId;
 
   const description = error || hint;
-  const descriptionId = React.useId();
+  const descriptionId = useId();
 
   return (
     <InputIdContext.Provider value={inputId}>

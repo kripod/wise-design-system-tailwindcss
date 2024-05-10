@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useEffect, useState } from "react";
 
 export interface FlagProps {
   /**
@@ -15,10 +15,8 @@ export interface FlagProps {
 const unknownFlagName = "wise";
 
 export function Flag({ code, intrinsicSize = 64 }: FlagProps) {
-  const [fallback, setFallback] = React.useState<"simple" | "unknown" | null>(
-    null,
-  );
-  React.useEffect(() => {
+  const [fallback, setFallback] = useState<"simple" | "unknown" | null>(null);
+  useEffect(() => {
     setFallback(null);
   }, [code]);
 

@@ -1,6 +1,6 @@
 import { Tab as TabBase } from "@headlessui/react";
 import { clsx } from "clsx/lite";
-import * as React from "react";
+import { forwardRef } from "react";
 
 import { parseBooleanish } from "../utils/parseBooleanish";
 import { AnimatedLayout, AnimatedLayoutGroup } from "./AnimatedLayout";
@@ -52,7 +52,7 @@ export function TabList({ stretch, children }: TabListProps) {
 
 interface TabButtonProps extends React.ComponentPropsWithRef<"button"> {}
 
-const TabButton = React.forwardRef(function TabButton(
+const TabButton = forwardRef(function TabButton(
   {
     "aria-selected": ariaSelected = false,
     className,

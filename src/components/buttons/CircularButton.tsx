@@ -1,5 +1,5 @@
 import { clsx } from "clsx/lite";
-import * as React from "react";
+import { forwardRef, useId } from "react";
 
 import { Button, type ButtonPropsBase } from "./_Button";
 
@@ -8,11 +8,11 @@ export interface CircularButtonProps extends ButtonPropsBase {
   disabled?: boolean;
 }
 
-export const CircularButton = React.forwardRef(function CircularButton(
+export const CircularButton = forwardRef(function CircularButton(
   { icon, className, children, ...restProps }: CircularButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement>,
 ) {
-  const labelId = React.useId();
+  const labelId = useId();
   return (
     <span
       className={clsx(

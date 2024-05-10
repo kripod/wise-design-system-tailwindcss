@@ -1,4 +1,4 @@
-import * as React from "react";
+import { forwardRef } from "react";
 
 export interface PolymorphicWithOverridesProps {
   __overrides: {
@@ -11,7 +11,7 @@ export interface PolymorphicWithOverridesProps {
 /**
  * For overcoming the limitations of third-party components with an `as` prop.
  */
-export const PolymorphicWithOverrides = React.forwardRef(
+export const PolymorphicWithOverrides = forwardRef(
   function PolymorphicWithOverrides(
     {
       __overrides: { as: Element, ...restOverrides },

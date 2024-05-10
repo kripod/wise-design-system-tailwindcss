@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn, type Mock } from "@storybook/test";
-import * as React from "react";
+import { useState } from "react";
 
 import { SearchInput } from "./SearchInput";
 
@@ -25,7 +25,7 @@ export const Controlled = {
     onChange: fn() satisfies Mock,
   },
   render: function Render({ onChange, ...args }) {
-    const [value, setValue] = React.useState("Text value");
+    const [value, setValue] = useState("Text value");
 
     return (
       <SearchInput

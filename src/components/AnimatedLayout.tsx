@@ -1,20 +1,18 @@
-import * as React from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 
 import { useReducedMotionPreference } from "../hooks/useReducedMotionPreference";
 import { useResizeObserver } from "../hooks/useResizeObserver";
 
 type LayoutId = string;
 
-const AnimatedLayoutGroupContext = React.createContext(
-  new Map<LayoutId, DOMRect>(),
-);
+const AnimatedLayoutGroupContext = createContext(new Map<LayoutId, DOMRect>());
 
 export interface AnimatedLayoutGroupProps {
   children?: React.ReactNode;
 }
 
 export function AnimatedLayoutGroup({ children }: AnimatedLayoutGroupProps) {
-  const [value] = React.useState(() => new Map<LayoutId, DOMRect>());
+  const [value] = useState(() => new Map<LayoutId, DOMRect>());
   return (
     <AnimatedLayoutGroupContext.Provider value={value}>
       {children}
@@ -41,15 +39,15 @@ const windowResizeDebounceWaitMs = 150;
 
 export function AnimatedLayout({ id, children }: AnimatedLayoutProps) {
   // TODO: Warn about IDs being used twice
-  const element = React.useRef<HTMLElement>(null);
+  const element = useRef<HTMLElement>(null);
 
-  const boundingClientRectById = React.useContext(AnimatedLayoutGroupContext);
+  const boundingClientRectById = useContext(AnimatedLayoutGroupContext);
   // TODO: Call `boundingClientRectById.delete(id)` based on ref counting
 
-  const animation = React.useRef<Animation | null>(null);
+  const animation = useRef<Animation | null>(null);
 
-  const windowResizing = React.useRef(false);
-  React.useEffect(() => {
+  const windowResizing = useRef(false);
+  useEffect(() => {
     let timeoutHandle: number | undefined;
     const handleResize = () => {
       animation.current?.finish();

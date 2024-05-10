@@ -1,5 +1,5 @@
 import { HelpCircle } from "@transferwise/icons";
-import * as React from "react";
+import { useState } from "react";
 
 import { HintPopoverLabel } from "../config/i18nTexts";
 import { Popover } from "./Popover";
@@ -10,7 +10,7 @@ export interface HintPopoverProps {
 }
 
 export function HintPopover({ label, children }: HintPopoverProps) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <span className="inline-flex items-center gap-x-1">

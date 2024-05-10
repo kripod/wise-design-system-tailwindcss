@@ -2,7 +2,16 @@ import { Listbox as ListboxBase } from "@headlessui/react";
 import { Check, ChevronDown, Cross, CrossCircle } from "@transferwise/icons";
 import { clsx } from "clsx/lite";
 import mergeProps from "merge-props";
-import * as React from "react";
+import {
+  createContext,
+  forwardRef,
+  useContext,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import type { Merge } from "ts-essentials";
 
 import { ClearButtonLabel, NoResultsFound } from "../../config/i18nTexts";
@@ -35,13 +44,13 @@ function inferSearchableStrings(value: unknown) {
   return [];
 }
 
-const SelectInputTriggerButtonPropsContext = React.createContext<{
+const SelectInputTriggerButtonPropsContext = createContext<{
   ref?: React.ForwardedRef<HTMLButtonElement>;
   onClick?: (event: React.MouseEvent) => void;
   onKeyDown?: (event: React.KeyboardEvent) => void;
   [key: string]: unknown;
 }>({});
-const SelectInputOptionContentWithinTriggerContext = React.createContext(false);
+const SelectInputOptionContentWithinTriggerContext = createContext(false);
 
 export interface SelectInputOptionItem<T = string> {
   type: "option";
@@ -255,15 +264,15 @@ export function SelectInput<const T = string, M extends boolean = false>({
   onChange,
   onClear,
 }: SelectInputProps<T, M>) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
-  const triggerRef = React.useRef<HTMLButtonElement | null>(null);
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
 
   const screenSm = useScreenSize("sm");
   const OptionsOverlay = screenSm ? Popover : BottomSheet;
 
-  const searchInputRef = React.useRef<HTMLInputElement>(null);
-  const listboxRef = React.useRef<HTMLDivElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const listboxRef = useRef<HTMLDivElement>(null);
   const controllerRef = filterable ? searchInputRef : listboxRef;
 
   return (
@@ -381,7 +390,7 @@ export type SelectInputTriggerButtonProps<
 export function SelectInputTriggerButton<
   T extends SelectInputTriggerButtonElementType = "button",
 >({ as = "button" as T, ...restProps }: SelectInputTriggerButtonProps<T>) {
-  const { ref, onClick, onKeyDown, ...interactionProps } = React.useContext(
+  const { ref, onClick, onKeyDown, ...interactionProps } = useContext(
     SelectInputTriggerButtonPropsContext,
   );
 
@@ -402,7 +411,7 @@ interface SelectInputOptionsContainerProps
   ) => void;
 }
 
-const SelectInputOptionsContainer = React.forwardRef(
+const SelectInputOptionsContainer = forwardRef(
   function SelectInputOptionsContainer(
     {
       "aria-orientation": ariaOrientation,
@@ -418,7 +427,7 @@ const SelectInputOptionsContainer = React.forwardRef(
     const handleAriaActiveDescendantChange = useEffectEvent(
       onAriaActiveDescendantChange,
     );
-    React.useEffect(() => {
+    useEffect(() => {
       handleAriaActiveDescendantChange(ariaActiveDescendant);
     }, [ariaActiveDescendant, handleAriaActiveDescendantChange]);
 
@@ -474,8 +483,8 @@ function SelectInputOptions<T = string>({
 }: SelectInputOptionsProps<T>) {
   const controllerRef = filterable ? searchInputRef : listboxRef;
 
-  const [query, setQuery] = React.useState("");
-  const needle = React.useMemo(() => {
+  const [query, setQuery] = useState("");
+  const needle = useMemo(() => {
     if (filterable) {
       return query ? searchableString(query) : null;
     }
@@ -484,8 +493,8 @@ function SelectInputOptions<T = string>({
   const resultsEmpty =
     needle != null && filterSelectInputItems(items, needle).length === 0;
 
-  const listboxContainerRef = React.useRef<HTMLDivElement>(null);
-  React.useEffect(() => {
+  const listboxContainerRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
     if (listboxContainerRef.current != null) {
       listboxContainerRef.current.style.setProperty(
         "--initial-height",
@@ -495,8 +504,8 @@ function SelectInputOptions<T = string>({
   }, []);
 
   const showStatus = resultsEmpty;
-  const statusId = React.useId();
-  const listboxId = React.useId();
+  const statusId = useId();
+  const listboxId = useId();
 
   return (
     <ListboxBase.Options
@@ -657,7 +666,7 @@ function SelectInputGroupItemView<T = string>({
   renderValue,
   needle,
 }: SelectInputGroupItemViewProps<T>) {
-  const headerId = React.useId();
+  const headerId = useId();
 
   return (
     // An empty container may be rendered when no options match `needle`
@@ -742,7 +751,7 @@ export function SelectInputOptionContent({
   description,
   icon,
 }: SelectInputOptionContentProps) {
-  const withinTrigger = React.useContext(
+  const withinTrigger = useContext(
     SelectInputOptionContentWithinTriggerContext,
   );
 

@@ -1,5 +1,5 @@
 import { clsx } from "clsx/lite";
-import * as React from "react";
+import { createContext, useContext, useMemo, useRef, useState } from "react";
 
 import { useResizeObserver } from "../../hooks/useResizeObserver";
 import { cssValueWithUnit } from "../../utils/cssValueWithUnit";
@@ -9,12 +9,12 @@ type InputPaddingContextType = [
   React.Dispatch<React.SetStateAction<number | string | undefined>>,
 ];
 
-const InputPaddingStartContext = React.createContext<InputPaddingContextType>([
+const InputPaddingStartContext = createContext<InputPaddingContextType>([
   undefined,
   () => {},
 ]);
 
-const InputPaddingEndContext = React.createContext<InputPaddingContextType>([
+const InputPaddingEndContext = createContext<InputPaddingContextType>([
   undefined,
   () => {},
 ]);
@@ -66,22 +66,19 @@ export function InputGroup({
   className,
   children,
 }: InputGroupProps) {
-  const [paddingStart, setPaddingStart] = React.useState(
+  const [paddingStart, setPaddingStart] = useState(
     inputPaddingInitialState(addonStart),
   );
-  const [paddingEnd, setPaddingEnd] = React.useState(
+  const [paddingEnd, setPaddingEnd] = useState(
     inputPaddingInitialState(addonEnd),
   );
 
   return (
     <InputPaddingStartContext.Provider
-      value={React.useMemo(
-        () => [paddingStart, setPaddingStart],
-        [paddingStart],
-      )}
+      value={useMemo(() => [paddingStart, setPaddingStart], [paddingStart])}
     >
       <InputPaddingEndContext.Provider
-        value={React.useMemo(() => [paddingEnd, setPaddingEnd], [paddingEnd])}
+        value={useMemo(() => [paddingEnd, setPaddingEnd], [paddingEnd])}
       >
         <fieldset
           disabled={disabled}
@@ -124,11 +121,11 @@ function InputAddon({
   interactive,
   padding = inputAddonDefaultPadding,
 }: InputAddonProps) {
-  const [, setInputPadding] = React.useContext(
+  const [, setInputPadding] = useContext(
     placement === "start" ? InputPaddingStartContext : InputPaddingEndContext,
   );
 
-  const ref = React.useRef<HTMLSpanElement>(null);
+  const ref = useRef<HTMLSpanElement>(null);
   useResizeObserver(ref, (entry) => {
     // TODO: Remove fallback once most browsers support `borderBoxSize`
     const inlineSize = entry.borderBoxSize?.[0]?.inlineSize;

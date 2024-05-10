@@ -8,7 +8,7 @@ import {
 } from "@floating-ui/react";
 import { Transition } from "@headlessui/react";
 import { clsx } from "clsx/lite";
-import * as React from "react";
+import { useState } from "react";
 
 import { CloseButton } from "./buttons/CloseButton";
 import { PreventScroll } from "./PreventScroll";
@@ -53,7 +53,7 @@ export function BottomSheet({
     role,
   ]);
 
-  const [floatingKey, setFloatingKey] = React.useState(0);
+  const [floatingKey, setFloatingKey] = useState(0);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { useEffectEvent } from "./useEffectEvent";
 
@@ -7,11 +7,10 @@ export function useControllableState<T>(
   defaultValue: NoInfer<T>,
   onChange: ((value: T) => void) | undefined,
 ): [T, React.Dispatch<React.SetStateAction<T>>] {
-  const [uncontrolledValue, setUncontrolledValue] =
-    React.useState(defaultValue);
+  const [uncontrolledValue, setUncontrolledValue] = useState(defaultValue);
 
-  const prevControlledValue = React.useRef<T>();
-  React.useEffect(() => {
+  const prevControlledValue = useRef<T>();
+  useEffect(() => {
     if (
       controlledValue === undefined &&
       prevControlledValue.current !== undefined

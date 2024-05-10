@@ -1,5 +1,5 @@
 import { Search } from "@transferwise/icons";
-import * as React from "react";
+import { forwardRef } from "react";
 
 import { InputGroup } from "./InputGroup";
 import { TextInput } from "./TextInput";
@@ -22,7 +22,7 @@ export interface SearchInputProps
   shape?: "rectangle" | "pill";
 }
 
-export const SearchInput = React.forwardRef(function SearchInput(
+export const SearchInput = forwardRef(function SearchInput(
   { shape = "pill", disabled, className, ...restProps }: SearchInputProps,
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {

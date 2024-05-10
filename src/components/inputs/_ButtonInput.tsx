@@ -1,5 +1,5 @@
 import { clsx } from "clsx/lite";
-import * as React from "react";
+import { forwardRef } from "react";
 
 import { inputClassNameBase } from "./_Input";
 import { useInputAttributes } from "./Field";
@@ -10,7 +10,7 @@ export interface ButtonInputProps
   size?: "sm" | "md" | "lg";
 }
 
-export const ButtonInput = React.forwardRef(function ButtonInput(
+export const ButtonInput = forwardRef(function ButtonInput(
   { size = "md", className, style, ...restProps }: ButtonInputProps,
   ref: React.ForwardedRef<HTMLButtonElement>,
 ) {

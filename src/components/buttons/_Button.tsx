@@ -1,5 +1,5 @@
 import { clsx } from "clsx/lite";
-import * as React from "react";
+import { forwardRef } from "react";
 import type { Merge } from "ts-essentials";
 
 import { Spinner } from "../Spinner";
@@ -26,7 +26,7 @@ export interface ButtonProps
   size?: "auto" | "sm" | "md";
 }
 
-export const Button = React.forwardRef(function Button(
+export const Button = forwardRef(function Button(
   {
     size = "auto",
     disabled,

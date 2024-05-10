@@ -1,5 +1,5 @@
 import { clsx } from "clsx/lite";
-import * as React from "react";
+import { forwardRef } from "react";
 
 import { parseBooleanish } from "../../utils/parseBooleanish";
 import { Button } from "../buttons/_Button";
@@ -8,7 +8,7 @@ import { Button } from "../buttons/_Button";
 
 export interface ChipProps extends React.ComponentPropsWithRef<"button"> {}
 
-export const Chip = React.forwardRef(function Chip(
+export const Chip = forwardRef(function Chip(
   {
     "aria-checked": ariaChecked = false,
     "aria-disabled": ariaDisabled,

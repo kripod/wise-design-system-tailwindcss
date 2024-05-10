@@ -1,7 +1,7 @@
-import * as React from "react";
+import { useSyncExternalStore } from "react";
 
 export function useMedia(query: string) {
-  return React.useSyncExternalStore(
+  return useSyncExternalStore(
     (onStoreChange) => {
       const mediaQueryList = window.matchMedia(query);
       mediaQueryList.addEventListener("change", onStoreChange);

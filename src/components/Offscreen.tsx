@@ -1,18 +1,17 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 export interface OffscreenProps {
   children?: React.ReactNode;
 }
 
 export function Offscreen({ children }: OffscreenProps) {
-  const [documentFragment, setDocumentFragment] =
-    React.useState<DocumentFragment>();
-  React.useEffect(() => {
+  const [documentFragment, setDocumentFragment] = useState<DocumentFragment>();
+  useEffect(() => {
     setDocumentFragment(new DocumentFragment());
   }, []);
 
   return documentFragment != null
-    ? ReactDOM.createPortal(children, documentFragment)
+    ? createPortal(children, documentFragment)
     : null;
 }

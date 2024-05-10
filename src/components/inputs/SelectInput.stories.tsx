@@ -8,7 +8,7 @@ import {
   within,
 } from "@storybook/test";
 import { Calendar, ChevronDown } from "@transferwise/icons";
-import * as React from "react";
+import { useState } from "react";
 
 import { getMonthNames } from "../../utils/date";
 import { Flag } from "../Flag";
@@ -52,9 +52,7 @@ export const Months: Story<Month | null> = {
     onClear: fn() satisfies Mock,
   },
   render: function Render({ onChange, onClear, ...args }) {
-    const [selectedMonth, setSelectedMonth] = React.useState<Month | null>(
-      null,
-    );
+    const [selectedMonth, setSelectedMonth] = useState<Month | null>(null);
 
     return (
       <SelectInput

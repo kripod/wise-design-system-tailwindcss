@@ -1,5 +1,5 @@
 import { clsx } from "clsx/lite";
-import * as React from "react";
+import { forwardRef } from "react";
 
 import { inputClassNameBase } from "./_Input";
 import { useInputAttributes } from "./Field";
@@ -23,7 +23,7 @@ export interface TextAreaInputProps
     | "onBlur"
   > {}
 
-export const TextAreaInput = React.forwardRef(function TextAreaInput(
+export const TextAreaInput = forwardRef(function TextAreaInput(
   { className, ...restProps }: TextAreaInputProps,
   ref: React.ForwardedRef<HTMLTextAreaElement>,
 ) {

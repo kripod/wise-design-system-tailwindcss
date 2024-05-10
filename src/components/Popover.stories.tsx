@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn, type Mock } from "@storybook/test";
-import * as React from "react";
+import { useState } from "react";
 
 import { PrimaryButton } from "./buttons/PrimaryButton";
 import { Popover } from "./Popover";
@@ -27,7 +27,7 @@ export const Basic = {
     onClose: fn() satisfies Mock,
   },
   render: function Render({ onClose, ...args }) {
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = useState(true);
 
     return (
       <Popover

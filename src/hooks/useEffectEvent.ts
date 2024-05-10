@@ -1,5 +1,3 @@
-import * as React from "react";
-
 /*
  * Inspired by:
  *
@@ -7,16 +5,18 @@ import * as React from "react";
  * - https://legacy.reactjs.org/docs/hooks-faq.html#how-to-read-an-often-changing-value-from-usecallback
  */
 
+import { useCallback, useEffect, useRef } from "react";
+
 export function useEffectEvent<T, A extends unknown[]>(
   callback: (...args: A) => T,
 ): typeof callback {
-  const ref = React.useRef<typeof callback>(() => {
+  const ref = useRef<typeof callback>(() => {
     throw new Error("Cannot call an event handler while rendering");
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     ref.current = callback;
   });
 
-  return React.useCallback((...args) => ref.current(...args), []);
+  return useCallback((...args) => ref.current(...args), []);
 }

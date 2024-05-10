@@ -1,5 +1,5 @@
 import { clsx } from "clsx/lite";
-import * as React from "react";
+import { forwardRef } from "react";
 
 import { Button, type ButtonPropsBase } from "./_Button";
 
@@ -9,7 +9,7 @@ export interface ActionButtonProps extends ButtonPropsBase {
   disabled?: boolean;
 }
 
-export const ActionButton = React.forwardRef(function ActionButton(
+export const ActionButton = forwardRef(function ActionButton(
   {
     icon,
     iconPlacement = "start",

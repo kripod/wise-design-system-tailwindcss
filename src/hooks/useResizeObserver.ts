@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useEffect } from "react";
 
 import { useEffectEvent } from "./useEffectEvent";
 
@@ -7,7 +7,7 @@ export function useResizeObserver(
   callback: (entry: ResizeObserverEntry) => void,
 ) {
   const handleCallback = useEffectEvent(callback);
-  React.useEffect(() => {
+  useEffect(() => {
     if (ref.current != null) {
       const resizeObserver = new ResizeObserver(([entry]) => {
         if (entry != null) {

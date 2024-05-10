@@ -1,5 +1,5 @@
 import { clsx } from "clsx/lite";
-import * as React from "react";
+import { forwardRef } from "react";
 
 import { inputClassNameBase } from "./_Input";
 import { useInputAttributes } from "./Field";
@@ -30,7 +30,7 @@ export interface TextInputProps
   shape?: "rectangle" | "pill";
 }
 
-export const TextInput = React.forwardRef(function TextInput(
+export const TextInput = forwardRef(function TextInput(
   { size = "md", shape = "rectangle", className, ...restProps }: TextInputProps,
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {

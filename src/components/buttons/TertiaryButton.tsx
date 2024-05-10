@@ -1,5 +1,5 @@
 import { clsx } from "clsx/lite";
-import * as React from "react";
+import { forwardRef } from "react";
 
 import { Button, type ButtonPropsBase } from "./_Button";
 
@@ -7,7 +7,7 @@ export interface TertiaryButtonProps extends ButtonPropsBase {
   size?: "sm" | "md";
 }
 
-export const TertiaryButton = React.forwardRef(function TertiaryButton(
+export const TertiaryButton = forwardRef(function TertiaryButton(
   { size = "md", className, ...restProps }: TertiaryButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement>,
 ) {
