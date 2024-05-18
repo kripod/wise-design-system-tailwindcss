@@ -148,7 +148,7 @@ export interface SelectInputProps<T = string, M extends boolean = false> {
   placeholder?: string;
   items: readonly SelectInputItem<NonNullable<T>>[];
   defaultValue?: NoInfer<M extends true ? readonly T[] : T>;
-  value?: NoInfer<M extends true ? readonly T[] : T>;
+  value?: M extends true ? readonly T[] : T;
   compareValues?:
     | (keyof NonNullable<T> & string)
     | ((a: T | undefined, b: T | undefined) => boolean);
