@@ -219,10 +219,12 @@ export default {
       100: "1",
     },
     outlineOffset: {
+      1: "1px",
       DEFAULT: "2px",
     },
     outlineWidth: {
       0: "0px",
+      1: "1px",
       DEFAULT: "2px",
     },
     ringWidth: {
