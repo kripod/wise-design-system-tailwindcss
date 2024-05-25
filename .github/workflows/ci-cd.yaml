@@ -16,9 +16,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/bootstrap
-        with:
-          package-manager: pnpm
-          npm-token: ${{ secrets.NPM_TOKEN_READONLY }}
       - run: pnpm run build
       - run: pnpm run lint
       - run: pnpm run --if-present test
@@ -38,7 +35,6 @@ jobs:
           token: ${{ secrets.GH_ACCESS_TOKEN }}
       - uses: ./.github/actions/bootstrap
         with:
-          package-manager: pnpm
           npm-token: ${{ secrets.NPM_TOKEN_AUTOMATION }}
       - run: pnpm run build
       # - name: Set up commit signing
