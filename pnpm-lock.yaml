@@ -33,9 +33,6 @@ importers:
       '@changesets/cli':
         specifier: 2.27.3
         version: 2.27.3
-      '@csstools/postcss-rebase-url':
-        specifier: 1.0.9
-        version: 1.0.9(postcss@8.4.38)
       '@fontsource-variable/inter':
         specifier: 5.0.18
         version: 5.0.18
@@ -120,9 +117,6 @@ importers:
       postcss-cli:
         specifier: 11.0.0
         version: 11.0.0(jiti@1.21.0)(postcss@8.4.38)
-      postcss-import:
-        specifier: 16.1.0
-        version: 16.1.0(postcss@8.4.38)
       postcss-preset-env:
         specifier: 9.5.14
         version: 9.5.14(postcss@8.4.38)
@@ -1036,12 +1030,6 @@ packages:
 
   '@csstools/postcss-progressive-custom-properties@3.2.0':
     resolution: {integrity: sha512-BZlirVxCRgKlE7yVme+Xvif72eTn1MYXj8oZ4Knb+jwaH4u3AN1DjbhM7j86RP5vvuAOexJ4JwfifYYKWMN/QQ==}
-    engines: {node: ^14 || ^16 || >=18}
-    peerDependencies:
-      postcss: ^8.4
-
-  '@csstools/postcss-rebase-url@1.0.9':
-    resolution: {integrity: sha512-vedXqsN7W4ykERuNytBjkdAMiPNGWefGn2Hpo2q+qK7t7IygebRMAo/9K7bCDplbIy8fk/SU2tsszEJc0lClHQ==}
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
       postcss: ^8.4
@@ -4863,12 +4851,6 @@ packages:
     peerDependencies:
       postcss: ^8.0.0
 
-  postcss-import@16.1.0:
-    resolution: {integrity: sha512-7hsAZ4xGXl4MW+OKEWCnF6T5jqBw80/EE9aXg1r2yyn1RsVEU8EtKXbijEODa+rg7iih4bKf7vlvTGYR4CnPNg==}
-    engines: {node: '>=18.0.0'}
-    peerDependencies:
-      postcss: ^8.0.0
-
   postcss-js@4.0.1:
     resolution: {integrity: sha512-dDLF8pEO191hJMtlHFPRa8xsizHaM82MLfNkUHdUtVEV3tgTp5oj+8qbEqYM57SLfc74KSbw//4SeJma2LRVIw==}
     engines: {node: ^12 || ^14 || >= 16}
@@ -7227,12 +7209,6 @@ snapshots:
     dependencies:
       postcss: 8.4.38
       postcss-value-parser: 4.2.0
-
-  '@csstools/postcss-rebase-url@1.0.9(postcss@8.4.38)':
-    dependencies:
-      '@csstools/css-parser-algorithms': 2.6.3(@csstools/css-tokenizer@2.3.1)
-      '@csstools/css-tokenizer': 2.3.1
-      postcss: 8.4.38
 
   '@csstools/postcss-relative-color-syntax@2.0.16(postcss@8.4.38)':
     dependencies:
@@ -11790,13 +11766,6 @@ snapshots:
       postcss-value-parser: 4.2.0
 
   postcss-import@15.1.0(postcss@8.4.38):
-    dependencies:
-      postcss: 8.4.38
-      postcss-value-parser: 4.2.0
-      read-cache: 1.0.0
-      resolve: 1.22.8
-
-  postcss-import@16.1.0(postcss@8.4.38):
     dependencies:
       postcss: 8.4.38
       postcss-value-parser: 4.2.0
