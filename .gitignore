@@ -2,7 +2,6 @@ node_modules/
 dist/
 storybook-static/
 .rollup.cache/
-*.tsbuildinfo
 *.log*
 .env.local
 .env.*.local
