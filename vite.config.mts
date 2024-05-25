@@ -26,5 +26,6 @@ export default defineConfig({
         preserveModules: true,
       },
     },
+    emptyOutDir: false,
   },
 });
