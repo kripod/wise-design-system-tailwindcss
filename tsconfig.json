@@ -6,6 +6,5 @@
     "declaration": true,
     "declarationMap": true
   },
-  "include": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules/", "dist/", "storybook-static/"]
 }
