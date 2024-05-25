@@ -1,7 +1,7 @@
 import { clsx } from "clsx/lite";
 import { forwardRef } from "react";
-import type { Merge } from "ts-essentials";
 
+import type { Merge } from "../../utils/types";
 import { Spinner } from "../Spinner";
 
 export interface ButtonPropsBase

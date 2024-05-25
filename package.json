@@ -81,8 +81,7 @@
     "@react-aria/overlays": "^3.22.1",
     "clsx": "^2.1.1",
     "merge-props": "^6.0.0",
-    "modern-normalize": "^2.0.0",
-    "ts-essentials": "^10.0.0"
+    "modern-normalize": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.24.6",
