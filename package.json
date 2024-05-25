@@ -49,7 +49,7 @@
     "build:stories": "storybook build",
     "clean": "git clean --interactive -dx --exclude node_modules/ --exclude .husky/",
     "lint": "pnpm run \"/^lint:(?!fix)/\"",
-    "lint:js+ts": "eslint --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore .",
+    "lint:js+ts": "eslint --ext .js,.jsx,.mjs,.ts,.tsx,.mts --ignore-path .gitignore .",
     "lint:format": "prettier --check .",
     "lint:types": "tsc --noEmit",
     "lint:fix": "pnpm run \"/^lint:fix:/\"",
