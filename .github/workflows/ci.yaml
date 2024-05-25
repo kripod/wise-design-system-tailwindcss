@@ -30,11 +30,11 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      issues: read
-      packages: write
       pull-requests: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_ACCESS_TOKEN }}
       - uses: ./.github/actions/bootstrap-node
         with:
           package-manager: pnpm
@@ -46,12 +46,12 @@ jobs:
       #     gpg_private_key: ${{ secrets.GPG_SIGN_KEY }}
       #     git_user_signingkey: true
       #     git_commit_gpgsign: true
-      - name: Create release PR or publish on npm
+      - name: Create release PR or publish to npm
         uses: changesets/action@v1
         with:
           publish: pnpm exec changeset publish
           commit: "chore: release"
-          title: "chore: release new version and update changelog"
+          title: "chore: release"
           # setupGitUser: false
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
