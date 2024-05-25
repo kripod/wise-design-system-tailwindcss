@@ -9,7 +9,7 @@ const outDir = "dist";
 
 module.exports = defineConfig({
   input: {
-    mod: `${rootDir}/mod.ts`,
+    index: `${rootDir}/index.ts`,
     "tailwind-base": `${rootDir}/tailwind-base.ts`,
   },
   output: [

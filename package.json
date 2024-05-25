@@ -16,9 +16,9 @@
   ],
   "exports": {
     ".": {
-      "types": "./dist/mod.d.ts",
-      "import": "./dist/mod.mjs",
-      "require": "./dist/mod.js"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
     },
     "./dist/preflight.css": "./dist/preflight.css",
     "./dist/pregenerated.css": "./dist/pregenerated.css",
@@ -28,8 +28,8 @@
       "require": "./dist/tailwind-base.js"
     }
   },
-  "main": "./dist/mod.js",
-  "types": "./dist/mod.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "codemods/",
     "dist/",
