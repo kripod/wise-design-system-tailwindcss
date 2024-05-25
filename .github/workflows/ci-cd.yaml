@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/actions/bootstrap-node
+      - uses: ./.github/actions/bootstrap
         with:
           package-manager: pnpm
           npm-token: ${{ secrets.NPM_TOKEN_READONLY }}
@@ -35,7 +35,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GH_ACCESS_TOKEN }}
-      - uses: ./.github/actions/bootstrap-node
+      - uses: ./.github/actions/bootstrap
         with:
           package-manager: pnpm
           npm-token: ${{ secrets.NPM_TOKEN_AUTOMATION }}
