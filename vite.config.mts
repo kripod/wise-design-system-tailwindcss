@@ -4,14 +4,16 @@ import dts from "vite-plugin-dts";
 
 import pkg from "./package.json" with { type: "json" };
 
+const rootDir = "src";
+
 export default defineConfig({
   plugins: [
     react({ jsxImportSource: "css-homogenizer/reset-scoped/react" }),
-    dts(),
+    dts({ include: rootDir }),
   ],
   build: {
     lib: {
-      entry: ["./src/index.ts", "./src/tailwind-base.ts"],
+      entry: [`${rootDir}/index.ts`, `${rootDir}/tailwind-base.ts`],
     },
     sourcemap: true,
     minify: false,
