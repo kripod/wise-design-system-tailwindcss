@@ -46,7 +46,7 @@
     "build:lib:js": "rollup --config --sourcemap",
     "build:lib:js:watch": "pnpm run build:lib:js --watch",
     "build:stories": "storybook build",
-    "clean": "git clean --interactive -dx --exclude .env.local --exclude .env.*.local --exclude node_modules/ --exclude .husky/",
+    "clean": "git clean --interactive -dx --exclude node_modules/ --exclude .husky/",
     "lint": "pnpm run \"/^lint:(?!fix)/\"",
     "lint:js+ts": "eslint --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore .",
     "lint:format": "prettier --check .",

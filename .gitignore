@@ -3,6 +3,4 @@ dist/
 storybook-static/
 .rollup.cache/
 *.log*
-.env.local
-.env.*.local
 .DS_Store
