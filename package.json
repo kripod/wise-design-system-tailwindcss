@@ -2,13 +2,18 @@
   "name": "@kripod/wise-design-system-tailwindcss",
   "version": "0.6.1",
   "description": "Experimental web implementation of Wise Design System, based upon Tailwind CSS.",
-  "repository": "kripod/wise-design-system-tailwindcss",
+  "keywords": [
+    "design-system",
+    "tailwindcss"
+  ],
   "homepage": "https://github.com/kripod/wise-design-system-tailwindcss#readme",
   "bugs": "https://github.com/kripod/wise-design-system-tailwindcss/issues",
-  "author": "Kristóf Poduszló (https://www.kripod.dev/)",
+  "repository": "kripod/wise-design-system-tailwindcss",
   "license": "MIT",
-  "packageManager": "pnpm@9.1.2",
-  "main": "./dist/mod.js",
+  "author": "Kristóf Poduszló (https://www.kripod.dev/)",
+  "sideEffects": [
+    "*.css"
+  ],
   "exports": {
     ".": {
       "types": "./dist/mod.d.ts",
@@ -23,16 +28,13 @@
       "require": "./dist/tailwind-base.js"
     }
   },
+  "main": "./dist/mod.js",
   "types": "./dist/mod.d.ts",
   "files": [
     "codemods/",
     "dist/",
     "src/",
     "!**/*.tsbuildinfo"
-  ],
-  "keywords": [
-    "design-system",
-    "tailwindcss"
   ],
   "scripts": {
     "prepare": "husky",
@@ -53,26 +55,6 @@
     "lint:fix": "pnpm run \"/^lint:fix:/\"",
     "lint:fix:js+ts": "pnpm run lint:js+ts --fix",
     "lint:fix:format": "prettier --write ."
-  },
-  "peerDependencies": {
-    "@tailwindcss/container-queries": "^0.1",
-    "@transferwise/icons": "^3.1",
-    "css-homogenizer": "^3.2.1",
-    "react": "^18",
-    "react-dom": "^18",
-    "tailwindcss": "^3.4",
-    "typescript": ">=5.4"
-  },
-  "peerDependenciesMeta": {
-    "@tailwindcss/container-queries": {
-      "optional": true
-    },
-    "tailwindcss": {
-      "optional": true
-    },
-    "typescript": {
-      "optional": true
-    }
   },
   "dependencies": {
     "@babel/runtime": "^7.24.6",
@@ -135,10 +117,28 @@
     "typescript": "5.4.5",
     "vite": "5.2.11"
   },
+  "peerDependencies": {
+    "@tailwindcss/container-queries": "^0.1",
+    "@transferwise/icons": "^3.1",
+    "css-homogenizer": "^3.2.1",
+    "react": "^18",
+    "react-dom": "^18",
+    "tailwindcss": "^3.4",
+    "typescript": ">=5.4"
+  },
+  "peerDependenciesMeta": {
+    "@tailwindcss/container-queries": {
+      "optional": true
+    },
+    "tailwindcss": {
+      "optional": true
+    },
+    "typescript": {
+      "optional": true
+    }
+  },
+  "packageManager": "pnpm@9.1.2",
   "publishConfig": {
     "access": "public"
-  },
-  "sideEffects": [
-    "*.css"
-  ]
+  }
 }
