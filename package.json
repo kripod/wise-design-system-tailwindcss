@@ -16,20 +16,21 @@
   ],
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/es/index.js",
+      "require": "./dist/lib/index.js"
     },
     "./dist/preflight.css": "./dist/preflight.css",
     "./dist/pregenerated.css": "./dist/pregenerated.css",
     "./tailwind-base": {
-      "types": "./dist/tailwind-base.d.ts",
-      "import": "./dist/tailwind-base.mjs",
-      "require": "./dist/tailwind-base.js"
+      "types": "./dist/types/tailwind-base.d.ts",
+      "import": "./dist/es/tailwind-base.js",
+      "require": "./dist/lib/tailwind-base.js"
     }
   },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/lib/index.js",
+  "module": "./dist/es/index.js",
+  "types": "./dist/types/index.d.ts",
   "files": [
     "codemods/",
     "dist/",
@@ -43,7 +44,7 @@
     "build:lib:watch": "pnpm run \"/^build:lib:.+:watch/\"",
     "build:lib:css": "postcss src/preflight.css src/pregenerated.css --base src/ --dir dist/",
     "build:lib:css:watch": "pnpm run build:lib:css --watch",
-    "build:lib:js": "rollup --config --sourcemap",
+    "build:lib:js": "modern build",
     "build:lib:js:watch": "pnpm run build:lib:js --watch",
     "build:stories": "storybook build",
     "clean": "git clean --interactive -dx --exclude node_modules/ --exclude .husky/",
@@ -56,26 +57,20 @@
     "lint:fix:format": "prettier --write ."
   },
   "dependencies": {
-    "@babel/runtime": "^7.24.6",
     "@floating-ui/react": "^0.26.16",
     "@headlessui/react": "^2.0.4",
     "@react-aria/overlays": "^3.22.1",
+    "@swc/helpers": "^0.5.11",
     "clsx": "^2.1.1",
     "merge-props": "^6.0.0",
     "modern-normalize": "^2.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.24.6",
-    "@babel/plugin-transform-runtime": "7.24.6",
-    "@babel/preset-env": "7.24.6",
-    "@babel/preset-react": "7.24.6",
-    "@babel/preset-typescript": "7.24.6",
     "@changesets/changelog-github": "0.5.0",
     "@changesets/cli": "2.27.3",
     "@csstools/postcss-rebase-url": "1.0.9",
     "@fontsource-variable/inter": "5.0.18",
-    "@rollup/plugin-babel": "6.0.4",
-    "@rollup/plugin-typescript": "11.1.6",
+    "@modern-js/module-tools": "2.50.0",
     "@storybook/addon-a11y": "8.1.3",
     "@storybook/addon-essentials": "8.1.3",
     "@storybook/addon-interactions": "8.1.3",
@@ -88,14 +83,12 @@
     "@tailwindcss/container-queries": "0.1.1",
     "@total-typescript/tsconfig": "1.0.4",
     "@transferwise/icons": "3.13.0",
-    "@types/babel__core": "7.20.5",
     "@types/jscodeshift": "0.11.11",
     "@types/node": "20.12.12",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
     "@vitejs/plugin-react": "4.3.0",
     "@wise/eslint-config": "11.2.0",
-    "babel-plugin-optimize-clsx": "2.6.2",
     "css-homogenizer": "4.0.0",
     "eslint": "8.57.0",
     "eslint-plugin-react-refresh": "0.4.7",
@@ -111,7 +104,6 @@
     "prettier-plugin-tailwindcss": "0.5.14",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "rollup": "4.18.0",
     "storybook": "8.1.3",
     "tailwindcss": "3.4.3",
     "typescript": "5.4.5",

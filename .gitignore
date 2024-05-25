@@ -1,6 +1,5 @@
 node_modules/
 dist/
 storybook-static/
-.rollup.cache/
 *.log*
 .DS_Store
