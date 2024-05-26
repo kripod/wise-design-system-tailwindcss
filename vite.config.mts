@@ -1,4 +1,5 @@
 import react from "@vitejs/plugin-react-swc";
+import preserveDirectives from "rollup-preserve-directives";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 
@@ -22,6 +23,7 @@ export default defineConfig({
         ...Object.keys(pkg.dependencies ?? {}),
         ...Object.keys(pkg.peerDependencies ?? {}),
       ].map((packageName) => new RegExp(`^${packageName}($|/)`, "u")),
+      plugins: [preserveDirectives()],
       output: {
         preserveModules: true,
       },
