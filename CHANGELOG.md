@@ -1,5 +1,15 @@
 # @kripod/wise-design-system-tailwindcss
 
+## 0.7.0
+
+### Minor Changes
+
+- [`1648f93`](https://github.com/kripod/wise-design-system-tailwindcss/commit/1648f931ab3e867bf00c2608109020bf3ab56b57) Thanks [@kripod](https://github.com/kripod)! - build: revamp pipeline
+
+### Patch Changes
+
+- [`3a2e7c4`](https://github.com/kripod/wise-design-system-tailwindcss/commit/3a2e7c41f06ea7c87bbba653925ff7523545500a) Thanks [@kripod](https://github.com/kripod)! - fix(SelectInputProps): make 'value' inferable to accept 'null'
+
 ## 0.6.1
 
 ### Patch Changes
