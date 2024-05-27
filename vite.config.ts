@@ -15,6 +15,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: [`${rootDir}/index.ts`, `${rootDir}/tailwind-base.ts`],
+      formats: ["es"],
     },
     sourcemap: true,
     minify: false,
