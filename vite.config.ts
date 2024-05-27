@@ -10,7 +10,7 @@ const rootDir = "src";
 export default defineConfig({
   plugins: [
     react({ jsxImportSource: "css-homogenizer/reset-scoped/react" }),
-    dts({ include: rootDir }),
+    process.env.NO_DTS !== "true" && dts({ include: rootDir }),
   ],
   build: {
     lib: {
