@@ -5,35 +5,6 @@ import { useContext, useId, useMemo } from "react";
 import { FieldContext } from "../../contexts/FieldContext";
 import { Label } from "./Label";
 
-interface FieldDescriptionProps {
-  children?: React.ReactNode;
-}
-
-function FieldDescription({ children }: FieldDescriptionProps) {
-  const { "aria-describedby": id, "aria-invalid": invalid } =
-    useContext(FieldContext);
-
-  return (
-    /* Align icon with first line: https://twitter.com/adamwathan/status/1217864323466432516 */
-    <span
-      id={id}
-      className={clsx(
-        "inline-flex items-start gap-x-1 text-body transition-colors",
-        invalid ? "text-sentiment-negative" : "text-content-secondary",
-      )}
-    >
-      {invalid ? (
-        <span className="inline-flex items-center" aria-hidden>
-          {/* TODO: Use `h-1lh` on container and remove zero-width space */}
-          &#8203; {/* Mimics `height: 1lh` on container */}
-          <AlertCircle size={16} />
-        </span>
-      ) : null}
-      <span className="flex-1">{children}</span>
-    </span>
-  );
-}
-
 export interface FieldProps {
   id?: string;
   label: React.ReactNode;
@@ -79,5 +50,34 @@ export function Field({
         ) : null}
       </span>
     </FieldContext.Provider>
+  );
+}
+
+interface FieldDescriptionProps {
+  children?: React.ReactNode;
+}
+
+function FieldDescription({ children }: FieldDescriptionProps) {
+  const { "aria-describedby": id, "aria-invalid": invalid } =
+    useContext(FieldContext);
+
+  return (
+    /* Align icon with first line: https://twitter.com/adamwathan/status/1217864323466432516 */
+    <span
+      id={id}
+      className={clsx(
+        "inline-flex items-start gap-x-1 text-body transition-colors",
+        invalid ? "text-sentiment-negative" : "text-content-secondary",
+      )}
+    >
+      {invalid ? (
+        <span className="inline-flex items-center" aria-hidden>
+          {/* TODO: Use `h-1lh` on container and remove zero-width space */}
+          &#8203; {/* Mimics `height: 1lh` on container */}
+          <AlertCircle size={16} />
+        </span>
+      ) : null}
+      <span className="flex-1">{children}</span>
+    </span>
   );
 }
