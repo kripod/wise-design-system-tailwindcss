@@ -1,33 +1,9 @@
 import { clsx } from "clsx/lite";
-import { createContext, useContext, useMemo, useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 
+import { InputGroupContext } from "../../contexts/InputGroupContext";
 import { useResizeObserver } from "../../hooks/useResizeObserver";
 import { cssValueWithUnit } from "../../utils/cssValueWithUnit";
-
-type InputPaddingContextValue = [
-  number | string | undefined,
-  React.Dispatch<React.SetStateAction<number | string | undefined>>,
-];
-
-const InputPaddingStartContext = createContext<InputPaddingContextValue>([
-  undefined,
-  () => {},
-]);
-
-const InputPaddingEndContext = createContext<InputPaddingContextValue>([
-  undefined,
-  () => {},
-]);
-
-export function useInputPaddings() {
-  const [paddingStart] = useContext(InputPaddingStartContext);
-  const [paddingEnd] = useContext(InputPaddingEndContext);
-
-  return {
-    paddingInlineStart: paddingStart,
-    paddingInlineEnd: paddingEnd,
-  } satisfies React.CSSProperties;
-}
 
 export interface InputGroupAddon {
   content: React.ReactNode;
@@ -47,16 +23,15 @@ export interface InputGroupProps {
 function inputPaddingInitialState({
   initialContentWidth,
   padding = inputAddonDefaultPadding,
-}: Pick<
-  InputGroupAddon,
-  "initialContentWidth" | "padding"
-> = {}): () => InputPaddingContextValue[0] {
-  return () =>
-    initialContentWidth != null
-      ? `calc(${cssValueWithUnit(initialContentWidth)} + ${cssValueWithUnit(
-          inputAddonContentWidthAddendByPadding[padding],
-        )})`
-      : undefined;
+}: Pick<InputGroupAddon, "initialContentWidth" | "padding"> = {}):
+  | string
+  | number
+  | undefined {
+  return initialContentWidth != null
+    ? `calc(${cssValueWithUnit(initialContentWidth)} + ${cssValueWithUnit(
+        inputAddonContentWidthAddendByPadding[padding],
+      )})`
+    : undefined;
 }
 
 export function InputGroup({
@@ -66,38 +41,28 @@ export function InputGroup({
   className,
   children,
 }: InputGroupProps) {
-  const [paddingStart, setPaddingStart] = useState(
-    inputPaddingInitialState(addonStart),
-  );
-  const [paddingEnd, setPaddingEnd] = useState(
-    inputPaddingInitialState(addonEnd),
-  );
-
   return (
-    <InputPaddingStartContext.Provider
-      value={useMemo(() => [paddingStart, setPaddingStart], [paddingStart])}
+    <InputGroupContext.Provider
+      value={useState(() => ({
+        paddingInlineStart: inputPaddingInitialState(addonStart),
+        paddingInlineEnd: inputPaddingInitialState(addonEnd),
+      }))}
     >
-      <InputPaddingEndContext.Provider
-        value={useMemo(() => [paddingEnd, setPaddingEnd], [paddingEnd])}
+      <fieldset
+        disabled={disabled}
+        className={clsx(
+          className,
+          "group/input inline-grid auto-cols-fr *:col-start-1 *:row-start-1",
+          "rounded-full", // Prevent unwanted `group-hover/input` triggers
+        )}
       >
-        <fieldset
-          disabled={disabled}
-          className={clsx(
-            className,
-            "group/input inline-grid auto-cols-fr *:col-start-1 *:row-start-1",
-            "rounded-full", // Prevent unwanted `group-hover/input` triggers
-          )}
-        >
-          {addonStart != null ? (
-            <InputAddon placement="start" {...addonStart} />
-          ) : null}
-          {children}
-          {addonEnd != null ? (
-            <InputAddon placement="end" {...addonEnd} />
-          ) : null}
-        </fieldset>
-      </InputPaddingEndContext.Provider>
-    </InputPaddingStartContext.Provider>
+        {addonStart != null ? (
+          <InputAddon placement="start" {...addonStart} />
+        ) : null}
+        {children}
+        {addonEnd != null ? <InputAddon placement="end" {...addonEnd} /> : null}
+      </fieldset>
+    </InputGroupContext.Provider>
   );
 }
 
@@ -110,7 +75,7 @@ const inputAddonContentWidthAddendByPadding = {
   sm: "1rem",
   md: "1.5rem",
 } satisfies {
-  [key in NonNullable<InputAddonProps["padding"]>]: InputPaddingContextValue[0];
+  [key in NonNullable<InputAddonProps["padding"]>]: string | number;
 };
 
 const inputAddonDefaultPadding = "md" satisfies InputAddonProps["padding"];
@@ -121,24 +86,24 @@ function InputAddon({
   interactive,
   padding = inputAddonDefaultPadding,
 }: InputAddonProps) {
-  const [, setInputPadding] = useContext(
-    placement === "start" ? InputPaddingStartContext : InputPaddingEndContext,
-  );
+  const [, setGroupInputStyle] = useContext(InputGroupContext);
 
   const ref = useRef<HTMLSpanElement>(null);
   useResizeObserver(ref, (entry) => {
     // TODO: Remove fallback once most browsers support `borderBoxSize`
-    const inlineSize = entry.borderBoxSize?.[0]?.inlineSize;
-    if (inlineSize != null) {
-      setInputPadding(inlineSize);
-    } else {
+    let inlineSize = entry.borderBoxSize?.[0]?.inlineSize;
+    if (inlineSize == null) {
       const targetStyle = getComputedStyle(entry.target);
-      setInputPadding(
+      inlineSize =
         entry.contentRect.width +
-          Number.parseFloat(targetStyle.paddingInlineStart) +
-          Number.parseFloat(targetStyle.paddingInlineEnd),
-      );
+        Number.parseFloat(targetStyle.paddingInlineStart) +
+        Number.parseFloat(targetStyle.paddingInlineEnd);
     }
+    setGroupInputStyle((prev) => ({
+      ...prev,
+      [placement === "start" ? "paddingInlineStart" : "paddingInlineEnd"]:
+        inlineSize,
+    }));
   });
 
   return (

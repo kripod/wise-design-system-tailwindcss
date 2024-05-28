@@ -2,8 +2,8 @@ import { clsx } from "clsx/lite";
 import { forwardRef, useContext } from "react";
 
 import { FieldContext } from "../../contexts/FieldContext";
+import { InputGroupContext } from "../../contexts/InputGroupContext";
 import { inputClassNameBase } from "./_Input";
-import { useInputPaddings } from "./InputGroup";
 
 export interface TextInputProps
   extends Pick<
@@ -35,7 +35,7 @@ export const TextInput = forwardRef(function TextInput(
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {
   const attributes = useContext(FieldContext);
-  const inputPaddings = useInputPaddings();
+  const [groupInputStyle] = useContext(InputGroupContext);
 
   return (
     <input
@@ -47,7 +47,7 @@ export const TextInput = forwardRef(function TextInput(
         shape === "rectangle" && "rounded",
         shape === "pill" && "rounded-full",
       )}
-      style={inputPaddings}
+      style={groupInputStyle}
       {...attributes}
       {...restProps}
     />
