@@ -1,8 +1,8 @@
 import { clsx } from "clsx/lite";
-import { forwardRef } from "react";
+import { forwardRef, useContext } from "react";
 
+import { FieldContext } from "../../contexts/FieldContext";
 import { inputClassNameBase } from "./_Input";
-import { useInputAttributes } from "./Field";
 import { useInputPaddings } from "./InputGroup";
 
 export interface ButtonInputProps
@@ -14,7 +14,7 @@ export const ButtonInput = forwardRef(function ButtonInput(
   { size = "md", className, style, ...restProps }: ButtonInputProps,
   ref: React.ForwardedRef<HTMLButtonElement>,
 ) {
-  const inputAttributes = useInputAttributes();
+  const attributes = useContext(FieldContext);
   const inputPaddings = useInputPaddings();
 
   return (
@@ -27,7 +27,7 @@ export const ButtonInput = forwardRef(function ButtonInput(
         "inline-grid auto-cols-fr content-center rounded text-start",
       )}
       style={{ ...inputPaddings, ...style }}
-      {...inputAttributes}
+      {...attributes}
       {...restProps}
     />
   );

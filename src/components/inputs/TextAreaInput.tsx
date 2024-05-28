@@ -1,8 +1,8 @@
 import { clsx } from "clsx/lite";
-import { forwardRef } from "react";
+import { forwardRef, useContext } from "react";
 
+import { FieldContext } from "../../contexts/FieldContext";
 import { inputClassNameBase } from "./_Input";
-import { useInputAttributes } from "./Field";
 
 export interface TextAreaInputProps
   extends Pick<
@@ -27,7 +27,7 @@ export const TextAreaInput = forwardRef(function TextAreaInput(
   { className, ...restProps }: TextAreaInputProps,
   ref: React.ForwardedRef<HTMLTextAreaElement>,
 ) {
-  const inputAttributes = useInputAttributes();
+  const attributes = useContext(FieldContext);
 
   return (
     <textarea
@@ -37,7 +37,7 @@ export const TextAreaInput = forwardRef(function TextAreaInput(
         inputClassNameBase(),
         "min-h-18 scroll-py-2 overscroll-none rounded py-3 text-body-lg placeholder:text-content-tertiary",
       )}
-      {...inputAttributes}
+      {...attributes}
       {...restProps}
     />
   );

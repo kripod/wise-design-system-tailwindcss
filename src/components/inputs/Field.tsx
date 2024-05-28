@@ -1,35 +1,22 @@
 import { AlertCircle } from "@transferwise/icons";
 import { clsx } from "clsx/lite";
-import { createContext, useContext, useId } from "react";
+import { useContext, useId, useMemo } from "react";
 
+import { FieldContext } from "../../contexts/FieldContext";
 import { Label } from "./Label";
-
-const InputIdContext = createContext<string | undefined>(undefined);
-
-const InputDescribedByContext = createContext<string | undefined>(undefined);
-
-const InputInvalidContext = createContext<boolean | undefined>(undefined);
-
-export function useInputAttributes() {
-  return {
-    id: useContext(InputIdContext),
-    "aria-describedby": useContext(InputDescribedByContext),
-    "aria-invalid": useContext(InputInvalidContext),
-  } satisfies React.HTMLAttributes<HTMLElement>;
-}
 
 interface FieldDescriptionProps {
   children?: React.ReactNode;
 }
 
 function FieldDescription({ children }: FieldDescriptionProps) {
-  const descriptionId = useContext(InputDescribedByContext);
-  const invalid = useContext(InputInvalidContext);
+  const { "aria-describedby": id, "aria-invalid": invalid } =
+    useContext(FieldContext);
 
   return (
     /* Align icon with first line: https://twitter.com/adamwathan/status/1217864323466432516 */
     <span
-      id={descriptionId}
+      id={id}
       className={clsx(
         "inline-flex items-start gap-x-1 text-body transition-colors",
         invalid ? "text-sentiment-negative" : "text-content-secondary",
@@ -64,30 +51,33 @@ export function Field({
   className,
   children,
 }: FieldProps) {
-  const fallbackInputId = useId();
-  const inputId = id ?? fallbackInputId;
+  const fallbackControlId = useId();
+  const controlId = id ?? fallbackControlId;
 
   const description = error || hint;
   const descriptionId = useId();
 
   return (
-    <InputIdContext.Provider value={inputId}>
-      <InputDescribedByContext.Provider
-        value={description ? descriptionId : undefined}
-      >
-        <InputInvalidContext.Provider value={Boolean(error)}>
-          <span className={clsx(className, "inline-flex flex-col gap-y-2")}>
-            <Label htmlFor={inputId}>
-              {label}
-              {children}
-            </Label>
+    <FieldContext.Provider
+      value={useMemo(
+        () => ({
+          id: controlId,
+          "aria-describedby": description ? descriptionId : undefined,
+          "aria-invalid": Boolean(error),
+        }),
+        [controlId, description, descriptionId, error],
+      )}
+    >
+      <span className={clsx(className, "inline-flex flex-col gap-y-2")}>
+        <Label htmlFor={controlId}>
+          {label}
+          {children}
+        </Label>
 
-            {description ? (
-              <FieldDescription>{description}</FieldDescription>
-            ) : null}
-          </span>
-        </InputInvalidContext.Provider>
-      </InputDescribedByContext.Provider>
-    </InputIdContext.Provider>
+        {description ? (
+          <FieldDescription>{description}</FieldDescription>
+        ) : null}
+      </span>
+    </FieldContext.Provider>
   );
 }

@@ -1,8 +1,8 @@
 import { clsx } from "clsx/lite";
-import { forwardRef } from "react";
+import { forwardRef, useContext } from "react";
 
+import { FieldContext } from "../../contexts/FieldContext";
 import { inputClassNameBase } from "./_Input";
-import { useInputAttributes } from "./Field";
 import { useInputPaddings } from "./InputGroup";
 
 export interface TextInputProps
@@ -34,7 +34,7 @@ export const TextInput = forwardRef(function TextInput(
   { size = "md", shape = "rectangle", className, ...restProps }: TextInputProps,
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {
-  const inputAttributes = useInputAttributes();
+  const attributes = useContext(FieldContext);
   const inputPaddings = useInputPaddings();
 
   return (
@@ -48,7 +48,7 @@ export const TextInput = forwardRef(function TextInput(
         shape === "pill" && "rounded-full",
       )}
       style={inputPaddings}
-      {...inputAttributes}
+      {...attributes}
       {...restProps}
     />
   );
