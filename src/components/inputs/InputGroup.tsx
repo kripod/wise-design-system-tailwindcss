@@ -4,17 +4,17 @@ import { createContext, useContext, useMemo, useRef, useState } from "react";
 import { useResizeObserver } from "../../hooks/useResizeObserver";
 import { cssValueWithUnit } from "../../utils/cssValueWithUnit";
 
-type InputPaddingContextType = [
+type InputPaddingContextValue = [
   number | string | undefined,
   React.Dispatch<React.SetStateAction<number | string | undefined>>,
 ];
 
-const InputPaddingStartContext = createContext<InputPaddingContextType>([
+const InputPaddingStartContext = createContext<InputPaddingContextValue>([
   undefined,
   () => {},
 ]);
 
-const InputPaddingEndContext = createContext<InputPaddingContextType>([
+const InputPaddingEndContext = createContext<InputPaddingContextValue>([
   undefined,
   () => {},
 ]);
@@ -50,7 +50,7 @@ function inputPaddingInitialState({
 }: Pick<
   InputGroupAddon,
   "initialContentWidth" | "padding"
-> = {}): () => InputPaddingContextType[0] {
+> = {}): () => InputPaddingContextValue[0] {
   return () =>
     initialContentWidth != null
       ? `calc(${cssValueWithUnit(initialContentWidth)} + ${cssValueWithUnit(
@@ -110,7 +110,7 @@ const inputAddonContentWidthAddendByPadding = {
   sm: "1rem",
   md: "1.5rem",
 } satisfies {
-  [key in NonNullable<InputAddonProps["padding"]>]: InputPaddingContextType[0];
+  [key in NonNullable<InputAddonProps["padding"]>]: InputPaddingContextValue[0];
 };
 
 const inputAddonDefaultPadding = "md" satisfies InputAddonProps["padding"];
