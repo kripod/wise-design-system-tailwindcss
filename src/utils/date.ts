@@ -4,7 +4,7 @@ export function getMonthNames(
   locales: string | string[],
   format: "long" | "short" | "narrow" = "long",
 ) {
-  const dateTimeFormat = Intl.DateTimeFormat(locales, {
+  const dateTimeFormat = new Intl.DateTimeFormat(locales, {
     timeZone: "UTC",
     month: format,
   });
