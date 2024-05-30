@@ -6,21 +6,21 @@ import { __DEV__ } from "../../utils/env";
 import { Offscreen } from "../Offscreen";
 import { Chip } from "./_Chip";
 
-export interface CheckboxChipGroupProps {
+export interface ChipCheckboxGroupProps {
   className?: string;
   children?: React.ReactNode;
 }
 
-export function CheckboxChipGroup({
+export function ChipCheckboxGroup({
   className,
   children,
-}: CheckboxChipGroupProps) {
+}: ChipCheckboxGroupProps) {
   return (
     <div className={clsx(className, "flex flex-wrap gap-2")}>{children}</div>
   );
 }
 
-export interface CheckboxChipProps {
+export interface ChipCheckboxProps {
   name?: string;
   value?: string;
   defaultChecked?: boolean;
@@ -30,7 +30,7 @@ export interface CheckboxChipProps {
   onChange?: (checked: boolean) => void;
 }
 
-export function CheckboxChip({
+export function ChipCheckbox({
   name,
   value = "on",
   defaultChecked,
@@ -38,7 +38,7 @@ export function CheckboxChip({
   disabled,
   children,
   onChange,
-}: CheckboxChipProps) {
+}: ChipCheckboxProps) {
   const [checked, setChecked] = useControllableState(
     controlledChecked,
     defaultChecked ?? false,

@@ -5,34 +5,34 @@ export {
   type ActionButtonProps,
 } from "./components/buttons/ActionButton";
 export {
+  ButtonPrimary,
+  type ButtonPrimaryProps,
+  // TODO: CriticalBannerButtonPrimary, type CriticalBannerButtonPrimaryProps
+} from "./components/buttons/ButtonPrimary";
+export {
+  ButtonSecondary,
+  type ButtonSecondaryProps,
+} from "./components/buttons/ButtonSecondary";
+export {
+  ButtonTertiary,
+  type ButtonTertiaryProps,
+} from "./components/buttons/ButtonTertiary";
+export {
   CircularButton,
   type CircularButtonProps,
 } from "./components/buttons/CircularButton";
 export {
-  PrimaryButton,
-  type PrimaryButtonProps,
-  // TODO: CriticalBannerPrimaryButton, type CriticalBannerPrimaryButtonProps
-} from "./components/buttons/PrimaryButton";
+  ChipCheckbox,
+  ChipCheckboxGroup,
+  type ChipCheckboxGroupProps,
+  type ChipCheckboxProps,
+} from "./components/chips/ChipCheckbox";
 export {
-  SecondaryButton,
-  type SecondaryButtonProps,
-} from "./components/buttons/SecondaryButton";
-export {
-  TertiaryButton,
-  type TertiaryButtonProps,
-} from "./components/buttons/TertiaryButton";
-export {
-  CheckboxChip,
-  CheckboxChipGroup,
-  type CheckboxChipGroupProps,
-  type CheckboxChipProps,
-} from "./components/chips/CheckboxChip";
-export {
-  RadioChip,
-  RadioChipGroup,
-  type RadioChipGroupProps,
-  type RadioChipProps,
-} from "./components/chips/RadioChip";
+  ChipRadio,
+  ChipRadioGroup,
+  type ChipRadioGroupProps,
+  type ChipRadioProps,
+} from "./components/chips/ChipRadio";
 // TODO: export * from "./components/CriticalBanner";
 // TODO: export * from "./components/Disclosure";
 export { Field, type FieldProps } from "./components/inputs/Field";

@@ -3,18 +3,18 @@ import { forwardRef } from "react";
 
 import { Button, type ButtonPropsBase } from "./_Button";
 
-export interface SecondaryButtonProps extends ButtonPropsBase {
+export interface ButtonSecondaryProps extends ButtonPropsBase {
   size?: "sm" | "md";
   sentiment?: "neutral" | "negative";
 }
 
-export const SecondaryButton = forwardRef(function SecondaryButton(
+export const ButtonSecondary = forwardRef(function ButtonSecondary(
   {
     size = "md",
     sentiment = "neutral",
     className,
     ...restProps
-  }: SecondaryButtonProps,
+  }: ButtonSecondaryProps,
   ref: React.ForwardedRef<HTMLButtonElement>,
 ) {
   return (

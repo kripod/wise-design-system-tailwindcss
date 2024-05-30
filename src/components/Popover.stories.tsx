@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { fn, type Mock } from "@storybook/test";
 import { useState } from "react";
 
-import { PrimaryButton } from "./buttons/PrimaryButton";
+import { ButtonPrimary } from "./buttons/ButtonPrimary";
 import { Popover } from "./Popover";
 
 const meta = {
@@ -34,7 +34,7 @@ export const Basic = {
         {...args}
         open={open}
         renderTrigger={({ ref, getInteractionProps }) => (
-          <PrimaryButton
+          <ButtonPrimary
             ref={ref}
             {...getInteractionProps({
               onClick: () => {
@@ -43,7 +43,7 @@ export const Basic = {
             })}
           >
             Toggle popover
-          </PrimaryButton>
+          </ButtonPrimary>
         )}
         onClose={() => {
           onClose?.();

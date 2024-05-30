@@ -2,13 +2,13 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { fn, type Mock } from "@storybook/test";
 
 import { renderButtonAsLink } from "./_Button";
-import { TertiaryButton } from "./TertiaryButton";
+import { ButtonTertiary } from "./ButtonTertiary";
 
 const meta = {
-  title: "components/TertiaryButton",
-  component: TertiaryButton,
+  title: "components/ButtonTertiary",
+  component: ButtonTertiary,
   tags: ["autodocs"],
-} satisfies Meta<typeof TertiaryButton>;
+} satisfies Meta<typeof ButtonTertiary>;
 export default meta;
 
 type Story = StoryObj<typeof meta>;

@@ -3,12 +3,12 @@ import { forwardRef } from "react";
 
 import { Button, type ButtonPropsBase } from "./_Button";
 
-export interface TertiaryButtonProps extends ButtonPropsBase {
+export interface ButtonTertiaryProps extends ButtonPropsBase {
   size?: "sm" | "md";
 }
 
-export const TertiaryButton = forwardRef(function TertiaryButton(
-  { size = "md", className, ...restProps }: TertiaryButtonProps,
+export const ButtonTertiary = forwardRef(function ButtonTertiary(
+  { size = "md", className, ...restProps }: ButtonTertiaryProps,
   ref: React.ForwardedRef<HTMLButtonElement>,
 ) {
   return (

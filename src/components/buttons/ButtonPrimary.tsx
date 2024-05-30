@@ -3,18 +3,18 @@ import { forwardRef } from "react";
 
 import { Button, type ButtonPropsBase } from "./_Button";
 
-export interface PrimaryButtonProps extends ButtonPropsBase {
+export interface ButtonPrimaryProps extends ButtonPropsBase {
   size?: "sm" | "md";
   sentiment?: "neutral" | "negative";
 }
 
-export const PrimaryButton = forwardRef(function PrimaryButton(
+export const ButtonPrimary = forwardRef(function ButtonPrimary(
   {
     size = "md",
     sentiment = "neutral",
     className,
     ...restProps
-  }: PrimaryButtonProps,
+  }: ButtonPrimaryProps,
   ref: React.ForwardedRef<HTMLButtonElement>,
 ) {
   return (
@@ -34,11 +34,11 @@ export const PrimaryButton = forwardRef(function PrimaryButton(
   );
 });
 
-export interface CriticalBannerPrimaryButtonProps extends ButtonPropsBase {}
+export interface CriticalBannerButtonPrimaryProps extends ButtonPropsBase {}
 
-export const CriticalBannerPrimaryButton = forwardRef(
-  function CriticalBannerPrimaryButton(
-    { className, ...restProps }: PrimaryButtonProps,
+export const CriticalBannerButtonPrimary = forwardRef(
+  function CriticalBannerButtonPrimary(
+    { className, ...restProps }: ButtonPrimaryProps,
     ref: React.ForwardedRef<HTMLButtonElement>,
   ) {
     return (

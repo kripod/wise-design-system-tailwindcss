@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { CriticalBannerPrimaryButton } from "./buttons/PrimaryButton";
+import { CriticalBannerButtonPrimary } from "./buttons/ButtonPrimary";
 import { CriticalBanner } from "./CriticalBanner";
 
 const meta = {
@@ -11,7 +11,7 @@ const meta = {
       options: ["button"],
       mapping: {
         button: (
-          <CriticalBannerPrimaryButton>Action</CriticalBannerPrimaryButton>
+          <CriticalBannerButtonPrimary>Action</CriticalBannerButtonPrimary>
         ),
       },
     },

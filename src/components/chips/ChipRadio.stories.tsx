@@ -2,35 +2,35 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { fn, type Mock } from "@storybook/test";
 
 import {
-  RadioChip,
-  RadioChipGroup,
-  type RadioChipGroupProps,
-  type RadioChipProps,
-} from "./RadioChip";
+  ChipRadio,
+  ChipRadioGroup,
+  type ChipRadioGroupProps,
+  type ChipRadioProps,
+} from "./ChipRadio";
 
 const meta: Meta<
-  RadioChipGroupProps & { items: RadioChipProps[]; children?: never }
+  ChipRadioGroupProps & { items: ChipRadioProps[]; children?: never }
 > = {
-  title: "components/RadioChip",
-  component: RadioChipGroup,
+  title: "components/ChipRadio",
+  component: ChipRadioGroup,
   tags: ["autodocs"],
 };
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const RadioChipGroupTemplate = {
+const ChipRadioGroupTemplate = {
   render: ({ items, ...args }) => (
-    <RadioChipGroup {...args}>
+    <ChipRadioGroup {...args}>
       {items.map((item) => (
-        <RadioChip key={item.value} {...item} />
+        <ChipRadio key={item.value} {...item} />
       ))}
-    </RadioChipGroup>
+    </ChipRadioGroup>
   ),
 } satisfies Story;
 
 export const Basic = {
-  ...RadioChipGroupTemplate,
+  ...ChipRadioGroupTemplate,
   args: {
     defaultValue: "100",
     items: [

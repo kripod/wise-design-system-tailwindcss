@@ -2,35 +2,35 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { fn, type Mock } from "@storybook/test";
 
 import {
-  CheckboxChip,
-  CheckboxChipGroup,
-  type CheckboxChipGroupProps,
-  type CheckboxChipProps,
-} from "./CheckboxChip";
+  ChipCheckbox,
+  ChipCheckboxGroup,
+  type ChipCheckboxGroupProps,
+  type ChipCheckboxProps,
+} from "./ChipCheckbox";
 
 const meta: Meta<
-  CheckboxChipGroupProps & { items: CheckboxChipProps[]; children?: never }
+  ChipCheckboxGroupProps & { items: ChipCheckboxProps[]; children?: never }
 > = {
-  title: "components/CheckboxChip",
-  component: CheckboxChipGroup,
+  title: "components/ChipCheckbox",
+  component: ChipCheckboxGroup,
   tags: ["autodocs"],
 };
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const CheckboxChipGroupTemplate = {
+const ChipCheckboxGroupTemplate = {
   render: ({ items, ...args }) => (
-    <CheckboxChipGroup {...args}>
+    <ChipCheckboxGroup {...args}>
       {items.map((item) => (
-        <CheckboxChip key={item.name} {...item} />
+        <ChipCheckbox key={item.name} {...item} />
       ))}
-    </CheckboxChipGroup>
+    </ChipCheckboxGroup>
   ),
 } satisfies Story;
 
 export const Basic = {
-  ...CheckboxChipGroupTemplate,
+  ...ChipCheckboxGroupTemplate,
   args: {
     items: [
       {
