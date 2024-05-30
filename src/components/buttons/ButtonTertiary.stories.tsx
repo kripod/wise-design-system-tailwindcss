@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn, type Mock } from "@storybook/test";
 
-import { renderButtonAsLink } from "./_Button";
 import { ButtonTertiary } from "./ButtonTertiary";
 
 const meta = {
@@ -30,7 +29,7 @@ export const Disabled = {
 export const AsLink = {
   args: {
     ...Basic.args,
-    render: renderButtonAsLink(({ className, children }) => (
+    render: ({ className, children }) => (
       <a
         href="#_"
         className={className}
@@ -38,6 +37,6 @@ export const AsLink = {
       >
         {children}
       </a>
-    )),
+    ),
   },
 } satisfies Story;

@@ -1,9 +1,9 @@
 import { clsx } from "clsx/lite";
 import { forwardRef } from "react";
 
-import { Button, type ButtonPropsBase } from "./_Button";
+import { Button, type ButtonProps } from "./_Button";
 
-export interface ButtonPrimaryProps extends ButtonPropsBase {
+export interface ButtonPrimaryProps extends ButtonProps {
   size?: "sm" | "md";
   sentiment?: "neutral" | "negative";
 }
@@ -34,7 +34,8 @@ export const ButtonPrimary = forwardRef(function ButtonPrimary(
   );
 });
 
-export interface CriticalBannerButtonPrimaryProps extends ButtonPropsBase {}
+export interface CriticalBannerButtonPrimaryProps
+  extends Omit<ButtonProps, "size"> {}
 
 export const CriticalBannerButtonPrimary = forwardRef(
   function CriticalBannerButtonPrimary(

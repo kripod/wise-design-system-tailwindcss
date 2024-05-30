@@ -2,10 +2,9 @@ import { Cross, type CrossIconProps } from "@transferwise/icons";
 import { clsx } from "clsx/lite";
 
 import { CloseButtonLabel } from "../../config/i18nTexts";
-import { Button, type ButtonPropsBase } from "./_Button";
+import { Button, type ButtonProps } from "./_Button";
 
-export interface CloseButtonProps
-  extends Pick<ButtonPropsBase, "className" | "onClick"> {
+export interface CloseButtonProps extends Omit<ButtonProps, "size"> {
   size?: "sm" | "md" | "lg";
 }
 

@@ -1,5 +1,4 @@
 export { Alert, type AlertProps } from "./components/Alert";
-export { renderButtonAsLink } from "./components/buttons/_Button";
 export {
   ActionButton,
   type ActionButtonProps,

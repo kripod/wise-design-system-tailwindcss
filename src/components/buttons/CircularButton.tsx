@@ -1,9 +1,9 @@
 import { clsx } from "clsx/lite";
 import { forwardRef, useId } from "react";
 
-import { Button, type ButtonPropsBase } from "./_Button";
+import { Button, type ButtonProps } from "./_Button";
 
-export interface CircularButtonProps extends ButtonPropsBase {
+export interface CircularButtonProps extends Omit<ButtonProps, "size"> {
   icon: React.ReactNode;
   disabled?: boolean;
 }

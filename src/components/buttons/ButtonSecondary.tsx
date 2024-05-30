@@ -1,9 +1,9 @@
 import { clsx } from "clsx/lite";
 import { forwardRef } from "react";
 
-import { Button, type ButtonPropsBase } from "./_Button";
+import { Button, type ButtonProps } from "./_Button";
 
-export interface ButtonSecondaryProps extends ButtonPropsBase {
+export interface ButtonSecondaryProps extends ButtonProps {
   size?: "sm" | "md";
   sentiment?: "neutral" | "negative";
 }

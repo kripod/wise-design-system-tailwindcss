@@ -1,9 +1,9 @@
 import { clsx } from "clsx/lite";
 import { forwardRef } from "react";
 
-import { Button, type ButtonPropsBase } from "./_Button";
+import { Button, type ButtonProps } from "./_Button";
 
-export interface ActionButtonProps extends ButtonPropsBase {
+export interface ActionButtonProps extends Omit<ButtonProps, "size"> {
   icon?: React.ReactNode;
   iconPlacement?: "start" | "end";
   disabled?: boolean;
