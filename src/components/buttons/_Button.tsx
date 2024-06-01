@@ -30,6 +30,7 @@ export const Button = forwardRef(function Button(
     disabled: disabled != null ? Boolean(disabled) : disabled,
     className: clsx(
       className,
+      // Keep pseudo-class modifiers like `disabled` in sync within `Chip`
       "select-none transition focus-visible:outline focus-visible:outline-offset disabled:pointer-events-none disabled:opacity-45 disabled:mix-blend-luminosity aria-disabled:pointer-events-none aria-disabled:opacity-45 aria-disabled:mix-blend-luminosity",
       size !== "auto" &&
         "inline-flex items-center justify-center text-center font-semibold",
