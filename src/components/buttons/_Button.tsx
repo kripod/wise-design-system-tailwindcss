@@ -5,18 +5,22 @@ import { Spinner } from "../Spinner";
 
 export interface ButtonProps
   extends Omit<React.ComponentPropsWithRef<"button">, "disabled"> {
+  render?: (props: React.ComponentPropsWithRef<"button">) => React.ReactNode;
   size?: "auto" | "sm" | "md";
   disabled?: boolean | "loading";
-  render?: (props: React.ComponentPropsWithRef<"button">) => React.ReactNode;
 }
+
+const defaultRender: ButtonProps["render"] = (props) => (
+  <button type="button" {...props} />
+);
 
 export const Button = forwardRef(function Button(
   {
+    render = defaultRender,
     size = "auto",
     disabled,
     className,
     children,
-    render = (props) => <button type="button" {...props} />,
     ...props
   }: ButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement>,
