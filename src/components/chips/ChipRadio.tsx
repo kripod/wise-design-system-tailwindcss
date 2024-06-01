@@ -4,18 +4,15 @@ import { useContext, useMemo } from "react";
 import { InputContext } from "../../contexts/InputContext";
 import { Chip, ChipGroup, type ChipGroupProps } from "./_Chip";
 
-export interface ChipRadioGroupProps<
-  T extends string | number | null = string | number,
-> extends ChipGroupProps {
+export interface ChipRadioGroupProps<T extends string | null = string>
+  extends ChipGroupProps {
   name?: string;
   value?: T;
   defaultValue?: NoInfer<T>;
   onChange?: (value: T) => void;
 }
 
-export function ChipRadioGroup<
-  T extends string | number | null = string | number,
->({
+export function ChipRadioGroup<T extends string | null = string>({
   name,
   value,
   defaultValue,
@@ -48,7 +45,7 @@ export function ChipRadioGroup<
 
 export interface ChipRadioProps {
   inputRef?: React.Ref<HTMLInputElement>;
-  value: string | number;
+  value: string;
   disabled?: boolean;
   children?: React.ReactNode;
 }

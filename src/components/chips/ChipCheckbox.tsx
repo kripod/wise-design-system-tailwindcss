@@ -5,16 +5,15 @@ import { useContext, useMemo } from "react";
 import { InputContext } from "../../contexts/InputContext";
 import { Chip, ChipGroup, type ChipGroupProps } from "./_Chip";
 
-export interface ChipCheckboxGroupProps<
-  T extends string | number = string | number,
-> extends ChipGroupProps {
+export interface ChipCheckboxGroupProps<T extends string = string>
+  extends ChipGroupProps {
   name?: string;
   value?: T[]; // TODO: `readonly T[]`
   defaultValue?: NoInfer<T>[]; // TODO: `readonly NoInfer<T>[]`
   onChange?: (value: T[]) => void;
 }
 
-export function ChipCheckboxGroup<T extends string | number = string | number>({
+export function ChipCheckboxGroup<T extends string = string>({
   name,
   value,
   defaultValue = value === undefined ? [] : undefined,
@@ -40,7 +39,7 @@ export function ChipCheckboxGroup<T extends string | number = string | number>({
 
 export interface ChipCheckboxProps {
   inputRef?: React.Ref<HTMLInputElement>;
-  value: string | number;
+  value: string;
   disabled?: boolean;
   children?: React.ReactNode;
 }
