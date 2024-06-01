@@ -1,93 +1,83 @@
+import { Checkbox, CheckboxProvider, useCheckboxContext } from "@ariakit/react";
 import { CrossCircleFill } from "@transferwise/icons";
-import { clsx } from "clsx/lite";
+import { useContext, useMemo } from "react";
 
-import { useControllableState } from "../../hooks/useControllableState";
-import { __DEV__ } from "../../utils/env";
-import { Offscreen } from "../Offscreen";
-import { Chip } from "./_Chip";
+import { InputContext } from "../../contexts/InputContext";
+import { Chip, ChipGroup, type ChipGroupProps } from "./_Chip";
 
-export interface ChipCheckboxGroupProps {
-  className?: string;
-  children?: React.ReactNode;
+export interface ChipCheckboxGroupProps<
+  T extends string | number = string | number,
+> extends ChipGroupProps {
+  name?: string;
+  value?: T[]; // TODO: `readonly T[]`
+  defaultValue?: NoInfer<T>[]; // TODO: `readonly NoInfer<T>[]`
+  onChange?: (value: T[]) => void;
 }
 
-export function ChipCheckboxGroup({
+export function ChipCheckboxGroup<T extends string | number = string | number>({
+  name,
+  value,
+  defaultValue = value === undefined ? [] : undefined,
+  disabled,
   className,
   children,
-}: ChipCheckboxGroupProps) {
+  onChange,
+}: ChipCheckboxGroupProps<T>) {
   return (
-    <div className={clsx(className, "flex flex-wrap gap-2")}>{children}</div>
+    <InputContext.Provider value={useMemo(() => ({ name }), [name])}>
+      <CheckboxProvider
+        value={value}
+        defaultValue={defaultValue}
+        setValue={(newValue) => onChange?.(newValue as T[])}
+      >
+        <ChipGroup disabled={disabled} className={className}>
+          {children}
+        </ChipGroup>
+      </CheckboxProvider>
+    </InputContext.Provider>
   );
 }
 
 export interface ChipCheckboxProps {
-  name?: string;
-  value?: string;
-  defaultChecked?: boolean;
-  checked?: boolean;
+  inputRef?: React.Ref<HTMLInputElement>;
+  value: string | number;
   disabled?: boolean;
   children?: React.ReactNode;
-  onChange?: (checked: boolean) => void;
 }
 
 export function ChipCheckbox({
-  name,
-  value = "on",
-  defaultChecked,
-  checked: controlledChecked,
+  inputRef,
+  value,
   disabled,
   children,
-  onChange,
 }: ChipCheckboxProps) {
-  const [checked, setChecked] = useControllableState(
-    controlledChecked,
-    defaultChecked ?? false,
-    onChange,
-  );
+  const { name } = useContext(InputContext);
+
+  const store = useCheckboxContext();
+  const values = store?.useState("value");
 
   return (
-    <>
-      {__DEV__ ? (
-        <Offscreen>
-          {/* Warn when mixing controlled and uncontrolled attributes */}
-          <input
-            type="checkbox"
-            defaultChecked={defaultChecked}
-            checked={controlledChecked}
-            readOnly
-          />
-        </Offscreen>
-      ) : null}
-
-      {name != null && checked ? (
-        <input
-          type="checkbox"
+    <Chip
+      renderControl={(props) => (
+        <Checkbox
+          ref={inputRef}
           name={name}
           value={value}
-          checked
-          readOnly
-          hidden
+          disabled={disabled}
+          {...props}
         />
-      ) : null}
-      <Chip
-        role="checkbox"
-        aria-checked={checked}
-        disabled={disabled}
-        className="group/button"
-        onClick={() => {
-          setChecked((prev) => !prev);
-        }}
-      >
-        <span className="inline-flex items-center justify-center gap-x-2">
-          <span className="flex-1">{children}</span>
-          {checked ? (
-            <CrossCircleFill
-              size={16}
-              className="-me-2 group-hover/button:text-interactive-control-hover group-active/button:text-interactive-control-active"
-            />
-          ) : null}
-        </span>
-      </Chip>
-    </>
+      )}
+      buttonClassName="group/button"
+    >
+      <span className="inline-flex items-center justify-center gap-x-2">
+        <span className="flex-1">{children}</span>
+        {Array.isArray(values) && values.includes(value) ? (
+          <CrossCircleFill
+            size={16}
+            className="-me-2 group-hover/button:text-interactive-control-hover group-active/button:text-interactive-control-active"
+          />
+        ) : null}
+      </span>
+    </Chip>
   );
 }

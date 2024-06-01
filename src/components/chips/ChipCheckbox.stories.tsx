@@ -23,7 +23,7 @@ const ChipCheckboxGroupTemplate = {
   render: ({ items, ...args }) => (
     <ChipCheckboxGroup {...args}>
       {items.map((item) => (
-        <ChipCheckbox key={item.name} {...item} />
+        <ChipCheckbox key={item.value} {...item} />
       ))}
     </ChipCheckboxGroup>
   ),
@@ -32,29 +32,26 @@ const ChipCheckboxGroupTemplate = {
 export const Basic = {
   ...ChipCheckboxGroupTemplate,
   args: {
+    defaultValue: ["accounting"],
     items: [
       {
-        name: "accounting",
-        defaultChecked: true,
-        onChange: fn() satisfies Mock,
+        value: "accounting",
         children: "Accounting",
       },
       {
-        name: "payroll",
-        onChange: fn() satisfies Mock,
+        value: "payroll",
         children: "Payroll",
       },
       {
-        name: "reporting",
-        onChange: fn() satisfies Mock,
+        value: "reporting",
         children: "Reporting",
       },
       {
-        name: "payments",
+        value: "payments",
         disabled: true,
-        onChange: fn() satisfies Mock,
         children: "Payments",
       },
     ],
+    onChange: fn() satisfies Mock,
   },
 } satisfies Story;
