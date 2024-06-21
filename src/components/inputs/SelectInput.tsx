@@ -40,9 +40,7 @@ function inferSearchableStrings(value: unknown) {
 
   if (typeof value === "object" && value != null) {
     return Object.values(value)
-      .filter(
-        (innerValue): innerValue is string => typeof innerValue === "string",
-      )
+      .filter((innerValue) => typeof innerValue === "string")
       .map((innerValue) => searchableString(innerValue));
   }
 
