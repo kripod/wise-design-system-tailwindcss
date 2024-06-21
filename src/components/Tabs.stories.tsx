@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn, type Mock } from "@storybook/test";
+import { fn } from "@storybook/test";
 
 import {
   Tab,
@@ -55,7 +55,7 @@ export const Basic = {
       { label: "Tab 3", children: "Content 3" },
       { label: "Tab 4", disabled: true },
     ],
-    onChange: fn() satisfies Mock,
+    onChange: fn(),
   },
 } satisfies Story;
 

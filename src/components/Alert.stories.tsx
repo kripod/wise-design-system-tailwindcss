@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn, type Mock } from "@storybook/test";
+import { fn } from "@storybook/test";
 
 import { Alert } from "./Alert";
 import { ActionButton } from "./buttons/ActionButton";
@@ -41,7 +41,7 @@ export const Basic = {
 export const WithClose = {
   args: {
     ...Basic.args,
-    onClose: fn() satisfies Mock,
+    onClose: fn(),
   },
 } satisfies Story;
 

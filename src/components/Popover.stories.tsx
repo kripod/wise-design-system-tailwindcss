@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn, type Mock } from "@storybook/test";
+import { fn } from "@storybook/test";
 import { useState } from "react";
 
 import { ButtonPrimary } from "./buttons/ButtonPrimary";
@@ -24,7 +24,7 @@ export const Basic = {
     title: "Guaranteed rate",
     children:
       "You’ll get this rate as long as we receive your 10 EUR within the next 51 hours.",
-    onClose: fn() satisfies Mock,
+    onClose: fn(),
   },
   render: function Render({ onClose, ...args }) {
     const [open, setOpen] = useState(true);

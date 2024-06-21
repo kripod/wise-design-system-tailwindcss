@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn, type Mock } from "@storybook/test";
+import { fn } from "@storybook/test";
 import { useState } from "react";
 
 import { TextInput } from "./TextInput";
@@ -16,13 +16,13 @@ type Story = StoryObj<typeof meta>;
 export const Basic = {
   args: {
     defaultValue: "Text value",
-    onChange: fn() satisfies Mock,
+    onChange: fn(),
   },
 } satisfies Story;
 
 export const Controlled = {
   args: {
-    onChange: fn() satisfies Mock,
+    onChange: fn(),
   },
   render: function Render({ onChange, ...args }) {
     const [value, setValue] = useState("Text value");

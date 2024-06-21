@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn, type Mock } from "@storybook/test";
+import { fn } from "@storybook/test";
 
 import {
   ChipRadio,
@@ -39,6 +39,6 @@ export const Basic = {
       { value: "300", children: "300 GBP" },
       { value: "400+", disabled: true, children: "400+ GBP" },
     ],
-    onChange: fn() satisfies Mock,
+    onChange: fn(),
   },
 } satisfies Story;

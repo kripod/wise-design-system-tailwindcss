@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn, type Mock } from "@storybook/test";
+import { fn } from "@storybook/test";
 
 import { Modal } from "./Modal";
 
@@ -16,6 +16,6 @@ export const Basic = {
     open: false,
     title: "Change this user’s role?",
     children: "Content goes here",
-    onClose: fn() satisfies Mock,
+    onClose: fn(),
   },
 } satisfies Story;

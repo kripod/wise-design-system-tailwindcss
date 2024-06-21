@@ -1,12 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import {
-  expect,
-  fn,
-  type Mock,
-  screen,
-  userEvent,
-  within,
-} from "@storybook/test";
+import { expect, fn, screen, userEvent, within } from "@storybook/test";
 import { Calendar, ChevronDown } from "@transferwise/icons";
 import { useState } from "react";
 
@@ -48,8 +41,8 @@ export const Months: Story<Month | null> = {
       value: month,
     })),
     renderValue: (month) => <SelectInputOptionContent title={month.name} />,
-    onChange: fn() satisfies Mock,
-    onClear: fn() satisfies Mock,
+    onChange: fn(),
+    onClear: fn(),
   },
   render: function Render({ onChange, onClear, ...args }) {
     const [selectedMonth, setSelectedMonth] = useState<Month | null>(null);
@@ -185,7 +178,7 @@ const CurrenciesArgs = {
   filterable: true,
   filterPlaceholder: "Type a currency / country",
   size: "lg",
-  onChange: fn() satisfies Mock,
+  onChange: fn(),
 } satisfies Story<Currency>["args"];
 
 export const Currencies: Story<Currency> = {
@@ -237,6 +230,7 @@ export const MultipleCurrencies: Story<Currency, true> = {
           icon={<Flag code={currency.code} intrinsicSize={24} />}
         />
       ),
+    onChange: fn(),
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
@@ -283,7 +277,7 @@ export const CustomTrigger: Story<Month> = {
         </InlineLink>
       </SelectInputTriggerButton>
     ),
-    onChange: fn() satisfies Mock,
+    onChange: fn(),
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -328,7 +322,7 @@ export const Advanced: Story<Month> = {
     ),
     filterable: true,
     filterPlaceholder: "Type a month’s name",
-    onChange: fn() satisfies Mock,
+    onChange: fn(),
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

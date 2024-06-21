@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn, type Mock } from "@storybook/test";
+import { fn } from "@storybook/test";
 import { Plus } from "@transferwise/icons";
 
 import { CircularButton } from "./CircularButton";
@@ -25,7 +25,7 @@ export const Basic = {
   args: {
     icon: "plus",
     children: "Add money",
-    onClick: fn() satisfies Mock,
+    onClick: fn(),
   },
 } satisfies Story;
 

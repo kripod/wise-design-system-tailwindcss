@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn, type Mock } from "@storybook/test";
+import { fn } from "@storybook/test";
 import { Profile } from "@transferwise/icons";
 
 import { ActionButton } from "./ActionButton";
@@ -25,7 +25,7 @@ type Story = StoryObj<typeof meta>;
 export const Basic = {
   args: {
     children: "Click me",
-    onClick: fn() satisfies Mock,
+    onClick: fn(),
   },
 } satisfies Story;
 
