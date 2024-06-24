@@ -1,14 +1,10 @@
 import { useEffect, useState } from "react";
 
 export interface FlagProps {
-  /**
-   * Two-letter country code (ISO 3166-1 alpha-2) or three-letter currency code (ISO 4217).
-   */
+  /** Two-letter country code (ISO 3166-1 alpha-2) or three-letter currency code (ISO 4217). */
   code: string;
 
-  /**
-   * Width and height to reserve for the underlying image, in pixels. A detailed variant is shown from 150px and above.
-   */
+  /** Width and height to reserve for the underlying image, in pixels. A detailed variant is shown from 150px and above. */
   intrinsicSize?: number;
 }
 
