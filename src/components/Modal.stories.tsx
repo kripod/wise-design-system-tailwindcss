@@ -7,8 +7,8 @@ const meta = {
   component: Modal,
   tags: ["autodocs"],
 } satisfies Meta<typeof Modal>;
-export default meta;
 
+export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Basic = {

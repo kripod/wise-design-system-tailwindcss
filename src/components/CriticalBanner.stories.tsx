@@ -17,8 +17,8 @@ const meta = {
     },
   },
 } satisfies Meta<typeof CriticalBanner>;
-export default meta;
 
+export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Basic = {

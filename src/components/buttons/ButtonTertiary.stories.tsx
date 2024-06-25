@@ -8,8 +8,8 @@ const meta = {
   component: ButtonTertiary,
   tags: ["autodocs"],
 } satisfies Meta<typeof ButtonTertiary>;
-export default meta;
 
+export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Basic = {

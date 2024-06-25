@@ -13,8 +13,8 @@ const meta = {
     renderTrigger: { table: { disable: true } },
   },
 } satisfies Meta<typeof Popover>;
-export default meta;
 
+export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Basic = {

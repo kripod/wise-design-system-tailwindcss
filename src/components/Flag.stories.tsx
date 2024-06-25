@@ -14,8 +14,8 @@ const meta = {
     },
   },
 } satisfies Meta<typeof Flag>;
-export default meta;
 
+export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Basic = {

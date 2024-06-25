@@ -10,8 +10,8 @@ const meta = {
   component: InputGroup,
   tags: ["autodocs"],
 } satisfies Meta<typeof InputGroup>;
-export default meta;
 
+export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const WrappedTextInputWithPrefix = {

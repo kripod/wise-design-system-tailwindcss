@@ -18,8 +18,8 @@ const meta = {
     },
   },
 } satisfies Meta<typeof ActionButton>;
-export default meta;
 
+export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Basic = {

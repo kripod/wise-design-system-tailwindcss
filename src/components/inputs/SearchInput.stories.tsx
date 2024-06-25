@@ -9,8 +9,8 @@ const meta = {
   component: SearchInput,
   tags: ["autodocs"],
 } satisfies Meta<typeof SearchInput>;
-export default meta;
 
+export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Basic = {

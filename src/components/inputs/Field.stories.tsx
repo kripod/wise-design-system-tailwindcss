@@ -11,8 +11,8 @@ const meta = {
   component: Field,
   tags: ["autodocs"],
 } satisfies Meta<typeof Field>;
-export default meta;
 
+export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const WrappedTextInput = {

@@ -6,8 +6,8 @@ const meta = {
   component: HintPopover,
   tags: ["autodocs"],
 } satisfies Meta<typeof HintPopover>;
-export default meta;
 
+export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Basic = {

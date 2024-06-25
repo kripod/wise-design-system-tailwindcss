@@ -15,8 +15,8 @@ const meta: Meta<
   component: ChipRadioGroup,
   tags: ["autodocs"],
 };
-export default meta;
 
+export default meta;
 type Story = StoryObj<typeof meta>;
 
 const ChipRadioGroupTemplate = {

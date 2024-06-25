@@ -21,8 +21,8 @@ const meta: Meta<
   component: TabGroup,
   tags: ["autodocs"],
 };
-export default meta;
 
+export default meta;
 type Story = StoryObj<typeof meta>;
 
 const TabGroupTemplate = {

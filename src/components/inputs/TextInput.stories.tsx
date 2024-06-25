@@ -9,8 +9,8 @@ const meta = {
   component: TextInput,
   tags: ["autodocs"],
 } satisfies Meta<typeof TextInput>;
-export default meta;
 
+export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Basic = {

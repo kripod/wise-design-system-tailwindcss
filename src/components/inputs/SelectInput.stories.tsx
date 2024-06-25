@@ -19,8 +19,8 @@ const meta = {
   component: SelectInput,
   tags: ["autodocs"],
 } satisfies Meta<typeof SelectInput>;
-export default meta;
 
+export default meta;
 type Story<T, M extends boolean = false> = StoryObj<SelectInputProps<T, M>>;
 
 interface Month {
