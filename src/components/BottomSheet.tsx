@@ -65,68 +65,58 @@ export function BottomSheet({
 
       <FloatingPortal>
         <Transition
-          as="div"
           show={open}
-          className="theme-overlay relative z-50"
           beforeEnter={() => {
             setFloatingKey((prev) => prev + 1);
           }}
         >
-          <TransitionChild
-            as="div"
-            className="fixed inset-0 bg-content-primary opacity-40"
-            enter="transition-opacity duration-300"
-            enterFrom="opacity-0"
-            leave="transition-opacity duration-300"
-            leaveTo="opacity-0"
-          />
-
-          <div className="fixed inset-0 flex flex-col justify-end px-2 pt-16">
-            <TransitionChild
-              as="div"
-              className="max-h-full"
-              enter="motion-safe:transition-transform motion-safe:duration-300 motion-reduce:transition-opacity motion-reduce:duration-300"
-              enterFrom="motion-safe:translate-y-full motion-reduce:opacity-0"
-              leave="motion-safe:transition-transform motion-safe:duration-300 motion-reduce:transition-opacity motion-reduce:duration-300"
-              leaveTo="motion-safe:translate-y-full motion-reduce:opacity-0"
-            >
-              <FloatingFocusManager
-                context={context}
-                initialFocus={initialFocusRef}
-              >
-                <div
-                  key={floatingKey} // Force inner state invalidation on open
-                  ref={refs.setFloating}
-                  className="flex h-full flex-col rounded-t-xl bg-background-elevated shadow-xl focus:outline-none"
-                  {...getFloatingProps()}
-                >
-                  <div className="self-end p-4">
-                    <CloseButton
-                      onClick={() => {
-                        onClose();
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={clsx(
-                      "pt-0",
-                      "grid gap-y-2 overflow-y-auto",
-                      title ? "grid-rows-[auto_1fr]" : "grid-rows-1",
-                      padding === "md" && "p-4",
-                    )}
-                  >
-                    {title ? (
-                      <h2 className="text-title-body text-content-primary">
-                        {title}
-                      </h2>
-                    ) : null}
-                    <div className="text-body text-content-secondary">
-                      {children}
-                    </div>
-                  </div>
-                </div>
-              </FloatingFocusManager>
+          <div className="theme-overlay relative z-50">
+            <TransitionChild>
+              <div className="fixed inset-0 bg-content-primary opacity-40 transition-opacity duration-300 data-[closed]:opacity-0" />
             </TransitionChild>
+
+            <div className="fixed inset-0 flex flex-col justify-end px-2 pt-16">
+              <TransitionChild>
+                <div className="max-h-full transition-transform duration-300 motion-safe:data-[closed]:translate-y-full motion-reduce:transition-opacity motion-reduce:duration-300 motion-reduce:data-[closed]:opacity-0">
+                  <FloatingFocusManager
+                    context={context}
+                    initialFocus={initialFocusRef}
+                  >
+                    <div
+                      key={floatingKey} // Force inner state invalidation on open
+                      ref={refs.setFloating}
+                      className="flex h-full flex-col rounded-t-xl bg-background-elevated shadow-xl focus:outline-none"
+                      {...getFloatingProps()}
+                    >
+                      <div className="self-end p-4">
+                        <CloseButton
+                          onClick={() => {
+                            onClose();
+                          }}
+                        />
+                      </div>
+                      <div
+                        className={clsx(
+                          "pt-0",
+                          "grid gap-y-2 overflow-y-auto",
+                          title ? "grid-rows-[auto_1fr]" : "grid-rows-1",
+                          padding === "md" && "p-4",
+                        )}
+                      >
+                        {title ? (
+                          <h2 className="text-title-body text-content-primary">
+                            {title}
+                          </h2>
+                        ) : null}
+                        <div className="text-body text-content-secondary">
+                          {children}
+                        </div>
+                      </div>
+                    </div>
+                  </FloatingFocusManager>
+                </div>
+              </TransitionChild>
+            </div>
           </div>
         </Transition>
       </FloatingPortal>

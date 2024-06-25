@@ -94,44 +94,43 @@ export function Popover({
 
       <FloatingPortal>
         <Transition
-          as="div"
           show={open}
-          leave="transition-opacity"
-          leaveTo="opacity-0"
           beforeEnter={() => {
             setFloatingKey((prev) => prev + 1);
           }}
         >
-          <FloatingFocusManager context={context}>
-            <div
-              key={floatingKey} // Force inner state invalidation on open
-              ref={refs.setFloating}
-              className={clsx(
-                "theme-overlay z-10 flex max-h-[--max-height] w-[--width] flex-col overflow-hidden rounded bg-background-elevated shadow-xl focus:outline-none",
-                size === "md" && "min-w-[20rem]",
-                size === "lg" && "min-w-[24rem]",
-              )}
-              style={floatingStyles}
-              {...getFloatingProps()}
-            >
+          <div className="transition-opacity data-[leave]:data-[closed]:opacity-0">
+            <FloatingFocusManager context={context}>
               <div
+                key={floatingKey} // Force inner state invalidation on open
+                ref={refs.setFloating}
                 className={clsx(
-                  "grid gap-y-2 overflow-y-auto",
-                  title ? "grid-rows-[auto_1fr]" : "grid-rows-1",
-                  padding === "md" && "p-4",
+                  "theme-overlay z-10 flex max-h-[--max-height] w-[--width] flex-col overflow-hidden rounded bg-background-elevated shadow-xl focus:outline-none",
+                  size === "md" && "min-w-[20rem]",
+                  size === "lg" && "min-w-[24rem]",
                 )}
+                style={floatingStyles}
+                {...getFloatingProps()}
               >
-                {title ? (
-                  <h2 className="text-title-body text-content-primary">
-                    {title}
-                  </h2>
-                ) : null}
-                <div className="text-body text-content-secondary">
-                  {children}
+                <div
+                  className={clsx(
+                    "grid gap-y-2 overflow-y-auto",
+                    title ? "grid-rows-[auto_1fr]" : "grid-rows-1",
+                    padding === "md" && "p-4",
+                  )}
+                >
+                  {title ? (
+                    <h2 className="text-title-body text-content-primary">
+                      {title}
+                    </h2>
+                  ) : null}
+                  <div className="text-body text-content-secondary">
+                    {children}
+                  </div>
                 </div>
               </div>
-            </div>
-          </FloatingFocusManager>
+            </FloatingFocusManager>
+          </div>
         </Transition>
       </FloatingPortal>
     </>
