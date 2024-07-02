@@ -80,9 +80,10 @@ export function BottomSheet({
                 context={context}
                 initialFocus={initialFocusRef}
               >
-                <TransitionChild>
+                <TransitionChild
+                  key={floatingKey} // Force inner state invalidation on open
+                >
                   <div
-                    key={floatingKey} // Force inner state invalidation on open
                     ref={refs.setFloating}
                     className="flex max-h-full flex-col rounded-t-xl bg-background-elevated shadow-xl transition-transform duration-300 focus:outline-none motion-safe:data-[closed]:translate-y-full motion-reduce:transition-opacity motion-reduce:duration-300 motion-reduce:data-[closed]:opacity-0"
                     {...getFloatingProps()}
