@@ -75,18 +75,18 @@ export function BottomSheet({
               <div className="fixed inset-0 bg-content-primary opacity-40 transition-opacity duration-300 data-[closed]:opacity-0" />
             </TransitionChild>
 
-            <div className="fixed inset-0 mx-2 mt-16 flex flex-col justify-end">
-              <FloatingFocusManager
-                context={context}
-                initialFocus={initialFocusRef}
+            <FloatingFocusManager
+              context={context}
+              initialFocus={initialFocusRef}
+            >
+              <div
+                key={floatingKey} // Force inner state invalidation on open
+                ref={refs.setFloating}
+                className="fixed inset-0 mx-2 mt-16 flex flex-col justify-end"
+                {...getFloatingProps()}
               >
                 <TransitionChild>
-                  <div
-                    key={floatingKey} // Force inner state invalidation on open
-                    ref={refs.setFloating}
-                    className="flex max-h-full flex-col rounded-t-xl bg-background-elevated shadow-xl transition-transform duration-300 focus:outline-none motion-safe:data-[closed]:translate-y-full motion-reduce:transition-opacity motion-reduce:duration-300 motion-reduce:data-[closed]:opacity-0"
-                    {...getFloatingProps()}
-                  >
+                  <div className="flex max-h-full flex-col rounded-t-xl bg-background-elevated shadow-xl transition-transform duration-300 focus:outline-none motion-safe:data-[closed]:translate-y-full motion-reduce:transition-opacity motion-reduce:duration-300 motion-reduce:data-[closed]:opacity-0">
                     <div className="self-end p-4">
                       <CloseButton
                         onClick={() => {
@@ -111,8 +111,8 @@ export function BottomSheet({
                     </div>
                   </div>
                 </TransitionChild>
-              </FloatingFocusManager>
-            </div>
+              </div>
+            </FloatingFocusManager>
           </div>
         </Transition>
       </FloatingPortal>
