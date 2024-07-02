@@ -97,10 +97,8 @@ export function BottomSheet({
                       </div>
                       <div
                         className={clsx(
-                          "pt-0",
-                          "grid gap-y-2 overflow-y-auto",
-                          title ? "grid-rows-[auto_1fr]" : "grid-rows-1",
-                          padding === "md" && "p-4",
+                          "flex flex-col gap-y-2 overflow-auto",
+                          padding === "md" && "p-4 pt-0",
                         )}
                       >
                         {title ? (
