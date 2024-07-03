@@ -115,7 +115,7 @@ export function Popover({
                 <div
                   className={clsx(
                     "grid gap-y-2 overflow-y-auto",
-                    title ? "grid-rows-[auto_1fr]" : "grid-rows-1",
+                    title ? "grid-rows-[auto_minmax(0,1fr)]" : "grid-rows-1",
                     padding === "md" && "p-4",
                   )}
                 >
