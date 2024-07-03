@@ -101,7 +101,9 @@ export function BottomSheet({
                     <div
                       className={clsx(
                         "grid gap-y-2 overflow-auto",
-                        title ? "grid-rows-[auto_1fr]" : "grid-rows-1",
+                        title
+                          ? "grid-rows-[auto_minmax(0,1fr)]"
+                          : "grid-rows-1",
                         padding === "md" && "p-4 pt-0",
                       )}
                     >
