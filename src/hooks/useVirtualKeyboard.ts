@@ -4,13 +4,13 @@ export function useVirtualKeyboard() {
   useEffect(() => {
     /* eslint-disable @typescript-eslint/no-unsafe-member-access, functional/immutable-data */
     if ("virtualKeyboard" in navigator) {
-      (navigator.virtualKeyboard as any).overlaysContent = true;
+      const virtualKeyboard: any = navigator.virtualKeyboard;
+      const initialOverlaysContent: unknown = virtualKeyboard.overlaysContent;
+      virtualKeyboard.overlaysContent = true;
+      return () => {
+        virtualKeyboard.overlaysContent = initialOverlaysContent;
+      };
     }
-    return () => {
-      if ("virtualKeyboard" in navigator) {
-        (navigator.virtualKeyboard as any).overlaysContent = false;
-      }
-    };
     /* eslint-enable @typescript-eslint/no-unsafe-member-access, functional/immutable-data */
   }, []);
 }
