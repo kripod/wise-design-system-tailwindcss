@@ -88,7 +88,7 @@ export function BottomSheet({
                 >
                   <div
                     ref={refs.setFloating}
-                    className="flex max-h-full flex-col rounded-t-xl bg-background-elevated shadow-xl focus:outline-none motion-safe:transition-transform motion-safe:duration-300 motion-safe:data-[closed]:translate-y-full motion-reduce:transition-opacity motion-reduce:duration-300 motion-reduce:data-[closed]:opacity-0"
+                    className="flex flex-col overflow-auto rounded-t-xl bg-background-elevated shadow-xl focus:outline-none motion-safe:transition-transform motion-safe:duration-300 motion-safe:data-[closed]:translate-y-full motion-reduce:transition-opacity motion-reduce:duration-300 motion-reduce:data-[closed]:opacity-0"
                     {...getFloatingProps()}
                   >
                     <div className="self-end p-4">
@@ -100,7 +100,8 @@ export function BottomSheet({
                     </div>
                     <div
                       className={clsx(
-                        "flex flex-col gap-y-2 overflow-auto",
+                        "grid gap-y-2 overflow-auto",
+                        title ? "grid-rows-[auto_1fr]" : "grid-rows-1",
                         padding === "md" && "p-4 pt-0",
                       )}
                     >
