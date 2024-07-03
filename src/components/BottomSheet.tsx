@@ -10,6 +10,7 @@ import { Transition, TransitionChild } from "@headlessui/react";
 import { clsx } from "clsx/lite";
 import { useState } from "react";
 
+import { useVirtualKeyboard } from "../hooks/useVirtualKeyboard";
 import { CloseButton } from "./buttons/CloseButton";
 import { PreventScroll } from "./PreventScroll";
 
@@ -37,6 +38,8 @@ export function BottomSheet({
   children,
   onClose,
 }: BottomSheetProps) {
+  useVirtualKeyboard();
+
   const { refs, context } = useFloating<Element>({
     open,
     onOpenChange: (value) => {
@@ -75,7 +78,7 @@ export function BottomSheet({
               <div className="fixed inset-0 bg-content-primary opacity-40 transition-opacity duration-300 data-[closed]:opacity-0" />
             </TransitionChild>
 
-            <div className="fixed inset-0 mx-2 mt-16 flex flex-col justify-end">
+            <div className="fixed inset-0 bottom-[env(keyboard-inset-height,0px)] mx-2 mt-16 flex flex-col justify-end">
               <FloatingFocusManager
                 context={context}
                 initialFocus={initialFocusRef}
