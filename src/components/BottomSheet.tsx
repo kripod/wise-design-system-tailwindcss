@@ -88,7 +88,7 @@ export function BottomSheet({
                 >
                   <div
                     ref={refs.setFloating}
-                    className="flex max-h-full flex-col rounded-t-xl bg-background-elevated shadow-xl focus:outline-none motion-safe:transition-transform motion-safe:duration-300 motion-safe:data-[closed]:translate-y-full motion-reduce:transition-opacity motion-reduce:duration-300 motion-reduce:data-[closed]:opacity-0"
+                    className="flex flex-col overflow-auto rounded-t-xl bg-background-elevated shadow-xl focus:outline-none motion-safe:transition-transform motion-safe:duration-300 motion-safe:data-[closed]:translate-y-full motion-reduce:transition-opacity motion-reduce:duration-300 motion-reduce:data-[closed]:opacity-0"
                     {...getFloatingProps()}
                   >
                     <div className="self-end p-4">
@@ -109,7 +109,7 @@ export function BottomSheet({
                           {title}
                         </h2>
                       ) : null}
-                      <div className="text-body text-content-secondary">
+                      <div className="overflow-auto text-body text-content-secondary">
                         {children}
                       </div>
                     </div>
