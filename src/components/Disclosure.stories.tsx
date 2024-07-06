@@ -5,7 +5,6 @@ import { Disclosure } from "./Disclosure";
 
 const meta = {
   component: Disclosure,
-  tags: ["autodocs"],
   argTypes: {
     icon: {
       options: ["none", "bank"],

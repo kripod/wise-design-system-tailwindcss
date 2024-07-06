@@ -7,7 +7,7 @@ import { Popover } from "./Popover";
 
 const meta = {
   component: Popover,
-  tags: ["autodocs"],
+
   argTypes: {
     open: { table: { disable: true } },
     renderTrigger: { table: { disable: true } },

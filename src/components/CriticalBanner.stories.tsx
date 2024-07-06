@@ -5,7 +5,6 @@ import { CriticalBanner } from "./CriticalBanner";
 
 const meta = {
   component: CriticalBanner,
-  tags: ["autodocs"],
   argTypes: {
     action: {
       options: ["button"],

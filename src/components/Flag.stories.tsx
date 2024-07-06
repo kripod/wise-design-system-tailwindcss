@@ -4,7 +4,6 @@ import { Flag } from "./Flag";
 
 const meta = {
   component: Flag,
-  tags: ["autodocs"],
   argTypes: {
     intrinsicSize: {
       control: {

@@ -4,7 +4,6 @@ import { HintPopover } from "./HintPopover";
 
 const meta = {
   component: HintPopover,
-  tags: ["autodocs"],
 } satisfies Meta<typeof HintPopover>;
 
 export default meta;

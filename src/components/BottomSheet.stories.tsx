@@ -5,7 +5,6 @@ import { BottomSheet } from "./BottomSheet";
 
 const meta = {
   component: BottomSheet,
-  tags: ["autodocs"],
 } satisfies Meta<typeof BottomSheet>;
 
 export default meta;

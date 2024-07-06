@@ -8,7 +8,6 @@ import { TextInput } from "./TextInput";
 const meta = {
   title: "components/InputGroup",
   component: InputGroup,
-  tags: ["autodocs"],
 } satisfies Meta<typeof InputGroup>;
 
 export default meta;

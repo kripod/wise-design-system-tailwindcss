@@ -13,7 +13,6 @@ const meta: Meta<
 > = {
   title: "components/ChipRadio",
   component: ChipRadioGroup,
-  tags: ["autodocs"],
 };
 
 export default meta;

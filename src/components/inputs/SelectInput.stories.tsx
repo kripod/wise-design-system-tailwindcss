@@ -17,7 +17,6 @@ import {
 const meta = {
   title: "components/SelectInput",
   component: SelectInput,
-  tags: ["autodocs"],
 } satisfies Meta<typeof SelectInput>;
 
 export default meta;

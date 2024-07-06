@@ -12,7 +12,6 @@ const meta: Meta<
   InstructionListProps & { items: InstructionProps[]; children?: never }
 > = {
   component: InstructionList,
-  tags: ["autodocs"],
 };
 
 export default meta;

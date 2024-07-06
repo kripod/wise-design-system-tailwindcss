@@ -13,7 +13,6 @@ const meta: Meta<
 > = {
   title: "components/ChipCheckbox",
   component: ChipCheckboxGroup,
-  tags: ["autodocs"],
 };
 
 export default meta;

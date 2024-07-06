@@ -7,7 +7,7 @@ import { ActionButton } from "./ActionButton";
 const meta = {
   title: "components/ActionButton",
   component: ActionButton,
-  tags: ["autodocs"],
+
   argTypes: {
     icon: {
       options: ["none", "profile"],

@@ -6,7 +6,6 @@ import { ButtonTertiary } from "./ButtonTertiary";
 const meta = {
   title: "components/ButtonTertiary",
   component: ButtonTertiary,
-  tags: ["autodocs"],
 } satisfies Meta<typeof ButtonTertiary>;
 
 export default meta;

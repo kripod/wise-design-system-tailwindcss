@@ -7,7 +7,7 @@ import { CircularButton } from "./CircularButton";
 const meta = {
   title: "components/CircularButton",
   component: CircularButton,
-  tags: ["autodocs"],
+
   argTypes: {
     icon: {
       options: ["plus"],

@@ -9,7 +9,6 @@ import { TextInput } from "./TextInput";
 const meta = {
   title: "components/Field",
   component: Field,
-  tags: ["autodocs"],
 } satisfies Meta<typeof Field>;
 
 export default meta;

@@ -7,7 +7,6 @@ import { InlineLink } from "./InlineLink";
 
 const meta = {
   component: Alert,
-  tags: ["autodocs"],
   argTypes: {
     action: {
       options: ["none", "link", "button"],

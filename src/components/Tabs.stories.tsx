@@ -19,7 +19,6 @@ const meta: Meta<
   }
 > = {
   component: TabGroup,
-  tags: ["autodocs"],
 };
 
 export default meta;

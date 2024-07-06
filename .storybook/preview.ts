@@ -49,4 +49,5 @@ export default {
       },
     },
   },
+  tags: ["autodocs"],
 } satisfies Preview;

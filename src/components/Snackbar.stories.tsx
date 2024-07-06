@@ -5,7 +5,7 @@ import { Snackbar } from "./Snackbar";
 
 const meta = {
   component: Snackbar,
-  tags: ["autodocs"],
+
   argTypes: {
     action: {
       options: ["button"],
