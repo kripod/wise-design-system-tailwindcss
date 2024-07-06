@@ -41,13 +41,5 @@
     ],
     "tailwindcss/classnames-order": "off", // Enforced by Prettier
     "tailwindcss/no-custom-classname": "off" // Avoid distractions while typing
-  },
-  "overrides": [
-    {
-      "files": "**/*.stories.*",
-      "rules": {
-        "@typescript-eslint/no-unsafe-call": "off" // TODO: Remove when fixed
-      }
-    }
-  ]
+  }
 }
