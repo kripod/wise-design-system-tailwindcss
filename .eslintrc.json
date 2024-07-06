@@ -6,6 +6,7 @@
     "@wise/eslint-config/storybook",
     "plugin:tailwindcss/recommended"
   ],
+  "plugins": ["react-refresh"],
   "settings": {
     "jsx-a11y": {
       "polymorphicPropName": "as",
@@ -33,7 +34,6 @@
       }
     }
   },
-  "plugins": ["react-refresh"],
   "rules": {
     "react-refresh/only-export-components": [
       "warn",
