@@ -71,15 +71,11 @@ export function ChipCheckbox({
           {...props}
         />
       )}
-      buttonClassName="group/button"
     >
       <span className="inline-flex items-center justify-center gap-x-2">
         <span className="flex-1">{children}</span>
         {Array.isArray(values) && values.includes(value) ? (
-          <CrossCircleFill
-            size={16}
-            className="-me-2 group-hover/button:text-interactive-control-hover group-active/button:text-interactive-control-active"
-          />
+          <CrossCircleFill size={16} className="-me-2" />
         ) : null}
       </span>
     </Chip>
