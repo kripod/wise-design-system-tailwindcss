@@ -20,6 +20,26 @@ jobs:
       - run: pnpm run lint
       - run: pnpm run --if-present test
 
+  chromatic:
+    name: Run Chromatic
+    if: ${{ github.event_name == 'push' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/bootstrap
+      - uses: chromaui/action@v11
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          exitZeroOnChanges: true
+          onlyChanged: true
+          externals: |
+            **/*.css
+            pnpm-lock.yaml
+            src/tailwind-base.ts
+            tailwind.config.ts
+
   release-latest:
     name: Release latest version
     needs: [build-lint-test]
