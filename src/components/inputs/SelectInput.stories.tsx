@@ -32,7 +32,7 @@ const months: Month[] = getMonthNames("en-US").map((name, index) => ({
   name,
 }));
 
-export const Months: Story<Month | null> = {
+export const Months = {
   args: {
     placeholder: "Month",
     items: months.map((month) => ({
@@ -83,7 +83,7 @@ export const Months: Story<Month | null> = {
       await expect(triggerButton).toHaveTextContent("May");
     });
   },
-};
+} satisfies Story<Month | null>;
 
 interface Currency {
   code: string;
@@ -180,7 +180,7 @@ const CurrenciesArgs = {
   onChange: fn(),
 } satisfies Story<Currency>["args"];
 
-export const Currencies: Story<Currency> = {
+export const Currencies = {
   args: CurrenciesArgs,
   play: async ({ step }) => {
     await step("filters options via keyboard", async () => {
@@ -211,9 +211,9 @@ export const Currencies: Story<Currency> = {
       await expect(input).toHaveAttribute("aria-activedescendant");
     });
   },
-};
+} satisfies Story<Currency>;
 
-export const MultipleCurrencies: Story<Currency, true> = {
+export const MultipleCurrencies = {
   args: {
     ...CurrenciesArgs,
     multiple: true,
@@ -250,9 +250,9 @@ export const MultipleCurrencies: Story<Currency, true> = {
       await expect(triggerButton).toHaveTextContent("USD, EUR");
     });
   },
-};
+} satisfies Story<Currency, true>;
 
-export const CustomTrigger: Story<Month> = {
+export const CustomTrigger = {
   args: {
     placeholder: "Month",
     items: months.map((month) => ({
@@ -284,7 +284,7 @@ export const CustomTrigger: Story<Month> = {
     const triggerButton = canvas.getByRole("button");
     await userEvent.click(triggerButton);
   },
-};
+} satisfies Story<Month>;
 
 const quarters = [
   months.slice(0, 3),
@@ -293,7 +293,7 @@ const quarters = [
   months.slice(9, 12),
 ] as const;
 
-export const Advanced: Story<Month> = {
+export const Advanced = {
   args: {
     placeholder: "Month",
     items: quarters
@@ -329,4 +329,4 @@ export const Advanced: Story<Month> = {
     const triggerButton = canvas.getByRole("button");
     await userEvent.click(triggerButton);
   },
-};
+} satisfies Story<Month>;

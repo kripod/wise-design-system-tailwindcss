@@ -29,7 +29,7 @@ export const WrappedTextInputWithError = {
   },
 } satisfies Story;
 
-export const WrappedTextInputWithButtonInLabel: Story = {
+export const WrappedTextInputWithButtonInLabel = {
   args: {
     ...WrappedTextInput.args,
     label: (
@@ -56,7 +56,7 @@ export const WrappedTextInputWithButtonInLabel: Story = {
       },
     );
   },
-};
+} satisfies Story;
 
 export const WrappedTextAreaInput = {
   args: {

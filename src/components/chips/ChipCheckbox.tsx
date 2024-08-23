@@ -1,4 +1,9 @@
-import { Checkbox, CheckboxProvider, useCheckboxContext } from "@ariakit/react";
+import {
+  Checkbox,
+  CheckboxProvider,
+  useCheckboxContext,
+  useStoreState,
+} from "@ariakit/react";
 import { CrossCircleFill } from "@transferwise/icons";
 import { useContext, useMemo } from "react";
 
@@ -53,7 +58,7 @@ export function ChipCheckbox({
   const { name } = useContext(InputContext);
 
   const store = useCheckboxContext();
-  const values = store?.useState("value");
+  const values = useStoreState(store, "value");
 
   return (
     <Chip
