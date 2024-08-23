@@ -33,7 +33,7 @@ jobs:
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           buildScriptName: build:stories
-          exitZeroOnChanges: true
+          exitOnceUploaded: true
           onlyChanged: true
           externals: |
             **/*.css
