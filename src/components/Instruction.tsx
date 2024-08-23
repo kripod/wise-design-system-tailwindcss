@@ -20,9 +20,7 @@ const IconBySentiment = {
   positive: () => (
     <CheckCircleFill size={24} className="text-sentiment-positive" />
   ),
-} satisfies {
-  [key in InstructionProps["sentiment"]]: React.ComponentType;
-};
+} satisfies Record<InstructionProps["sentiment"], React.ComponentType>;
 
 export function Instruction({ sentiment, children }: InstructionProps) {
   const Icon = IconBySentiment[sentiment];

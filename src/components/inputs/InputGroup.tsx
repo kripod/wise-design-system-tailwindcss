@@ -74,9 +74,7 @@ const inputAddonContentWidthAddendByPadding = {
   none: 0,
   sm: "1rem",
   md: "1.5rem",
-} satisfies {
-  [key in NonNullable<InputAddonProps["padding"]>]: string | number;
-};
+} satisfies Record<NonNullable<InputAddonProps["padding"]>, string | number>;
 
 const inputAddonDefaultPadding = "md" satisfies InputAddonProps["padding"];
 

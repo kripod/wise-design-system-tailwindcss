@@ -12,9 +12,10 @@ const iconSizeByComponentSize = {
   sm: 16,
   md: 16,
   lg: 24,
-} satisfies {
-  [key in NonNullable<CloseButtonProps["size"]>]: CrossIconProps["size"];
-};
+} satisfies Record<
+  NonNullable<CloseButtonProps["size"]>,
+  CrossIconProps["size"]
+>;
 
 export function CloseButton({
   size = "md",

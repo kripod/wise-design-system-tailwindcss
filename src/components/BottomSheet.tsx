@@ -18,9 +18,9 @@ export interface BottomSheetProps {
   open: boolean;
   renderTrigger?: (args: {
     ref: React.RefCallback<Element>;
-    getInteractionProps: (customEventHandlers?: React.HTMLProps<Element>) => {
-      [key: string]: unknown;
-    };
+    getInteractionProps: (
+      customEventHandlers?: React.HTMLProps<Element>,
+    ) => Record<string, unknown>;
   }) => React.ReactNode;
   title?: string;
   initialFocusRef?: React.RefObject<HTMLElement>;

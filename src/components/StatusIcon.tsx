@@ -41,9 +41,7 @@ const IconBySentiment = {
   negative: Cross,
   positive: Check,
   warning: Alert,
-} satisfies {
-  [key in StatusIconProps["sentiment"]]: StatusIconBaseProps["Icon"];
-};
+} satisfies Record<StatusIconProps["sentiment"], StatusIconBaseProps["Icon"]>;
 
 export function StatusIcon({ sentiment, ...restProps }: StatusIconProps) {
   return (

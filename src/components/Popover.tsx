@@ -23,9 +23,9 @@ export interface PopoverProps {
   open: boolean;
   renderTrigger: (args: {
     ref: React.RefCallback<Element>;
-    getInteractionProps: (customEventHandlers?: React.HTMLProps<Element>) => {
-      [key: string]: unknown;
-    };
+    getInteractionProps: (
+      customEventHandlers?: React.HTMLProps<Element>,
+    ) => Record<string, unknown>;
   }) => React.ReactNode;
   title?: string;
   size?: "md" | "lg";
