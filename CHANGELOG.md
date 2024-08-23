@@ -1,5 +1,37 @@
 # @kripod/wise-design-system-tailwindcss
 
+## 0.8.0
+
+### Minor Changes
+
+- [`d9670a8`](https://github.com/kripod/wise-design-system-tailwindcss/commit/d9670a8758b95eb87fdf483ed665cea5c401298b) Thanks [@kripod](https://github.com/kripod)! - refactor!: make package ESM-only
+
+- [`b5ee009`](https://github.com/kripod/wise-design-system-tailwindcss/commit/b5ee0090d8d6e27e5755f8d16eabecde8cf80ffc) Thanks [@kripod](https://github.com/kripod)! - refactor(Button): simplify prop types
+
+- [`b5ee009`](https://github.com/kripod/wise-design-system-tailwindcss/commit/b5ee0090d8d6e27e5755f8d16eabecde8cf80ffc) Thanks [@kripod](https://github.com/kripod)! - refactor: remove `renderButtonAsLink` helper
+
+- [`c96fcd3`](https://github.com/kripod/wise-design-system-tailwindcss/commit/c96fcd31badec720741cd4f044c8324955115b5d) Thanks [@kripod](https://github.com/kripod)! - refactor!: rename button and chip components
+
+  | Old               | New               |
+  | ----------------- | ----------------- |
+  | PrimaryButton     | ButtonPrimary     |
+  | SecondaryButton   | ButtonSecondary   |
+  | TertiaryButton    | ButtonTertiary    |
+  | CheckboxChip      | ChipCheckbox      |
+  | CheckboxChipGroup | ChipCheckboxGroup |
+  | RadioChip         | ChipRadio         |
+  | RadioChipGroup    | ChipRadioGroup    |
+
+- [`62f429a`](https://github.com/kripod/wise-design-system-tailwindcss/commit/62f429a0cd2dc3f1ec0488ae7282ca6c70f003a3) Thanks [@kripod](https://github.com/kripod)! - refactor(Chip)!: rewrite using Ariakit
+
+### Patch Changes
+
+- [`b80cdc8`](https://github.com/kripod/wise-design-system-tailwindcss/commit/b80cdc88d3f73c75d3beee192a37f8ba35fa0933) Thanks [@kripod](https://github.com/kripod)! - fix(BottomSheet): virtual keyboard handling in Chrome
+
+- [`3c835c4`](https://github.com/kripod/wise-design-system-tailwindcss/commit/3c835c452de770348c276b21c31b2fa77b096b79) Thanks [@kripod](https://github.com/kripod)! - refactor(BottomSheet): simplify layout
+
+- [`69aca67`](https://github.com/kripod/wise-design-system-tailwindcss/commit/69aca6753aa2a7117c9df591a53d18686a58d96b) Thanks [@kripod](https://github.com/kripod)! - refactor(Button): disable selecting contents
+
 ## 0.7.0
 
 ### Minor Changes
